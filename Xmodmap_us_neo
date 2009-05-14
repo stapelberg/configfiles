@@ -1,0 +1,92 @@
+keycode 113 = Super_R
+
+!keycode 66 = Mode_switch
+keycode 66 = Mode_switch
+
+! remap escape to `
+keycode 49 = Escape
+keycode 9 = grave asciitilde
+
+!keycode 115 = 
+keycode 127 = NoSymbol
+
+
+keycode  19 = 0 parenright parenright
+
+keycode 97 = Menu
+keycode 107 = Escape
+
+keycode 16 = 7 ampersand U2714
+keycode 17 = 8 asterisk U2718
+
+!! First row
+! Original Q
+! Original W
+keycode 25 = v V v V minus
+! Original E
+keycode 26 = l L l L underscore Greek_lambda
+! Original R
+keycode 27 = c C copyright
+! Original T
+keycode 28 = w W w W ampersand Greek_omega
+! Original Y
+keycode 29 = k K k K bar Greek_kappa
+! Original U
+keycode 30 = h H heart
+! Original I
+keycode 31 = g G g G bracketright Greek_gamma
+! Original O
+keycode 32 = f F f F less Greek_phi
+! Original P
+keycode 33 = j J j J greater
+! Original [
+keycode 34 = bracketleft braceleft
+! Original ]
+keycode 35 = bracketright braceright
+! Original \
+keycode 51 = backslash bar
+
+!! Second row
+! Original A
+keycode 38 = u U udiaeresis Udiaeresis backslash
+! Original S
+keycode 39 = i I semicolon I slash
+! Original D
+keycode 40 = a A adiaeresis Adiaeresis at Greek_alpha
+! Original F
+keycode 41 = e E colon E EuroSign Greek_epsilon
+! Original G
+keycode 42 = o O odiaeresis Odiaeresis asciitilde
+! Original H
+keycode 43 = s S ssharp S dollar Greek_sigma
+! Original J
+keycode 44 = n N Left
+! Original K
+keycode 45 = r R Down
+! Original L
+keycode 46 = t T Up
+! Original ;:
+keycode 47 = d D Right
+! Original '"
+keycode 48 = y Y y Y Greek_PSI Greek_psi
+
+
+!! Third row
+! Original Z
+keycode 52 = semicolon colon
+! Original X
+keycode 53 = apostrophe quotedbl rightsinglequotemark
+! Original C
+keycode 54 = x X x X Greek_DELTA
+! Original V
+keycode 55 = p P p P Greek_PI Greek_pi
+! Original B
+keycode 56 = z Z z Z Greek_omega
+! Original N
+keycode 57 = b B b B Greek_SIGMA Greek_beta
+! Original M
+keycode 58 = m M m M Greek_PHI mu
+! Original ,
+! Original .
+! Original /
+keycode 61 = slash question

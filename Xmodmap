@@ -1,0 +1,38 @@
+! CapsLock = Mode_switch -> CapsLock+a = ä
+!remove Lock = Caps_Lock
+keycode 66 = Mode_switch
+
+! Korrekt Anfuehrungszeichen auf 2
+keycode 11 = 2 at doublelowquotemark
+keycode 12 = 3 numbersign rightdoublequotemark
+! Gedankenstrich auf -
+keycode 20 = minus underscore endash
+keycode 26 = e E EuroSign cent
+keycode 30 = u U udiaeresis Udiaeresis
+keycode 32 = o O odiaeresis Odiaeresis
+keycode 38 = a A adiaeresis Adiaeresis
+keycode 39 = s S ssharp
+
+keycode 43 = h H heart
+
+! Korrekter Apostroph
+keycode 48 = apostrophe quotedbl rightsinglequotemark
+
+keycode 29 = y Y
+
+! Escape auf `, sehr viel einfacher zu tippen
+!keycode 49 = Escape
+!keycode 9 = grave asciitilde
+
+! Auslassungspunkte
+keycode 60 = period greater ellipsis
+
+! Modifier
+keycode 115 = Control_L
+keycode 113 = Super_R
+keycode 127 = NoSymbol
+
+! Multi_key soll als Mod3 gelten
+clear Mod1
+add Mod1 = Alt_L
+add Mod3 = Super_R Super_L

@@ -1,0 +1,11 @@
+map q :tabp<ENTER>
+map v :tabn<ENTER>
+map t :tabopen<ENTER>:o<SPACE>
+map o :open<SPACE>
+
+set defsearch=
+
+let g:hintchars="uiaenrtd"
+let g:hintsio="iO"
+
+source ~/.vimperator/plugins/char-hints.js

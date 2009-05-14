@@ -1,0 +1,16 @@
+[alias]
+	a = add
+	ca = commit -a
+	c = commit
+	d = diff
+	l = log
+	s = status
+	t = tag
+
+[color]
+	diff = auto
+	color = auto
+
+[user]
+	name = Michael Stapelberg
+	email = michael@stapelberg.de

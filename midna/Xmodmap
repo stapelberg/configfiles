@@ -1,0 +1,45 @@
+!keycode 113 = Multi_key
+!keycode 116 = Alt_R
+
+! CapsLock+a = ä
+!remove Lock = Caps_Lock
+keycode 66 = Mode_switch
+
+keycode 11 = 2 at doublelowquotemark
+keycode 12 = 3 numbersign rightdoublequotemark
+keycode 16 = 7 ampersand U2714
+keycode 17 = 8 asterisk U2718
+keycode 20 = minus underscore endash emdash
+keycode 26 = e E EuroSign cent
+keycode 27 = r R registered
+keycode 28 = t T trademark
+keycode 30 = u U udiaeresis Udiaeresis
+keycode 32 = o O odiaeresis Odiaeresis
+keycode 33 = p P plusminus
+keycode 38 = a A adiaeresis Adiaeresis
+keycode 39 = s S ssharp
+keycode 41 = f F U2192
+keycode 43 = h H heart
+keycode 48 = apostrophe quotedbl rightsinglequotemark
+keycode 54 = c C copyright
+keycode 57 = n N notsign
+keycode 58 = m M U266A
+keycode 61 = slash question U2E2E
+
+
+! remap escape to ` and vice versa -- done in hardware in the meantime
+!keycode 49 = Escape
+!keycode 9 = grave asciitilde
+
+keycode 60 = period greater ellipsis
+
+keycode 115 = Control_L
+clear Lock
+add Control = Control_L
+keycode 127 = NoSymbol
+keycode 97 = Menu
+keycode 103 = Multi_key
+
+add Mod3 = Super_L
+add Mod3 = Super_R
+add Mod1 = Alt_R

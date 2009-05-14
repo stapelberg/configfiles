@@ -1,0 +1,25 @@
+!urxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12
+URxvt.font: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1,xft:code2000:autohint=false
+
+!URxvt.boldfont: -misc-fixed-medium-r-normal-*-10-100-*-*-*-*-iso10646-1,xft:code2000:autohint=false
+
+URxvt.scrollBar: false
+URxvt.background: black
+URxvt.foreground: lightgrey
+URxvt.internalBorder: 1
+URxvt.cursorBlink: 0
+URxvt.termName: xterm-color
+URxvt.visualBell: on
+URxvt.keysym.M-u: perl:mark-yank-urls:activate_mark_mode
+URxvt.underlineURLs: false
+URxvt.perl-lib: /home/michael/.urxvt/
+URxvt.perl-ext: selection,mark-yank-urls
+URxvt.urlLauncher: firefox
+
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.antialias: 1
+Xft.dpi: 96
+
+*background: black
+*foreground: lightgrey

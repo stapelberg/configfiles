@@ -1,0 +1,5 @@
+abbr tenum \begin{enumerate}<ENTER>	\item<ENTER><C-W>\end{enumerate}
+abbr titem \begin{itemize}<ENTER>	\item<ENTER><C-W>\end{itemize}
+abbr teqn \begin{eqnarray*}<ENTER><ENTER>\end{eqnarray*}
+abbr tmat \left( \begin{array}{rr}<ENTER><ENTER><C-W>\end{array} \right)
+set nocin noai
