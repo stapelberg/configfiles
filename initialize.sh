@@ -28,6 +28,8 @@ link_dir() {
 			# Standard location: ~/.filename
 			DEST="$HOME/.$file"
 		else
+			# replace ~ with $HOME
+			DEST=${DEST/\~/$HOME}
 			# Ensure the target directory exists
 			mkdir -p "$(dirname "$DEST")"
 		fi
@@ -37,6 +39,9 @@ link_dir() {
 			mkdir -p "$HOME/.configfiles.bak" || exit 1
 			mv "$DEST" "$HOME/.configfiles.bak/"
 		}
+
+		# Skip the file, if it is already a link
+		[[ -e "$DEST" && -L "$DEST" ]] && continue
 
 		# Create the symlink
 		echo "Linking $DEST"
