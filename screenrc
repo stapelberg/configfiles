@@ -1,0 +1,15 @@
+vbell_msg "!"
+autodetach on
+activity "activity in %n (%t) [%w:%s]~"
+msgwait 10
+bindkey -d -k kD stuff "\177"
+
+# Titel korrekt durchreichen
+termcapinfo xterm-color OP
+termcapinfo xterm-color ti@:te@
+termcapinfo xterm-color hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+
+# Anstelle von hardstatus caption benutzen, damit das mit dem Titel klappt
+defhstatus "screen "
+hardstatus off
+caption always "%{Yb}%-w%{} %{kr} %n %f %{-} %+w %=%H %{kg} %l %{-} %Y/%m/%d %c:%s"
