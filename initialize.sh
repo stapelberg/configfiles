@@ -22,7 +22,7 @@ link_dir() {
 		-printf '%P\n')
 	do
 		# Check if we got a custom mapping
-		DEST=$(grep "^$file " MAPPING | cut -d ' ' -f 2-)
+		DEST=$(grep "^$file " $dir/MAPPING | cut -d ' ' -f 2-)
 		if [ -z "$DEST" ]
 		then
 			# Standard location: ~/.filename
