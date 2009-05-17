@@ -36,7 +36,7 @@ link_dir() {
 
 		# Preserve the file, if it already exists
 		[[ -e "$DEST" && ! -L "$DEST" ]] && {
-			if [ ! -f "$HOME/.configfiles.bak" ]
+			if [ ! -d "$HOME/.configfiles.bak" ]
 			then
 				mkdir -p "$HOME/.configfiles.bak" || exit 1
 			fi
