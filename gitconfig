@@ -2,8 +2,10 @@
 	a = add
 	ca = commit -a
 	c = commit
+	co = checkout
 	d = diff
 	l = log
+	rh = reset --hard
 	s = status
 	t = tag
 
