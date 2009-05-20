@@ -3,6 +3,9 @@ map v :tabn<ENTER>
 map t :tabopen<ENTER>:o<SPACE>
 map o :open<SPACE>
 
+map + zI
+map -- - zO
+
 set defsearch=
 
 let g:hintchars="uiaenrtd"
