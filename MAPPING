@@ -1,1 +1,2 @@
 mplayer.config ~/.mplayer/config
+gpg.conf ~/.gnupg/gpg.conf
