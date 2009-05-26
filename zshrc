@@ -98,7 +98,7 @@ alias mprnd='files=(*); let "r = $RANDOM % ${#files}"; ([ -f ${files[$r]} ] && m
 
 function set_termtitle() {
        case $TERM in
-               *xterm|rxvt*)
+               *xterm*|rxvt*)
                        print -Pn "\e]0;$1\a"
                        ;;
                screen*)
