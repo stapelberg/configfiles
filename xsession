@@ -1,10 +1,12 @@
 #!/bin/sh
 
 xmodmap .Xmodmap
-if [ "$(hostname)" = "x200" ]
+if [ "$(hostname)" = "x200.zekjur.net" ]
 then
 	xmodmap .Xmodmap_us_neo
 fi
+# needed for toggle_layout
+touch /tmp/neo_active
 
 # Disable bell
 xset -b
