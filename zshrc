@@ -110,6 +110,11 @@ function set_termtitle() {
 preexec() { set_termtitle "%m: $1" }
 precmd() { set_termtitle "%m: %~" }
 
+# Convenience wrapper around /etc/init.d
+function in() {
+	sudo /etc/init.d/$*
+}
+
 function scan() {
        scanimage --format TIFF --resolution 300 -x 215 -y 297 > $1.tiff && convert $1.tiff -resize 1024x $1.jpg
 }
@@ -246,7 +251,7 @@ export LC_TELEPHONE=de_DE.UTF-8
 export LC_MEASUREMENT=de_DE.UTF-8
 export LC_IDENTIFICATION=de_DE.UTF-8
 
-# Expand path to /usr/sbin and /sbin
+# Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
 export PATH=$PATH:/usr/sbin:/sbin
 
 # Initialize completion
