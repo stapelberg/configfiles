@@ -3,6 +3,10 @@ map v :tabn<ENTER>
 map t :tabopen<ENTER>:o<SPACE>
 map o :open<SPACE>
 
+" Remap d to close the window without selecting the right tab
+" to allow tabmixplus or tabkit to manage focus
+map d <C-v><C-w>
+
 map + zI
 map -- - zO
 
