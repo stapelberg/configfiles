@@ -34,6 +34,9 @@ xsetroot -solid "#333333"
 # Start urxvtd
 urxvtd -q -f -o
 
+# Start gpg-agent
+eval $(gpg-agent --daemon)
+
 # Enable coredumps
 ulimit -c unlimited
 
