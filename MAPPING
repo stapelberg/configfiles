@@ -1,2 +1,3 @@
 mplayer.config ~/.mplayer/config
 gpg.conf ~/.gnupg/gpg.conf
+vimperator-char-hints.js ~/.vimperator/plugins/char-hints.js
