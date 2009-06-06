@@ -1,7 +1,7 @@
 #!/bin/sh
 
 xmodmap .Xmodmap
-if [ "$(hostname)" = "x200.zekjur.net" ]
+if [ "$(hostname)" = "x200" ]
 then
 	xmodmap .Xmodmap_us_neo
 fi
