@@ -107,7 +107,7 @@ function set_termtitle() {
        esac
 }
 
-preexec() { set_termtitle "%m: $1" }
+preexec() { set_termtitle "%m: ${(q)1}" }
 precmd() { set_termtitle "%m: %~" }
 
 # Convenience wrapper around /etc/init.d
