@@ -260,7 +260,7 @@ compinit -C
 
 # Initialize SSH completion only with hosts in my ~/.ssh/config, but especially with the aliases
 # I gave them (and the full host names).
-zstyle ':completion:*:complete:ssh:*:hosts' hosts $(sed -n "s/^[ \\t]*Host\(name\|\) \(.*\)/\\2/p" $HOME/.ssh/config | uniq)
+[ -e "$HOME/.ssh/config" ] && zstyle ':completion:*:complete:ssh:*:hosts' hosts $(sed -n "s/^[ \\t]*Host\(name\|\) \(.*\)/\\2/p" $HOME/.ssh/config | uniq)
 
 [ -e "$HOME/.zshrc_host" ] && source ~/.zshrc_host
 
