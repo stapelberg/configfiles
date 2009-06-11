@@ -1,5 +1,7 @@
 !urxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12
-URxvt.font: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1,xft:code2000:autohint=false
+URxvt.fonts.0: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1,xft:code2000:autohint=false
+URxvt.fonts.1: -misc-fixed-medium-r-normal--18-120-100-100-C-90-iso10646-1,xft:code2000:autohint=false
+URxvt.fonts.2: -misc-fixed-medium-r-normal--20-200-75-75-C-100-iso10646-1,xft:code2000:autohint=false
 
 !URxvt.boldfont: -misc-fixed-medium-r-normal-*-10-100-*-*-*-*-iso10646-1,xft:code2000:autohint=false
 
@@ -11,9 +13,11 @@ URxvt.cursorBlink: 0
 URxvt.termName: xterm-color
 URxvt.visualBell: on
 URxvt.keysym.M-u: perl:mark-yank-urls:activate_mark_mode
+URxvt.keysym.M-p: perl:fonts:plus
+URxvt.keysym.M-m: perl:fonts:minus
 URxvt.underlineURLs: false
 URxvt.perl-lib: /home/michael/.urxvt/
-URxvt.perl-ext: selection,mark-yank-urls
+URxvt.perl-ext: selection,mark-yank-urls,fonts
 URxvt.urlLauncher: firefox
 
 Xft.hinting: 1

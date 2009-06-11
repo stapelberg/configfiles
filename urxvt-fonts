@@ -1,0 +1,67 @@
+=begin void
+
+Author: Maik Fischer <maikf+urxvt-fonts at labs dot qu dot cx>
+
+preliminary instructions:
+
+1) save/symlink this file to eg. ~/.urxvt/fonts
+2) cat >> Xdefaults << END
+
+URxvt.fonts.0: -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso10646-1
+URxvt.fonts.1: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+URxvt.fonts.2: -misc-fixed-medium-r-normal--14-130-75-75-c-70-iso10646-1
+URxvt.fonts.3: -xos4-terminus-medium-r-normal--24-240-72-72-c-120-iso10646-1
+! and so on...
+URxvt.keysym.M-9: perl:fonts:plus
+URxvt.keysym.M-0: perl:fonts:minus
+URxvt.perl-lib: /home/foo/.urxvt
+URxvt.perl-ext: fonts
+
+END
+
+Note: either set URxvt.fonts.0 or URxvt.font, the former overrides the latter
+
+=end void
+
+=cut
+
+sub on_start {
+    my $self = shift;
+
+    $self->{fonts_idx} = 0;
+    my @fonts;
+    my @default = $self->resource('font');
+    for (my $i = 0;
+         defined(my $font = $self->x_resource("fonts.$i") || $default[$i]);
+         $i++)
+    {
+        push @fonts, $font;
+    }
+    $self->set_font($fonts[0]);
+    $self->{fonts} = [ @fonts ];
+    undef @fonts;
+    return ()
+}
+
+sub on_user_command {
+    my ($self, $cmd) = @_;
+    return () unless $cmd =~ /^fonts:(plus|minus)/;
+
+    my @fonts = @{ $self->{fonts} };
+    for ($self->{fonts_idx}) {
+        $_ = $1 eq 'plus'?  ($_ + 1) % @fonts:
+             $1 eq 'minus'? ($_ - 1) % @fonts:
+             ();
+
+        $self->set_font( $fonts[ $_ ] );
+    }
+
+    return ();
+}
+
+sub set_font {
+    my ($self, $font) = @_;
+    $self->cmd_parse("\033]710;$font\007"); # yuck!
+}
+
+# vim: set ts=4 sts=4 ft=perl expandtab:

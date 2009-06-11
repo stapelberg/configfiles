@@ -1,3 +1,5 @@
 mplayer.config ~/.mplayer/config
 gpg.conf ~/.gnupg/gpg.conf
 vimperator-char-hints.js ~/.vimperator/plugins/char-hints.js
+urxvt-mark-yank-urls ~/.urxvt/mark-yank-urls
+urxvt-fonts ~/.urxvt/fonts
