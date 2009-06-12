@@ -158,7 +158,7 @@ sub on_key_release {
         } elsif ($keysym == 65293) {                # <enter>
             my $url = get_active_url($term);
             $url =~ s/\(["|><&()]\)/\\$1/;
-            $term->exec_async ($term->{browser} . ' "' . $url.'"');
+            $term->exec_async ($term->{browser}, $url);
             deactivate_mark_mode ($term);
             return 1;
 
