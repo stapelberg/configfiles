@@ -14,8 +14,8 @@ export VISUAL='vim'
 export PAGER='less'
 
 bindkey -M viins >&-
-bindkey "^[OA" up-line-or-history
-bindkey "^[[A" up-line-or-history
+bindkey -M viins "^[[A" up-line-or-history
+bindkey -M viins "^[[B" down-line-or-history
 
 # NO BEEPING!
 setopt no_BEEP
@@ -36,7 +36,7 @@ alias rt='ls -hltr'
 
 alias bc='bc -ql'
 
-alias ü='cd /home/michael/Uni/S1/Uebungen'
+alias ü='cd /home/michael/Uni/S2/Uebungen'
 
 alias gitize='git init && git add . && git commit -a'
 
