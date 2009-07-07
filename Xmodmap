@@ -4,7 +4,7 @@ keycode 66 = Mode_switch
 
 ! Korrekt Anfuehrungszeichen auf 2
 keycode 11 = 2 at doublelowquotemark
-keycode 12 = 3 numbersign rightdoublequotemark
+keycode 12 = 3 numbersign leftdoublequotemark
 ! Gedankenstrich auf -
 keycode 20 = minus underscore endash
 keycode 26 = e E EuroSign cent
@@ -29,7 +29,7 @@ keycode 60 = period greater ellipsis
 
 ! Modifier
 keycode 115 = Control_L
-keycode 113 = Super_R
+!keycode 113 = Super_R
 keycode 127 = NoSymbol
 
 ! Multi_key soll als Mod3 gelten
