@@ -86,6 +86,8 @@ alias smi='sudo make install'
 
 alias g='git'
 
+alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
+
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
 alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"' 
