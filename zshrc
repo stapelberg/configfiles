@@ -88,7 +88,7 @@ alias g='git'
 
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
-alias susp='slock && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"' 
+alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"' 
 
 alias blauzahn='sudo sh -c "echo enable > /proc/acpi/ibm/bluetooth && /etc/init.d/bluetooth restart"'
 alias blauzahn-aus='sudo sh -c "/etc/init.d/bluetooth stop && echo disable > /proc/acpi/ibm/bluetooth"'
@@ -97,18 +97,31 @@ alias blauzahn-aus='sudo sh -c "/etc/init.d/bluetooth stop && echo disable > /pr
 alias mprnd='files=(*); let "r = $RANDOM % ${#files}"; ([ -f ${files[$r]} ] && mplayer ${files[$r]}) || ([ -d ${files[$r]} ] && mplayer ${files[$r]}/*{avi,mpg} )'
 
 function set_termtitle() {
-       case $TERM in
-               *xterm*|rxvt*)
-                       print -Pn "\e]0;$1\a"
-                       ;;
-               screen*)
-                       print -Pn "\e_$1\e\\"
-                       ;;
-       esac
+	# escape '%' chars in $1, make nonprintables visible
+	a=${(V)1//\%/\%\%}
+
+	# Truncate command, and join lines.
+	a=$(print -Pn "$a" | tr -d "\n")
+
+	case $TERM in
+	screen)
+		print -Pn "\e]2;$2: $a\a" # plain xterm title
+		print -Pn "\ek$a\e\\"      # screen title (in ^A")
+		print -Pn "\e_$2: $a\e\\"   # screen location
+	;;
+	xterm*|rxvt)
+		print -Pn "\e]2;$2: $a\a" # plain xterm title
+	;;
+	esac
 }
 
-preexec() { set_termtitle "%m: ${(q)1}" }
-precmd() { set_termtitle "%m: %~" }
+function precmd() {
+	set_termtitle "zsh" "%m"
+}
+
+function preexec() {
+	set_termtitle "$1" "%m"
+}
 
 # Convenience wrapper around /etc/init.d
 function in() {
