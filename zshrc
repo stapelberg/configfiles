@@ -78,9 +78,9 @@ alias sd='svn diff --diff-cmd=colordiff | less -R'
 
 alias acs='apt-cache search'
 alias acp='apt-cache policy'
-alias agi='sudo apt-get install'
+alias agi='sudo apt-get install && rehash'
 alias agu='sudo apt-get update'
-alias agr='sudo apt-get remove'
+alias agr='sudo apt-get remove && rehash'
 
 alias smi='sudo make install'
 
