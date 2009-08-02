@@ -103,7 +103,7 @@ function set_termtitle() {
 	a=${(V)1//\%/\%\%}
 
 	# Truncate command, and join lines.
-	a=$(print -Pn "$a" | tr -d "\n")
+	a=$(print -Pn "$a" | tr -d "\n\r")
 
 	case $TERM in
 	screen)
