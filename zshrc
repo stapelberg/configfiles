@@ -51,6 +51,20 @@ alias iso='LANG=en_US.iso885915 LC_ALL=en_US.iso885915 urxvt'
 
 alias ripcd='cdparanoia -Bs 1-'
 alias cam="mplayer -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2"
+
+function webcam {
+	pushd /home/michael/Bilder/Webcam
+	mplayer -vf screenshot -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2
+	counter=1
+	for file in shot*png
+	do
+		timestamp=$(stat -c "%y" $file | sed -e 's/ /-/g;s/\..*//g;')
+		mv -v $file "webcam_$timestamp_$counter.png"
+		((++counter))
+        done
+        popd
+}
+
 # wiipdf with the ID of my primary wiimote
 alias wp="wiipdf 00:19:1D:93:CA:EB "
 
@@ -107,12 +121,15 @@ function set_termtitle() {
 
 	case $TERM in
 	screen)
-		print -Pn "\e]2;$2: $a\a" # plain xterm title
-		print -Pn "\ek$a\e\\"      # screen title (in ^A")
-		print -Pn "\e_$2: $a\e\\"   # screen location
+		print -Pn "\e]2;$2: "
+		print -n "$a\a"        # plain xterm title
+		print -n "\ek$a\e\\"   # screen title (in ^A")
+		print -Pn "\e_$2: "
+		print -n "$a\e\\"      # screen location
 	;;
 	xterm*|rxvt)
-		print -Pn "\e]2;$2: $a\a" # plain xterm title
+		print -Pn "\e]2;$2: "
+		print -n "$a\a" # plain xterm title
 	;;
 	esac
 }
