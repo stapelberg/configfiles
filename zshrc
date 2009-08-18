@@ -38,6 +38,8 @@ alias bc='bc -ql'
 
 alias ü='cd /home/michael/Uni/S2/Uebungen'
 
+alias cal='cal -my'
+
 alias gitize='git init && git add . && git commit -a'
 
 # More passwords, faster!
