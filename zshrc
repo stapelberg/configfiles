@@ -121,6 +121,8 @@ function set_termtitle() {
 	# Truncate command, and join lines.
 	a=$(print -rPn "$a" | tr -d "\n\r")
 
+	[ "$a" = "zsh" ] && { a=$(print -Pn "%~") }
+
 	case $TERM in
 	screen)
 		# plain xterm title
@@ -308,7 +310,3 @@ compinit -C
 [ -e "$HOME/.ssh/config" ] && zstyle ':completion:*:complete:ssh:*:hosts' hosts $(sed -n "s/^[ \\t]*Host\(name\|\) \(.*\)/\\2/p" $HOME/.ssh/config | uniq)
 
 [ -e "$HOME/.zshrc_host" ] && source ~/.zshrc_host
-
-# Set title
-chpwd () { print -Pn "\e]0;%n@%m: %~\a" }
-chpwd
