@@ -278,7 +278,11 @@ fg_light_blue=$'%{\e[1;36m%}'
 fg_light_silver=$'%{\e[1;37m%}'
 fg_white=$'%{\e[1;37m%}'
 fg_no_colour=$'%{\e[0m%}'
-PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}$ "
+if [[ "$(hostname)" != "midna" && "$(hostname)" != "x200" ]]; then
+	PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour}$ "
+else
+	PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}$ "
+fi
 
 # Use VI-mode for entering commands
 setopt VI
