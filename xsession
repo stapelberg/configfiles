@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Enable zapping (C-A-<Bksp> kills X)
+setxkbmap -option terminate:ctrl_alt_bksp
+
 xmodmap .Xmodmap
 if [ "$(hostname)" = "x200" ]
 then
@@ -33,9 +36,6 @@ xsetroot -solid "#333333"
 
 # Start urxvtd
 urxvtd -q -f -o
-
-# Start gpg-agent
-eval $(gpg-agent --daemon)
 
 # Enable coredumps
 ulimit -c unlimited
