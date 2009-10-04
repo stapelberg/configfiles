@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # © 2009 Michael Stapelberg, Public Domain
 #
