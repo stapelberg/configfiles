@@ -4,4 +4,5 @@ vimperator-char-hints.js ~/.vimperator/plugins/char-hints.js
 urxvt-mark-yank-urls ~/.urxvt/mark-yank-urls
 urxvt-fonts ~/.urxvt/fonts
 refactor.vim ~/.vim/plugin/refactor.vim
+syntax-perl.vim ~/.vim/syntax/perl.vim
 mostlike ~/.terminfo/m/mostlike
