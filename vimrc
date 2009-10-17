@@ -31,8 +31,8 @@ syntax on
 autocmd BufNewFile,BufRead *.pgc setf c
 " For C-files, enable C-indenting
 autocmd BufNewFile,BufRead *.c,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
-" For Perl-code or shellscripts, disable putting # at the first character
-autocmd BufNewFile,BufRead *.sh,*.pl,*.pm set cin cinkeys=0{,0},0),:,!^F,o,O,e
+" For Perl-code, shellscripts and ruby, disable putting # at the first character
+autocmd BufNewFile,BufRead *.sh,*.pl,*.pm,*.rb set cin cinkeys=0{,0},0),:,!^F,o,O,e
 autocmd BufNewFile,BufRead *.c,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set fo-=t fo+=croql comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 
 " Enable filetype plugins (vim-LaTeX for example)
