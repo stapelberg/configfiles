@@ -36,7 +36,7 @@ alias rt='ls -hltr'
 
 alias bc='bc -ql'
 
-alias ü='cd /home/michael/Uni/S2/Uebungen'
+alias ü='cd /home/michael/Uni/S3/Uebungen'
 
 alias cal='cal -my'
 
