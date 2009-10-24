@@ -95,6 +95,7 @@ alias sd='svn diff --diff-cmd=colordiff | less -R'
 alias acs='apt-cache search'
 alias acp='apt-cache policy'
 function agi { sudo apt-get install $* && rehash }
+_da() { _deb_packages uninstalled; }
 alias agu='sudo apt-get update'
 function agr { sudo apt-get remove $* && rehash }
 
@@ -308,6 +309,7 @@ export PATH=$PATH:/usr/sbin:/sbin
 # Initialize completion
 autoload compinit
 compinit -C
+compdef _da agi
 
 # Initialize SSH completion only with hosts in my ~/.ssh/config, but especially with the aliases
 # I gave them (and the full host names).
