@@ -3,4 +3,4 @@
 unalias ls
 alias ls='ls -F'
 
-PROMPT="${fg_light_silver}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}$ "
+PROMPT="${fg_light_silver}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}%(2L. [$SHLVL].)$ "
