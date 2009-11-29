@@ -26,5 +26,5 @@ Xft.hintstyle: hintslight
 Xft.antialias: 1
 Xft.dpi: 96
 
-*background: black
-*foreground: lightgrey
+!*background: black
+!*foreground: lightgrey
