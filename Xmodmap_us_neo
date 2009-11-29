@@ -1,4 +1,3 @@
-keycode 113 = Super_R
 
 !keycode 66 = Mode_switch
 keycode 66 = Mode_switch
@@ -16,15 +15,18 @@ keycode  19 = 0 parenright parenright
 keycode 97 = Menu
 keycode 107 = Escape
 
+keycode 11 = 2 at doublelowquotemark
+keycode 12 = 3 numbersign leftdoublequotemark
+
 keycode 16 = 7 ampersand U2714
 keycode 17 = 8 asterisk U2718
 
 !! First row
 ! Original Q
 ! Original W
-keycode 25 = v V v V minus
+keycode 25 = v V doublelowquotemark
 ! Original E
-keycode 26 = l L l L underscore Greek_lambda
+keycode 26 = l L leftdoublequotemark
 ! Original R
 keycode 27 = c C copyright
 ! Original T
@@ -54,7 +56,7 @@ keycode 39 = i I semicolon I slash
 ! Original D
 keycode 40 = a A adiaeresis Adiaeresis at Greek_alpha
 ! Original F
-keycode 41 = e E colon E EuroSign Greek_epsilon
+keycode 41 = e E EuroSign cent
 ! Original G
 keycode 42 = o O odiaeresis Odiaeresis asciitilde
 ! Original H
