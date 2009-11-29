@@ -28,11 +28,13 @@ keycode 29 = y Y
 keycode 60 = period greater ellipsis
 
 ! Modifier
-keycode 115 = Control_L
+!keycode 115 = Control_L
 !keycode 113 = Super_R
 keycode 127 = NoSymbol
 
 ! Multi_key soll als Mod3 gelten
 clear Mod1
+clear Mod3
+clear Mod4
 add Mod1 = Alt_L
-add Mod3 = Super_R Super_L
+add Mod4 = Super_L
