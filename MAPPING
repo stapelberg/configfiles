@@ -5,4 +5,5 @@ urxvt-mark-yank-urls ~/.urxvt/mark-yank-urls
 urxvt-fonts ~/.urxvt/fonts
 refactor.vim ~/.vim/plugin/refactor.vim
 syntax-perl.vim ~/.vim/syntax/perl.vim
+syntax-go.vim ~/.vim/syntax/go.vim
 mostlike ~/.terminfo/m/mostlike

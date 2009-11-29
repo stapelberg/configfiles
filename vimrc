@@ -29,6 +29,8 @@ syntax on
 
 " ECPG-files are C-code, too
 autocmd BufNewFile,BufRead *.pgc setf c
+" .go files are go, see golang.org
+autocmd BufNewFile,BufRead *.go setf go
 " For C-files, enable C-indenting
 autocmd BufNewFile,BufRead *.c,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
 " For Perl-code, shellscripts and ruby, disable putting # at the first character
