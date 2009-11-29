@@ -1,4 +1,4 @@
-!urxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12
+*font: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 URxvt.fonts.0: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1,xft:code2000:autohint=false
 URxvt.fonts.1: -misc-fixed-medium-r-normal--18-120-100-100-C-90-iso10646-1,xft:code2000:autohint=false
 URxvt.fonts.2: -misc-fixed-medium-r-normal--20-200-75-75-C-100-iso10646-1,xft:code2000:autohint=false
