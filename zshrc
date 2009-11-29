@@ -97,6 +97,8 @@ alias acp='apt-cache policy'
 function agi { sudo apt-get install $* && rehash }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt-get update'
+alias cupt-upgrade='sudo cupt -o debug::resolver=1 -i -V -D -R full-upgrade xserver-xorg-core/installed xserver-xorg-video-intel/installed 2>&1 | tee /tmp/cupt.log'
+
 function agr { sudo apt-get remove $* && rehash }
 
 alias smi='sudo make install'
