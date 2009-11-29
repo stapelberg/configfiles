@@ -5,10 +5,16 @@
 !remove Lock = Caps_Lock
 keycode 66 = Mode_switch
 
+keycode 10 = 1 exclam
 keycode 11 = 2 at doublelowquotemark
 keycode 12 = 3 numbersign rightdoublequotemark
+keycode 13 = 4 dollar
+keycode 14 = 5 percent
+keycode 15 = 6 asciicircum
 keycode 16 = 7 ampersand U2714
 keycode 17 = 8 asterisk U2718
+keycode 18 = 9 parenleft
+keycode 19 = 0 parenright
 keycode 20 = minus underscore endash emdash
 keycode 26 = e E EuroSign cent
 keycode 27 = r R registered
@@ -24,7 +30,7 @@ keycode 48 = apostrophe quotedbl rightsinglequotemark
 keycode 54 = c C copyright
 keycode 57 = n N notsign
 keycode 58 = m M U266A
-keycode 61 = slash question U2E2E
+keycode 61 = slash question U2E2E U203D
 
 
 ! remap escape to ` and vice versa -- done in hardware in the meantime
