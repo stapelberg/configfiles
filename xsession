@@ -11,7 +11,7 @@ fi
 # needed for toggle_layout
 touch /tmp/neo_active
 
-# Disable bell
+# Disable audible bell
 xset -b
 
 # Disable DPMS
@@ -40,6 +40,22 @@ urxvtd -q -f -o
 # Enable coredumps
 ulimit -c unlimited
 
+#cd /tmp
+#rm xtr
+#export DISPLAY=:0
+#xtrace -o xtr &
+#sleep 1
+#export DISPLAY=:9
+#cd /home/michael
+
+if [ "$(hostname)" = "midna" ]
+then
+	# Configure monitors
+	xrandr --output DVI2 --mode 1920x1200 --right-of DVI1
+fi
+
 # Initialize part of the logfile
-echo "starting at $(date)" >> /home/michael/i3/i3log
-exec i3 >>/home/michael/i3/i3log 2>&1
+[ ! -d ~/i3 ] && mkdir ~/i3
+echo "starting at $(date)" >> ~/i3/i3log
+exec i3 -l >>~/i3/i3log 2>&1
+#exec valgrind -v --log-file=/tmp/vg --leak-check=full --track-origins=yes --num-callers=20 --tool=memcheck i3 -l >>/home/michael/i3/i3log 2>&1
