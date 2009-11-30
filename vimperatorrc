@@ -9,6 +9,10 @@ map M :set guioptions=rb<CR>
 " to allow tabmixplus or tabkit to manage focus
 map d <C-v><C-w>
 
+" Use the original meaning of C-w and C-t
+map <C-w> <Nop>
+map <C-t> <Nop>
+
 map + zI
 map -- - zO
 
