@@ -54,6 +54,12 @@ alias iso='LANG=en_US.iso885915 LC_ALL=en_US.iso885915 urxvt'
 alias ripcd='cdparanoia -Bs 1-'
 alias cam="mplayer -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2"
 
+# Prepend a command with e to close the starting shell
+function e() {
+	eval "$* &|"
+	exit
+}
+
 function webcam {
 	pushd /home/michael/Bilder/Webcam
 	mplayer -vf screenshot -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2
