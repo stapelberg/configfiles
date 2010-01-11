@@ -1,4 +1,4 @@
 urlCommand "firefox '%s'"
 psFile "|/usr/bin/lpr -P laserjet"
 initialZoom width
-bind o	any	closeOutline
+bind o	any	toggleOutline
