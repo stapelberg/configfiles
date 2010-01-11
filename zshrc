@@ -32,6 +32,7 @@ fignore=(.o)
 # Nicer output of ls
 alias ls='ls --color=auto'
 alias ll='ls -hl'
+alias l='ll'
 alias rt='ls -hltr'
 
 alias bc='bc -ql'
