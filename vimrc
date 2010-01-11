@@ -62,5 +62,15 @@ function! TODO()
 	:cwindow
 endfunction
 
+function! Mypaste()
+	:set paste
+	put *
+	:set nopaste
+endfunction
+
+let mapleader = "."
+
+map <leader>p :call Mypaste()<CR>
+
 " Needed for Vroom::Vroom
 set exrc
