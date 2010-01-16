@@ -68,7 +68,7 @@ function! Mypaste()
 	:set nopaste
 endfunction
 
-let mapleader = "."
+let mapleader = "\\"
 
 map <leader>p :call Mypaste()<CR>
 
