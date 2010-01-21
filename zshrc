@@ -104,7 +104,7 @@ alias acp='apt-cache policy'
 function agi { sudo apt-get install $* && rehash }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt-get update'
-alias cupt-upgrade='sudo cupt -o debug::resolver=1 -i -V -D -R full-upgrade xserver-xorg-core/installed xserver-xorg-video-intel/installed 2>&1 | tee /tmp/cupt.log'
+alias cupt-upgrade='sudo cupt -o debug::resolver=1 -i -V -D -R full-upgrade i3-wm/installed sudo/installed 2>&1 | tee /tmp/cupt.log'
 
 function agr { sudo apt-get remove $* && rehash }
 
@@ -116,7 +116,7 @@ alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
-alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"' 
+alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness" && sudo ifdown --force wlan0 && sudo ifup wlan0' 
 
 alias blauzahn='sudo sh -c "echo enable > /proc/acpi/ibm/bluetooth && /etc/init.d/bluetooth restart"'
 alias blauzahn-aus='sudo sh -c "/etc/init.d/bluetooth stop && echo disable > /proc/acpi/ibm/bluetooth"'
@@ -288,10 +288,25 @@ fg_light_blue=$'%{\e[1;36m%}'
 fg_light_silver=$'%{\e[1;37m%}'
 fg_white=$'%{\e[1;37m%}'
 fg_no_colour=$'%{\e[0m%}'
+lvl=$SHLVL
+case $TERM in
+screen)
+lvl=$((lvl-1))
+;;
+esac
+
 if [[ "$(hostname)" != "midna" && "$(hostname)" != "x200" ]]; then
-	PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour}%(2L. $SHLVL.)$ "
+	if [ $lvl -ge 2 ] ; then
+		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour} $lvl $ "
+	else
+		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour}$ "
+	fi
 else
-	PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}%(2L. $SHLVL.)$ "
+	if [ $lvl -ge 2 ] ; then
+		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} $lvl$ "
+	else
+		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}$ "
+	fi
 fi
 
 # Use VI-mode for entering commands
