@@ -61,6 +61,13 @@ function e() {
 	exit
 }
 
+function wb() {
+	mkdir -p ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
+	cd ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
+	gphoto2 -P
+	chmod 644 *
+}
+
 function webcam {
 	pushd /home/michael/Bilder/Webcam
 	mplayer -vf screenshot -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2
