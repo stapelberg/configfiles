@@ -51,7 +51,7 @@ ulimit -c unlimited
 if [ "$(hostname)" = "midna" ]
 then
 	# Configure monitors
-	xrandr --output DVI2 --mode 1920x1200 --right-of DVI1
+	xrandr --output HDMI2 --mode 1920x1200 --right-of HDMI1
 fi
 
 # Initialize part of the logfile
