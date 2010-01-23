@@ -1,0 +1,36 @@
+<dead_macron> <space>		: ", "
+<dead_macron> <dead_macron>	: "," comma
+<dead_macron> <Return>          : ",\n"
+<dead_macron> <a>		: "α" U03B1 # GREEK SMALL LETTER ALPHA
+<dead_macron> <b> 		: "β" U03B2 # GREEK SMALL LETTER BETA
+<dead_macron> <c> 		: "ψ" U03C8 # GREEK SMALL LETTER PSI
+<dead_macron> <d> 		: "δ" U03B4 # GREEK SMALL LETTER DELTA
+<dead_macron> <e> 		: "ε" U03B5 # GREEK SMALL LETTER EPSILON
+<dead_macron> <f> 		: "φ" U03C6 # GREEK SMALL LETTER PHI
+<dead_macron> <g> 		: "γ" U03B3 # GREEK SMALL LETTER GAMMA
+<dead_macron> <h> 		: "η" U03B7 # GREEK SMALL LETTER ΕΤΑ
+<dead_macron> <i> 		: "ι" U03B9 # GREEK SMALL LETTER ΙΟΤΑ
+<dead_macron> <j> 		: "ξ" U03BE # GREEK SMALL LETTER XI
+<dead_macron> <k> 		: "κ" U03BA # GREEK SMALL LETTER KAPPA
+<dead_macron> <l> 		: "λ" U03BB # GREEK SMALL LETTER LAMBDA
+<dead_macron> <m> 		: "μ" U03BC # GREEK SMALL LETTER MU
+<dead_macron> <n> 		: "ν" U03BD # GREEK SMALL LETTER NU
+<dead_macron> <o> 		: "ο" U03BF # GREEK SMALL LETTER OMICRON
+<dead_macron> <p> 		: "π" U03C0 # GREEK SMALL LETTER PI
+<dead_macron> <r> 		: "ρ" U03C1 # GREEK SMALL LETTER RHO
+<dead_macron> <s> 		: "σ" U03C3 # GREEK SMALL LETTER SIGMA
+<dead_macron> <t> 		: "τ" U03C4 # GREEK SMALL LETTER TAU
+<dead_macron> <u> 		: "θ" U03B8 # GREEK SMALL LETTER THETA
+<dead_macron> <v> 		: "ω" U03C9 # GREEK SMALL LETTER OMEGA
+<dead_macron> <w> 		: "ς" U03C2 # GREEK SMALL LETTER FINAL SIGMA
+<dead_macron> <x> 		: "χ" U03C7 # GREEK SMALL LETTER CHI
+<dead_macron> <y> 		: "υ" U03C5 # GREEK SMALL LETTER UPSILON
+<dead_macron> <z> 		: "ζ" U03B6 # GREEK SMALL LETTER ZETA
+
+<dead_macron> <Left> 		: "←" leftarrow # LEFTWARDS ARROW
+<dead_macron> <Up> 		: "↑" uparrow # UPWARDS ARROW
+<dead_macron> <Right> 		: "→" rightarrow # RIGHTWARDS ARROW
+<dead_macron> <Down> 		: "↓" downarrow # DOWNWARDS ARROW
+
+<Multi_key> <c>			: "¢" cent
+<Multi_key> <d>			: "℃" U2103
