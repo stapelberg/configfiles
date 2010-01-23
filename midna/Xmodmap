@@ -23,14 +23,18 @@ keycode 30 = u U udiaeresis Udiaeresis
 keycode 32 = o O odiaeresis Odiaeresis
 keycode 33 = p P plusminus
 keycode 38 = a A adiaeresis Adiaeresis
-keycode 39 = s S ssharp
+keycode 39 = s S ssharp U1E9E
 keycode 41 = f F U2192
 keycode 43 = h H heart
 keycode 48 = apostrophe quotedbl rightsinglequotemark
 keycode 54 = c C copyright
 keycode 57 = n N notsign
 keycode 58 = m M U266A
+keycode 59 = dead_macron less
 keycode 61 = slash question U2E2E U203D
+
+! The "international key" of the kinesis is my compose key
+keycode 94 = Multi_key
 
 
 ! remap escape to ` and vice versa -- done in hardware in the meantime
