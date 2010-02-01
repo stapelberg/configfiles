@@ -13,8 +13,8 @@ URxvt.cursorBlink: 0
 URxvt.termName: xterm-color
 URxvt.visualBell: on
 URxvt.keysym.M-u: perl:mark-yank-urls:activate_mark_mode
-URxvt.keysym.M-p: perl:fonts:plus
-URxvt.keysym.M-m: perl:fonts:minus
+URxvt.keysym.Mod4-p: perl:fonts:plus
+URxvt.keysym.Mod4-m: perl:fonts:minus
 URxvt.underlineURLs: false
 URxvt.perl-lib: /home/michael/.urxvt/
 URxvt.perl-ext: selection,mark-yank-urls,fonts
