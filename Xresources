@@ -20,6 +20,7 @@ URxvt.perl-lib: /home/michael/.urxvt/
 URxvt.perl-ext: selection,mark-yank-urls,fonts
 URxvt.urlLauncher: firefox
 URxvt.urgentOnBell: true
+URxvt.scrollstyle: next
 
 Xft.hinting: 1
 Xft.hintstyle: hintslight
