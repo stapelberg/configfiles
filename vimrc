@@ -55,6 +55,10 @@ autocmd BufNewFile,BufRead *.tex source ~/.tex-vim
 " is_bash accepts $(..) which is POSIX compliant
 let is_bash=1
 
+if filereadable("./make.sh")
+	set mp=./make.sh
+endif
+
 " Searches TODO/FIXME in all files (except for hidden ones) in all directories
 " (up to 100 levels) and displays them in the quickfix window, see :help quickfix
 function! TODO()
