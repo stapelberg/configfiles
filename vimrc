@@ -31,6 +31,7 @@ syntax on
 autocmd BufNewFile,BufRead *.pgc setf c
 " .go files are go, see golang.org
 autocmd BufNewFile,BufRead *.go setf go
+autocmd BufNewFile,BufRead *.rb set ts=2 sw=2 expandtab
 " For C-files, enable C-indenting
 autocmd BufNewFile,BufRead *.c,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
 " For Perl-code, shellscripts and ruby, disable putting # at the first character
