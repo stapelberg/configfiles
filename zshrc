@@ -113,6 +113,7 @@ alias nh='unset HISTFILE'
 alias sd='svn diff --diff-cmd=colordiff | less -R'
 
 alias acs='apt-cache search'
+alias acsn='apt-cache search --names-only'
 alias acp='apt-cache policy'
 function agi { sudo apt-get install $* && rehash }
 _da() { _deb_packages uninstalled; }
