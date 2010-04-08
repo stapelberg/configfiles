@@ -35,6 +35,11 @@ alias ll='ls -hl'
 alias l='ll'
 alias rt='ls -hltr'
 alias L='dpkg -L'
+# Find files in current folder
+function f() {
+	q="*$1*"
+	find . -iname $q
+}
 
 alias bc='bc -ql'
 
