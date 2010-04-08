@@ -60,7 +60,7 @@ keycode 41 = e E EuroSign cent
 ! Original G
 keycode 42 = o O odiaeresis Odiaeresis asciitilde
 ! Original H
-keycode 43 = s S ssharp S dollar Greek_sigma
+keycode 43 = s S ssharp U1E9E
 ! Original J
 keycode 44 = n N Left
 ! Original K
@@ -89,6 +89,10 @@ keycode 57 = b B b B Greek_SIGMA Greek_beta
 ! Original M
 keycode 58 = m M m M Greek_PHI mu
 ! Original ,
+keycode 59 = dead_macron less
 ! Original .
 ! Original /
 keycode 61 = slash question
+
+keycode 108 = Control_L
+add control = Control_L
