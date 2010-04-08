@@ -7,6 +7,11 @@ xmodmap .Xmodmap
 if [ "$(hostname)" = "x200" ]
 then
 	xmodmap .Xmodmap_us_neo
+
+	# Enable scrolling on thinkpad
+	xinput set-prop '"TPPS/2 IBM TrackPoint"' "Evdev Wheel Emulation Button" 2
+	xinput set-prop '"TPPS/2 IBM TrackPoint"' "Evdev Wheel Emulation Axes" 6 7 4 5
+	xinput set-prop '"TPPS/2 IBM TrackPoint"' "Evdev Wheel Emulation" 1
 fi
 # needed for toggle_layout
 touch /tmp/neo_active
@@ -57,5 +62,7 @@ fi
 # Initialize part of the logfile
 [ ! -d ~/i3 ] && mkdir ~/i3
 echo "starting at $(date)" >> ~/i3/i3log
-exec i3 -l >>~/i3/i3log 2>&1
-#exec valgrind -v --log-file=/tmp/vg --leak-check=full --track-origins=yes --num-callers=20 --tool=memcheck i3 -l >>/home/michael/i3/i3log 2>&1
+#exec urxvt -geometry 84x24+0+0
+#exec twm
+exec i3 -V -d all >>~/i3/i3log 2>&1
+#exec valgrind -v --log-file=/tmp/vg --leak-check=full --track-origins=yes --num-callers=20 --tool=memcheck i3 -V -d all >>/home/michael/i3/i3log 2>&1
