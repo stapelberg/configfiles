@@ -93,8 +93,8 @@ alias wp="wiipdf 00:19:1D:93:CA:EB "
 alias asdf='/home/michael/toggle_layout.sh'
 alias uiae='/home/michael/toggle_layout.sh'
 
-alias update-mirror='debmirror --getcontents --passive --verbose --progress --nosource --host=ftp.de.debian.org --dist=squeeze,sid --arch=amd64 debian && sudo apt-get update'
-alias update-mirror-multimedia='debmirror debian-multimedia --getcontents --passive --ignore-small-errors --verbose --progress --ignore-release-gpg --host=www.debian-multimedia.org --dist=stable,testing --arch=amd64 --root=/ --method=http --section=main'
+alias update-mirror='debmirror --diff=none --getcontents --passive --verbose --progress --nosource --host=ftp.de.debian.org --dist=squeeze,sid --arch=amd64 debian && sudo apt-get update'
+alias update-mirror-multimedia='debmirror debian-multimedia --diff=none --getcontents --passive --ignore-small-errors --verbose --progress --ignore-release-gpg --host=www.debian-multimedia.org --dist=stable,testing --arch=amd64 --root=/ --method=http --section=main'
 
 # Burn a single file onto CD-ROM
 alias burnfile='mkisofs ${1} | cdrecord driveropts=burnfree -v fs=6m -'
