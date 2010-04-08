@@ -22,7 +22,7 @@ set fileencoding=utf-8 encoding=utf-8
 " Disable folding completely
 set nofen
 " Default printer is laserjet
-set printdevice=laserjet
+set printdevice=kyocera
 
 " Enable syntax highlighting
 syntax on
