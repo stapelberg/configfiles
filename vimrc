@@ -76,6 +76,7 @@ endfunction
 let mapleader = "\\"
 
 map <leader>p :call Mypaste()<CR>
+map <leader>m :make<CR>
 
 " Needed for Vroom::Vroom
 set exrc
