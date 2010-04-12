@@ -12,6 +12,7 @@ setopt short_loops
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
+export GTK_IM_MODULE=xim
 
 bindkey -M viins >&-
 bindkey -M viins "^[[A" up-line-or-history
