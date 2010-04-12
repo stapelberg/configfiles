@@ -44,7 +44,8 @@ function f() {
 
 alias bc='bc -ql'
 
-alias ü='cd /home/michael/Uni/S3/Uebungen'
+alias ü='cd /home/michael/Uni/S4/Uebungen'
+function x() {  xclip -i <<< $($*) }
 
 alias cal='cal -y'
 
