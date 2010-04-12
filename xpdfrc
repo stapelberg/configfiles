@@ -1,4 +1,4 @@
 urlCommand "firefox '%s'"
-psFile "|/usr/bin/lpr -P laserjet"
+psFile "|/usr/bin/lpr -P kyocera"
 initialZoom width
 bind o	any	toggleOutline
