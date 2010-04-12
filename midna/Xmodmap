@@ -43,13 +43,18 @@ keycode 94 = Multi_key
 
 keycode 60 = period greater ellipsis
 
-keycode 115 = Control_L
+keycode 115 = Pointer_Button2
 clear Lock
 add Control = Control_L
 keycode 127 = NoSymbol
 keycode 97 = Menu
 keycode 103 = Multi_key
+keycode 110 = Super_R
 
 add Mod3 = Super_L
-add Mod3 = Super_R
+!add Mod3 = Super_R
 add Mod1 = Alt_R
+
+! Mod4 is the "Home" key on my kinesis and used for window shortcuts
+clear Mod4
+add Mod4 = Super_R
