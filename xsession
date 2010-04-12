@@ -4,6 +4,9 @@
 setxkbmap -option terminate:ctrl_alt_bksp
 
 xmodmap .Xmodmap
+# Enable mousekeys to have a paste button
+xkbset m
+xkbset exp =m
 if [ "$(hostname)" = "x200" ]
 then
 	xmodmap .Xmodmap_us_neo
