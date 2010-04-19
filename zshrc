@@ -45,11 +45,8 @@ function f() {
 alias bc='bc -ql'
 
 alias ü='cd /home/michael/Uni/S4/Uebungen'
-function x() {  xclip -i <<< $($*) }
 
 alias cal='cal -y'
-
-alias gitize='git init && git add . && git commit -a'
 
 # More passwords, faster!
 alias pw='pwgen -s 23 1'
@@ -63,6 +60,8 @@ alias iso='LANG=en_US.iso885915 LC_ALL=en_US.iso885915 urxvt'
 alias ripcd='cdparanoia -Bs 1-'
 alias cam="mplayer -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2"
 
+function x() {  xclip -i <<< $($*) }
+
 # Prepend a command with e to close the starting shell
 function e() {
 	eval "$* &|"
@@ -74,19 +73,6 @@ function wb() {
 	cd ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
 	gphoto2 -P
 	chmod 644 *
-}
-
-function webcam {
-	pushd /home/michael/Bilder/Webcam
-	mplayer -vf screenshot -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2
-	counter=1
-	for file in shot*png
-	do
-		timestamp=$(stat -c "%y" $file | sed -e 's/ /-/g;s/\..*//g;')
-		mv -v $file "webcam_$timestamp_$counter.png"
-		((++counter))
-        done
-        popd
 }
 
 # wiipdf with the ID of my primary wiimote
@@ -104,15 +90,12 @@ function burndvd {
 	growisofs -dvd-compat -Z /dev/sr0=${1}
 }
 
-
 # A nicer ps-output
 alias p='ps -A f -o user,pid,priority,ni,pcpu,pmem,args'
 # one-key-ssh-aliases
 alias s='ssh ircd'
 
 alias nh='unset HISTFILE'
-
-alias sd='svn diff --diff-cmd=colordiff | less -R'
 
 alias acs='apt-cache search'
 alias acsn='apt-cache search --names-only'
@@ -133,12 +116,6 @@ alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
 alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness" && sudo ifdown --force wlan0 && sudo ifup wlan0' 
-
-alias blauzahn='sudo sh -c "echo enable > /proc/acpi/ibm/bluetooth && /etc/init.d/bluetooth restart"'
-alias blauzahn-aus='sudo sh -c "/etc/init.d/bluetooth stop && echo disable > /proc/acpi/ibm/bluetooth"'
-
-# Play random movie
-alias mprnd='files=(*); let "r = $RANDOM % ${#files}"; ([ -f ${files[$r]} ] && mplayer ${files[$r]}) || ([ -d ${files[$r]} ] && mplayer ${files[$r]}/*{avi,mpg} )'
 
 function set_termtitle() {
 	# escape '%' chars in $1, make nonprintables visible
@@ -192,50 +169,6 @@ function scan() {
        scanimage --format TIFF --resolution 300 -x 215 -y 297 > $1.tiff && convert $1.tiff -resize 1024x $1.jpg
 }
 
-# Don't use: broken xpdf currently
-function new_pdf {
-	FN=$(mktemp -u)
-	nohup xpdf -title xpdf.$FN -fullscreen -remote $FN $* 1>&- 2>&- &!
-	for (( i=0; i < 20; i=i+1 ))
-		fgrep -q xpdf.$FN /mnt/wmii/client/0x*/label && \
-		{ sleep 0.1; xpdf -remote $FN -exec zoomFitWidth; break } \
-		|| sleep 0.1
-}
-
-function pdf {
-	FN=$(mktemp -u)
-	nohup xpdf -title xpdf.$FN $* 1>&- 2>&- &!
-	(cd /mnt/wmii && i=0 && while [ $((i=i+1)) -lt 20 ]; do
-		sleep 0.1
-		C=$(fgrep -l xpdf.$FN client/0x*/label)
-		[ $? -eq 0 ] && { echo "Fullscreen toggle" >> ${C/label/ctl}; break }
-	done)
-}
-
-function latest_pdf {
-	LATEST=${1}/$(ls -t ${1} | grep '.pdf' -m 1)
-	pdf $LATEST
-}
-
-function alda {
-	latest_pdf "/home/michael/Uni/S2/Uebungen/alda"
-}
-
-function info2 {
-	latest_pdf "/home/michael/Uni/S2/Uebungen/info2"
-}
-
-function ana2 {
-	latest_pdf "/home/michael/Uni/S2/Uebungen/ana2"
-}
-
-# Replacement for ps uax | grep $foo
-function psof {
-	PIDS=$(pidof ${1})
-	[ -z "${PIDS}" ] && { echo "No such process"; return }
-	ps -p "$PIDS" u
-}
-
 # Start mplayer with some options for nicer streaming on the given channel
 function tv {
 # -ni and -noidx: disable index (streams are not seekable)
@@ -246,56 +179,6 @@ function tv {
 # -cache 4096: stream stutters if we don't buffer a bit
 # -demuxer +mpegpes: tell mplayer what kind of stream this is
 	mplayer -noidx -framedrop -vf kerndeint -prefer-ipv4 -cache 2048 -demuxer +mpegpes http://tv:7000/${1}
-}
-
-# Compresses all *.JPG and *.jpg files in the current directory and adds a nice border around
-# Also creates thumbnails with very little size
-function webpic {
-	NAME=${1}
-	c=0
-	mkdir -p web/thumbs
-	# Resize pictures
-	for i in $(find . -iname "*.jpg"); do
-		if [ $c -lt 10 ]; then
-			rc=0${c}
-		else
-			rc=${c}
-		fi
-		[ ! -f web/${NAME}_${c}.jpg ] && {
-			convert -resize 800x600\> $i web/${NAME}_${rc}.jpg -bordercolor white -border 6 -bordercolor grey60 -border 1 -background none -background black \( +clone -shadow 60x4+4+4 \) +swap -background white -flatten -depth 8 web/${NAME}_${rc}.jpg
-		}
-		c=$((c+1))
-	done
-	c=0
-	# Generate thumbnails
-	for i in $(find . -iname "*.jpg"); do
-		if [ $c -lt 10 ]; then
-			rc=0${c}
-		else
-			rc=${c}
-		fi
-
-		convert -resize 100x\> $i web/thumbs/${NAME}_${rc}.jpg
-		c=$((c+1))
-	done
-}
-
-# Same as webpic, but it doesn't add the borders and doesn't generate thumbs
-function webresize {
-	NAME=${1}
-	c=0
-	mkdir web
-	# Resize pictures
-	for i in $(find . -iname "*.jpg"); do
-		if [ $c -lt 10 ]; then
-			rc=0${c}
-		else
-			rc=${c}
-		fi
-
-		[ ! -f web/${NAME}_${rc}.jpg ] && convert -resize 800x600\> $i web/${NAME}_${rc}.jpg
-		c=$((c+1))
-	done
 }
 
 # Define prompt
