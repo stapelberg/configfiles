@@ -17,6 +17,7 @@ export GTK_IM_MODULE=xim
 bindkey -M viins >&-
 bindkey -M viins "^[[A" up-line-or-history
 bindkey -M viins "^[[B" down-line-or-history
+bindkey -M viins "^L" push-line
 
 # NO BEEPING!
 setopt no_BEEP
