@@ -19,7 +19,7 @@ export MANSECT="8:3:2:3posix:3pm:3perl:1:n:l:5:4:9:6:7"
 bindkey -M viins >&-
 bindkey -M viins "^[[A" up-line-or-history
 bindkey -M viins "^[[B" down-line-or-history
-bindkey -M viins "^L" push-line
+bindkey -M viins "^F" push-line
 
 # NO BEEPING!
 setopt no_BEEP
