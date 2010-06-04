@@ -46,29 +46,6 @@ sub on_line_update {
     ()
 }
 
-sub on_button_release {
-    my ($term, $event) = @_;
-
-    my $mask = $term->ModLevel3Mask | $term->ModMetaMask
-    | urxvt::ShiftMask | urxvt::ControlMask;
-
-    if ($event->{button} == 2 && ($event->{state} & $mask) == 0) {
-        my $row = $event->{row};
-        my $col = $event->{col};
-
-        my $line = $term->line ($row);
-        my $text = $line->t;
-
-        while ($text =~ /$url_matcher/g) {
-            if ($-[1] <= $col && $+[1] >= $col) {
-                $term->exec_async ($term->{browser}, $1);
-                return 1;
-            }
-        }
-    }
-
-    ()
-}
 
 #sub on_scroll_back {
 #    my ($term, $lines, $saved) = @_;
