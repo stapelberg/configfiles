@@ -76,7 +76,12 @@ endfunction
 let mapleader = "\\"
 
 map <leader>p :call Mypaste()<CR>
-map <leader>m :make<CR>
+map <leader>M :set makeprg=make\ -j4<CR>:make<CR>
+map <leader>m :set makeprg=CFLAGS=-w\ make\ -j4<CR>:make<CR>
+" _r_un a proof-of-concept
+map <leader>r :!make $(basename % .c) && ./$(basename % .c)<CR>
+map <leader>h :nohlsearch<CR>
+map <leader>n :cn<CR>
 
 " Needed for Vroom::Vroom
 set exrc
