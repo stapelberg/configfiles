@@ -45,6 +45,14 @@ function f() {
 	find . -iname $q
 }
 
+alias wl='sudo ifdown --force wlan0 && sudo ifup wlan0'
+
+# Debug the last coredump
+alias dbg='~/.bin/gdb-coredump.pl'
+
+# Edit a temporary file with my template for a C proof-of-concept
+alias cpoc='cd /tmp && FN=$(mktemp --suffix=.c) && cp ~/configfiles/poc-template.c $FN && vi $FN && echo "Proof-of-concept stored in $FN"'
+
 alias bc='bc -ql'
 
 alias ü='cd /home/michael/Uni/S4/Uebungen'
@@ -118,7 +126,7 @@ alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
-alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness" && sudo ifdown --force wlan0 && sudo ifup wlan0' 
+alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
 
 function set_termtitle() {
 	# escape '%' chars in $1, make nonprintables visible
