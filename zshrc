@@ -103,8 +103,7 @@ function burndvd {
 
 # A nicer ps-output
 alias p='ps -A f -o user,pid,priority,ni,pcpu,pmem,args'
-# one-key-ssh-aliases
-alias s='ssh ircd'
+alias si='ssh ircd'
 
 alias nh='unset HISTFILE'
 
@@ -121,6 +120,7 @@ function agr { sudo apt-get remove $* && rehash }
 alias smi='sudo make install'
 
 alias g='git'
+alias s='sudo'
 
 alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
