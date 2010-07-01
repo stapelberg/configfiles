@@ -245,6 +245,12 @@ autoload compinit
 compinit -C
 compdef _da agi
 
+# Show all processes when completing kill/killall and enable menu mode
+zstyle ':completion:*:processes' command 'ps -ax'
+zstyle ':completion:*:processes-names' command 'ps -aeo comm='
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:killall:*' menu yes select
+
 # Initialize SSH completion only with hosts in my ~/.ssh/config, but especially with the aliases
 # I gave them (and the full host names).
 [ -e "$HOME/.ssh/config" ] && zstyle ':completion:*:complete:ssh:*:hosts' hosts $(sed -n "s/^[ \\t]*Host\(name\|\) \(.*\)/\\2/p" $HOME/.ssh/config | uniq)
