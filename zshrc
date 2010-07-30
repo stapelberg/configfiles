@@ -133,32 +133,32 @@ function set_termtitle() {
 	a=${(V)1//\%/\%\%}
 
 	# Truncate command, and join lines.
-	a=$(print -rPn "$a" | tr -d "\n\r")
+	a=$(print -rPn -- "$a" | tr -d "\n\r")
 
 	[ "$a" = "zsh" ] && { a=$(print -Pn "%~") }
 
 	case $TERM in
 	screen)
 		# plain xterm title
-		print -Pn "\e]2;$2: "
-		print -rn "$a"
-		print -n "\a"
+		print -Pn -- "\e]2;$2: "
+		print -rn -- "$a"
+		print -n -- "\a"
 
 		# screen title (in ^A")
-		print -n "\ek"
-		print -rn "$a"
-		print -n "\e\\"
+		print -n -- "\ek"
+		print -rn -- "$a"
+		print -n -- "\e\\"
 
 		# screen location
-		print -Pn "\e_$2: "
-		print -rn "$a"
-		print -n "\e\\"
+		print -Pn -- "\e_$2: "
+		print -rn -- "$a"
+		print -n -- "\e\\"
 	;;
 	xterm*|rxvt)
 		# plain xterm title
-		print -Pn "\e]2;$2: "
-		print -rn "$a"
-		print -n "\a"
+		print -Pn -- "\e]2;$2: "
+		print -rn -- "$a"
+		print -n -- "\a"
 	;;
 	esac
 }
