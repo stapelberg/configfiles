@@ -121,6 +121,8 @@ alias smi='sudo make install'
 
 alias g='git'
 alias s='sudo'
+alias 6='s ip -6'
+alias 4='s ip -4'
 
 alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
