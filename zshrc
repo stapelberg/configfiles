@@ -124,6 +124,9 @@ alias g='git'
 alias s='sudo'
 alias 6='s ip -6'
 alias 4='s ip -4'
+alias -g T="| tail"
+alias -g G="| grep"
+alias -g H="| head"
 
 alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
