@@ -13,6 +13,8 @@ export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 export GTK_IM_MODULE=xim
+# long date format in ls(1)
+export TIME_STYLE=long-iso
 # prefer library/system calls/programming manuals
 export MANSECT="8:3:2:3posix:3pm:3perl:1:n:l:5:4:9:6:7"
 
