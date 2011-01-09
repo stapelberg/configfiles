@@ -105,7 +105,6 @@ function burndvd {
 
 # A nicer ps-output
 alias p='ps -A f -o user,pid,priority,ni,pcpu,pmem,args'
-alias si='ssh ircd'
 
 alias nh='unset HISTFILE'
 
