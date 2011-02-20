@@ -35,6 +35,9 @@ setopt no_HUP
 # Skip .o-files when completing for vi
 fignore=(.o)
 
+# On debian, App::Ack is installed as ack-grep, so alias it
+which ack-grep >/dev/null && alias ack='ack-grep'
+
 # Nicer output of ls
 alias ls='ls --color=auto'
 alias ll='ls -hl'
