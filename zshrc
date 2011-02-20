@@ -42,6 +42,7 @@ which ack-grep >/dev/null && alias ack='ack-grep'
 alias ls='ls --color=auto'
 alias ll='ls -hl'
 alias l='ll'
+alias v='vim'
 alias rt='ls -hltr'
 alias L='dpkg -L'
 # Find files in current folder
