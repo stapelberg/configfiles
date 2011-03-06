@@ -6,4 +6,6 @@ urxvt-fonts ~/.urxvt/fonts
 refactor.vim ~/.vim/plugin/refactor.vim
 syntax-perl.vim ~/.vim/syntax/perl.vim
 syntax-go.vim ~/.vim/syntax/go.vim
+FormatBlock.vim ~/.vim/plugin/FormatBlock.vim
+FormatComment.vim ~/.vim/plugin/FormatComment.vim
 mostlike ~/.terminfo/m/mostlike

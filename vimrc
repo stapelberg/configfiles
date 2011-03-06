@@ -43,8 +43,8 @@ autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set fo-=t
 
 " View the current tex-document  (F4 for pdflatex, F5 for ps-compatible
 " dvipdf)
-map <F4> :!pdflatex % && mupdf %<.pdf<CR>
-map <F5> :!latex % && dvipdf %<.dvi && mupdf %<.pdf<CR>
+map <F4> :!pdflatex % && xpdf %<.pdf<CR>
+map <F5> :!latex % && dvipdf %<.dvi && xpdf %<.pdf<CR>
 
 map gqc :call FormatComment()<CR>
 

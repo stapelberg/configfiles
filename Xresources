@@ -5,6 +5,10 @@ URxvt.fonts.2: -misc-fixed-medium-r-normal--20-200-75-75-C-100-iso10646-1,xft:co
 
 !URxvt.boldfont: -misc-fixed-medium-r-normal-*-10-100-*-*-*-*-iso10646-1,xft:code2000:autohint=false
 
+!URxvt.background: [85]black
+!URxvt.foreground: lightgrey
+!URxvt.depth: 32
+
 URxvt.scrollBar: false
 URxvt.background: black
 URxvt.foreground: lightgrey

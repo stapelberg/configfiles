@@ -52,7 +52,7 @@ keycode 51 = backslash bar
 ! Original A
 keycode 38 = u U udiaeresis Udiaeresis backslash
 ! Original S
-keycode 39 = i I semicolon I slash
+keycode 39 = i I U2022 I slash
 ! Original D
 keycode 40 = a A adiaeresis Adiaeresis at Greek_alpha
 ! Original F

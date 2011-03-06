@@ -1,7 +1,7 @@
 # Save 2000 lines of history
-HISTSIZE=2000
+HISTSIZE=4000
 HISTFILE=~/.zsh_history
-SAVEHIST=2000
+SAVEHIST=4000
 # Do not save duplicate entries
 setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY
@@ -42,16 +42,17 @@ which ack-grep >/dev/null && alias ack='ack-grep'
 alias ls='ls --color=auto'
 alias ll='ls -hl'
 alias l='ll'
-alias v='vim'
 alias rt='ls -hltr'
 alias L='dpkg -L'
+alias v='vim'
+alias m='make'
 # Find files in current folder
 function f() {
 	q="*$1*"
 	find . -iname $q
 }
 
-alias wl='sudo ifdown --force wlan0 && sudo ifup wlan0'
+alias wl='sudo IF_WPA_VERBOSITY=1 wpa_action wlan0 DISCONNECTED ; sudo ifdown --force wlan0 ; sudo ifup wlan0'
 
 # Debug the last coredump
 alias dbg='~/.bin/gdb-coredump.pl'
@@ -70,6 +71,7 @@ alias pw='pwgen -s 23 1'
 
 # Color output of man
 alias man="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man"
+alias perldoc="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less perldoc"
 
 # Open terminal in ISO-8859-15-Mode
 alias iso='LANG=en_US.iso885915 LC_ALL=en_US.iso885915 urxvt'
@@ -136,7 +138,7 @@ alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
-alias susp='i3lock -i /home/michael/i3lock/To_the_Field_of_Dreams_by_justMANGO.xpm && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
+alias susp='i3lock -i ~/Bilder/mac-kernelpanic-1280.png -t && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
 
 function set_termtitle() {
 	# escape '%' chars in $1, make nonprintables visible

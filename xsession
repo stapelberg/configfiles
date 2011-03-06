@@ -51,9 +51,9 @@ urxvtd -q -f -o
 ulimit -c unlimited
 
 #cd /tmp
-#rm xtr
+#rm xsession.log
 #export DISPLAY=:0
-#xtrace -o xtr &
+#xtrace -o xsession.log &
 #sleep 1
 #export DISPLAY=:9
 #cd /home/michael
@@ -67,7 +67,9 @@ fi
 # Initialize part of the logfile
 [ ! -d ~/i3 ] && mkdir ~/i3
 echo "starting at $(date)" >> ~/i3/i3log
-#exec urxvt -geometry 84x24+0+0
+exec urxvt -geometry 84x24+0+0
 #exec twm
-exec i3 -V -d all >>~/i3/i3log 2>&1
+#exec /usr/bin/awesome
+#exec xmonad
+#exec i3 -V -d all >>~/i3/i3log 2>&1
 #exec valgrind -v --log-file=/tmp/vg --leak-check=full --track-origins=yes --num-callers=20 --tool=memcheck i3 -V -d all >>/home/michael/i3/i3log 2>&1
