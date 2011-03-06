@@ -16,3 +16,6 @@
 [user]
 	name = Michael Stapelberg
 	email = michael@stapelberg.de
+
+[pager]
+	diff = LESS=RS less -c
