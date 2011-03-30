@@ -13,6 +13,7 @@ export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 export GTK_IM_MODULE=xim
+export VTYSH_PAGER='cat'
 # long date format in ls(1)
 export TIME_STYLE=long-iso
 # prefer library/system calls/programming manuals
