@@ -281,3 +281,6 @@ cfgfiles=$(dirname $(readlink ~/.zshrc))
 		zsh -c "(cd $cfgfiles && (git stash && git pull; git stash apply)) &" >$cfgfiles/last-update.log 2>&1
 	}
 }
+
+# load RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
