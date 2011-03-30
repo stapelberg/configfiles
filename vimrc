@@ -1,3 +1,5 @@
+" Enable modelines, even as root
+set modeline
 " Don’t ensure compatibility with vi at all cost
 set nocompatible
 " More flexible backspace
