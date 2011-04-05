@@ -10,8 +10,7 @@
 	t = tag
 
 [color]
-	diff = auto
-	color = auto
+	ui = auto
 
 [user]
 	name = Michael Stapelberg
