@@ -12,6 +12,13 @@
 [color]
 	ui = auto
 
+[push]
+	default = tracking
+
+[diff]
+	renames = copies
+	mnemonicprefix = true
+
 [user]
 	name = Michael Stapelberg
 	email = michael@stapelberg.de
