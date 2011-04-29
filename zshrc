@@ -46,6 +46,7 @@ alias l='ll'
 alias rt='ls -hltr'
 alias L='dpkg -L'
 alias v='vim'
+alias V='sudo vim'
 alias m='make'
 # Find files in current folder
 function f() {
