@@ -139,7 +139,7 @@ alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
-alias susp='i3lock -i ~/Bilder/mac-kernelpanic-1280.png -t && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
+alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
 
 function set_termtitle() {
 	# escape '%' chars in $1, make nonprintables visible
