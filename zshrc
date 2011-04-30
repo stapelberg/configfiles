@@ -39,6 +39,11 @@ fignore=(.o)
 # On debian, App::Ack is installed as ack-grep, so alias it
 which ack-grep >/dev/null && alias ack='ack-grep'
 
+# colors for ls and (more importantly) zsh completion
+eval $(dircolors)
+zmodload zsh/complist
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
 # Nicer output of ls
 alias ls='ls --color=auto'
 alias ll='ls -hl'
