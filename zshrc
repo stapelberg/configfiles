@@ -264,6 +264,13 @@ autoload compinit
 compinit -C
 compdef _da agi
 
+# Have a bell-character put out, everytime a command finishes. This will set the urgent-hint,
+# if the terminal is configured accordingly
+bellchar=$'\a'
+setterm -blength 0 # Don't REALLY beep
+zle-line-init () { echo -n "$bellchar" }
+zle -N zle-line-init
+
 # Show all processes when completing kill/killall and enable menu mode
 zstyle ':completion:*:processes' command 'ps -ax'
 zstyle ':completion:*:processes-names' command 'ps -aeo comm='
