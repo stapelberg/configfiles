@@ -143,6 +143,11 @@ alias -g H="| head"
 
 alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
+# aliases for my IRC / mail screens which request a kerberos ticket if no valid
+# one is present
+alias irc='(klist -s || kinit) && ssh labs -t screen -r irc'
+alias mail='(klist -s || kinit) && ssh midna -t screen -x sup'
+
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
 alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
