@@ -146,7 +146,7 @@ alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
 # aliases for my IRC / mail screens which request a kerberos ticket if no valid
 # one is present
-alias irc='(klist -s || kinit) && ssh labs -t screen -r irc'
+alias irc='(klist -s || kinit) && ssh labs -t screen -Dr irc'
 alias mail='(klist -s || kinit) && ssh midna -t screen -x sup'
 
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
