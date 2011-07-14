@@ -148,6 +148,7 @@ alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 # one is present
 alias irc='(klist -s || kinit) && ssh labs -t screen -Dr irc'
 alias mail='(klist -s || kinit) && ssh midna -t screen -x sup'
+alias mpd='(4 a G 172.22.37 >/dev/null && ncmpcpp -h 172.22.37.1) || (4 a G 172.22.36 >/dev/null && ncmpcpp -h 172.22.36.1) || echo "Not sure which MPD to use"'
 
 # Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
 # Also, we lock the screen before and fix the brightness afterwards
