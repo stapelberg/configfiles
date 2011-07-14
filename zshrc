@@ -79,6 +79,7 @@ alias pw='pwgen -s 23 1'
 # Color output of man
 alias man="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man"
 alias perldoc="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less perldoc"
+alias pd="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less perldoc"
 
 # Open terminal in ISO-8859-15-Mode
 alias iso='LANG=en_US.iso885915 LC_ALL=en_US.iso885915 urxvt'
