@@ -59,7 +59,7 @@ function f() {
 	find . -iname $q
 }
 
-alias wl='sudo IF_WPA_VERBOSITY=1 wpa_action wlan0 DISCONNECTED ; sudo ifdown --force wlan0 ; sudo ifup wlan0'
+alias wl="sudo sh -c 'IF_WPA_VERBOSITY=1 wpa_action wlan0 DISCONNECTED ; ifdown --force wlan0 ; ifup wlan0'"
 
 # Debug the last coredump
 alias dbg='~/.bin/gdb-coredump.pl'
