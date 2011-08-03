@@ -279,7 +279,7 @@ zle-line-init () { echo -n "$bellchar" }
 zle -N zle-line-init
 
 # Show all processes when completing kill/killall and enable menu mode
-zstyle ':completion:*:processes' command 'ps -ax'
+zstyle ':completion:*:processes' command 'ps f -N --ppid=$(pidof kthreadd) --pid=$(pidof kthreadd)'
 zstyle ':completion:*:processes-names' command 'ps -aeo comm='
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:killall:*' menu yes select
