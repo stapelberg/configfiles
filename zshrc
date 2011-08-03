@@ -154,6 +154,24 @@ alias mpd='(4 a G 172.22.37 >/dev/null && ncmpcpp -h 172.22.37.1) || (4 a G 172.
 # Also, we lock the screen before and fix the brightness afterwards
 alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
 
+# show the git branch in prompt
+export __CURRENT_GIT_BRANCH=
+parse_git_branch() {
+	[ -f .git/HEAD ] && sed 's/ref: refs\/heads\///g' .git/HEAD
+}
+
+get_git_prompt_info() {
+	fg_dark_blue=$'%{\e[0;36m%}'
+	fg_no_colour=$'%{\e[0m%}'
+
+	if [ ! -z "$__CURRENT_GIT_BRANCH" ]
+	then
+		echo "${fg_dark_blue}$__CURRENT_GIT_BRANCH${fg_no_colour} "
+	else
+		echo ""
+	fi
+}
+
 function set_termtitle() {
 	# escape '%' chars in $1, make nonprintables visible
 	a=${(V)1//\%/\%\%}
@@ -190,11 +208,16 @@ function set_termtitle() {
 }
 
 function precmd() {
+	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
 	set_termtitle "zsh" "%m"
 }
 
 function preexec() {
 	set_termtitle "$1" "%m"
+}
+
+function chpwd() {
+	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
 }
 
 # Convenience wrapper around /etc/init.d
@@ -231,17 +254,20 @@ lvl=$((lvl-1))
 ;;
 esac
 
+# enable substitution in prompt, necessary for $(get_git_prompt_info)
+setopt prompt_subst
+
 if [[ "$(hostname)" != "midna" && "$(hostname)" != "x200" ]]; then
 	if [ $lvl -ge 2 ] ; then
-		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour} $lvl $ "
+		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $ "
 	else
-		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour}$ "
+		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
 	fi
 else
 	if [ $lvl -ge 2 ] ; then
-		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} $lvl$ "
+		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl$ "
 	else
-		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}$ "
+		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
 	fi
 fi
 

@@ -4,7 +4,7 @@ unalias ls
 alias ls='ls -F'
 
 if [ $lvl -ge 2 ] ; then
-	PROMPT="${fg_light_silver}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} $lvl$ "
+	PROMPT="${fg_light_silver}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl$ "
 else
-	PROMPT="${fg_light_silver}%n${fg_no_colour} ${fg_green}%~${fg_no_colour}$ "
+	PROMPT="${fg_light_silver}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
 fi
