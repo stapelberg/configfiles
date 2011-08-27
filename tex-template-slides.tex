@@ -1,0 +1,90 @@
+% vim:ts=4:sw=4:expandtab
+% © 2011 Michael Stapelberg
+%
+% use xelatex %<
+%
+\documentclass[xetex,serif,compress]{beamer}
+\usepackage{fontspec}
+\usepackage{xunicode} % Unicode extras!
+\usepackage{xltxtra}  % Fixes
+\usepackage{listings}
+\setmainfont{Trebuchet MS}
+\setmonofont{Inconsolata}
+\usetheme{default}
+
+\setbeamertemplate{frametitle}{
+    \color{black}
+    \vspace*{0.5cm}
+    \hspace*{0.25cm}
+    \textbf{\insertframetitle}
+    \par
+}
+
+% Hide the navigation icons at the bottom of the page
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+% slide with bullet points
+\newcommand{\mslide}[2]{
+    \begin{frame}{#1}
+        \begin{list}{$\bullet$}{\itemsep=1em}
+            #2
+        \end{list}
+    \end{frame}
+}
+
+\frame{
+\begin{center}
+\vspace{1.5cm}
+{\huge systemd}\\
+{\large ein init-replacement}\\
+\vspace{2cm}
+c¼h von sECuRE\\
+\vspace{0.5cm}
+NoName e.V., 2011-08-18\\
+\vspace{0.5cm}
+powered by \LaTeX
+\end{center}
+}
+
+\begin{frame}{}
+\begin{center}
+{\Huge Teil 1: Was ist init?}
+\end{center}
+\end{frame}
+
+\mslide{init}{
+	\item PID 1, vom Kernel gestartet
+	\item startet daemons, inklusive X11 bzw. xdm
+	\item adoptiert elternlose Prozesse (fork),\\
+    startet sie ggf. neu (z.B. getty)
+}
+
+\begin{frame}[fragile]{SysV init Beispiel: /etc/init.d/thinkfan (1/9)}
+\begin{verbatim}
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          thinkfan
+# Required-Start:    $remote_fs
+# Required-Stop:     $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: thinkfan initscript
+# Description:       starts thinkfan if enabled in /etc/default/thinkfan
+### END INIT INFO
+
+# Author: Evgeni Golov <evgeni@debian.org>
+
+# Do NOT "set -e"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{systemd-analyze}
+    \begin{figure}
+    \includegraphics[width=0.5\textwidth]{plot.pdf}
+    \caption{\texttt{systemd-analyze plot > plot.svg}}
+    \end{figure}
+\end{frame}
+
+\end{document}
