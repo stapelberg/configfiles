@@ -7,7 +7,7 @@ keycode 66 = Mode_switch
 
 keycode 10 = 1 exclam
 keycode 11 = 2 at doublelowquotemark
-keycode 12 = 3 numbersign rightdoublequotemark
+keycode 12 = 3 numbersign leftdoublequotemark
 keycode 13 = 4 dollar
 keycode 14 = 5 percent
 keycode 15 = 6 asciicircum
@@ -20,6 +20,7 @@ keycode 26 = e E EuroSign cent
 keycode 27 = r R registered
 keycode 28 = t T trademark
 keycode 30 = u U udiaeresis Udiaeresis
+keycode 31 = i I U2022
 keycode 32 = o O odiaeresis Odiaeresis
 keycode 33 = p P plusminus
 keycode 38 = a A adiaeresis Adiaeresis
@@ -32,6 +33,15 @@ keycode 57 = n N notsign
 keycode 58 = m M U266A
 keycode 59 = dead_macron less
 keycode 61 = slash question U2E2E U203D
+keycode 65 = space NoSymbol U00A0
+
+keycode 173 = F3
+keycode 172 = F4
+keycode 171 = F5
+keycode 121 = F9
+keycode 122 = F10
+keycode 123 = F11
+keycode 169 = F12
 
 ! The "international key" of the kinesis is my compose key
 keycode 94 = Multi_key
