@@ -33,6 +33,10 @@ syntax on
 autocmd BufNewFile,BufRead *.pgc setf c
 " .go files are go, see golang.org
 autocmd BufNewFile,BufRead *.go setf go
+" systemd service and socket files are freedesktop files
+autocmd BufNewFile,BufRead *.service setf desktop
+autocmd BufNewFile,BufRead *.socket setf desktop
+" indent settings for ruby
 autocmd BufNewFile,BufRead *.rb set ts=2 sw=2 expandtab
 " For C-files, enable C-indenting
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
