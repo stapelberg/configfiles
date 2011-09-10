@@ -177,7 +177,7 @@ function set_termtitle() {
 	a=${(V)1//\%/\%\%}
 
 	# Truncate command, and join lines.
-	a=$(print -rPn -- "$a" | tr -d "\n\r")
+	a=$(print -rn -- "$a" | tr -d "\n\r")
 
 	[ "$a" = "zsh" ] && { a=$(print -Pn "%~") }
 
