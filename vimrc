@@ -15,6 +15,8 @@ set laststatus=2
 set autoindent smartindent
 " Enhanced mode for command-line completion
 set wildmenu
+" Enable listing possible completions when completing file names
+set wildmode=longest,list:longest,list:full
 " Don’t jump to the matching bracket automatically
 set noshowmatch
 " Enable ruler
