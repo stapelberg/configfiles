@@ -310,6 +310,17 @@ zstyle ':completion:*:processes-names' command 'ps -aeo comm='
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:killall:*' menu yes select
 
+# Directory specific configuration
+function chpwd_profiles() {
+	if [[ ${PWD} =~ "$HOME/i3(|/|/*)" ]]
+	then
+		alias m='make -j8'
+	else
+		alias m='make'
+	fi
+}
+chpwd_functions=( ${chpwd_functions} chpwd_profiles )
+
 # Initialize SSH completion only with hosts in my ~/.ssh/config, but especially with the aliases
 # I gave them (and the full host names).
 [ -e "$HOME/.ssh/config" ] && zstyle ':completion:*:complete:ssh:*:hosts' hosts $(sed -n "s/^[ \\t]*Host\(name\|\) \(.*\)/\\2/p" $HOME/.ssh/config | uniq)
