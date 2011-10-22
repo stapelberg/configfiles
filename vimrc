@@ -17,6 +17,8 @@ set autoindent smartindent
 set wildmenu
 " Enable listing possible completions when completing file names
 set wildmode=longest,list:longest,list:full
+" Skip binaries when completing
+set wildignore=*.o,*.a,*.la,*.lo,*.swp,*.tab.c,*.tab.h,*.yy.c,.svn,.git
 " Don’t jump to the matching bracket automatically
 set noshowmatch
 " Enable ruler
