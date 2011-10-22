@@ -320,6 +320,9 @@ function chpwd_profiles() {
 	fi
 }
 chpwd_functions=( ${chpwd_functions} chpwd_profiles )
+# Call this function before the first chpwd. This is necessary to get correct
+# aliases in subshells (VIM’s :sh for example).
+chpwd_profiles
 
 # Initialize SSH completion only with hosts in my ~/.ssh/config, but especially with the aliases
 # I gave them (and the full host names).
