@@ -25,6 +25,7 @@ URxvt.perl-ext: selection,mark-yank-urls,fonts
 URxvt.urlLauncher: firefox
 URxvt.urgentOnBell: true
 URxvt.scrollstyle: next
+URxvt.color12: #11AAFF
 
 Xft.hinting: 1
 Xft.hintstyle: hintslight
