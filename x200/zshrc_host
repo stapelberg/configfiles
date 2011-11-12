@@ -1,7 +1,8 @@
 # Local additions/overrides for x200
 
-unalias ls
-alias ls='ls -F'
+# rotation aliases for the external HDMI2 monitor
+alias left='xrandr --output HDMI2 --rotate left --left-of LVDS1'
+alias normal='xrandr --output HDMI2 --rotate normal --left-of LVDS1'
 
 if [ $lvl -ge 2 ] ; then
 	PROMPT="${fg_light_silver}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl$ "
