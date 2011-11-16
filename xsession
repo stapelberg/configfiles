@@ -51,8 +51,6 @@ xsetroot -solid "#333333"
 # Start urxvtd
 urxvtd -q -f -o
 
-# Enable coredumps
-ulimit -c unlimited
 
 #cd /tmp
 #rm xsession.log
