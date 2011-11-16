@@ -173,11 +173,7 @@ get_git_prompt_info() {
 }
 
 function set_termtitle() {
-	# escape '%' chars in $1, make nonprintables visible
-	a=${(V)1//\%/\%\%}
-
-	# Truncate command, and join lines.
-	a=$(print -rn -- "$a" | tr -d "\n\r")
+	a=$3
 
 	[ "$a" = "zsh" ] && { a=$(print -Pn "%~") }
 
@@ -209,11 +205,11 @@ function set_termtitle() {
 
 function precmd() {
 	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
-	set_termtitle "zsh" "%m"
+	set_termtitle "zsh" "%m" "$2"
 }
 
 function preexec() {
-	set_termtitle "$1" "%m"
+	set_termtitle "$1" "%m" "$2"
 }
 
 function chpwd() {
