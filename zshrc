@@ -150,9 +150,8 @@ alias irc='(klist -s || kinit) && ssh labs -t screen -Dr irc'
 alias mail='(klist -s || kinit) && ssh midna -t screen -x sup'
 alias mpd='(4 a G 172.22.37 >/dev/null && ncmpcpp -h 172.22.37.1) || (4 a G 172.22.36 >/dev/null && ncmpcpp -h 172.22.36.117) || echo "Not sure which MPD to use"'
 
-# Go into suspend-to-ram (we need to start echo in a subshell to redirect its output)
-# Also, we lock the screen before and fix the brightness afterwards
-alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo mem > /sys/power/state && echo down > /proc/acpi/ibm/brightness && echo up > /proc/acpi/ibm/brightness"'
+# Lock the screen and suspend to RAM.
+alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo mem > /sys/power/state"'
 
 # show the git branch in prompt
 export __CURRENT_GIT_BRANCH=
