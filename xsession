@@ -40,7 +40,7 @@ export LC_MEASUREMENT=de_DE.UTF-8
 export LC_IDENTIFICATION=de_DE.UTF-8
 
 # set PAGER/EDITOR for things not started by a shell
-export PAGER=most
+export PAGER=less
 export EDITOR=vim
 
 export GTK_IM_MODULE=xim
