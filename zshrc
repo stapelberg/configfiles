@@ -24,6 +24,16 @@ bindkey -M viins "^[[A" up-line-or-history
 bindkey -M viins "^[[B" down-line-or-history
 bindkey -M viins "^F" push-line
 
+# When tab-completing, show dots. For fast tab completes, they will be
+# overwritten instantly, for long tab-completions, you have feedback.
+expand-or-complete-with-dots() {
+	echo -n -e "\e[37m...\e[0m\033[3D"
+	zle expand-or-complete
+	zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+
 # NO BEEPING!
 setopt no_BEEP
 
