@@ -1,0 +1,181 @@
+# urxvt prepends "use strict; use utf8;\n", screwing with our line numbers
+#line 3
+
+=head1 NAME
+
+cwd-spawn - open a new urxvt within the current working directory.
+
+
+=head1 INSTALLATION
+
+
+1) adjust your F<.Xresources>
+
+    URxvt*perl-lib: /home/user/.urxvt
+    URxvt*perl-ext: cwd-spawn
+    URxvt*keysym.M-o: perl:cwd-spawn
+
+2) copy/symlink this script into F</home/user/.urxvt>
+
+3) adjust your shell config to include these functions
+   (known to work with zsh/bash/ksh)
+
+    cwd_to_urxvt() {
+        local update="\0033]777;cwd-spawn;path;$PWD\0007"
+
+        case $TERM in
+        screen*)
+        # pass through to parent terminal emulator
+            update="\0033P$update\0033\\";;
+        esac
+
+        echo -ne "$update"
+    }
+
+    cwd_to_urxvt # execute upon startup to set initial directory
+
+    ssh_connection_to_urxvt() {
+        # don't propagate information to urxvt if ssh is used non-interactive
+        [ -t 0 ] || [ -t 1 ] || return
+
+        local update="\0033]777;cwd-spawn;ssh;$1\0007"
+
+        case $TERM in
+        screen*)
+        # pass through to parent terminal emulator
+            update="\0033P$update\0033\\";;
+        esac
+
+        echo -ne "$update"
+    }
+
+4) adjust F<.ssh/config>
+
+    Host *
+        PermitLocalCommand yes
+        LocalCommand ssh_connection_to_urxvt "%r %h %p"
+
+5) execute cwd_to_urxvt each time you change your directory.
+
+    # zsh supports hooks which execute each time you change your cwd:
+    chpwd_functions=(${chpwd_functions} cwd_to_urxvt)
+
+Support for other shells are left as an exercise for the reader ;-)
+
+
+=head1 BUGS
+
+C<ssh> doesn’t invoke LocalCommand if you connect through “master” mode.
+Thus C<cwd-spawn> always copies the connection information into the new terminal.
+While this works fine for a single connection, it fails if you nest ssh connections (as a slave through “master” mode).
+As a workaround, manually invoke C<ssh_connection_to_urxvt "user host 22">.
+
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2011 Maik Fischer L<maikf+urxvt@qu.cx>
+
+This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.
+
+
+=cut
+
+sub _octal_escape {
+    my ($string) = @_;
+
+    my $escape = sub {
+        my ($char) = @_;
+        ord($char) > 127
+            ? $char
+            : sprintf("\0%.3o", $char)
+    };
+
+    $string =~ s!([^A-Za-z0-9/_-])!$escape->($1)!sge;
+    return $string;
+}
+
+use Encode;
+my $utf8 = Encode::find_encoding('UTF-8');
+
+sub on_osc_seq_perl {
+    my ($self, $osc, $resp) = @_;
+
+    return unless $osc =~ s/^cwd-spawn;//;
+
+    # decode raw bytestring into utf8
+    local $@;
+    $osc = eval { $utf8->decode($osc, Encode::FB_CROAK) };
+    if ($@) {
+        warn "cwd-spawn: called with garbage: $@";
+        return;
+    }
+
+    return unless $osc =~ s/^(path|ssh);//;
+    my $cmd = $1;
+
+    my $storage = $self->{'cwd-spawn'} ||= {};
+
+    if ($cmd eq 'path') {
+        # path sanitizing is context specific, we do that in on_user_command
+        $storage->{path} = $osc;
+
+    } else {
+        my ($user, $host, $port) = split ' ', $osc;
+
+        # user and port are arguments to parameters, we can pass them as-is
+        # host may be used to pass arbitrary parameters to ssh
+        return if $host =~ /^-/;
+
+        @{$storage}{qw/user host port/} = ($user, $host, $port);
+    }
+
+    $self->_dump if $ENV{DEBUG_URXVT_CWDSPAWN};
+    return 1;
+}
+
+sub on_user_command {
+    my ($self, $cmd) = @_;
+
+    return unless $cmd eq 'cwd-spawn';
+
+    $self->_dump if $ENV{DEBUG_URXVT_CWDSPAWN};
+
+    my $storage = $self->{'cwd-spawn'}
+        or return;
+
+    my ($cwd, $user, $host, $port) = @{$storage}{qw/path user host port/};
+
+    my $name = 'URxvt'; # hardcode for now
+
+    my @args;
+    if ($host) {
+        # escape $path here since it is subject to shell-expansion
+        my $path = _octal_escape($cwd);
+        @args = (
+            '-e',
+            'ssh', '-t', '-p', $port, '-l', $user, $host,
+                "cd \"$path\"; exec \$SHELL -l"
+        )
+    } else {
+        @args = ('-cd', $cwd);
+    }
+
+    warn "cwd-spawn: would start urxvt with: @args"
+        if $ENV{DEBUG_URXVT_CWDSPAWN};
+
+    my $term = urxvt::term->new($self->env, $name, @args);
+
+    # ssh doesn't execute LocalCommand if used through ControlMaster
+    # see BUGS in POD
+    $term->cmd_parse("\e]777;cwd-spawn;ssh;$user $host $port\a") if $host;
+
+    return;
+}
+
+sub _dump {
+    my $storage = shift->{'cwd-spawn'};
+    warn 'cwd-spawn: $storage is empty!' unless $storage;
+    warn sprintf('cwd-spawn: ' . ('%s: "%s" ' x keys %$storage), %$storage);
+}
+
+# vim: set ts=4 sw=4 sts=4 ft=perl expandtab:

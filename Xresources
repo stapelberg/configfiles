@@ -19,9 +19,10 @@ URxvt.visualBell: off
 URxvt.keysym.Mod4-u: perl:mark-yank-urls:activate_mark_mode
 URxvt.keysym.Mod4-p: perl:fonts:plus
 URxvt.keysym.Mod4-m: perl:fonts:minus
+URxvt.keysym.Mod4-o: perl:cwd-spawn
 URxvt.underlineURLs: false
 URxvt.perl-lib: /home/michael/.urxvt/
-URxvt.perl-ext: selection,mark-yank-urls,fonts
+URxvt.perl-ext: selection,mark-yank-urls,fonts,cwd-spawn
 URxvt.urlLauncher: firefox
 URxvt.urgentOnBell: true
 URxvt.scrollstyle: next
