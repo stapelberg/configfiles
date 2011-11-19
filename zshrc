@@ -19,6 +19,13 @@ export TIME_STYLE=long-iso
 # prefer library/system calls/programming manuals
 export MANSECT="8:3:2:3posix:3pm:3perl:1:n:l:5:4:9:6:7"
 
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[00;32m'
+
 bindkey -M viins >&-
 bindkey -M viins "^[[A" up-line-or-history
 bindkey -M viins "^[[B" down-line-or-history
@@ -86,10 +93,7 @@ alias cal='cal -y'
 # More passwords, faster!
 alias pw='pwgen -s 23 1'
 
-# Color output of man
-alias man="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man"
-alias perldoc="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less perldoc"
-alias pd="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less perldoc"
+alias pd="perldoc"
 
 # Open terminal in ISO-8859-15-Mode
 alias iso='LANG=en_US.iso885915 LC_ALL=en_US.iso885915 urxvt'
