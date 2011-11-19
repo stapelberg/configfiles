@@ -33,6 +33,9 @@ set printdevice=kyocera
 " Enable syntax highlighting
 syntax on
 
+" Enable file type-specific indention rules
+filetype indent on
+
 " ECPG-files are C-code, too
 autocmd BufNewFile,BufRead *.pgc setf c
 " .go files are go, see golang.org
@@ -44,8 +47,6 @@ autocmd BufNewFile,BufRead *.socket setf desktop
 autocmd BufNewFile,BufRead *.rb set ts=2 sw=2 expandtab
 " For C-files, enable C-indenting
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
-" For Perl-code, shellscripts and ruby, disable putting # at the first character
-autocmd BufNewFile,BufRead *.sh,*.pl,*.pm,*.rb set cin cinkeys=0{,0},0),:,!^F,o,O,e
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set fo-=t fo+=croql comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 
 " Enable filetype plugins (vim-LaTeX for example)
