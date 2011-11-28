@@ -6,6 +6,8 @@ SAVEHIST=4000
 setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY
 setopt COMPLETE_IN_WORD
+# For the git branch stuff later on.
+setopt EXTENDED_GLOB
 
 setopt short_loops
 
@@ -169,9 +171,17 @@ alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo me
 
 # show the git branch in prompt
 export __CURRENT_GIT_BRANCH=
+typeset -a __CURRENT_GIT_DIR
 parse_git_branch() {
-	[ -f .git/HEAD ] && sed 's/ref: refs\/heads\///g' .git/HEAD
+	[ -f ${__CURRENT_GIT_DIR}/HEAD ] && sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR}/HEAD
 }
+
+git_branch_chdir() {
+	__CURRENT_GIT_DIR=((../)#.git)
+}
+
+git_branch_chdir
+chpwd_functions=(${chpwd_functions} git_branch_chdir)
 
 get_git_prompt_info() {
 	fg_dark_blue=$'%{\e[0;36m%}'
