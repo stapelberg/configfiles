@@ -337,6 +337,10 @@ autoload compinit
 compinit -C
 compdef _da agi
 
+# Enable url-quote-magic to automatically escape URLs when pasting
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
 # Have a bell-character put out, everytime a command finishes. This will set the urgent-hint,
 # if the terminal is configured accordingly
 bellchar=$'\a'
