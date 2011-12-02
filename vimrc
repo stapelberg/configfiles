@@ -29,6 +29,10 @@ set fileencoding=utf-8 encoding=utf-8
 set nofen
 " Default printer is laserjet
 set printdevice=kyocera
+" Get rid of the annoying delays (when directory browsing or switching modes).
+" Leads to vim being unable to differentiate between bindings such as ,d and
+" ,dv – which I don’t use anyway :).
+set timeoutlen=100
 
 " Enable syntax highlighting
 syntax on
