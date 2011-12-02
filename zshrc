@@ -173,7 +173,7 @@ alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo me
 export __CURRENT_GIT_BRANCH=
 typeset -a __CURRENT_GIT_DIR
 parse_git_branch() {
-	[ -f ${__CURRENT_GIT_DIR}/HEAD ] && sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR}/HEAD
+	[ -f ${__CURRENT_GIT_DIR[1]}/HEAD ] && sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD
 }
 
 git_branch_chdir() {
