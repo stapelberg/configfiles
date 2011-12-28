@@ -18,7 +18,7 @@ dir="$(cd "${0%/*}" && pwd -P)"
 
 link_dir() {
 	for file in $(find $dir/$1 -maxdepth 1 -type f \
-		! -regex ".*\(Makefile\|MAPPING\|initialize.sh\)" \
+		! -regex ".*\(Makefile\|MAPPING\|initialize.sh\|update.sh\)" \
 		-printf '%P\n')
 	do
 		# Check if we got a custom mapping

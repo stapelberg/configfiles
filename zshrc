@@ -376,15 +376,7 @@ chpwd_profiles
 
 cfgfiles=$(dirname $(readlink ~/.zshrc))
 # If the configfiles are in a git repository, update if it’s older than one hour
-[ -e "$cfgfiles/.git" ] && {
-	zmodload zsh/datetime
-	zmodload zsh/stat
-	lastupdate=$(($EPOCHSECONDS - $(zstat +mtime $cfgfiles/.git)))
-	[ $lastupdate -gt 3600 ] && {
-		echo "NOTE: updating git in $cfgfiles"
-		zsh -c "(cd $cfgfiles && (git stash && git pull; git stash apply)) &" >$cfgfiles/last-update.log 2>&1
-	}
-}
+find $cfgfiles -maxdepth 1 -name .git -mmin +60 -execdir ./update.sh \; &!
 
 # load RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
