@@ -376,7 +376,7 @@ chpwd_profiles
 
 cfgfiles=$(dirname $(readlink ~/.zshrc))
 # If the configfiles are in a git repository, update if it’s older than one hour
-find $cfgfiles -maxdepth 1 -name .git -mmin +60 -execdir ./update.sh \; &!
+find $cfgfiles -maxdepth 1 -name .git -mmin +60 -execdir ./update.sh \;
 
 # load RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
