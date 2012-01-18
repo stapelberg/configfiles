@@ -32,7 +32,7 @@ set printdevice=kyocera
 " Get rid of the annoying delays (when directory browsing or switching modes).
 " Leads to vim being unable to differentiate between bindings such as ,d and
 " ,dv – which I don’t use anyway :).
-set timeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 " Enable syntax highlighting
 syntax on
@@ -94,7 +94,7 @@ function! Mypaste()
 	:set nopaste
 endfunction
 
-let mapleader = "\\"
+let mapleader = ","
 
 map <leader>p :call Mypaste()<CR>
 map <leader>M :set makeprg=make\ -j4<CR>:make<CR>
