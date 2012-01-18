@@ -9,7 +9,7 @@ xkbset m
 xkbset exp '=m'
 if [ "$(hostname)" = "x200" ]
 then
-	xmodmap .Xmodmap_us_neo
+	setxkbmap lv && xmodmap .Xmodmap_us_neo && xset -r 51
 
 	# Enable scrolling on thinkpad
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Button" 2
