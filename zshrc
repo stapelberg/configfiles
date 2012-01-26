@@ -235,14 +235,20 @@ function set_termtitle() {
 	esac
 }
 
-function precmd() {
+function my_prompt_precmd() {
 	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
 	set_termtitle "zsh" "%m"
 }
 
-function preexec() {
+function my_prompt_preexec() {
 	set_termtitle "$1" "%m"
 }
+
+typeset -ga precmd_functions
+precmd_functions+=my_prompt_precmd
+
+typeset -ga preexec_functions
+preexec_functions+=my_prompt_preexec
 
 function chpwd() {
 	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
