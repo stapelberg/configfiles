@@ -104,5 +104,12 @@ map <leader>r :!make $(basename % .c) && ./$(basename % .c)<CR>
 map <leader>h :nohlsearch<CR>
 map <leader>n :cn<CR>
 
+" Make Ctrl-e/y go faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+" Make Ctrl-a go to the beginning of the command line
+cnoremap <C-A> <Home>
+
 " Needed for Vroom::Vroom
 set exrc
