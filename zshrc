@@ -43,6 +43,11 @@ expand-or-complete-with-dots() {
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
+# Press 'v' to edit the command line in vim.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # NO BEEPING!
 setopt no_BEEP
 
