@@ -3,9 +3,3 @@
 # rotation aliases for the external HDMI2 monitor
 alias left='xrandr --output HDMI2 --rotate left --left-of LVDS1'
 alias normal='xrandr --output HDMI2 --rotate normal --left-of LVDS1'
-
-if [ $lvl -ge 2 ] ; then
-	PROMPT="%K{cyan}%F{black}%n%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl$ "
-else
-	PROMPT="%K{cyan}%F{black}%n%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
-fi

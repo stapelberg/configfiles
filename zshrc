@@ -308,19 +308,22 @@ esac
 # enable substitution in prompt, necessary for $(get_git_prompt_info)
 setopt prompt_subst
 
-if [[ "$(hostname)" != "midna" && "$(hostname)" != "x200" ]]; then
-	if [ $lvl -ge 2 ] ; then
-		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $ "
+setup_prompt() {
+	local _main_fmt
+	if [ $USER = "michael" ]; then
+		_main_fmt="%m"
 	else
-		PROMPT="${fg_light_blue}%n${fg_no_colour}@%m ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
+		_main_fmt="%n@%m"
 	fi
-else
+
 	if [ $lvl -ge 2 ] ; then
-		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl$ "
+		PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $ "
 	else
-		PROMPT="${fg_light_blue}%n${fg_no_colour} ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
+		PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
 	fi
-fi
+}
+
+setup_prompt
 
 # Use VI-mode for entering commands
 setopt VI
