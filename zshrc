@@ -2,6 +2,9 @@
 HISTSIZE=4000
 HISTFILE=~/.zsh_history
 SAVEHIST=4000
+# Print timing statistics for everything which takes longer than 5 seconds of
+# user + system time ('sleep 6' does not work because of 0% user/system time!).
+REPORTTIME=5
 # Do not save duplicate entries
 setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY
