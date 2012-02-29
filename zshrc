@@ -372,6 +372,9 @@ zstyle ':completion:*:processes-names' command 'ps -aeo comm='
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:killall:*' menu yes select
 
+# complete directory names case-insensitive, but don’t autocorrect
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 # Directory specific configuration
 function chpwd_profiles() {
 	if [[ ${PWD} =~ "$HOME/i3(|/|/*)" ]]
