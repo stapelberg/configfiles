@@ -33,6 +33,8 @@ set printdevice=kyocera
 " Leads to vim being unable to differentiate between bindings such as ,d and
 " ,dv – which I don’t use anyway :).
 set timeout timeoutlen=1000 ttimeoutlen=100
+" We use rxvt-unicode-256color, explicitly tell vim that
+set t_Co=256
 
 " Enable syntax highlighting
 syntax on
