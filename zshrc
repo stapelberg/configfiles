@@ -168,6 +168,9 @@ alias -g H="| head"
 
 alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
 
+# Use ~sl in any command, for example less ~sl
+hash -d sl=/var/log/syslog
+
 # aliases for my IRC / mail screens which request a kerberos ticket if no valid
 # one is present
 alias irc='(klist -s || kinit) && ssh labs -t screen -Dr irc'
