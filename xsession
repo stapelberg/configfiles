@@ -42,7 +42,7 @@ export EDITOR=vim
 export GTK_IM_MODULE=xim
 
 # Background color
-xsetroot -solid "#333333"
+xsetroot -solid "#333333" -cursor_name left_ptr
 
 # Start urxvtd
 urxvtd -q -f -o
