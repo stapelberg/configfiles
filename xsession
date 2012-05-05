@@ -19,12 +19,8 @@ fi
 # needed for toggle_layout
 touch /tmp/neo_active
 
-# Disable audible bell
-xset -b
-
-# Disable DPMS
-xset dpms force on
-xset s off
+# X settings: disable DPMS, disable audible bell
+xset dpms force on s off -b
 
 # Set correct locales
 export LC_CTYPE=de_DE.UTF-8
