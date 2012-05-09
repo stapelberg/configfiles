@@ -51,6 +51,11 @@ autocmd BufNewFile,BufRead *.service setf desktop
 autocmd BufNewFile,BufRead *.socket setf desktop
 " indent settings for ruby
 autocmd BufNewFile,BufRead *.rb set ts=2 sw=2 expandtab
+
+" prolog files also use .pl, but they are only in a certain directory
+autocmd BufNewFile,BufRead /home/michael/prolog/*.pl set ft=prolog
+
+
 " For C-files, enable C-indenting
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set fo-=t fo+=croql comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
