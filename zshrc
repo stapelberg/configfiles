@@ -353,6 +353,9 @@ export LC_IDENTIFICATION=de_DE.UTF-8
 export PATH=~/go/bin:~/.bin:$PATH:/usr/sbin:/sbin
 export GOPATH=~/gocode
 
+# For debian utilities
+export DEBEMAIL="stapelberg@debian.org"
+
 # Initialize completion
 autoload compinit
 compinit -C
