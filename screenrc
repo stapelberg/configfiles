@@ -1,4 +1,5 @@
 vbell_msg "!"
+vbell off
 autodetach on
 activity "activity in %n (%t) [%w:%s]~"
 msgwait 10
