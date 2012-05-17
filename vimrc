@@ -43,12 +43,11 @@ set runtimepath+=/usr/share/vim/addons
 syntax on
 
 " Enable file type-specific indention rules
-filetype indent on
+"filetype indent on
+filetype plugin on
 
 " ECPG-files are C-code, too
 autocmd BufNewFile,BufRead *.pgc setf c
-" .go files are go, see golang.org
-autocmd BufNewFile,BufRead *.go setf go
 " systemd service and socket files are freedesktop files
 autocmd BufNewFile,BufRead *.service setf desktop
 autocmd BufNewFile,BufRead *.socket setf desktop
