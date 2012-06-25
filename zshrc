@@ -149,9 +149,13 @@ alias nh='unset HISTFILE'
 alias acs='apt-cache search'
 alias acsn='apt-cache search --names-only'
 alias acp='apt-cache policy'
+alias acsh='apt-cache show'
+alias ac='apt-cache'
+alias ag='s apt-get'
 function agi { sudo apt-get install $* && rehash }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt-get update'
+alias agdu='sudo apt-get dist-update'
 alias cupt-upgrade='sudo cupt -o debug::resolver=1 -i -V -D -R full-upgrade i3-wm/installed sudo/installed 2>&1 | tee /tmp/cupt.log'
 
 function agr { sudo apt-get remove $* && rehash }
