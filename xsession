@@ -1,21 +1,29 @@
 #!/bin/sh
 
-# Enable zapping (C-A-<Bksp> kills X)
-setxkbmap -option terminate:ctrl_alt_bksp
+HOSTNAME=$(hostname)
+if [ "$HOSTNAME" = "midna" ]; then
+	# Slightly modified Xmodmap for the Kinesis keyboard
+	setxkbmap lv && xmodmap .Xmodmap
 
-xmodmap .Xmodmap
+	# Configure monitors
+	xrandr --output HDMI2 --mode 1920x1200 --right-of HDMI1
+else
+	setxkbmap lv && xmodmap .Xmodmap_us_neo && xset -r 51
+fi
 # Enable mousekeys to have a paste button
 xkbset m
 xkbset exp '=m'
-if [ "$(hostname)" = "x200" ]
+if [ "$HOSTNAME" = "x200" ]
 then
-	setxkbmap lv && xmodmap .Xmodmap_us_neo && xset -r 51
-
 	# Enable scrolling on thinkpad
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Button" 2
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Axes" 6 7 4 5
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation" 1
 fi
+
+# Enable zapping (C-A-<Bksp> kills X)
+setxkbmap -option terminate:ctrl_alt_bksp
+
 # needed for toggle_layout
 touch /tmp/neo_active
 
@@ -47,7 +55,6 @@ xsetroot -solid "#333333" -cursor_name left_ptr
 # Start urxvtd
 urxvtd -q -f -o
 
-
 #cd /tmp
 #rm xsession.log
 #export DISPLAY=:0
@@ -56,18 +63,10 @@ urxvtd -q -f -o
 #export DISPLAY=:9
 #cd /home/michael
 
-if [ "$(hostname)" = "midna" ]
-then
-	# Configure monitors
-	xrandr --output HDMI2 --mode 1920x1200 --right-of HDMI1
+# Start i3, my compiled version if available, fallback to the system version
+# otherwise.
+if [ -x ~/i3/i3 ]; then
+	exec ~/i3/i3
+else
+	exec i3
 fi
-
-# Initialize part of the logfile
-[ ! -d ~/i3 ] && mkdir ~/i3
-echo "starting at $(date)" >> ~/i3/i3log
-exec urxvt -geometry 84x24+0+0
-#exec twm
-#exec /usr/bin/awesome
-#exec xmonad
-#exec i3 -V -d all >>~/i3/i3log 2>&1
-#exec valgrind -v --log-file=/tmp/vg --leak-check=full --track-origins=yes --num-callers=20 --tool=memcheck i3 -V -d all >>/home/michael/i3/i3log 2>&1
