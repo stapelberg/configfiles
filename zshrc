@@ -391,6 +391,13 @@ function chpwd_profiles() {
 	else
 		alias m='make'
 	fi
+
+	if [[ ${PWD} =~ "$HOME/DPKG(|/|/*)" ]]
+	then
+		export GIT_AUTHOR_EMAIL="stapelberg@debian.org"
+	else
+		unset GIT_AUTHOR_EMAIL
+	fi
 }
 chpwd_functions=( ${chpwd_functions} chpwd_profiles )
 # Call this function before the first chpwd. This is necessary to get correct
