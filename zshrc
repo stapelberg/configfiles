@@ -34,6 +34,9 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[00;32m'
 
+# C-r is easier to type than Esc-k /
+bindkey "^R" history-incremental-search-backward
+
 bindkey -M viins >&-
 bindkey -M viins "^[[A" up-line-or-history
 bindkey -M viins "^[[B" down-line-or-history
