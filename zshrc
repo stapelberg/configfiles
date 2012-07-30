@@ -11,6 +11,9 @@ setopt INC_APPEND_HISTORY
 setopt COMPLETE_IN_WORD
 # For the git branch stuff later on.
 setopt EXTENDED_GLOB
+# Do not check mail, I don’t use mail that way.
+unsetopt mail_warning
+unset MAILCHECK
 
 setopt short_loops
 
