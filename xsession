@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Enable zapping (C-A-<Bksp> kills X)
+setxkbmap -option terminate:ctrl_alt_bksp
+
 HOSTNAME=$(hostname)
 if [ "$HOSTNAME" = "midna" ]; then
 	# Slightly modified Xmodmap for the Kinesis keyboard
@@ -20,9 +23,6 @@ then
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Axes" 6 7 4 5
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation" 1
 fi
-
-# Enable zapping (C-A-<Bksp> kills X)
-setxkbmap -option terminate:ctrl_alt_bksp
 
 # needed for toggle_layout
 touch /tmp/neo_active
