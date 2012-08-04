@@ -179,8 +179,6 @@ alias -g T="| tail"
 alias -g G="| grep"
 alias -g H="| head"
 
-alias yt='clive --stream-exec="mplayer %i;" --stream 20 '
-
 # Use ~sl in any command, for example less ~sl
 hash -d sl=/var/log/syslog
 hash -d pb=/var/cache/pbuilder/result
