@@ -34,13 +34,16 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[00;32m'
 
+# Explicitly select vim line editing mode. This is necessary for SSH sessions
+# where EDITOR/VISUAL are not forwarded and thus zsh assumes emacs line editing
+# mode by default.
+bindkey -v
+
 # C-r is easier to type than Esc-k /
 bindkey "^R" history-incremental-search-backward
-
-bindkey -M viins >&-
-bindkey -M viins "^[[A" up-line-or-history
-bindkey -M viins "^[[B" down-line-or-history
-bindkey -M viins "^F" push-line
+bindkey "^[[A" up-line-or-history
+bindkey "^[[B" down-line-or-history
+bindkey "^F" push-line
 
 # When tab-completing, show dots. For fast tab completes, they will be
 # overwritten instantly, for long tab-completions, you have feedback.
@@ -341,9 +344,6 @@ setup_prompt() {
 }
 
 setup_prompt
-
-# Use VI-mode for entering commands
-setopt VI
 
 # Export language
 #export LANG=en_US.utf8
