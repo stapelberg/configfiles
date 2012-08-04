@@ -58,10 +58,16 @@ autocmd BufNewFile,BufRead *.rb set ts=2 sw=2 expandtab
 " prolog files also use .pl, but they are only in a certain directory
 autocmd BufNewFile,BufRead /home/michael/prolog/*.pl set ft=prolog
 
+" Go files
+autocmd BufRead,BufNewFile *.go set makeprg=go\ build
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
-" For C-files, enable C-indenting
+" For C-files, enable C-indenting, also set makeprg to disable warnings via
+" CFLAGS
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set fo-=t fo+=croql comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set makeprg=CFLAGS=-w\ make\ -j4
 
 " Enable filetype plugins (vim-LaTeX for example)
 "filetype plugin on
@@ -106,9 +112,11 @@ endfunction
 
 let mapleader = ","
 
+" _x_ to compile, because it’s on the left hand, while comma (leader) is on
+" the right hand.
+map <leader>x :make<CR>
 map <leader>p :call Mypaste()<CR>
 map <leader>M :set makeprg=make\ -j4<CR>:make<CR>
-map <leader>m :set makeprg=CFLAGS=-w\ make\ -j4<CR>:make<CR>
 " _r_un a proof-of-concept
 map <leader>r :!make $(basename % .c) && ./$(basename % .c)<CR>
 map <leader>h :nohlsearch<CR>
