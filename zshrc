@@ -89,6 +89,8 @@ alias L='dpkg -L'
 alias v='vim'
 alias V='sudo vim'
 alias m='make'
+# disable gdb welcome message
+alias gdb='gdb -q'
 # Find files in current folder
 function f() {
 	q="*$1*"
