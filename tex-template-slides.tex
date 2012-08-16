@@ -1,24 +1,38 @@
 % vim:ts=4:sw=4:expandtab
-% © 2011 Michael Stapelberg
+% © 2011-2012 Michael Stapelberg
 %
-% use xelatex %<
+% use lualatex %<
 %
-\documentclass[xetex,serif,compress]{beamer}
+\documentclass[usepdftitle=false,compress]{beamer}
 \usepackage{fontspec}
-\usepackage{xunicode} % Unicode extras!
-\usepackage{xltxtra}  % Fixes
 \usepackage{listings}
 \setmainfont{Trebuchet MS}
-\setmonofont{Inconsolata}
+\setmonofont[SmallCapsFont={DejaVu Sans Mono}]{DejaVu Sans Mono}
 \usetheme{default}
 
+\hypersetup{pdfencoding=auto,%
+pdfinfo={%
+    Title={Scaling Apache/PHP/PostgreSQL},%
+    Subject={Slides of my presentation at NoName e.V.},%
+    Keywords={ccchd,NoName,Apache,PHP,PostgreSQL,nginx,scaling,web},%
+    Author={Michael Stapelberg},%
+    CreationDate={20120816200000+02},%
+}}
+
+% white-ish on black-ish
+\definecolor{myblack}{rgb}{0.08,0.08,0.08}
+\definecolor{mywhite}{rgb}{0.85,0.85,0.85}
+
 \setbeamertemplate{frametitle}{
-    \color{black}
+    \color{mywhite}
     \vspace*{0.5cm}
     \hspace*{0.25cm}
     \textbf{\insertframetitle}
     \par
 }
+
+\setbeamercolor{background canvas}{bg=myblack}
+\setbeamercolor{normal text}{fg=mywhite}
 
 % Hide the navigation icons at the bottom of the page
 \setbeamertemplate{navigation symbols}{}
