@@ -1,3 +1,4 @@
+startup_message off
 vbell_msg "!"
 vbell off
 autodetach on
