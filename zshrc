@@ -89,6 +89,8 @@ zstyle ':completion:newest-files:*' menu select yes
 zstyle ':completion:newest-files:*' sort false
 zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
 
+alias spr="curl -F 'sprunge=<-' http://sprunge.us"
+
 # Nicer output of ls
 alias ls='ls --color=auto'
 alias ll='ls -hl'
