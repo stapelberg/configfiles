@@ -80,6 +80,15 @@ zmodload zsh/complist
 export LS_COLORS='di=01;34:ln=01;36:pi=33:so=01;35:bd=01;33:cd=01;33:ex=01;32:do=01;35:su=37;41:sg=30;43:st=37;44:ow=34;42:tw=30;42:ca=30;41'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# 'ctrl-x r' will complete the 12 last modified (mtime) files/directories
+zle -C newest-files complete-word _generic
+bindkey '^Xr' newest-files
+zstyle ':completion:newest-files:*' completer _files
+zstyle ':completion:newest-files:*' file-patterns '*~.*(omN[1,12])'
+zstyle ':completion:newest-files:*' menu select yes
+zstyle ':completion:newest-files:*' sort false
+zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
+
 # Nicer output of ls
 alias ls='ls --color=auto'
 alias ll='ls -hl'
