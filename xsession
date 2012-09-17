@@ -31,17 +31,10 @@ touch /tmp/neo_active
 xset dpms force on s off -b
 
 # Set correct locales
-export LC_CTYPE=de_DE.UTF-8
-export LC_TIME=en_DK.UTF-8
-export LC_NUMERIC=de_DE.UTF-8
-export LC_MONETARY=de_DE.UTF-8
+unset LC_ALL
+export LANG=de_DE.UTF-8
 export LC_MESSAGES=C
-export LC_PAPER=de_DE.UTF-8
-export LC_NAME=de_DE.UTF-8
-export LC_ADDRESS=de_DE.UTF-8
-export LC_TELEPHONE=de_DE.UTF-8
-export LC_MEASUREMENT=de_DE.UTF-8
-export LC_IDENTIFICATION=de_DE.UTF-8
+export LC_TIME=en_DK.UTF-8
 
 # set PAGER/EDITOR for things not started by a shell
 export PAGER=less
