@@ -26,7 +26,7 @@ URxvt.keysym.Mod4-o: perl:cwd-spawn
 URxvt.underlineURLs: false
 URxvt.perl-lib: /home/michael/.urxvt/
 URxvt.perl-ext: selection,mark-yank-urls,fonts,cwd-spawn
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: google-chrome
 URxvt.urgentOnBell: true
 URxvt.scrollstyle: next
 URxvt.color12: #11AAFF
