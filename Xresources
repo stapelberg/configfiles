@@ -38,3 +38,5 @@ Xft.dpi: 96
 
 !*background: black
 !*foreground: lightgrey
+
+Xcursor.theme: osx
