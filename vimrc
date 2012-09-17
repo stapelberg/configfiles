@@ -115,6 +115,9 @@ let mapleader = ","
 " _x_ to compile, because it’s on the left hand, while comma (leader) is on
 " the right hand.
 map <leader>x :make<CR>
+map <leader>t :!go test dcs/...<CR>
+map <leader>f :Fmt<CR>
+map <leader>w :Fmt<CR>:w<CR>
 map <leader>p :call Mypaste()<CR>
 map <leader>M :set makeprg=make\ -j4<CR>:make<CR>
 " _r_un a proof-of-concept
