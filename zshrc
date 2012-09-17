@@ -357,19 +357,10 @@ setup_prompt() {
 setup_prompt
 
 # Export language
-#export LANG=en_US.utf8
-export LC_CTYPE=de_DE.UTF-8
-export LC_COLLATE=de_DE.UTF-8
-export LC_TIME=en_DK.UTF-8
-export LC_NUMERIC=de_DE.UTF-8
-export LC_MONETARY=de_DE.UTF-8
+unset LC_ALL
+export LANG=de_DE.UTF-8
 export LC_MESSAGES=C
-export LC_PAPER=de_DE.UTF-8
-export LC_NAME=de_DE.UTF-8
-export LC_ADDRESS=de_DE.UTF-8
-export LC_TELEPHONE=de_DE.UTF-8
-export LC_MEASUREMENT=de_DE.UTF-8
-export LC_IDENTIFICATION=de_DE.UTF-8
+export LC_TIME=en_DK.UTF-8
 
 # Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
 export PATH=~/go/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
