@@ -90,6 +90,13 @@ zstyle ':completion:newest-files:*' sort false
 zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
 
 alias spr="curl -F 'sprunge=<-' http://sprunge.us"
+function up() {
+	scp $1 web:htdocs/
+	# NB: We should HTML-escape stuff here
+	echo "http://t.zekjur.net/$1"
+	# Try to put this into the X11 clipboard, too
+	echo -n "http://t.zekjur.net/$1" | xclip
+}
 
 # Nicer output of ls
 alias ls='ls --color=auto'
