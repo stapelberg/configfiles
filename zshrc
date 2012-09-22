@@ -92,10 +92,11 @@ zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
 alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 function up() {
 	scp $1 web:htdocs/
+	local name=$(basename "$1")
 	# NB: We should HTML-escape stuff here
-	echo "http://t.zekjur.net/$1"
+	echo "http://t.zekjur.net/$name"
 	# Try to put this into the X11 clipboard, too
-	echo -n "http://t.zekjur.net/$1" | xclip
+	echo -n "http://t.zekjur.net/$name" | xclip
 }
 
 # Nicer output of ls
