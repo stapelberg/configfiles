@@ -5,6 +5,15 @@
 
 (provide 'zkj-emacs)
 
+;;;; Of course, everything is UTF-8.
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
 ;;;; Set font to misc-fixed. This requires the following two entries
 ;;;; in ~/.Xresources:
 ;;;; Emacs.Font: fontset-normal
