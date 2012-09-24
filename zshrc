@@ -108,6 +108,7 @@ alias L='dpkg -L'
 alias v='vim'
 alias V='sudo vim'
 alias m='make'
+alias mp='mplayer -really-quiet'
 # disable gdb welcome message
 alias gdb='gdb -q'
 # Find files in current folder
