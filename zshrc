@@ -404,7 +404,7 @@ zstyle ':completion:*:*:killall:*' menu yes select
 function chpwd_profiles() {
 	if [[ ${PWD} =~ "$HOME/i3(|/|/*)" ]]
 	then
-		alias m='make -j8'
+		alias m='CC=clang make -j16'
 	else
 		alias m='make'
 	fi
