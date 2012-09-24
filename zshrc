@@ -212,7 +212,7 @@ alias mail='(klist -s || kinit) && ssh midna -t screen -x sup'
 alias mpd='(4 a G 172.22.37 >/dev/null && ncmpcpp -h 172.22.37.1) || (4 a G 172.22.36 >/dev/null && ncmpcpp -h 172.22.36.117) || echo "Not sure which MPD to use"'
 
 # Lock the screen and suspend to RAM.
-alias susp='i3lock -i ~/Bilder/ramona_flowers_1280.png -t && sudo sh -c "echo mem > /sys/power/state"'
+alias susp='i3lock -i ~/Bilder/triforce1200.png -t && sudo sh -c "echo mem > /sys/power/state"'
 
 # show the git branch in prompt
 export __CURRENT_GIT_BRANCH=
