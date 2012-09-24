@@ -328,8 +328,7 @@ function tv {
 # -prefer-ipv4: we don't have ipv6, so don't try
 # -xineramascreen 0: needed for correct aspect-ratio
 # -cache 4096: stream stutters if we don't buffer a bit
-# -demuxer +mpegpes: tell mplayer what kind of stream this is
-	mplayer -noidx -framedrop -vf kerndeint -prefer-ipv4 -cache 2048 -demuxer +mpegpes http://tv:7000/${1}
+	mplayer -noidx -framedrop -vf kerndeint -prefer-ipv4 -cache 2048 http://tv:7000/${1}
 }
 
 # Define prompt
