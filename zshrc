@@ -95,9 +95,9 @@ alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 # Requires liburi-perl and xclip.
 function up() {
     scp $1 web:htdocs/
-    local name=$(basename "$1")
     # Echo and try to put this into the X11 clipboard, too
-    perl -MURI::Escape -E 'print uri_escape(shift)' "$name" | tee >(xclip) && echo
+    perl -MURI::Escape -E 'print "http://t.zekjur.net/" . uri_escape(shift)' \
+        "$(basename "$1")" | tee >(xclip) && echo
 }
 
 # Nicer output of ls
