@@ -1,3 +1,4 @@
+# vim:ts=4:sw=4:expandtab
 # Save 2000 lines of history
 HISTSIZE=4000
 HISTFILE=~/.zsh_history
@@ -48,9 +49,9 @@ bindkey "^F" push-line
 # When tab-completing, show dots. For fast tab completes, they will be
 # overwritten instantly, for long tab-completions, you have feedback.
 expand-or-complete-with-dots() {
-	echo -n -e "\e[37m...\e[0m\033[3D"
-	zle expand-or-complete
-	zle redisplay
+    echo -n -e "\e[37m...\e[0m\033[3D"
+    zle expand-or-complete
+    zle redisplay
 }
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
@@ -93,10 +94,10 @@ alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 
 # Requires liburi-perl and xclip.
 function up() {
-	scp $1 web:htdocs/
-	local name=$(basename "$1")
-	# Echo and try to put this into the X11 clipboard, too
-	perl -MURI::Escape -E 'print uri_escape(shift)' "$name" | tee >(xclip) && echo
+    scp $1 web:htdocs/
+    local name=$(basename "$1")
+    # Echo and try to put this into the X11 clipboard, too
+    perl -MURI::Escape -E 'print uri_escape(shift)' "$name" | tee >(xclip) && echo
 }
 
 # Nicer output of ls
@@ -113,8 +114,8 @@ alias mp='mplayer -really-quiet'
 alias gdb='gdb -q'
 # Find files in current folder
 function f() {
-	q="*$1*"
-	find . -iname $q
+    q="*$1*"
+    find . -iname $q
 }
 
 alias wl="sudo sh -c 'IF_WPA_VERBOSITY=1 wpa_action wlan0 DISCONNECTED ; ifdown --force wlan0 ; ifup wlan0'"
@@ -146,15 +147,15 @@ function x() {  xclip -i <<< $($*) }
 
 # Prepend a command with e to close the starting shell
 function e() {
-	eval "$* &|"
-	exit
+    eval "$* &|"
+    exit
 }
 
 function wb() {
-	mkdir -p ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
-	cd ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
-	gphoto2 -P
-	chmod 644 *
+    mkdir -p ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
+    cd ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
+    gphoto2 -P
+    chmod 644 *
 }
 
 # wiipdf with the ID of my primary wiimote
@@ -169,7 +170,7 @@ alias update-mirror-multimedia='debmirror debian-multimedia --diff=none --getcon
 # Burn a single file onto CD-ROM
 alias burnfile='mkisofs ${1} | cdrecord driveropts=burnfree -v fs=6m -'
 function burndvd {
-	growisofs -dvd-compat -Z /dev/sr0=${1}
+    growisofs -dvd-compat -Z /dev/sr0=${1}
 }
 
 # A nicer ps-output
@@ -218,70 +219,70 @@ alias susp='i3lock -i ~/Bilder/triforce1200.png -t && sudo sh -c "echo mem > /sy
 export __CURRENT_GIT_BRANCH=
 typeset -a __CURRENT_GIT_DIR
 parse_git_branch() {
-	[ -f ${__CURRENT_GIT_DIR[1]}/HEAD ] && sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD
+    [ -f ${__CURRENT_GIT_DIR[1]}/HEAD ] && sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD
 }
 
 git_branch_chdir() {
-	__CURRENT_GIT_DIR=((../)#.git)
+    __CURRENT_GIT_DIR=((../)#.git)
 }
 
 git_branch_chdir
 chpwd_functions=(${chpwd_functions} git_branch_chdir)
 
 get_git_prompt_info() {
-	fg_dark_blue=$'%{\e[0;36m%}'
-	fg_no_colour=$'%{\e[0m%}'
+    fg_dark_blue=$'%{\e[0;36m%}'
+    fg_no_colour=$'%{\e[0m%}'
 
-	if [ ! -z "$__CURRENT_GIT_BRANCH" ]
-	then
-		echo "${fg_dark_blue}$__CURRENT_GIT_BRANCH${fg_no_colour} "
-	else
-		echo ""
-	fi
+    if [ ! -z "$__CURRENT_GIT_BRANCH" ]
+    then
+        echo "${fg_dark_blue}$__CURRENT_GIT_BRANCH${fg_no_colour} "
+    else
+        echo ""
+    fi
 }
 
 function set_termtitle() {
-	# escape '%' chars in $1, make nonprintables visible
-	a=${(V)1//\%/\%\%}
+    # escape '%' chars in $1, make nonprintables visible
+    a=${(V)1//\%/\%\%}
 
-	# Truncate command, and join lines.
-	a=$(print -rn -- "$a" | tr -d "\n\r")
+    # Truncate command, and join lines.
+    a=$(print -rn -- "$a" | tr -d "\n\r")
 
-	[ "$a" = "zsh" ] && { a=$(print -Pn "%~") }
+    [ "$a" = "zsh" ] && { a=$(print -Pn "%~") }
 
-	case $TERM in
-	screen)
-		# plain xterm title
-		print -Pn -- "\e]2;$2: "
-		print -rn -- "$a"
-		print -n -- "\a"
+    case $TERM in
+    screen)
+        # plain xterm title
+        print -Pn -- "\e]2;$2: "
+        print -rn -- "$a"
+        print -n -- "\a"
 
-		# screen title (in ^A")
-		print -n -- "\ek"
-		print -rn -- "$a"
-		print -n -- "\e\\"
+        # screen title (in ^A")
+        print -n -- "\ek"
+        print -rn -- "$a"
+        print -n -- "\e\\"
 
-		# screen location
-		print -Pn -- "\e_$2: "
-		print -rn -- "$a"
-		print -n -- "\e\\"
-	;;
-	xterm*|rxvt)
-		# plain xterm title
-		print -Pn -- "\e]2;$2: "
-		print -rn -- "$a"
-		print -n -- "\a"
-	;;
-	esac
+        # screen location
+        print -Pn -- "\e_$2: "
+        print -rn -- "$a"
+        print -n -- "\e\\"
+    ;;
+    xterm*|rxvt)
+        # plain xterm title
+        print -Pn -- "\e]2;$2: "
+        print -rn -- "$a"
+        print -n -- "\a"
+    ;;
+    esac
 }
 
 function my_prompt_precmd() {
-	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
-	set_termtitle "zsh" "%m"
+    export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
+    set_termtitle "zsh" "%m"
 }
 
 function my_prompt_preexec() {
-	set_termtitle "$1" "%m"
+    set_termtitle "$1" "%m"
 }
 
 typeset -ga precmd_functions
@@ -291,7 +292,7 @@ typeset -ga preexec_functions
 preexec_functions+=my_prompt_preexec
 
 function chpwd() {
-	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
+    export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
 }
 
 
@@ -313,7 +314,7 @@ chpwd_functions=(${chpwd_functions} cwd_to_urxvt)
 
 # Convenience wrapper around /etc/init.d
 function in() {
-	sudo /etc/init.d/$*
+    sudo /etc/init.d/$*
 }
 
 function scan() {
@@ -328,7 +329,7 @@ function tv {
 # -prefer-ipv4: we don't have ipv6, so don't try
 # -xineramascreen 0: needed for correct aspect-ratio
 # -cache 4096: stream stutters if we don't buffer a bit
-	mplayer -noidx -framedrop -vf kerndeint -prefer-ipv4 -cache 2048 http://tv:7000/${1}
+    mplayer -noidx -framedrop -vf kerndeint -prefer-ipv4 -cache 2048 http://tv:7000/${1}
 }
 
 # Define prompt
@@ -348,18 +349,18 @@ esac
 setopt prompt_subst
 
 setup_prompt() {
-	local _main_fmt
-	if [ $USER = "michael" ]; then
-		_main_fmt="%m"
-	else
-		_main_fmt="%n@%m"
-	fi
+    local _main_fmt
+    if [ $USER = "michael" ]; then
+        _main_fmt="%m"
+    else
+        _main_fmt="%n@%m"
+    fi
 
-	if [ $lvl -ge 2 ] ; then
-		PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $ "
-	else
-		PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
-	fi
+    if [ $lvl -ge 2 ] ; then
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $ "
+    else
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
+    fi
 }
 
 setup_prompt
@@ -401,19 +402,19 @@ zstyle ':completion:*:*:killall:*' menu yes select
 
 # Directory specific configuration
 function chpwd_profiles() {
-	if [[ ${PWD} =~ "$HOME/i3(|/|/*)" ]]
-	then
-		alias m='CC=clang make -j16'
-	else
-		alias m='make'
-	fi
+    if [[ ${PWD} =~ "$HOME/i3(|/|/*)" ]]
+    then
+        alias m='CC=clang make -j16'
+    else
+        alias m='make'
+    fi
 
-	if [[ ${PWD} =~ "$HOME/DPKG(|/|/*)" ]]
-	then
-		export GIT_AUTHOR_EMAIL="stapelberg@debian.org"
-	else
-		unset GIT_AUTHOR_EMAIL
-	fi
+    if [[ ${PWD} =~ "$HOME/DPKG(|/|/*)" ]]
+    then
+        export GIT_AUTHOR_EMAIL="stapelberg@debian.org"
+    else
+        unset GIT_AUTHOR_EMAIL
+    fi
 }
 chpwd_functions=( ${chpwd_functions} chpwd_profiles )
 # Call this function before the first chpwd. This is necessary to get correct
