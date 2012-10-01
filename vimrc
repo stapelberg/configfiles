@@ -1,7 +1,8 @@
+" Don’t ensure compatibility with vi at all cost. This needs to be set first
+" because it modifies the values of some other options (such as modeline).
+set nocompatible
 " Enable modelines, even as root
 set modeline
-" Don’t ensure compatibility with vi at all cost
-set nocompatible
 " More flexible backspace
 set backspace=indent,eol,start
 " Dark background
