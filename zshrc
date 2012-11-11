@@ -173,8 +173,11 @@ function burndvd {
     growisofs -dvd-compat -Z /dev/sr0=${1}
 }
 
-# A nicer ps-output
-alias p='ps -A f -o user,pid,priority,ni,pcpu,pmem,args'
+# A nicer ps-output. We need to specify user:12 because otherwise usernames
+# such as 'sphinxsearch' or 'libvirt-qemu' are displayed as user IDs. According
+# to the procps source, this is specified in The Open Group Base Specifications
+# Issue 6 (IEEE Std 1003.1, 2004 Edition).
+alias p='ps -A f -o user:12,pid,priority,ni,pcpu,pmem,args'
 
 alias nh='unset HISTFILE'
 
