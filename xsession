@@ -10,6 +10,8 @@ if [ "$HOSTNAME" = "midna" ]; then
 
 	# Configure monitors
 	xrandr --output HDMI2 --mode 1920x1200 --right-of HDMI1
+
+	~/notify-printer-status/notify-printer-status-loop.sh &
 else
 	setxkbmap lv && xmodmap .Xmodmap_us_neo && xset -r 51
 fi
