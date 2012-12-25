@@ -27,6 +27,10 @@ fi
 # needed for toggle_layout
 touch /tmp/neo_active
 
+# Allow local connections from all users, so that when using 'sudo vim' we can
+# get access to the X clipboard.
+xhost +local:
+
 # X settings: disable DPMS, disable audible bell
 xset dpms force on s off -b
 
