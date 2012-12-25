@@ -13,4 +13,5 @@ emacs-init.el ~/.emacs.d/init.el
 emacs-zkj-emacs.el ~/.emacs.d/lisp/zkj-emacs.el
 emacs-zkj-notmuch.el ~/.emacs.d/lisp/zkj-notmuch.el
 emacs-zkj-lisp.el ~/.emacs.d/lisp/zkj-lisp.el
+emacs-zkj-perl.el ~/.emacs.d/lisp/zkj-perl.el
 emacs-custom.el ~/.emacs.d/custom.el

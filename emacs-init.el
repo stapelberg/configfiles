@@ -17,6 +17,9 @@
 ;; notmuch-specific configuration.
 (require 'zkj-notmuch)
 
+;; Perl-related settings.
+(require 'zkj-perl)
+
 ;; Settings stored by the customize interface.
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
