@@ -103,7 +103,7 @@
 		  ((any-value-matches "debian\\.org" values) "Michael Stapelberg <stapelberg@debian.org>")
 		  ((any-value-matches "i3" values) "Michael Stapelberg <michael@i3wm.org>")
 		  (t nil))))
-    (notmuch-mua-reply (notmuch-show-get-message-id) sender nil)))
+    (notmuch-mua-reply (notmuch-show-get-message-id) sender reply-all)))
 
 (define-key notmuch-show-mode-map "r"
   (lambda ()
