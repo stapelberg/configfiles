@@ -126,7 +126,20 @@
       (cd "/home/michael/i3")
       (with-temp-file tempfile
 	(call-process notmuch-command nil t nil "show" "--format=raw" id))
-      (call-process "git" nil buf nil "am" "-3" tempfile))))
+      (call-process "git" nil buf nil "am" "-3" "--whitespace=fix" tempfile))))
+
+(define-key notmuch-show-mode-map "4"
+  (lambda ()
+    "Merge this patch into ~/i3status"
+    (interactive)
+    (let ((id (notmuch-show-get-message-id))
+	  (tempfile (make-temp-file "i3status-patch"))
+	  (buf (get-buffer-create "*notmuch-last-i3status-merge*")))
+      (switch-to-buffer buf)
+      (cd "/home/michael/i3status")
+      (with-temp-file tempfile
+	(call-process notmuch-command nil t nil "show" "--format=raw" id))
+      (call-process "git" nil buf nil "am" "-3" "--whitespace=fix" tempfile))))
 
 (define-key notmuch-search-mode-map "S"
   (lambda ()
