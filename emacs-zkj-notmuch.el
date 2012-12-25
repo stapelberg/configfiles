@@ -21,7 +21,7 @@
 ;; The default breaks some notmuch features (for example 'v' for view
 ;; message or 'w' for save all attachments), so use w3m to render
 ;; text/html MIME parts.
-(setq mm-text-html-renderer 'true-w3m)
+(setq mm-text-html-renderer 'shr)
 (add-to-list 'mm-text-html-renderer-alist
 	     '(true-w3m mm-inline-render-with-stdin
 			nil "w3m" "-T" "text/html"))
