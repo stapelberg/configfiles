@@ -27,6 +27,19 @@
      (set-fontset-font "fontset-normal" charset my-font))
    (list 'iso-8859-1 'ucs)))
 
+;;;; add marmalade package repository, it contains many more packages.
+(require 'package)
+(add-to-list 'package-archives
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+
+(global-set-key [(meta x)] (lambda ()
+                             (interactive)
+                             (or (boundp 'smex-cache)
+                                 (smex-initialize))
+                             (global-set-key [(meta x)] 'smex)
+                             (smex)))
+
 ;;;; general appearance
 
 ;; Open the *scratch* buffer by default, not the welcome message.
