@@ -30,7 +30,7 @@
 ;;;; general appearance
 
 ;; Open the *scratch* buffer by default, not the welcome message.
-(setq initial-buffer-choice t)
+(setq inhibit-startup-screen t)
 
 ;; No toolbar.
 (tool-bar-mode -1)
