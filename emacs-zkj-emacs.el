@@ -42,6 +42,9 @@
 
 ;;;; general appearance
 
+;; No blinking cursor.
+(blink-cursor-mode 0)
+
 ;; Open the *scratch* buffer by default, not the welcome message.
 (setq inhibit-startup-screen t)
 
