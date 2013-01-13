@@ -42,6 +42,10 @@
 
 ;;;; general appearance
 
+;; Don’t ask when following a symlink into a version-controlled folder
+;; (my ~/configfiles).
+(setq vc-follow-symlinks t)
+
 ;; No blinking cursor.
 (blink-cursor-mode 0)
 
