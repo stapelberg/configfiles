@@ -1,4 +1,4 @@
-;;;; © 2012 Michael Stapelberg (BSD-licensed)
+;;;; © 2012-2013 Michael Stapelberg (BSD-licensed)
 ;;;;
 ;;;; ~/.emacs.d/lisp/zkj-notmuch.el sets notmuch-specific
 ;;;; configuration.
@@ -7,6 +7,15 @@
 
 (require 'notmuch)
 (require 'notmuch-address)
+
+;; Process PGP/MIME. Needs gpg-agent working, with pinentry-gtk.
+(setq notmuch-crypto-process-mime t)
+
+;; When stumbling upon an inline GPG message, call
+;; notmuch-decrypt-inline and tell the sender to switch to PGP/MIME.
+(defun notmuch-decrypt-inline ()
+  (interactive)
+  (epa-decrypt-armor-in-region (point-min) (point-max)))
 
 ;; Close mail buffers after sending.
 (setq message-kill-buffer-on-exit t)
