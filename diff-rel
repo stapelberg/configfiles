@@ -1,0 +1,39 @@
+#!/usr/bin/env perl
+# vim:ts=4:sw=4:expandtab
+# diffs two release tarballs
+
+use strict;
+use warnings;
+use File::Temp qw(tempfile);
+use File::Basename qw(basename);
+use File::Spec;
+use v5.10;
+
+my $old = shift;
+my $new = shift;
+
+sub get_file_list {
+    my ($name) = @_;
+
+    my @files = split("\n", qx(tar tf "$name" | sort));
+    return map { s,^[^/]+/,,g; $_ } @files;
+}
+
+sub write_list_to_tmp {
+    my ($origname, $list) = @_;
+    my ($fh, $name) = tempfile(
+        basename($origname) . '-XXXXXX',
+        UNLINK => 1,
+        DIR => File::Spec->tmpdir()
+    );
+    say $fh join("\n", @$list);
+    close($fh);
+    return $name;
+}
+
+my @oldfiles = get_file_list($old);
+my @newfiles = get_file_list($new);
+
+system("diff", "-u", "--report-identical-files",
+    write_list_to_tmp($old, \@oldfiles),
+    write_list_to_tmp($new, \@newfiles));
