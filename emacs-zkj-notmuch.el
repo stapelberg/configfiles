@@ -8,6 +8,10 @@
 (require 'notmuch)
 (require 'notmuch-address)
 
+;; If this is not midna, we run notmuch on midna via remote-notmuch.sh
+(when (not (string= system-name "midna.zekjur.net"))
+  (setq notmuch-command "/home/michael/configfiles/remote-notmuch.sh"))
+
 ;; Process PGP/MIME. Needs gpg-agent working, with pinentry-gtk.
 (setq notmuch-crypto-process-mime t)
 
