@@ -96,6 +96,7 @@ keysym ISO_Level3_Shift = ISO_Level3_Shift  ISO_Level3_Shift  ISO_Group_Shift   
 ! keycode 115 = ISO_Lock  NoSymbol
 ! add Lock = ISO_Lock
 
+keycode 115 = Pointer_Button2
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! main keyboard
@@ -160,7 +161,7 @@ keycode 20 = minus		emdash		NoSymbol	U2011		KP_Subtract	KP_Subtract	hyphen		NoSy
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !            Ebene1		Ebene2		Ebene3		Ebene5		Ebene4		Ebene4+Sh	Ebene6		Ebene7
 
-keycode 24 = 	x		X		ellipsis	Greek_xi	Prior		Prior		Greek_XI	Greek_XI
+keycode 53 = 	x		X		ellipsis	Greek_xi	Prior		Prior		Greek_XI	Greek_XI
 !						…		ξ						Ξ		Ξ
 keycode 55 = 	v		V		underscore	NoSymbol	BackSpace	BackSpace	radical		NoSymbol
 !						_								√	
@@ -179,7 +180,7 @@ keycode 42 = 	g		G		greater		Greek_gamma	KP_8		KP_8		Greek_GAMMA	Greek_GAMMA
 !						>		γ						Γ		Γ
 keycode 41 = 	f		F		equal		Greek_phi	KP_9		KP_9		Greek_PHI	Greek_PHI
 !						=		φ 						Φ		Φ
-keycode 44 = 	q		Q		ampersand	U03D5		KP_Add		KP_Add		U211A		NoSymbol
+keycode 24 = 	q		Q		ampersand	U03D5		KP_Add		KP_Add		U211A		NoSymbol
 !						&		ϕ Greek_phi	+		+		ℚ rational
 keycode 51 = ssharp		U1E9E		U017F	 Greek_finalsmallsigma  U2212		NoSymbol	jot		NoSymbol
 !	     	ß		ẞ Capital ß	ſ long s	ς		− real minus			∘ ring operator
@@ -222,7 +223,7 @@ keycode 47 = udiaeresis		Udiaeresis	numbersign	NoSymbol	Escape		Escape		union		N
 !		ü		Ü		#								∪
 keycode 48 = odiaeresis		Odiaeresis	dollar		U03F5		Tab		ISO_Left_Tab	intersection	NoSymbol
 !		ö		Ö		$		ϵ						∩
-keycode 53 = adiaeresis		Adiaeresis	bar		Greek_eta	Insert		Insert		U2135		NoSymbol
+keycode 61 = adiaeresis		Adiaeresis	bar		Greek_eta	Insert		Insert		U2135		NoSymbol
 !		ä		Ä		|		η						ℵ
 keycode 33 = 	p		P		asciitilde	Greek_pi	Return		Return		Greek_PI	Greek_PI
 !						~		π						Π		Π
@@ -237,7 +238,7 @@ keycode 59 = comma		endash		quotedbl	U03F1		KP_2		KP_2		U21D2		NoSymbol
 !		,		–		"		ϱ Greek_rho					⇒ implies 
 keycode 60 = period	   enfilledcircbullet	apostrophe	U03D1		KP_3		KP_3		U21A6		NoSymbol
 !		.		•		'		ϑ Greek_theta					↦
-keycode 61 = 	j		J		semicolon	Greek_theta	semicolon	NoSymbol	Greek_THETA	Greek_THETA
+keycode 44 = 	j		J		semicolon	Greek_theta	semicolon	NoSymbol	Greek_THETA	Greek_THETA
 !						;		θ		;				Θ
 
 
