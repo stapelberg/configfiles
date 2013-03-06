@@ -360,16 +360,24 @@ setopt prompt_subst
 
 setup_prompt() {
     local _main_fmt
+    local _cfg_nag
+
     if [ $USER = "michael" ]; then
         _main_fmt="%m"
     else
         _main_fmt="%n@%m"
     fi
 
-    if [ $lvl -ge 2 ] ; then
-        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $ "
+    if [ -f "$(dirname $(readlink ~/.zshrc))/ERROR" ]; then
+        _cfg_nag="%F{red}cfg-git-error%f "
     else
-        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$ "
+        _cfg_nag=""
+    fi
+
+    if [ $lvl -ge 2 ] ; then
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $_cfg_nag$ "
+    else
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$_cfg_nag$ "
     fi
 }
 
