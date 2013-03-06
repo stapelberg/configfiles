@@ -61,4 +61,7 @@ for file in $(cd "$new_location" >/dev/null && git ls-files); do
     mv "$new_location/$file" "$cfgfiles/$file" || fail_update "could not move “$file”"
 done
 
+# Copy .git to the original folder
+(cd "$new_location" >/dev/null && tar cp .git) | tar x --directory "$cfgfiles"
+
 rm -rf "$new_location"
