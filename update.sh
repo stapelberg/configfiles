@@ -51,8 +51,10 @@ mkdir "$new_location" || fail_update "new_location $new_location could not be cr
     echo "--- git pull ---"
     git pull --ff-only || fail_update "new changes could not be applied"
 
-    echo "--- git stash apply ---"
-    git stash apply || fail_update "could not apply old changes with “git stash apply”"
+    if [[ $(git stash list | wc -l) -ne 0 ]]; then
+        echo "--- git stash pop ---"
+        git stash pop || fail_update "could not pop old changes with “git stash pop”"
+    fi
 ) >$cfgfiles/last-update.log 2>&1
 
 # Move files from the updated copy to the original folder.
