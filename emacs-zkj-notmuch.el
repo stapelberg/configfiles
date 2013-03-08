@@ -27,6 +27,11 @@
 ;; Don’t display killed threads in my inbox.
 (setq notmuch-saved-searches (quote (("inbox" . "tag:inbox -tag:killed"))))
 
+;; When starting, don’t load notmuch-hello, but jump directly to inbox.
+(defun notmuch ()
+  (interactive)
+  (notmuch-search (cdr (first notmuch-saved-searches))))
+
 ;; Use sendmail(1) to send emails.
 (setq message-send-mail-function (quote message-send-mail-with-sendmail))
 (setq send-mail-function (quote sendmail-send-it))
@@ -42,6 +47,7 @@
 
 ;; Required to make mail routing work in my setup
 (setq message-sendmail-envelope-from "michael@stapelberg.de")
+;;(setq message-sendmail-envelope-from "stapelberg@debian.org")
 ;;(setq message-sendmail-envelope-from "p5p@zekjur.net")
 
 ;; My folder is called "Sent", not "sent".
