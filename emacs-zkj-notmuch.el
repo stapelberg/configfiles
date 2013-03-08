@@ -167,3 +167,60 @@
     (if (member "is-spam" (notmuch-search-get-tags))
 	(notmuch-search-tag '("-is-spam" "+inbox"))
       (notmuch-search-tag '("+is-spam" "-inbox")))))
+
+;; Removes submit@bugs.debian.org from the recipients of a reply-all message.
+(defun debian-remove-submit (recipients)
+  (delq nil
+	(mapcar (lambda (recipient)
+		  (and (not (string-equal (nth 1 recipient) "submit@bugs.debian.org"))
+		       recipient))
+		recipients)))
+
+(defun debian-add-bugrecipient (recipients bugnumber)
+  (let* ((bugaddress (concat bugnumber "@bugs.debian.org"))
+	 (addresses (mapcar (lambda (x) (nth 1 x)) recipients))
+	 (exists (member bugaddress addresses)))
+    (if exists
+	recipients
+      (append (list (list (concat "Bug " bugnumber) bugaddress)) recipients))))
+
+;; TODO: msg should be made optional and it should default to the latest message in the bugreport.
+;; NB: bugnumber and msg are both strings.
+(defun debian-bts-reply (bugnumber msg)
+  ;; Download the message to ~/mail-copy-fs/imported.
+  (let ((msgpath (format "~/mail-copy-fs/imported/bts_%s_msg_%s.msg" bugnumber msg)))
+    (let* ((url (format "http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=%s;mbox=yes;bug=%s" msg bugnumber))
+	   (download-buffer (url-retrieve-synchronously url)))
+      (save-excursion
+	(set-buffer download-buffer)
+	(goto-char (point-min)) ; just to be safe
+	(if (not (string-equal
+		  (buffer-substring (point) (line-end-position))
+		  "HTTP/1.1 200 OK"))
+	    (error "Could not download the message from the Debian BTS"))
+	;; Delete the HTTP headers and the first "From" line (in order to
+	;; make this a message, not an mbox).
+	(re-search-forward "^$" nil 'move)
+	(forward-char)
+	(forward-line 1)
+	(delete-region (point-min) (point))
+	;; Store the message on disk.
+	(write-file msgpath)
+	(kill-buffer)))
+    ;; Import the mail into the notmuch database.
+    (let ((msgid (with-temp-buffer
+		   (call-process "~/.local/bin/notmuch-import.py" nil t nil (expand-file-name msgpath))
+		   (buffer-string))))
+      (notmuch-mua-reply (concat "id:" msgid) "Michael Stapelberg <stapelberg@debian.org>" t)
+      ;; Remove submit@bugs.debian.org, add <bugnumber>@bugs.debian.org.
+      (let* ((to (message-fetch-field "To"))
+	     (recipients (mail-extract-address-components to t))
+	     (recipients (debian-remove-submit recipients))
+	     (recipients (debian-add-bugrecipient recipients bugnumber))
+	     (recipients-str (mapconcat (lambda (x) (concat (nth 0 x) " <" (nth 1 x) ">")) recipients ", ")))
+	(save-excursion
+	  (message-goto-to)
+	  (message-delete-line)
+	  (insert "To: " recipients-str "\n")))
+      ;; Our modifications don’t count as modifications.
+      (set-buffer-modified-p nil))))
