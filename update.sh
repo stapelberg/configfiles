@@ -28,42 +28,45 @@ if ! mkdir "$cfgfiles/update_lock" 2>/dev/null; then
     exit 0
 fi
 
-# Cleanup the lock on exit/signal
-trap 'rm -rf "$cfgfiles/update_lock"' 0
-
-# XXX: In the future, the following lines could be run in background.
 echo "NOTE: updating git for $cfgfiles"
 
-# use e.g. ~/.configfiles.TMP as temporary copy to perform the update in
-new_location=$(dirname "$cfgfiles")/.$(basename "$cfgfiles").TMP
-[ -d "$new_location" ] && fail_update "new_location $new_location already exists"
-mkdir "$new_location" || fail_update "new_location $new_location could not be created"
+update_git() {
+    # Cleanup the lock on exit/signal
+    trap 'rm -rf "$cfgfiles/update_lock"' 0
 
-# Copy all the files from the current directory to the new location
-(cd "$cfgfiles" >/dev/null && tar cp .) | tar x --directory "$new_location"
+    # use e.g. ~/.configfiles.TMP as temporary copy to perform the update in
+    new_location=$(dirname "$cfgfiles")/.$(basename "$cfgfiles").TMP
+    [ -d "$new_location" ] && fail_update "new_location $new_location already exists"
+    mkdir "$new_location" || fail_update "new_location $new_location could not be created"
 
-(
-    cd "$new_location" >/dev/null
+    # Copy all the files from the current directory to the new location
+    (cd "$cfgfiles" >/dev/null && tar cp .) | tar x --directory "$new_location"
 
-    echo "--- git stash ---"
-    git stash || fail_update "could not “git stash” the current changes"
+    (
+        cd "$new_location" >/dev/null
 
-    echo "--- git pull ---"
-    git pull --ff-only || fail_update "new changes could not be applied"
+        echo "--- git stash ---"
+        git stash || fail_update "could not “git stash” the current changes"
 
-    if [[ $(git stash list | wc -l) -ne 0 ]]; then
-        echo "--- git stash pop ---"
-        git stash pop || fail_update "could not pop old changes with “git stash pop”"
-    fi
-) >$cfgfiles/last-update.log 2>&1
+        echo "--- git pull ---"
+        git pull --ff-only || fail_update "new changes could not be applied"
 
-# Move files from the updated copy to the original folder.
-IFS=$'\n'
-for file in $(cd "$new_location" >/dev/null && git ls-files); do
-    mv "$new_location/$file" "$cfgfiles/$file" || fail_update "could not move “$file”"
-done
+        if [[ $(git stash list | wc -l) -ne 0 ]]; then
+            echo "--- git stash pop ---"
+            git stash pop || fail_update "could not pop old changes with “git stash pop”"
+        fi
+    ) >$cfgfiles/last-update.log 2>&1
 
-# Copy .git to the original folder
-(cd "$new_location" >/dev/null && tar cp .git) | tar x --directory "$cfgfiles"
+    # Move files from the updated copy to the original folder.
+    IFS=$'\n'
+    for file in $(cd "$new_location" >/dev/null && git ls-files); do
+        mv "$new_location/$file" "$cfgfiles/$file" || fail_update "could not move “$file”"
+    done
 
-rm -rf "$new_location"
+    # Copy .git to the original folder
+    (cd "$new_location" >/dev/null && tar cp .git) | tar x --directory "$cfgfiles"
+
+    rm -rf "$new_location"
+}
+
+update_git &
