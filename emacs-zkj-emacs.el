@@ -55,9 +55,6 @@
 ;; No toolbar.
 (tool-bar-mode -1)
 
-;; Use Mod4 as meta. I probably might want to change this.
-(setq x-super-keysym 'meta)
-
 ;; Better than the default.
 (load-theme 'tango-dark t)
 
