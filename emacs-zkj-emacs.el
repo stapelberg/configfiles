@@ -76,6 +76,20 @@
 ;; C-z by default suspends the session, which is… incredibly useless.
 (global-set-key (kbd "C-z") 'undo)
 
+;; M-n is unbound by default, so bind it to scroll the window without
+;; moving the cursor, like ^E in vim. Likewise for M-p, but in the
+;; other direction.
+(defun ctrl-e-in-vim ()
+  (interactive)
+  (scroll-up 3))
+
+(defun ctrl-y-in-vim ()
+  (interactive)
+  (scroll-down 3))
+
+(global-set-key (kbd "M-n") 'ctrl-e-in-vim)
+(global-set-key (kbd "M-p") 'ctrl-y-in-vim)
+
 ;; Make C-c C-f expand filenames (like vim’s omni-complete)
 (global-set-key (kbd "C-c C-f") 'my-expand-file-name-at-point)
 (defun my-expand-file-name-at-point ()
