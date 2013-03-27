@@ -177,12 +177,13 @@
 		recipients)))
 
 (defun debian-add-bugrecipient (recipients bugnumber)
-  (let* ((bugaddress (concat bugnumber "@bugs.debian.org"))
+  (let* ((bugstr (format "%s" bugnumber))
+	 (bugaddress (concat bugstr "@bugs.debian.org"))
 	 (addresses (mapcar (lambda (x) (nth 1 x)) recipients))
 	 (exists (member bugaddress addresses)))
     (if exists
 	recipients
-      (append (list (list (concat "Bug " bugnumber) bugaddress)) recipients))))
+      (append (list (list (concat "Bug " bugstr) bugaddress)) recipients))))
 
 ;; TODO: msg should be made optional and it should default to the latest message in the bugreport.
 ;; NB: bugnumber and msg are both strings.
