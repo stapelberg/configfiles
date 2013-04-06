@@ -119,6 +119,7 @@ alias m='make'
 alias mp='mplayer -really-quiet'
 # disable gdb welcome message
 alias gdb='gdb -q'
+alias sctl='s systemctl'
 # Find files in current folder
 function f() {
     q="*$1*"
