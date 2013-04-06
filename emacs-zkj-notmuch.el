@@ -9,8 +9,9 @@
 (require 'notmuch-address)
 
 ;; If this is not midna, we run notmuch on midna via remote-notmuch.sh
-(when (not (string= system-name "midna.zekjur.net"))
-  (setq notmuch-command "/home/michael/configfiles/remote-notmuch.sh"))
+;; Temporarily commented out: mail is on x200 primarily for the time being.
+;; (when (not (string= system-name "midna.zekjur.net"))
+;;   (setq notmuch-command "/home/michael/configfiles/remote-notmuch.sh"))
 
 ;; Process PGP/MIME. Needs gpg-agent working, with pinentry-gtk.
 (setq notmuch-crypto-process-mime t)
@@ -71,7 +72,7 @@
 	("subject" . "%s ")))
 
 ;; Address completion.
-(setq notmuch-address-command "/home/michael/Downloads/nottoomuch-addresses.sh")
+(setq notmuch-address-command "/home/michael/notmuch/nottoomuch-addresses.sh")
 (notmuch-address-message-insinuate)
 
 ;;;; Mail body generation
