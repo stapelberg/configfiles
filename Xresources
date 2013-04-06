@@ -19,7 +19,7 @@ URxvt.internalBorder: 1
 URxvt.cursorBlink: 0
 URxvt.termName: xterm-color
 URxvt.visualBell: off
-URxvt.keysym.Mod4-u: perl:mark-yank-urls:activate_mark_mode
+URxvt.keysym.Mod1-u: perl:mark-yank-urls:activate_mark_mode
 URxvt.keysym.Mod4-p: perl:fonts:plus
 URxvt.keysym.Mod4-m: perl:fonts:minus
 URxvt.keysym.Mod4-o: perl:cwd-spawn
