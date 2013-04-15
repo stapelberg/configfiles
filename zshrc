@@ -94,10 +94,14 @@ alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 
 # Requires liburi-perl and xclip.
 function up() {
-    scp $1 web:htdocs/
-    # Echo and try to put this into the X11 clipboard, too
-    perl -MURI::Escape -E 'print "http://t.zekjur.net/" . uri_escape(shift)' \
-        "$(basename "$1")" | tee >(xclip) && echo
+    for file in $*; do
+        # Ensure the file is world-readable before uploading
+        chmod o+r $file
+        scp $file web:htdocs/
+        # Echo and try to put this into the X11 clipboard, too
+        perl -MURI::Escape -E 'print "http://t.zekjur.net/" . uri_escape(shift)' \
+            "$(basename "$file")" | tee >(xclip) && echo
+    done
 }
 
 # i3am <patch-id> switches to the i3 directory and merges the patch
