@@ -20,6 +20,9 @@
 ;;;; Emacs.Fontset-0: -misc-fixed-medium-r-normal--13-120-75-75-C-70-fontset-normal
 (defvar my-font "-misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1")
 
+;; For presentations
+;;(set-default-font "Monospace 16")
+
 ;; i’m not sure why i have to explicitly overwrite the font for latin1 and ucs charsets :-/
 (when (window-system)
   (mapc
