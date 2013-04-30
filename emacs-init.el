@@ -20,6 +20,9 @@
 ;; Perl-related settings.
 (require 'zkj-perl)
 
+;; Go-related settings.
+(require 'zkj-go)
+
 ;; Settings stored by the customize interface.
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
