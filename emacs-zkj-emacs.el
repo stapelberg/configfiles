@@ -36,12 +36,13 @@
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
 
-(global-set-key [(meta x)] (lambda ()
-                             (interactive)
-                             (or (boundp 'smex-cache)
-                                 (smex-initialize))
-                             (global-set-key [(meta x)] 'smex)
-                             (smex)))
+(if (require 'smex nil t)
+    (global-set-key [(meta x)] (lambda ()
+				 (interactive)
+				 (or (boundp 'smex-cache)
+				     (smex-initialize))
+				 (global-set-key [(meta x)] 'smex)
+				 (smex))))
 
 ;;;; general appearance
 
