@@ -101,3 +101,11 @@
   (interactive)
   (let ((hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name)))
     (call-interactively 'hippie-expand)))
+
+;; Easy window switching with M-<direction>
+(require 'windmove)
+
+(global-set-key [(meta left)]  'windmove-left)
+(global-set-key [(meta up)]    'windmove-up)
+(global-set-key [(meta right)] 'windmove-right)
+(global-set-key [(meta down)]  'windmove-down)
