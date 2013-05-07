@@ -1,4 +1,4 @@
-;;;; © 2012 Michael Stapelberg (BSD-licensed)
+;;;; © 2012-2013 Michael Stapelberg (BSD-licensed)
 ;;;;
 ;;;; ~/.emacs.d/init.el sets up the load-path and loads modular pieces
 ;;;; of configuration. All the files start with zkj to make sure there
@@ -14,8 +14,9 @@
 ;; LISP/SCHEME-related settings.
 (require 'zkj-lisp)
 
-;; notmuch-specific configuration.
-(require 'zkj-notmuch)
+;; notmuch-specific configuration, if it is installed.
+(if (require 'notmuch nil t)
+    (require 'zkj-notmuch))
 
 ;; Perl-related settings.
 (require 'zkj-perl)
