@@ -7,6 +7,7 @@
 ;;;; See also http://emacswiki.org/emacs/DotEmacsDotD
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+(package-initialize)
 
 ;; General emacs settings.
 (require 'zkj-emacs)
