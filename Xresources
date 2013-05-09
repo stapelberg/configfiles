@@ -12,6 +12,7 @@ URxvt.fonts.2: -misc-fixed-medium-r-normal--20-200-75-75-C-100-iso10646-1,xft:co
 !URxvt.foreground: lightgrey
 !URxvt.depth: 32
 
+URxvt.saveLines: 32768
 URxvt.scrollBar: false
 URxvt.background: black
 URxvt.foreground: lightgrey
