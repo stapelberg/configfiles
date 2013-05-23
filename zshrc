@@ -104,6 +104,16 @@ function up() {
     done
 }
 
+# Prepares a Debian upload in /tmp/up/. Pass a .changes file.
+function prep-deb-up() {
+    abspath=$(readlink -f $1)
+    [ -f /tmp/up ] && rm -rf /tmp/up
+    mkdir /tmp/up
+    cd /tmp/up
+    dget file://$abspath
+    debsign -k4AC8EE1D *changes
+}
+
 # i3am <patch-id> switches to the i3 directory and merges the patch
 # Recompilation should be done manually in order to negative-test any new
 # testcases first.
