@@ -107,7 +107,7 @@ function up() {
 # Prepares a Debian upload in /tmp/up/. Pass a .changes file.
 function prep-deb-up() {
     abspath=$(readlink -f $1)
-    [ -f /tmp/up ] && rm -rf /tmp/up
+    [ -d /tmp/up ] && rm -rf /tmp/up
     mkdir /tmp/up
     cd /tmp/up
     dget file://$abspath
