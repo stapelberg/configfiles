@@ -140,7 +140,7 @@ function d-clone() {
 
         # This tells git to push tags automatically,
         # so you don’t have to use “git push && git push --tags”.
-        git config --add remote.origin.push "+refs/heads/*:refs/remotes/origin/*" || return
+        git config --add remote.origin.push "+refs/heads/*:refs/heads/*" || return
         git config --add remote.origin.push "+refs/tags/*:refs/tags/*" || return
 
         echo "d-clone set up everything successfully."
