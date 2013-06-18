@@ -118,6 +118,7 @@ function prep-deb-up() {
 # needs debcheckout from devscripts and gbp-clone from git-buildpackage
 function d-clone() {
     local package=$1
+    local giturl
     if debcheckout --print $package >/dev/null
     then
         set -- $(debcheckout --print $package)
@@ -127,8 +128,12 @@ function d-clone() {
             return
         fi
 
-        echo "cloning $2"
-        gbp-clone $2 || return
+        # The check out URL is different from the push URL.
+        # These transformations try to get to the push URL.
+        giturl=$(echo $2 | sed 's/^git/git+ssh/' | sed 's/anonscm\.debian\.org/git.debian.org/' | sed 's,debian\.org,debian.org/git,')
+
+        echo "cloning $giturl"
+        gbp-clone $giturl || return
 
         # Change to the newest git repository
         cd $(dirname $(ls -1td */.git | head -1)) || return
