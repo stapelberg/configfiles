@@ -1,5 +1,5 @@
 display-info = yes
 display-experimental = yes
 pedantic = yes
-show-overrides = yes
+show-overrides = no
 color = auto
