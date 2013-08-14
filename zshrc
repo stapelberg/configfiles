@@ -270,6 +270,7 @@ alias -g H="| head"
 # Use ~sl in any command, for example less ~sl
 hash -d sl=/var/log/syslog
 hash -d pb=/var/cache/pbuilder/result
+hash -d dcs=~/gocode/src/github.com/Debian/dcs
 
 # aliases for my IRC / mail screens which request a kerberos ticket if no valid
 # one is present
