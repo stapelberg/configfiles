@@ -444,9 +444,10 @@ export LANG=de_DE.UTF-8
 export LC_MESSAGES=C
 export LC_TIME=en_DK.UTF-8
 
-# Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
-export PATH=~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
 export GOPATH=~/gocode
+# Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
+# Add $GOPATH/bin
+export PATH=$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
 
 # For debian utilities
 export DEBEMAIL="stapelberg@debian.org"
