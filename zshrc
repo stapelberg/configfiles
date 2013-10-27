@@ -143,6 +143,8 @@ function d-clone() {
         # both upstream and debian will be pushed when running “git push”.
         git config push.default matching || return
 
+        git config user.email "stapelberg@debian.org" || return
+
         # This tells git to push tags automatically,
         # so you don’t have to use “git push && git push --tags”.
         git config --add remote.origin.push "+refs/heads/*:refs/heads/*" || return
