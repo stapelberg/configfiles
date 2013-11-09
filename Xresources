@@ -30,6 +30,7 @@ URxvt.perl-ext: selection,mark-yank-urls,fonts,cwd-spawn
 URxvt.urlLauncher: google-chrome
 URxvt.urgentOnBell: true
 URxvt.scrollstyle: next
+URxvt.color4: #496AA0
 URxvt.color12: #11AAFF
 
 Xft.hinting: 1
