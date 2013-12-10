@@ -36,8 +36,6 @@ set printdevice=kyocera
 set timeout timeoutlen=1000 ttimeoutlen=100
 " We use rxvt-unicode-256color, explicitly tell vim that
 set t_Co=256
-" Use the X11 clipboard
-set clipboard=unnamed
 
 " So that system-wide packages like vim-syntax-go are used
 set runtimepath+=/usr/share/vim/addons
@@ -109,6 +107,12 @@ function! TODO()
 	:cwindow
 endfunction
 
+function! Mypaste()
+	:set paste
+	put *
+	:set nopaste
+endfunction
+
 let mapleader = ","
 
 " _x_ to compile, because it’s on the left hand, while comma (leader) is on
@@ -117,6 +121,7 @@ map <leader>x :make<CR>
 map <leader>t :!go test dcs/...<CR>
 map <leader>f :Fmt<CR>
 map <leader>w :Fmt<CR>:w<CR>
+map <leader>p :call Mypaste()<CR>
 map <leader>M :set makeprg=make\ -j4<CR>:make<CR>
 " _r_un a proof-of-concept
 map <leader>r :!make $(basename % .c) && ./$(basename % .c)<CR>
