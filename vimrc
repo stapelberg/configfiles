@@ -107,12 +107,6 @@ function! TODO()
 	:cwindow
 endfunction
 
-function! Mypaste()
-	:set paste
-	put *
-	:set nopaste
-endfunction
-
 let mapleader = ","
 
 " _x_ to compile, because it’s on the left hand, while comma (leader) is on
@@ -121,7 +115,7 @@ map <leader>x :make<CR>
 map <leader>t :!go test dcs/...<CR>
 map <leader>f :Fmt<CR>
 map <leader>w :Fmt<CR>:w<CR>
-map <leader>p :call Mypaste()<CR>
+map <leader>p "*p<CR>
 map <leader>M :set makeprg=make\ -j4<CR>:make<CR>
 " _r_un a proof-of-concept
 map <leader>r :!make $(basename % .c) && ./$(basename % .c)<CR>
