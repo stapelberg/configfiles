@@ -8,27 +8,40 @@ if which redshift >/dev/null 2>&1; then
 	redshift -m randr -l 47.31:8.50 -t 6000:5300 -b 0.8 &
 fi
 
-HOSTNAME=$(hostname)
-if [ "$HOSTNAME" = "midna" ]; then
+INPUT_DEVICES=$(xinput list --name-only)
+KINESIS="HumbleHacker.com HumbleHacked Kinesis Contoured"
+TRACKBALL="Logitech Unifying Device. Wireless PID:1028"
+TRACKPOINT="TPPS/2 IBM TrackPoint"
+
+if echo "$INPUT_DEVICES" | grep -qF "$KINESIS"
+then
 	# Slightly modified Xmodmap for the Kinesis keyboard
 	setxkbmap lv && xmodmap .Xmodmap
 
-	# Configure monitors
-	xrandr --output HDMI2 --mode 1920x1200 --right-of HDMI1
-
-	#~/notify-printer-status/notify-printer-status-loop.sh &
+	# Enable mousekeys to have a paste button
+	xkbset m
+	xkbset exp '=m'
 else
 	setxkbmap lv && xmodmap .Xmodmap_us_neo && xset -r 51
 fi
-# Enable mousekeys to have a paste button
-xkbset m
-xkbset exp '=m'
-if [ "$HOSTNAME" = "x200" ]
-then
+
+if echo "$INPUT_DEVICES" | grep -qF "$TRACKBALL"; then
+	xinput set-ptr-feedback "$TRACKBALL" 10 16 15
+	xinput set-prop "$TRACKBALL" 'Device Accel Profile' 2
+	xinput set-prop "$TRACKBALL" 'Device Accel Adaptive Deceleration' 1.2
+fi
+
+if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
 	# Enable scrolling on thinkpad
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Button" 2
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Axes" 6 7 4 5
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation" 1
+fi
+
+# Disable powersaving on nvidia cards, it causes really bad graphics
+# performance, at least with a minimalist window manager such as i3.
+if lspci -n | grep -q '\b10de:0df8\b'; then
+	/usr/lib/nvidia-settings/bin/nvidia-settings.nsw-orig -a "[gpu:0]/GPUPowerMizerMode=1"
 fi
 
 # needed for toggle_layout
