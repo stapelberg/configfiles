@@ -7,6 +7,8 @@
 
 (require 'notmuch)
 (require 'notmuch-address)
+;; for mail-add-attachment
+(require 'sendmail)
 
 (when (not (string= system-name "midna.zekjur.net"))
   (setq notmuch-command "/home/michael/configfiles/remote-notmuch.sh"))
@@ -15,6 +17,37 @@
 ;; explicitly ask for type and disposition, and defaults to attachment
 ;; instead of inline :).
 (define-key message-mode-map (kbd "C-c C-a") 'mail-add-attachment)
+
+;; Also replace the corresponding menu item, otherwise C-c C-a will
+;; not show up in the menu at all. Furthermore, using it from the menu
+;; will open a GTK file dialog.
+(define-key mml-mode-map [menu-bar Attachments Attach\ File...]
+  '("Attach File..." . mail-add-attachment))
+
+;; Attach an entire directory. Adapted from
+;; http://www.emacswiki.org/emacs/MessageMode
+(defun message-attach-all-files-from-folder(&optional dir-to-attach)
+  "create the mml code to attach all files found in a given directory"
+  (interactive)
+
+  (if (eq dir-to-attach nil)
+      (setq dir-to-attach (read-directory-name "Select a folder to attach: ")))
+
+  (if (not (string-match "/$" dir-to-attach))
+      (setq dir-to-attach (concat dir-to-attach "/")))
+
+  (dolist (file (directory-files dir-to-attach))
+    (when (and (not (string= "." file)) (not (string= ".." file)))
+      (let (full-file-path mime-type)
+	(setq full-file-path (concat dir-to-attach file))
+	(if (file-readable-p full-file-path)
+	    (if (file-directory-p full-file-path)
+		(message-attach-all-files-from-folder full-file-path)
+	      (setq mime-type (substring (shell-command-to-string (concat "file --mime-type --brief " (shell-quote-argument (expand-file-name full-file-path)))) 0 -1))
+	      (insert-string (concat "<#part type=\"" mime-type "\" filename=\"" full-file-path "\" disposition=attachment>\n"))))))))
+
+(define-key mml-mode-map [menu-bar Attachments Attach\ Directory...]
+  '("Attach Directory..." . message-attach-all-files-from-folder))
 
 ;; Process PGP/MIME. Needs gpg-agent working, with pinentry-gtk.
 (setq notmuch-crypto-process-mime t)
