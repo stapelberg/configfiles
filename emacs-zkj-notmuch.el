@@ -11,6 +11,11 @@
 (when (not (string= system-name "midna.zekjur.net"))
   (setq notmuch-command "/home/michael/configfiles/remote-notmuch.sh"))
 
+;; Rebind C-c C-a to use the attachment function which does NOT
+;; explicitly ask for type and disposition, and defaults to attachment
+;; instead of inline :).
+(define-key message-mode-map (kbd "C-c C-a") 'mail-add-attachment)
+
 ;; Process PGP/MIME. Needs gpg-agent working, with pinentry-gtk.
 (setq notmuch-crypto-process-mime t)
 
