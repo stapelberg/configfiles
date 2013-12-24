@@ -1,8 +1,8 @@
 # vim:ts=4:sw=4:expandtab
-# Save 2000 lines of history
+# Load 4000 lines of history, but save O(∞)
 HISTSIZE=4000
 HISTFILE=~/.zsh_history
-SAVEHIST=4000
+SAVEHIST=10000000
 # Print timing statistics for everything which takes longer than 5 seconds of
 # user + system time ('sleep 6' does not work because of 0% user/system time!).
 REPORTTIME=5
