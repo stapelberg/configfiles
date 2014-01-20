@@ -75,6 +75,8 @@ fignore=(.o)
 
 # On debian, App::Ack is installed as ack-grep, so alias it
 which ack-grep >/dev/null && alias ack='ack-grep'
+# Also, docker is docker.io
+which docker.io >/dev/null && alias docker='docker.io'
 
 # colors for ls and (more importantly) zsh completion
 zmodload zsh/complist
