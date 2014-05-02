@@ -23,6 +23,10 @@
 ;; For presentations
 ;;(set-default-font "Monospace 16")
 
+;; On hidpi displays, use an Xft font that scales well.
+(if (= (display-pixel-width) 3840)
+  (set-default-font "Source Code Pro 8"))
+
 ;; i’m not sure why i have to explicitly overwrite the font for latin1 and ucs charsets :-/
 (when (window-system)
   (mapc
