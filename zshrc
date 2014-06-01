@@ -507,5 +507,6 @@ chpwd_profiles
 [ -e "$HOME/.zshrc_host" ] && source ~/.zshrc_host
 
 cfgfiles=$(dirname $(readlink ~/.zshrc))
-# If the configfiles are in a git repository, update if it’s older than one hour
-find $cfgfiles -maxdepth 1 -name .git -mmin +60 -execdir ./update.sh \;
+# If the configfiles are in a git repository, update if it’s older than one hour.
+# On x200, I am running cfgupdater instead which triggers on a network connection.
+[ "$HOST" != "x200" ] && find $cfgfiles -maxdepth 1 -name .git -mmin +60 -execdir ./update.sh \;
