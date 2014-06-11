@@ -37,9 +37,6 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 " We use rxvt-unicode-256color, explicitly tell vim that
 set t_Co=256
 
-" So that system-wide packages like vim-syntax-go are used
-set runtimepath+=/usr/share/vim/addons
-
 " Enable syntax highlighting
 syntax on
 
