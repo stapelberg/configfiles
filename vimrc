@@ -10,6 +10,9 @@ set bg=dark
 set hlsearch
 " Set the terminals title
 set title
+" Don’t abbreviate the filename in terminal titles, which is useful for
+" time-tracking programs that care about the file path.
+set titlelen=0
 " Always show a status line
 set laststatus=2
 " Automatically indent, and do it smart
