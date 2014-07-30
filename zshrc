@@ -297,7 +297,7 @@ git_branch_chdir() {
 }
 
 git_branch_chdir
-chpwd_functions=(${chpwd_functions} git_branch_chdir)
+chpwd_functions=(${chpwd_functions[@]} git_branch_chdir)
 
 get_git_prompt_info() {
     fg_dark_blue=$'%{\e[0;36m%}'
@@ -379,7 +379,7 @@ cwd_to_urxvt() {
 }
 
 cwd_to_urxvt # execute upon startup to set initial directory
-chpwd_functions=(${chpwd_functions} cwd_to_urxvt)
+chpwd_functions=(${chpwd_functions[@]} cwd_to_urxvt)
 
 
 # Convenience wrapper around /etc/init.d
@@ -495,7 +495,7 @@ function chpwd_profiles() {
         unset GIT_AUTHOR_EMAIL
     fi
 }
-chpwd_functions=( ${chpwd_functions} chpwd_profiles )
+chpwd_functions=( ${chpwd_functions[@]} chpwd_profiles )
 # Call this function before the first chpwd. This is necessary to get correct
 # aliases in subshells (VIM’s :sh for example).
 chpwd_profiles
