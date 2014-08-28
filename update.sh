@@ -49,7 +49,12 @@ update_git() {
         git stash || fail_update "could not “git stash” the current changes"
 
         echo "--- git pull ---"
-        git pull --ff-only || fail_update "new changes could not be applied"
+        if git remote | grep -q readonly
+        then
+            git pull --ff-only readonly master || fail_update "new changes could not be applied"
+        else
+            git pull --ff-only || fail_update "new changes could not be applied"
+        fi
 
         if [[ $(git stash list | wc -l) -ne 0 ]]; then
             echo "--- git stash pop ---"
