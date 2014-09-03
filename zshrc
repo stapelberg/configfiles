@@ -447,7 +447,9 @@ setup_prompt
 unset LC_ALL
 export LANG=de_DE.UTF-8
 export LC_MESSAGES=C
-export LC_TIME=en_DK.UTF-8
+if locale -a | grep -q en_DK.UTF-8; then
+    export LC_TIME=en_DK.UTF-8
+fi
 
 export GOPATH=~/gocode
 # Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
