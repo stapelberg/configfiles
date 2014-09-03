@@ -483,14 +483,14 @@ zstyle ':completion:*:*:killall:*' menu yes select
 
 # Directory specific configuration
 function chpwd_profiles() {
-    if [[ ${PWD} =~ "$HOME/i3(|/|/*)" ]]
+    if [[ ${PWD} =~ "$HOME/i3($|/|/*)" ]]
     then
         alias m='CC=clang make -j16'
     else
         alias m='make'
     fi
 
-    if [[ ${PWD} =~ "$HOME/DPKG(|/|/*)" ]]
+    if [[ ${PWD} =~ "$HOME/DPKG($|/|/*)" ]]
     then
         export GIT_AUTHOR_EMAIL="stapelberg@debian.org"
     else
