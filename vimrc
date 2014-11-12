@@ -131,3 +131,50 @@ cnoremap <C-A> <Home>
 
 " Needed for Vroom::Vroom
 set exrc
+
+" see https://github.com/ConradIrwin/vim-bracketed-paste
+" enter/leave bracketed paste mode when entering/leaving insert mode
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+function! WrapForScreen(s)
+  if exists('$TMUX') || match($TERM, "screen")==-1
+    return a:s
+  endif
+
+  let screen_start = "\<Esc>P"
+  let screen_end = "\<Esc>\\"
+
+  return screen_start . a:s . screen_end
+endfunction
+
+function! WrapSequenceForMultiplexer(s)
+  return WrapForTmux(WrapForScreen(a:s))
+endfunction
+
+let &t_SI .= WrapSequenceForMultiplexer("\<Esc>[?2004h")
+let &t_EI .= WrapSequenceForMultiplexer("\<Esc>[?2004l")
+
+" make bracketed paste mode sequences trigger <f28>/<f29>
+execute "set <f28>=\<Esc>[200~"
+execute "set <f29>=\<Esc>[201~"
+
+function! XTermPasteBegin(ret)
+  set pastetoggle=<f29>
+  set paste
+  return a:ret
+endfunction
+
+map <expr> <f28> XTermPasteBegin("i")
+imap <expr> <f28> XTermPasteBegin("")
+vmap <expr> <f28> XTermPasteBegin("c")
+cmap <f28> <nop>
+cmap <f29> <nop>
