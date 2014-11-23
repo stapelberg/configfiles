@@ -79,7 +79,7 @@ export GTK_IM_MODULE=xim
 xsetroot -solid "#333333" -cursor_name left_ptr
 
 # Start urxvtd
-urxvtd -q -f -o
+urxvt256c-mld -q -f -o || urxvtd -q -f -o
 
 #cd /tmp
 #rm xsession.log
