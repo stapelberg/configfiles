@@ -253,7 +253,9 @@ alias acp='apt-cache policy'
 alias acsh='apt-cache show'
 alias ac='apt-cache'
 alias ag='s apt-get'
+alias ys='yum search'
 function agi { sudo apt-get install $* && rehash }
+function yi { sudo yum install $* && rehash }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt-get update'
 alias agdu='sudo apt-get dist-upgrade'
