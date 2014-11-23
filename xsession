@@ -13,6 +13,11 @@ KINESIS="HumbleHacker.com HumbleHacked Kinesis Contoured"
 TRACKBALL="Logitech Unifying Device. Wireless PID:1028"
 TRACKPOINT="TPPS/2 IBM TrackPoint"
 
+if $HOST = "midna"; then
+	# The Dell monitor doesn’t like it.
+	xset -dpms
+fi
+
 if echo "$INPUT_DEVICES" | grep -qF "$KINESIS"
 then
 	# Slightly modified Xmodmap for the Kinesis keyboard
