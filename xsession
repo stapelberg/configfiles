@@ -34,6 +34,10 @@ if echo "$INPUT_DEVICES" | grep -qF "$TRACKBALL"; then
 	xinput set-ptr-feedback "$TRACKBALL" 10 16 15
 	xinput set-prop "$TRACKBALL" 'Device Accel Profile' 2
 	xinput set-prop "$TRACKBALL" 'Device Accel Adaptive Deceleration' 1.2
+	if "$HOST" = "midna"; then
+		xinput set-prop "$TRACKBALL" 'Device Accel Adaptive Deceleration' 1.2
+		xinput set-ptr-feedback "$TRACKBALL" 10 20 15
+	fi
 fi
 
 if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
