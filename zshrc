@@ -178,6 +178,7 @@ alias mp='mplayer -really-quiet'
 # disable gdb welcome message
 alias gdb='gdb -q'
 alias sctl='s systemctl'
+alias j='journalctl --full -e -u'
 # Find files in current folder
 function f() {
     q="*$1*"
