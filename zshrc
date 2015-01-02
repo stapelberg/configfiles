@@ -474,7 +474,6 @@ zle -N self-insert url-quote-magic
 # Have a bell-character put out, everytime a command finishes. This will set the urgent-hint,
 # if the terminal is configured accordingly
 bellchar=$'\a'
-which setterm >/dev/null && setterm -blength 0 # Don't REALLY beep
 zle-line-init () { echo -n "$bellchar" }
 zle -N zle-line-init
 
