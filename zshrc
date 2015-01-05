@@ -18,6 +18,11 @@ unset MAILCHECK
 
 setopt short_loops
 
+# All unquoted arguments of the form `anything=expression' appearing after the
+# command name have filename expansion (that is, where expression has a leading
+# `~' or `=')  performed on expression as if it were a parameter assignment.
+setopt MAGIC_EQUAL_SUBST
+
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
