@@ -56,6 +56,22 @@ expand-or-complete-with-dots() {
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
+# C-t deletes to the left of the cursor until the next /. Useful to delete a
+# path component.
+backward-delete-to-slash() {
+  integer pos=$CURSOR
+  while (( pos > 1 )); do
+    if [[ ${LBUFFER[pos]} = / ]]; then
+      LBUFFER=${LBUFFER[0,pos]}
+      return 0
+    fi
+    pos=$((pos-1))
+  done
+  return 1
+}
+zle -N backward-delete-to-slash
+bindkey "^T" backward-delete-to-slash
+
 # Press 'v' to edit the command line in vim.
 autoload -U edit-command-line
 zle -N edit-command-line
