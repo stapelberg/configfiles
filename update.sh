@@ -45,6 +45,8 @@ update_git() {
     (
         cd "$new_location" >/dev/null
 
+        git config gc.auto 0 || fail_update "could not disable auto gc"
+
         echo "--- git stash ---"
         git stash || fail_update "could not “git stash” the current changes"
 
