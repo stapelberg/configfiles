@@ -25,3 +25,6 @@
 
 [pager]
 	diff = LESS=RS less -c
+
+[core]
+	excludesfile = ~/configfiles/gitignore
