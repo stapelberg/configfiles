@@ -62,7 +62,9 @@ autocmd BufNewFile,BufRead *.sh,*.pl,*.pm,*.rb set cin cinkeys=0{,0},0),:,!^F,o,
 autocmd BufNewFile,BufRead /home/michael/prolog/*.pl set ft=prolog
 
 " Go files
+let g:gofmt_command="goimports"
 autocmd BufRead,BufNewFile *.go set ts=4 sw=4 noexpandtab makeprg=go\ build
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
