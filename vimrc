@@ -2,6 +2,27 @@ if v:progname != 'vim'
   finish
 endif
 
+" Remove fedora and redhat default vimrc additions.
+augroup fedora
+autocmd!
+augroup! fedora
+
+augroup redhat
+autocmd!
+augroup! redhat
+augroup END
+
+" Restore the last cursor position when opening files.
+function! RestoreCursor()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+autocmd BufReadPost * call RestoreCursor()
+" …except for git commit messages, where that doesn’t make any sense.
+autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
+
 " Don’t ensure compatibility with vi at all cost. This needs to be set first
 " because it modifies the values of some other options (such as modeline).
 set nocompatible
