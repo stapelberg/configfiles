@@ -1,3 +1,7 @@
+if v:progname != 'vim'
+  finish
+endif
+
 " Don’t ensure compatibility with vi at all cost. This needs to be set first
 " because it modifies the values of some other options (such as modeline).
 set nocompatible
