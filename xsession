@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Enable zapping (C-A-<Bksp> kills X)
 setxkbmap -option terminate:ctrl_alt_bksp
