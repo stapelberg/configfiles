@@ -148,6 +148,7 @@ map <leader>M :set makeprg=make\ -j4<CR>:make<CR>
 map <leader>r :!make $(basename % .c) && ./$(basename % .c)<CR>
 map <leader>h :nohlsearch<CR>
 map <leader>n :cn<CR>
+map <leader>a :Ack<CR>
 
 " Make Ctrl-e/y go faster
 nnoremap <C-e> 3<C-e>
