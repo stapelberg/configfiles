@@ -479,7 +479,7 @@ fi
 export GOPATH=~/gocode
 # Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
 # Add $GOPATH/bin
-export PATH=$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
+export PATH=/home/michael/go/bin:$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
 
 # For debian utilities
 export DEBEMAIL="stapelberg@debian.org"
