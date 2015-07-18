@@ -109,7 +109,7 @@ map <F5> :!latex % && dvipdf %<.dvi && xpdf %<.pdf<CR>
 map <F6> :!xelatex % && xpdf -fullscreen %<.pdf<CR>
 
 " Just tex it (if you already have an open viewer)
-command T write<BAR>!xelatex %
+command! T write<BAR>!xelatex %
 
 map gqc :call FormatComment()<CR>
 
