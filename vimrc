@@ -87,9 +87,8 @@ autocmd BufNewFile,BufRead *.sh,*.pl,*.pm,*.rb set cin cinkeys=0{,0},0),:,!^F,o,
 autocmd BufNewFile,BufRead /home/michael/prolog/*.pl set ft=prolog
 
 " Go files
-let g:gofmt_command="goimports"
+let g:go_fmt_command="goimports"
 autocmd BufRead,BufNewFile *.go set ts=4 sw=4 noexpandtab makeprg=go\ build
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
@@ -206,3 +205,18 @@ imap <expr> <f28> XTermPasteBegin("")
 vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
+
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'fatih/vim-go'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin on
