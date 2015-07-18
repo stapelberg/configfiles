@@ -299,6 +299,7 @@ alias -g H="| head"
 hash -d sl=/var/log/syslog
 hash -d pb=/var/cache/pbuilder/result
 hash -d dcs=~/gocode/src/github.com/Debian/dcs
+hash -d rirc=~/gocode/src/github.com/robustirc/robustirc
 
 # aliases for my IRC / mail screens which request a kerberos ticket if no valid
 # one is present
