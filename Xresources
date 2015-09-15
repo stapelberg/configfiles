@@ -2,9 +2,12 @@ Emacs.Font: fontset-normal
 Emacs.Fontset-0: -misc-fixed-medium-r-normal--13-120-75-75-C-70-fontset-normal
 
 *font: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-URxvt.fonts.0: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1,xft:code2000:autohint=false
-URxvt.fonts.1: -misc-fixed-medium-r-normal--18-120-100-100-C-90-iso10646-1,xft:code2000:autohint=false
-URxvt.fonts.2: -misc-fixed-medium-r-normal--20-200-75-75-C-100-iso10646-1,xft:code2000:autohint=false
+!URxvt.fonts.0: xft:Source Code Pro:size=8
+URxvt.fonts.0: xft:Bitstream Vera Sans Mono:size=8
+URxvt.letterSpace: -1
+!URxvt.fonts.0: xft:Bitstream Vera Sans Mono:size=9
+!URxvt.fonts.1: -misc-fixed-medium-r-normal--18-120-100-100-C-90-iso10646-1,xft:code2000:autohint=false
+!URxvt.fonts.2: -misc-fixed-medium-r-normal--20-200-75-75-C-100-iso10646-1,xft:code2000:autohint=false
 
 !URxvt.boldfont: -misc-fixed-medium-r-normal-*-10-100-*-*-*-*-iso10646-1,xft:code2000:autohint=false
 
@@ -58,12 +61,20 @@ URxvt*color14 : #34E2E2
 URxvt*color7  : #D3D7CF
 URxvt*color15 : #EEEEEC
 
+!Xft.hinting: 1
+!Xft.hintstyle: hintslight
+!Xft.antialias: 1
+!Xft.rgba: rgb
+Xft.dpi: 192
+
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
 Xft.hinting: 1
-Xft.hintstyle: hintslight
 Xft.antialias: 1
-Xft.dpi: 96
+Xft.rgba: rgb
 
 !*background: black
 !*foreground: lightgrey
 
-Xcursor.theme: osx
+Xcursor.theme: adwaita
