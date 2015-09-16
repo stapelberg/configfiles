@@ -8,6 +8,8 @@ if which redshift >/dev/null 2>&1; then
 	redshift -m randr -l 47.31:8.50 -t 6000:5300 -b 0.8 &
 fi
 
+xrandr --dpi 192̂
+
 INPUT_DEVICES=$(xinput list --name-only)
 KINESIS="HumbleHacker.com HumbleHacked Kinesis Contoured"
 TRACKBALL="Logitech Unifying Device. Wireless PID:1028"
@@ -26,7 +28,7 @@ then
 	xkbset m
 	xkbset exp '=m'
 else
-	setxkbmap lv && xmodmap .Xmodmap_us_neo && xset -r 51
+	setxkbmap de -variant neo
 fi
 
 if echo "$INPUT_DEVICES" | grep -qF "$TRACKBALL"; then
