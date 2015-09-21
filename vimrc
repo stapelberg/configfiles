@@ -225,3 +225,7 @@ if filereadable(vundle_readme)
 	call vundle#end()            " required
 	filetype plugin on
 endif
+
+if filereadable(expand('~/.vimrc_host'))
+  source ~/.vimrc_host
+endif
