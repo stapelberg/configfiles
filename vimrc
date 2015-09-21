@@ -206,19 +206,22 @@ vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
 
-filetype off                  " required
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if filereadable(vundle_readme)
+	filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+	" set the runtime path to include Vundle and initialize
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+	" let Vundle manage Vundle, required
+	Plugin 'gmarik/Vundle.vim'
 
-Plugin 'fatih/vim-go'
+	Plugin 'fatih/vim-go'
 
-Plugin 'mileszs/ack.vim'
+	Plugin 'mileszs/ack.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin on
+	" All of your Plugins must be added before the following line
+	call vundle#end()            " required
+	filetype plugin on
+endif
