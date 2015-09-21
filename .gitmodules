@@ -1,0 +1,6 @@
+[submodule "gocode/src/github.com/godbus/dbus"]
+	path = gocode/src/github.com/godbus/dbus
+	url = git://github.com/godbus/dbus
+[submodule "gocode/src/github.com/nightlyone/lockfile"]
+	path = gocode/src/github.com/nightlyone/lockfile
+	url = git://github.com/nightlyone/lockfile

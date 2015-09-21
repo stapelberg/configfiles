@@ -1,0 +1,8 @@
+[Unit]
+Description=configfiles updater
+
+[Service]
+ExecStart=/home/michael/configfiles/gocode/bin/configfiles -daemon
+
+[Install]
+WantedBy=multi-user.target
