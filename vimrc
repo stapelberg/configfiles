@@ -226,11 +226,21 @@ if filereadable(vundle_readme)
 
 	Plugin 'luochen1990/rainbow'
 
+	Plugin 'epeli/slimux'
+
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
 	filetype plugin on
 
 	let g:rainbow_active = 1
+
+	map <Leader>s :SlimuxREPLSendLine<CR>
+	map <Leader>b :SlimuxREPLSendBuffer<CR>
+	vmap <Leader>s :SlimuxREPLSendSelection<CR>
+	map <Leader>a :SlimuxShellLast<CR>
+	map <Leader>k :SlimuxSendKeysLast<CR>
+
+	let g:slimux_select_from_current_window = 1
 endif
 
 if filereadable(expand('~/.vimrc_host'))
