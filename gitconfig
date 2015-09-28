@@ -29,3 +29,6 @@
 
 [core]
 	excludesfile = ~/configfiles/gitignore
+
+[http]
+	cookiefile = ~/.gitcookies
