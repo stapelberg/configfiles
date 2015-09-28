@@ -68,6 +68,9 @@ set t_Co=256
 " Enable syntax highlighting
 syntax on
 
+" Most accurate highlighting, but might be slow:
+autocmd BufEnter * :syntax sync fromstart
+
 " Enable file type-specific indention rules
 "filetype indent on
 filetype plugin on
