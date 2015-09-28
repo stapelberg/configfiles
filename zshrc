@@ -536,4 +536,4 @@ chpwd_profiles
 cfgfiles=$(dirname $(readlink ~/.zshrc))
 # If the configfiles are in a git repository, update if it’s older than one hour.
 # On x1/x200, I am running cfgupdater instead which triggers on a network connection.
-[ "$HOST" != "x1" -a "$HOST" != "x200" ] && $cfgfiles/gocode/bin/configfiles -quiet &!
+[ "$HOST" != "x1" -a "$HOST" != "x200" ] && $cfgfiles/gocode/bin/configfiles -configfiles_dir=$cfgfiles -quiet &!
