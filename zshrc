@@ -205,6 +205,7 @@ function f() {
     q="*$1*"
     find . -iname $q
 }
+alias h='cat ~/.zsh_history | grep --text --color '
 
 alias wl="sudo sh -c 'IF_WPA_VERBOSITY=1 wpa_action wlan0 DISCONNECTED ; ifdown --force wlan0 ; ifup wlan0'"
 
