@@ -156,7 +156,7 @@ function d-clone() {
         giturl=$(echo $2 | sed 's/^git/git+ssh/' | sed 's/anonscm\.debian\.org/git.debian.org/' | sed 's,debian\.org,debian.org/git,')
 
         echo "cloning $giturl"
-        gbp-clone $giturl || return
+        gbp clone --pristine-tar $giturl || return
 
         # Change to the newest git repository
         cd $(dirname $(ls -1td */.git | head -1)) || return
