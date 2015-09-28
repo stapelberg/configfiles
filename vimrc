@@ -221,9 +221,13 @@ if filereadable(vundle_readme)
 
 	Plugin 'mileszs/ack.vim'
 
+	Plugin 'luochen1990/rainbow'
+
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
 	filetype plugin on
+
+	let g:rainbow_active = 1
 endif
 
 if filereadable(expand('~/.vimrc_host'))
