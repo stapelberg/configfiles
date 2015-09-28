@@ -448,7 +448,7 @@ setup_prompt() {
     local _main_fmt
     local _cfg_nag
 
-    if [ $USER = "michael" ]; then
+    if [ $USER = "michael" -o $USER = "stapelberg" ]; then
         _main_fmt="%m"
     else
         _main_fmt="%n@%m"
