@@ -138,6 +138,11 @@ func copyFile(src, dest string) error {
 	if err != nil {
 		return err
 	}
+	// Remove the destination file in case it is read-only (packfiles of git
+	// submodules are read-only).
+	if err := os.Remove(dest); err != nil && !os.IsNotExist(err) {
+		return err
+	}
 	out, err := os.OpenFile(dest, os.O_CREATE|os.O_RDWR, fi.Mode())
 	if err != nil {
 		return err
@@ -154,7 +159,7 @@ func copyFile(src, dest string) error {
 func copyAll(src, dest string) error {
 	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
 		if info.IsDir() {
-			return os.Mkdir(strings.Replace(path, src, dest, 1), info.Mode())
+			return os.MkdirAll(strings.Replace(path, src, dest, 1), info.Mode())
 		}
 		if !info.Mode().IsRegular() {
 			return nil
@@ -370,6 +375,10 @@ func pull() error {
 	}
 
 	log.Printf("Update done successfully\n")
+
+	if err := copyAll(filepath.Join(twd, ".git"), filepath.Join(*configfilesDir, ".git")); err != nil {
+		return err
+	}
 
 	return judgeErrors()
 }
