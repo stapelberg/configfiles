@@ -1,1 +1,2 @@
 BTS_SENDMAIL_COMMAND="/usr/sbin/sendmail -oem -ti -f michael@stapelberg.de"
+DEBSIGN_KEYID="4AC8EE1D"

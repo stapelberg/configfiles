@@ -22,6 +22,7 @@
 [user]
 	name = Michael Stapelberg
 	email = michael@stapelberg.de
+	signingkey = 4E7160ED4AC8EE1D
 
 [pager]
 	diff = LESS=RS less -c
