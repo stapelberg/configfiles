@@ -125,7 +125,7 @@ zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
 alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 
 # Requires liburi-perl and xclip.
-function up() {
+up() {
     for file in $*; do
         # Ensure the file is world-readable before uploading
         chmod o+r $file
@@ -138,7 +138,7 @@ function up() {
 
 # Clones the git sources of a Debian package
 # needs debcheckout from devscripts and gbp-clone from git-buildpackage
-function d-clone() {
+d-clone() {
     local package=$1
     local giturl
     if debcheckout --print $package >/dev/null
@@ -193,7 +193,7 @@ alias gdb='gdb -q'
 alias sctl='s systemctl'
 alias j='journalctl --full -e -u'
 # Find files in current folder
-function f() {
+f() {
     q="*$1*"
     find . -iname $q
 }
@@ -213,10 +213,10 @@ alias pd="perldoc"
 
 alias ripcd='cdparanoia -Bs 1-'
 
-function x() {  xclip -i <<< $($*) }
+x() {  xclip -i <<< $($*) }
 
 # Prepend a command with e to close the starting shell
-function e() {
+e() {
     eval "$* &|"
     exit
 }
@@ -239,13 +239,13 @@ alias acsh='apt-cache show'
 alias ac='apt-cache'
 alias ag='s apt-get'
 alias ys='yum search'
-function agi { sudo apt-get install $* && rehash }
-function yi { sudo yum install $* && rehash }
+agi() { sudo apt-get install $* && rehash }
+yi() { sudo yum install $* && rehash }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt-get update'
 alias agdu='sudo apt-get dist-upgrade'
 
-function agr { sudo apt-get remove $* && rehash }
+agr() { sudo apt-get remove $* && rehash }
 
 alias smi='sudo make install'
 
@@ -266,11 +266,15 @@ hash -d rirc=~/gocode/src/github.com/robustirc/robustirc
 export __CURRENT_GIT_BRANCH=
 typeset -a __CURRENT_GIT_DIR
 parse_git_branch() {
-    [ -f ${__CURRENT_GIT_DIR[1]}/HEAD ] && sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD
+    if [ -f ${__CURRENT_GIT_DIR[1]}/HEAD ]
+    then
+        __CURRENT_GIT_BRANCH=$(sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD)
+    fi
 }
 
 git_branch_chdir() {
     __CURRENT_GIT_DIR=((../)#.git)
+    parse_git_branch
 }
 
 git_branch_chdir
@@ -288,7 +292,7 @@ get_git_prompt_info() {
     fi
 }
 
-function set_termtitle() {
+set_termtitle() {
     # escape '%' chars in $1, make nonprintables visible
     a=${(V)1//\%/\%\%}
 
@@ -323,12 +327,11 @@ function set_termtitle() {
     esac
 }
 
-function my_prompt_precmd() {
-    export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
+my_prompt_precmd() {
     set_termtitle "zsh" "%m"
 }
 
-function my_prompt_preexec() {
+my_prompt_preexec() {
     set_termtitle "$1" "%m"
 }
 
@@ -337,11 +340,6 @@ precmd_functions+=my_prompt_precmd
 
 typeset -ga preexec_functions
 preexec_functions+=my_prompt_preexec
-
-function chpwd() {
-    export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
-}
-
 
 cwd_to_urxvt() {
     local update="\0033]777;cwd-spawn;path;$PWD\0007"
@@ -440,7 +438,7 @@ zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:killall:*' menu yes select
 
 # Directory specific configuration
-function chpwd_profiles() {
+chpwd_profiles() {
     if [[ ${PWD} =~ "$HOME/i3($|/|/*)" ]]
     then
         alias m='CC=clang make -j16'
