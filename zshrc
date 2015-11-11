@@ -136,16 +136,6 @@ function up() {
     done
 }
 
-# Prepares a Debian upload in /tmp/up/. Pass a .changes file.
-function prep-deb-up() {
-    abspath=$(readlink -f $1)
-    [ -d /tmp/up ] && rm -rf /tmp/up
-    mkdir /tmp/up
-    cd /tmp/up
-    dget file://$abspath
-    debsign -k4AC8EE1D *changes
-}
-
 # Clones the git sources of a Debian package
 # needs debcheckout from devscripts and gbp-clone from git-buildpackage
 function d-clone() {
@@ -209,17 +199,10 @@ function f() {
 }
 alias h='cat ~/.zsh_history | grep --text --color '
 
-alias wl="sudo sh -c 'IF_WPA_VERBOSITY=1 wpa_action wlan0 DISCONNECTED ; ifdown --force wlan0 ; ifup wlan0'"
-
-# Debug the last coredump
-alias dbg='~/.bin/gdb-coredump.pl'
-
 # Edit a temporary file with my template for a C proof-of-concept
 alias cpoc='cd /tmp && FN=$(mktemp --suffix=.c) && cp ~/configfiles/poc-template.c $FN && vi $FN && echo "Proof-of-concept stored in $FN"'
 
 alias bc='bc -ql'
-
-alias ü='cd /home/michael/Uni/S4/Uebungen'
 
 alias cal='cal -y'
 
@@ -228,11 +211,7 @@ alias pw='pwgen -s 23 1'
 
 alias pd="perldoc"
 
-# Open terminal in ISO-8859-15-Mode
-alias iso='LANG=en_US.iso885915 LC_ALL=en_US.iso885915 urxvt'
-
 alias ripcd='cdparanoia -Bs 1-'
-alias cam="mplayer -v tv:// -tv device=/dev/video0:driver=v4l2:outfmt=yuy2"
 
 function x() {  xclip -i <<< $($*) }
 
@@ -242,27 +221,8 @@ function e() {
     exit
 }
 
-function wb() {
-    mkdir -p ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
-    cd ~/Bilder/whiteboard/$(date +'%Y-%m-%d')
-    gphoto2 -P
-    chmod 644 *
-}
-
-# wiipdf with the ID of my primary wiimote
-alias wp="wiipdf 00:19:1D:93:CA:EB "
-
 alias asdf='/home/michael/toggle_layout.sh'
 alias uiae='/home/michael/toggle_layout.sh'
-
-alias update-mirror='debmirror --diff=none --getcontents --passive --verbose --progress --nosource --host=ftp.de.debian.org --dist=squeeze,sid --arch=amd64 debian && sudo apt-get update'
-alias update-mirror-multimedia='debmirror debian-multimedia --diff=none --getcontents --passive --ignore-small-errors --verbose --progress --ignore-release-gpg --host=www.debian-multimedia.org --dist=stable,testing --arch=amd64 --root=/ --method=http --section=main'
-
-# Burn a single file onto CD-ROM
-alias burnfile='mkisofs ${1} | cdrecord driveropts=burnfree -v fs=6m -'
-function burndvd {
-    growisofs -dvd-compat -Z /dev/sr0=${1}
-}
 
 # A nicer ps-output. We need to specify user:12 because otherwise usernames
 # such as 'sphinxsearch' or 'libvirt-qemu' are displayed as user IDs. According
@@ -284,7 +244,6 @@ function yi { sudo yum install $* && rehash }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt-get update'
 alias agdu='sudo apt-get dist-upgrade'
-alias cupt-upgrade='sudo cupt -o debug::resolver=1 -i -V -D -R full-upgrade i3-wm/installed sudo/installed 2>&1 | tee /tmp/cupt.log'
 
 function agr { sudo apt-get remove $* && rehash }
 
@@ -299,19 +258,9 @@ alias -g G="| grep"
 alias -g H="| head"
 
 # Use ~sl in any command, for example less ~sl
-hash -d sl=/var/log/syslog
 hash -d pb=/var/cache/pbuilder/result
 hash -d dcs=~/gocode/src/github.com/Debian/dcs
 hash -d rirc=~/gocode/src/github.com/robustirc/robustirc
-
-# aliases for my IRC / mail screens which request a kerberos ticket if no valid
-# one is present
-alias irc='(klist -s || kinit) && ssh labs -t screen -Dr irc'
-alias mail='(klist -s || kinit) && ssh midna -t screen -x sup'
-alias mpd='(4 a G 172.22.37 >/dev/null && ncmpcpp -h 172.22.37.1) || (4 a G 172.22.36 >/dev/null && ncmpcpp -h 172.22.36.117) || echo "Not sure which MPD to use"'
-
-# Lock the screen and suspend to RAM.
-alias susp='i3lock -i ~/Bilder/triforce2560.png -t && sudo sh -c "echo mem > /sys/power/state"'
 
 # show the git branch in prompt
 export __CURRENT_GIT_BRANCH=
@@ -408,27 +357,6 @@ cwd_to_urxvt() {
 
 cwd_to_urxvt # execute upon startup to set initial directory
 chpwd_functions=(${chpwd_functions[@]} cwd_to_urxvt)
-
-
-# Convenience wrapper around /etc/init.d
-function in() {
-    sudo /etc/init.d/$*
-}
-
-function scan() {
-       scanimage --format TIFF --resolution 300 -x 215 -y 297 > $1.tiff && convert $1.tiff -resize 1024x $1.jpg
-}
-
-# Start mplayer with some options for nicer streaming on the given channel
-function tv {
-# -ni and -noidx: disable index (streams are not seekable)
-# -framedrop: it's ok to drop some frames, MPEG-TS is a lossy format
-# -vf kerndeint: specify deinterlacing for those broadcasters which don't do it themselves
-# -prefer-ipv4: we don't have ipv6, so don't try
-# -xineramascreen 0: needed for correct aspect-ratio
-# -cache 4096: stream stutters if we don't buffer a bit
-    mplayer -noidx -framedrop -vf kerndeint -prefer-ipv4 -cache 2048 http://tv:7000/${1}
-}
 
 # Define prompt
 fg_green=$'%{\e[1;32m%}'
@@ -528,10 +456,6 @@ chpwd_functions=( ${chpwd_functions[@]} chpwd_profiles )
 # Call this function before the first chpwd. This is necessary to get correct
 # aliases in subshells (VIM’s :sh for example).
 chpwd_profiles
-
-# Initialize SSH completion only with hosts in my ~/.ssh/config, but especially with the aliases
-# I gave them (and the full host names).
-[ -e "$HOME/.ssh/config" ] && zstyle ':completion:*:complete:ssh:*:hosts' hosts $(sed -n "s/^[ \\t]*Host\(name\|\) \(.*\)/\\2/p" $HOME/.ssh/config | uniq)
 
 [ -e "$HOME/.zshrc_host" ] && source ~/.zshrc_host
 
