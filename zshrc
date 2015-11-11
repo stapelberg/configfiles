@@ -374,6 +374,9 @@ esac
 # enable substitution in prompt, necessary for $(get_git_prompt_info)
 setopt prompt_subst
 
+zshrc=~/.zshrc
+cfgfiles=${zshrc:A:h}
+
 setup_prompt() {
     local _main_fmt
     local _cfg_nag
@@ -384,7 +387,7 @@ setup_prompt() {
         _main_fmt="%n@%m"
     fi
 
-    if [ -f "$(dirname $(readlink ~/.zshrc))/ERROR" ]; then
+    if [ -f "${cfgfiles}/ERROR" ]; then
         _cfg_nag="%F{red}cfg-git-error%f "
     else
         _cfg_nag=""
@@ -459,7 +462,6 @@ chpwd_profiles
 
 [ -e "$HOME/.zshrc_host" ] && source ~/.zshrc_host
 
-cfgfiles=$(dirname $(readlink ~/.zshrc))
 # If the configfiles are in a git repository, update if it’s older than one hour.
 # On x1/x200, I am running cfgupdater instead which triggers on a network connection.
 [ "$HOST" != "x1" -a "$HOST" != "x200" ] && $cfgfiles/gocode/bin/configfiles -configfiles_dir=$cfgfiles -quiet &!
