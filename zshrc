@@ -188,13 +188,6 @@ function d-clone() {
     fi
 }
 
-# i3am <patch-id> switches to the i3 directory and merges the patch
-# Recompilation should be done manually in order to negative-test any new
-# testcases first.
-function i3am() {
-    cd ~/i3 && (curl http://cr.i3wm.org/patch/$1/raw | git am -3 --whitespace=fix)
-}
-
 # Nicer output of ls
 alias ls='ls --color=auto'
 alias ll='ls -hl'
