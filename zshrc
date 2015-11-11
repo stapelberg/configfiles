@@ -106,7 +106,7 @@ setopt no_HUP
 fignore=(.o)
 
 # On debian, App::Ack is installed as ack-grep, so alias it
-[ -f /usr/bin/ack-grep ] && alias ack='ack-grep'
+(( $+commands[ack-grep] )) && alias ack='ack-grep'
 
 # colors for ls and (more importantly) zsh completion
 zmodload zsh/complist
