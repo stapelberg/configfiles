@@ -299,7 +299,7 @@ set_termtitle() {
     # Truncate command, and join lines.
     a=${a//[$'\r'$'\n']/}
 
-    [ "$a" = "zsh" ] && { a=$(print -Pn "%~") }
+    [ "$a" = "zsh" ] && { a=${(%)${:-%~}} }
 
     case $TERM in
     screen)
