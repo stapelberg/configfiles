@@ -251,35 +251,27 @@ set_termtitle() {
     case $TERM in
     screen)
         # plain xterm title
-        print -Pn -- "\e]2;$2: "
-        print -rn -- "$a"
-        print -n -- "\a"
+        print -rn -- $'\e'"]2;${(%)${:-%m}}: $a"$'\a'
 
         # screen title (in ^A")
-        print -n -- "\ek"
-        print -rn -- "$a"
-        print -n -- "\e\\"
+        print -rn -- $'\e'"k$a"$'\e'$'\\'
 
         # screen location
-        print -Pn -- "\e_$2: "
-        print -rn -- "$a"
-        print -n -- "\e\\"
+        print -rn -- $'\e'"_${(%)${:-%m}}: $a"$'\e'$'\\'
     ;;
     xterm*|rxvt)
         # plain xterm title
-        print -Pn -- "\e]2;$2: "
-        print -rn -- "$a"
-        print -n -- "\a"
+        print -rn -- $'\e'"]2;${(%)${:-%m}}: $a"$'\a'
     ;;
     esac
 }
 
 my_prompt_precmd() {
-    set_termtitle "zsh" "%m"
+    set_termtitle "zsh"
 }
 
 my_prompt_preexec() {
-    set_termtitle "$1" "%m"
+    set_termtitle "$1"
 }
 
 typeset -ga precmd_functions
