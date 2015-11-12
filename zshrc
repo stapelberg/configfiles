@@ -316,8 +316,7 @@ lvl=$((lvl-1))
 ;;
 esac
 
-zshrc=~/.zshrc
-cfgfiles=${zshrc:A:h}
+cfgfiles=${${:-~/.zshrc}:A:h}
 
 export __CURRENT_GIT_PROMPT=
 
