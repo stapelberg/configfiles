@@ -98,11 +98,7 @@ fignore=(.o)
 # On debian, App::Ack is installed as ack-grep, so alias it
 [ -f /usr/bin/ack-grep ] && alias ack='ack-grep'
 
-# colors for ls and (more importantly) zsh completion
-zmodload zsh/complist
 export LS_COLORS='di=01;34:ln=01;36:pi=33:so=01;35:bd=01;33:cd=01;33:ex=01;32:do=01;35:su=37;41:sg=30;43:st=37;44:ow=34;42:tw=30;42:ca=30;41'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
 alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 
 # Requires liburi-perl and xclip.
@@ -413,10 +409,18 @@ load-completion() {
     zstyle ':completion:*newest-files:*' sort false
     zstyle ':completion:*newest-files:*' matcher-list 'b:=*' # important
 
+    # Show all processes when completing kill/killall and enable menu mode
+    zstyle ':completion:*:processes' command 'ps f -N --ppid=$(pidof kthreadd) --pid=$(pidof kthreadd)'
+    zstyle ':completion:*:processes-names' command 'ps -aeo comm='
+    zstyle ':completion:*:*:kill:*' menu yes select
+    zstyle ':completion:*:*:killall:*' menu yes select
+
+    # colors for zsh file name completion
+    zmodload zsh/complist
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
     bindkey '\t' expand-or-complete-with-dots
     bindkey '^Xr' newest-files
-
-    zle expand-or-complete-with-dots
 }
 
 load-completion-and-expand-or-complete-with-dots() {
@@ -444,12 +448,6 @@ zle -N self-insert url-quote-magic
 bellchar=$'\a'
 zle-line-init () { echo -n "$bellchar" }
 zle -N zle-line-init
-
-# Show all processes when completing kill/killall and enable menu mode
-zstyle ':completion:*:processes' command 'ps f -N --ppid=$(pidof kthreadd) --pid=$(pidof kthreadd)'
-zstyle ':completion:*:processes-names' command 'ps -aeo comm='
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:killall:*' menu yes select
 
 # Directory specific configuration
 chpwd_profiles() {
