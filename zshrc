@@ -262,36 +262,6 @@ hash -d pb=/var/cache/pbuilder/result
 hash -d dcs=~/gocode/src/github.com/Debian/dcs
 hash -d rirc=~/gocode/src/github.com/robustirc/robustirc
 
-# show the git branch in prompt
-export __CURRENT_GIT_BRANCH=
-typeset -a __CURRENT_GIT_DIR
-parse_git_branch() {
-    if [ -f ${__CURRENT_GIT_DIR[1]}/HEAD ]
-    then
-        __CURRENT_GIT_BRANCH=$(sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD)
-    fi
-}
-
-git_branch_chdir() {
-    __CURRENT_GIT_DIR=((../)#.git)
-    parse_git_branch
-}
-
-git_branch_chdir
-chpwd_functions=(${chpwd_functions[@]} git_branch_chdir)
-
-get_git_prompt_info() {
-    fg_dark_blue=$'%{\e[0;36m%}'
-    fg_no_colour=$'%{\e[0m%}'
-
-    if [ ! -z "$__CURRENT_GIT_BRANCH" ]
-    then
-        echo "${fg_dark_blue}$__CURRENT_GIT_BRANCH${fg_no_colour} "
-    else
-        echo ""
-    fi
-}
-
 set_termtitle() {
     # escape '%' chars in $1, make nonprintables visible
     local a=${(V)1//\%/\%\%}
@@ -369,11 +339,10 @@ lvl=$((lvl-1))
 ;;
 esac
 
-# enable substitution in prompt, necessary for $(get_git_prompt_info)
-setopt prompt_subst
-
 zshrc=~/.zshrc
 cfgfiles=${zshrc:A:h}
+
+export __CURRENT_GIT_PROMPT=
 
 setup_prompt() {
     local _main_fmt
@@ -392,11 +361,35 @@ setup_prompt() {
     fi
 
     if [ $lvl -ge 2 ] ; then
-        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$lvl $_cfg_nag$ "
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$lvl $_cfg_nag$ "
     else
-        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} \$(get_git_prompt_info)$_cfg_nag$ "
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$_cfg_nag$ "
     fi
 }
+
+# show the git branch in prompt
+typeset -a __CURRENT_GIT_DIR
+parse_git_branch() {
+    local fg_dark_blue=$'%{\e[0;36m%}'
+    local fg_no_colour=$'%{\e[0m%}'
+
+    if [ -f ${__CURRENT_GIT_DIR[1]}/HEAD ]
+    then
+        local branch=$(sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD)
+        __CURRENT_GIT_PROMPT="${fg_dark_blue}${branch}${fg_no_colour} "
+    else
+        __CURRENT_GIT_PROMPT=""
+    fi
+}
+
+git_branch_chdir() {
+    __CURRENT_GIT_DIR=((../)#.git)
+    parse_git_branch
+    setup_prompt
+}
+
+git_branch_chdir
+chpwd_functions=(${chpwd_functions[@]} git_branch_chdir)
 
 setup_prompt
 
