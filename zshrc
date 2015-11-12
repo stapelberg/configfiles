@@ -373,8 +373,15 @@ setup_prompt
 unset LC_ALL
 export LANG=de_DE.UTF-8
 export LC_MESSAGES=C
-if locale -a | grep -q en_DK.UTF-8; then
+# Skip costly locale -a | grep on machines which are known to have reasonable
+# locales configured.
+if [ "$HOST" = "midna" ]
+then
     export LC_TIME=en_DK.UTF-8
+else
+    if locale -a | grep -q en_DK.UTF-8; then
+        export LC_TIME=en_DK.UTF-8
+    fi
 fi
 
 export GOPATH=~/gocode
