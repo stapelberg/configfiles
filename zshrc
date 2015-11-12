@@ -416,10 +416,18 @@ export PATH=/home/michael/go/bin:$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin
 # For debian utilities
 export DEBEMAIL="stapelberg@debian.org"
 
-# Initialize completion
-autoload compinit
-compinit -C
-compdef _da agi
+load-completion() {
+    if [ "x${zshLoadedCompletion}" = "x" ]; then
+        zshLoadedCompletion='done'
+        autoload compinit
+        compinit -C
+        compdef _da agi
+        bindkey '\t' complete-word
+        zle complete-word
+    fi
+}
+zle -N load-completion
+bindkey '\t' load-completion
 
 # Enable url-quote-magic to automatically escape URLs when pasting
 autoload -U url-quote-magic
