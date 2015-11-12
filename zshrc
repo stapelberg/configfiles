@@ -294,7 +294,7 @@ get_git_prompt_info() {
 
 set_termtitle() {
     # escape '%' chars in $1, make nonprintables visible
-    a=${(V)1//\%/\%\%}
+    local a=${(V)1//\%/\%\%}
 
     # Truncate command, and join lines.
     a=${a//[$'\r'$'\n']/}
