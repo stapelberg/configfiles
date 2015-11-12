@@ -51,16 +51,6 @@ bindkey "^[[A" up-line-or-history
 bindkey "^[[B" down-line-or-history
 bindkey "^F" push-line
 
-# When tab-completing, show dots. For fast tab completes, they will be
-# overwritten instantly, for long tab-completions, you have feedback.
-expand-or-complete-with-dots() {
-    echo -n -e "\e[37m...\e[0m\033[3D"
-    zle expand-or-complete
-    zle redisplay
-}
-zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
-
 # C-t deletes to the left of the cursor until the next /. Useful to delete a
 # path component.
 backward-delete-to-slash() {
@@ -112,15 +102,6 @@ fignore=(.o)
 zmodload zsh/complist
 export LS_COLORS='di=01;34:ln=01;36:pi=33:so=01;35:bd=01;33:cd=01;33:ex=01;32:do=01;35:su=37;41:sg=30;43:st=37;44:ow=34;42:tw=30;42:ca=30;41'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# 'ctrl-x r' will complete the 12 last modified (mtime) files/directories
-zle -C newest-files complete-word _generic
-bindkey '^Xr' newest-files
-zstyle ':completion:newest-files:*' completer _files
-zstyle ':completion:newest-files:*' file-patterns '*~.*(omN[1,12])'
-zstyle ':completion:newest-files:*' menu select yes
-zstyle ':completion:newest-files:*' sort false
-zstyle ':completion:newest-files:*' matcher-list 'b:=*' # important
 
 alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 
@@ -409,18 +390,50 @@ export PATH=/home/michael/go/bin:$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin
 # For debian utilities
 export DEBEMAIL="stapelberg@debian.org"
 
-load-completion() {
-    if [ "x${zshLoadedCompletion}" = "x" ]; then
-        zshLoadedCompletion='done'
-        autoload compinit
-        compinit -C
-        compdef _da agi
-        bindkey '\t' complete-word
-        zle complete-word
-    fi
+# When tab-completing, show dots. For fast tab completes, they will be
+# overwritten instantly, for long tab-completions, you have feedback.
+expand-or-complete-with-dots() {
+    echo -n -e "\e[37m...\e[0m\033[3D"
+    zle expand-or-complete
+    zle redisplay
 }
-zle -N load-completion
-bindkey '\t' load-completion
+
+load-completion() {
+    autoload compinit
+    compinit -C
+    compdef _da agi
+
+    # 'ctrl-x r' will complete the 12 last modified (mtime) files/directories
+    zle -C newest-files menu-complete _generic
+    # Use “*newest-files” so that it matches both “newest-files” and
+    # “load-completion-and-newest-files”.
+    zstyle ':completion:*newest-files:*' completer _files
+    zstyle ':completion:*newest-files:*' file-patterns '*~.*(omN[1,12])'
+    zstyle ':completion:*newest-files:*' menu select yes
+    zstyle ':completion:*newest-files:*' sort false
+    zstyle ':completion:*newest-files:*' matcher-list 'b:=*' # important
+
+    bindkey '\t' expand-or-complete-with-dots
+    bindkey '^Xr' newest-files
+
+    zle expand-or-complete-with-dots
+}
+
+load-completion-and-expand-or-complete-with-dots() {
+    load-completion
+    zle -w expand-or-complete-with-dots
+}
+
+load-completion-and-newest-files() {
+    load-completion
+    zle -w newest-files
+}
+
+zle -N expand-or-complete-with-dots
+zle -N load-completion-and-expand-or-complete-with-dots
+zle -N load-completion-and-newest-files
+bindkey '\t' load-completion-and-expand-or-complete-with-dots
+bindkey '^Xr' load-completion-and-newest-files
 
 # Enable url-quote-magic to automatically escape URLs when pasting
 autoload -U url-quote-magic
