@@ -79,4 +79,4 @@ Xft.rgba: rgb
 !*background: black
 !*foreground: lightgrey
 
-Xcursor.theme: adwaita
+Xcursor.theme: Adwaita
