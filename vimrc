@@ -64,6 +64,8 @@ set printdevice=kyocera
 set timeout timeoutlen=1000 ttimeoutlen=100
 " We use rxvt-unicode-256color, explicitly tell vim that
 set t_Co=256
+" Disable mouse support (enabled by default in neovim).
+set mouse=
 
 " Enable syntax highlighting
 syntax on
