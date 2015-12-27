@@ -53,7 +53,7 @@ set noshowmatch
 " Enable ruler
 set ruler
 " Use UTF-8
-set fileencoding=utf-8 encoding=utf-8
+set fileencoding=utf-8
 " Disable folding completely
 set nofen
 " Default printer is laserjet
