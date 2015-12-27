@@ -1,4 +1,4 @@
-if v:progname != 'vim'
+if v:progname != 'vim' && v:progname != 'nvim'
   finish
 endif
 
