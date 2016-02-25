@@ -1,16 +1,6 @@
 *font: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-!URxvt.fonts.0: xft:Source Code Pro:size=8
-URxvt.fonts.0: xft:Bitstream Vera Sans Mono:size=8
+URxvt.font: xft:Bitstream Vera Sans Mono:size=8
 URxvt.letterSpace: -1
-!URxvt.fonts.0: xft:Bitstream Vera Sans Mono:size=9
-!URxvt.fonts.1: -misc-fixed-medium-r-normal--18-120-100-100-C-90-iso10646-1,xft:code2000:autohint=false
-!URxvt.fonts.2: -misc-fixed-medium-r-normal--20-200-75-75-C-100-iso10646-1,xft:code2000:autohint=false
-
-!URxvt.boldfont: -misc-fixed-medium-r-normal-*-10-100-*-*-*-*-iso10646-1,xft:code2000:autohint=false
-
-!URxvt.background: [85]black
-!URxvt.foreground: lightgrey
-!URxvt.depth: 32
 
 URxvt.jumpScroll: true
 URxvt.skipScroll: true
@@ -27,7 +17,7 @@ URxvt.keysym.Mod4-p: perl:fonts:plus
 URxvt.keysym.Mod4-m: perl:fonts:minus
 URxvt.keysym.Mod4-o: perl:cwd-spawn
 URxvt.underlineURLs: false
-URxvt.perl-ext: selection,mark-yank-urls,fonts,cwd-spawn
+URxvt.perl-ext: selection,mark-yank-urls,cwd-spawn
 URxvt.urlLauncher: google-chrome
 URxvt.urgentOnBell: true
 URxvt.scrollstyle: next
