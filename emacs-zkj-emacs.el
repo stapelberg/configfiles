@@ -14,25 +14,11 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
-;;;; Set font to misc-fixed. This requires the following two entries
-;;;; in ~/.Xresources:
-;;;; Emacs.Font: fontset-normal
-;;;; Emacs.Fontset-0: -misc-fixed-medium-r-normal--13-120-75-75-C-70-fontset-normal
-(defvar my-font "-misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1")
-
 ;; For presentations
 ;;(set-default-font "Monospace 16")
 
 ;; On hidpi displays, use an Xft font that scales well.
-(if (= (display-pixel-width) 3840)
-  (set-default-font "Source Code Pro 8"))
-
-;; i’m not sure why i have to explicitly overwrite the font for latin1 and ucs charsets :-/
-(when (window-system)
-  (mapc
-   (lambda (charset)
-     (set-fontset-font "fontset-normal" charset my-font))
-   (list 'iso-8859-1 'ucs)))
+(set-default-font "Source Code Pro 8")
 
 ;;;; add marmalade package repository, it contains many more packages.
 (require 'package)
