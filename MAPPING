@@ -1,9 +1,9 @@
 mplayer.config ~/.mplayer/config
 gpg.conf ~/.gnupg/gpg.conf
 vimperator-char-hints.js ~/.vimperator/plugins/char-hints.js
-urxvt-mark-yank-urls ~/.urxvt/mark-yank-urls
-urxvt-fonts ~/.urxvt/fonts
-cwd-spawn ~/.urxvt/cwd-spawn
+urxvt-mark-yank-urls ~/.urxvt/ext/mark-yank-urls
+urxvt-fonts ~/.urxvt/ext/fonts
+cwd-spawn ~/.urxvt/ext/cwd-spawn
 syntax-perl.vim ~/.vim/syntax/perl.vim
 syntax-go.vim ~/.vim/syntax/go.vim
 FormatBlock.vim ~/.vim/plugin/FormatBlock.vim

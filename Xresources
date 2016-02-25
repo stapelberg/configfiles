@@ -27,7 +27,6 @@ URxvt.keysym.Mod4-p: perl:fonts:plus
 URxvt.keysym.Mod4-m: perl:fonts:minus
 URxvt.keysym.Mod4-o: perl:cwd-spawn
 URxvt.underlineURLs: false
-URxvt.perl-lib: /home/michael/.urxvt/
 URxvt.perl-ext: selection,mark-yank-urls,fonts,cwd-spawn
 URxvt.urlLauncher: google-chrome
 URxvt.urgentOnBell: true
