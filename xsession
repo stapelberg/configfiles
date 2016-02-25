@@ -46,6 +46,11 @@ if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
 	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation" 1
 fi
 
+if echo "$INPUT_DEVICES" | grep -qF "SynPS/2 Synaptics TouchPad"; then
+	synclient VertScrollDelta=-150
+	synclient HorizScrollDelta=-150
+fi
+
 # Disable powersaving on nvidia cards, it causes really bad graphics
 # performance, at least with a minimalist window manager such as i3.
 if lspci -n | grep -q '\b10de:0df8\b'; then
