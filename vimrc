@@ -232,6 +232,8 @@ if filereadable(vundle_readme)
 
 	Plugin 'benekastah/neomake'
 
+	Plugin 'bogado/file-line'
+
 	" All of your Plugins must be added before the following line
 	call vundle#end()            " required
 	filetype plugin on
