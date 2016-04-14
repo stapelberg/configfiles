@@ -10,8 +10,10 @@
 ;; for mail-add-attachment
 (require 'sendmail)
 
-(when (and (not (string= system-name "midna.zekjur.net"))
-	   (not (string= system-name "midna.localhost")))
+(when (and
+	(and (not (string= system-name "midna.zekjur.net"))
+	     (not (string= system-name "midna.localhost")))
+	(not (string= system-name "midna")))
   (setq notmuch-command "/home/michael/configfiles/remote-notmuch.sh"))
 
 ;; Rebind C-c C-a to use the attachment function which does NOT
