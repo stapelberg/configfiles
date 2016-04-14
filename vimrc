@@ -103,6 +103,9 @@ autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set cin
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set fo-=t fo+=croql comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 autocmd BufNewFile,BufRead *.c,*.y,*.l,*.pgc,*.cc,*.cpp,*.h,*.hh,*.hpp set makeprg=make\ -j4
 
+" Enable expandtab, since debian/control files indent with spaces.
+autocmd BufNewFile,BufRead debian/control set et
+
 " Enable filetype plugins (vim-LaTeX for example)
 "filetype plugin on
 
