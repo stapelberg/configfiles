@@ -25,7 +25,7 @@ setopt MAGIC_EQUAL_SUBST
 
 export EDITOR='vim'
 export VISUAL='vim'
-export PAGER='less'
+export PAGER='less -R'
 export GTK_IM_MODULE=xim
 export VTYSH_PAGER='cat'
 # long date format in ls(1)
