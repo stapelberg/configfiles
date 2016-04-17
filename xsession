@@ -4,7 +4,7 @@
 setxkbmap -option terminate:ctrl_alt_bksp
 
 # Run redshift, but don’t fail if it’s not (yet) available
-if which redshift >/dev/null 2>&1; then
+if command -V redshift >/dev/null 2>&1; then
 	redshift -m randr -l 47.31:8.50 -t 6000:5300 -b 0.8 &
 fi
 
