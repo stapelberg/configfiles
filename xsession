@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # Enable zapping (C-A-<Bksp> kills X)
-setxkbmap -option terminate:ctrl_alt_bksp
+# Using setxkbmap -option terminate:ctrl_alt_bksp binds NoSymbol to Backspace
+# on the higher levels so that CapsLock+Backspace (Backspace on Level3) doesn’t
+# work with the NEO layout.
+xmodmap -e 'keycode 22 = BackSpace BackSpace BackSpace BackSpace BackSpace BackSpace Terminate_Server BackSpace BackSpace Terminate_Server'
 
 # Run redshift, but don’t fail if it’s not (yet) available
 if command -V redshift >/dev/null 2>&1; then
