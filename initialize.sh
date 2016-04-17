@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # © 2009 Michael Stapelberg, Public Domain
 #
