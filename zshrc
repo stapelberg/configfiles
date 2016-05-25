@@ -402,7 +402,7 @@ load-completion() {
     # Use “*newest-files” so that it matches both “newest-files” and
     # “load-completion-and-newest-files”.
     zstyle ':completion:*newest-files:*' completer _files
-    zstyle ':completion:*newest-files:*' file-patterns '*~.*(omN[1,12])'
+    zstyle ':completion:*newest-files:*' file-patterns '*(omN[1,12])'
     zstyle ':completion:*newest-files:*' menu select yes
     zstyle ':completion:*newest-files:*' sort false
     zstyle ':completion:*newest-files:*' matcher-list 'b:=*' # important
