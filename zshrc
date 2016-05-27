@@ -333,6 +333,13 @@ setup_prompt() {
     else
         PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$_cfg_nag$ "
     fi
+
+    # For tramp (emacs).
+    if [ "$TERM" = "dumb" ]; then
+        unset PROMPT
+        PS1='$ '
+        unsetopt zle
+    fi
 }
 
 # show the git branch in prompt
