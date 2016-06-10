@@ -454,6 +454,9 @@ bellchar=$'\a'
 zle-line-init () { echo -n "$bellchar" }
 zle -N zle-line-init
 
+# Disable C-s stopping output — triggered way more often accidentally.
+stty -ixon
+
 # Directory specific configuration
 chpwd_profiles() {
     if [[ ${PWD} =~ "$HOME/i3($|/|/*)" ]]
