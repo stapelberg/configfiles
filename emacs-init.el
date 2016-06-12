@@ -23,8 +23,7 @@
 (require 'zkj-perl)
 
 ;; Go-related settings.
-(if (require 'go-mode-load nil t)
-    (require 'zkj-go))
+(require 'zkj-go)
 
 ;; Settings stored by the customize interface.
 (setq custom-file "~/.emacs.d/custom.el")
