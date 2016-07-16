@@ -23,8 +23,12 @@
 ;;;; add marmalade package repository, it contains many more packages.
 (require 'package)
 (add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+	     '("marmalade" .
+	       "http://marmalade-repo.org/packages/"))
+
+(add-to-list 'package-archives
+	     '("melpa" .
+	       "https://melpa.org/packages/"))
 
 (if (require 'smex nil t)
     (global-set-key [(meta x)] (lambda ()
