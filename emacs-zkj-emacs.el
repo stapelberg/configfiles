@@ -99,3 +99,6 @@
 (global-set-key [(meta up)]    'windmove-up)
 (global-set-key [(meta right)] 'windmove-right)
 (global-set-key [(meta down)]  'windmove-down)
+
+;; Automatically scroll to the end of the compilation buffer.
+(setq compilation-scroll-output t)
