@@ -105,3 +105,23 @@
 
 ;; Save minibuffer history (for compile command etc.)
 (savehist-mode 1)
+
+;; compilation: set urgency hint when compilation finishes.
+(defun x-urgency-hint (frame arg &optional source)
+  "Set the x-urgency hint for the frame to arg:
+
+- If arg is nil, unset the urgency.
+- If arg is any other value, set the urgency.
+
+If you unset the urgency, you still have to visit the frame to make the urgency setting disappear (at least in KDE)."
+  (let* ((wm-hints (append (x-window-property
+			    "WM_HINTS" frame "WM_HINTS" source nil t) nil))
+	 (flags (car wm-hints)))
+    (setcar wm-hints
+	    (if arg
+		(logior flags #x100)
+	      (logand flags (lognot #x100))))
+    (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
+(defun compilation-finished-hook (buf status)
+  (x-urgency-hint (window-frame (get-buffer-window buf)) 1))
+(add-hook 'compilation-finish-functions #'compilation-finished-hook)
