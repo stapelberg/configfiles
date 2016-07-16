@@ -102,3 +102,6 @@
 
 ;; Automatically scroll to the end of the compilation buffer.
 (setq compilation-scroll-output t)
+
+;; Save minibuffer history (for compile command etc.)
+(savehist-mode 1)
