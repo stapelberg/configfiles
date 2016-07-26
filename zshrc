@@ -15,6 +15,8 @@ setopt EXTENDED_GLOB
 # Do not check mail, I don’t use mail that way.
 unsetopt mail_warning
 unset MAILCHECK
+# Do not share history (enabled by default in NixOS’s /etc/zshrc).
+unsetopt SHARE_HISTORY
 
 setopt short_loops
 
