@@ -22,16 +22,15 @@ if [[ "$HOST" = "midna.zekjur.net" || "$HOSTNAME" = "midna.zekjur.net" || "$HOST
 	HOST="midna"
 fi
 
+setxkbmap de -variant neo
+
 if echo "$INPUT_DEVICES" | grep -qF "$KINESIS"
 then
-	# Slightly modified Xmodmap for the Kinesis keyboard
-	setxkbmap lv && xmodmap .Xmodmap
-
-	# Enable mousekeys to have a paste button
+	# Enable mousekeys to make “End” an additional paste button
+	xmodmap -e 'keycode 115 = Pointer_Button2'
 	xkbset m
 	xkbset exp '=m'
 else
-	setxkbmap de -variant neo
 fi
 
 if echo "$INPUT_DEVICES" | grep -qF "$TRACKBALL"; then
