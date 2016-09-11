@@ -67,7 +67,7 @@ touch /tmp/neo_active
 xhost +local:
 
 # X settings: disable DPMS, disable audible bell
-xset dpms force on s off -b
+xset -dpms s off -b
 
 # Set correct locales
 unset LC_ALL
