@@ -99,7 +99,7 @@ fignore=(.o)
 
 # On debian, App::Ack is installed as ack-grep, so alias it.
 # Where ag (silversearcher) is available, prefer that (much faster).
-local _ack_location="$(\unalias -a; command -v ack-grep ag 2>/dev/null | head -1)"
+local _ack_location="$(\unalias -a; command -v ag ack-grep 2>/dev/null | head -1)"
 [ $? = 0 ] && alias ack="$_ack_location"
 
 export LS_COLORS='di=01;34:ln=01;36:pi=33:so=01;35:bd=01;33:cd=01;33:ex=01;32:do=01;35:su=37;41:sg=30;43:st=37;44:ow=34;42:tw=30;42:ca=30;41'
