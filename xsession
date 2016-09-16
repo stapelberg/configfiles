@@ -55,7 +55,7 @@ fi
 
 # Disable powersaving on nvidia cards, it causes really bad graphics
 # performance, at least with a minimalist window manager such as i3.
-if lspci -n | grep -q '\b10de:0df8\b'; then
+if lspci -n | grep -q '\b10de:0ffa\b'; then
 	nvidia-settings -a "[gpu:0]/GPUPowerMizerMode=1"
 fi
 
