@@ -30,7 +30,6 @@ then
 	xmodmap -e 'keycode 115 = Pointer_Button2'
 	xkbset m
 	xkbset exp '=m'
-else
 fi
 
 if echo "$INPUT_DEVICES" | grep -qF "$TRACKBALL"; then
