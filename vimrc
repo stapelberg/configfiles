@@ -5,11 +5,10 @@ endif
 " Remove fedora and redhat default vimrc additions.
 augroup fedora
 autocmd!
-augroup! fedora
+augroup END
 
 augroup redhat
 autocmd!
-augroup! redhat
 augroup END
 
 " Restore the last cursor position when opening files.
