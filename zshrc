@@ -218,15 +218,14 @@ alias acsn='apt-cache search --names-only'
 alias acp='apt-cache policy'
 alias acsh='apt-cache show'
 alias ac='apt-cache'
-alias ag='s apt-get'
 alias ys='yum search'
-agi() { sudo apt-get install $* && rehash }
+agi() { sudo apt install $* && rehash }
 yi() { sudo yum install $* && rehash }
 _da() { _deb_packages uninstalled; }
-alias agu='sudo apt-get update'
-alias agdu='sudo apt-get dist-upgrade'
+alias agu='sudo apt update'
+alias agdu='sudo apt full-upgrade'
 
-agr() { sudo apt-get remove $* && rehash }
+agr() { sudo apt remove $* && rehash }
 
 alias smi='sudo make install'
 
