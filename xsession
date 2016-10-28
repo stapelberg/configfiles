@@ -50,6 +50,8 @@ fi
 if echo "$INPUT_DEVICES" | grep -qF "SynPS/2 Synaptics TouchPad"; then
 	synclient VertScrollDelta=-150
 	synclient HorizScrollDelta=-150
+	synclient VertTwoFingerScroll=1
+	synclient HorizTwoFingerScroll=1
 fi
 
 # Disable powersaving on nvidia cards, it causes really bad graphics
