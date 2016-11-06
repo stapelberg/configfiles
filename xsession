@@ -98,8 +98,6 @@ urxvt256c-mld -q -f -o || urxvtd -q -f -o
 
 # Start i3, my compiled version if available, fallback to the system version
 # otherwise.
-if [ -x ~/i3/i3 ]; then
-	exec ~/i3/i3
-else
-	exec i3
-fi
+[ -x ~/i3/build/i3 ] && exec ~/i3/build/i3
+[ -x ~/i3/i3 ] && exec ~/i3/i3
+exec i3
