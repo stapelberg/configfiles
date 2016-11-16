@@ -393,6 +393,7 @@ export PATH=/home/michael/go/bin:/home/michael/.cargo/bin:$GOPATH/bin:~/.local/b
 
 # For debian utilities
 export DEBEMAIL="stapelberg@debian.org"
+export DEB_BUILD_OPTIONS="parallel=8"
 export QUILT_PATCHES=debian/patches
 
 # When tab-completing, show dots. For fast tab completes, they will be
