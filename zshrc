@@ -121,22 +121,17 @@ up() {
 # needs debcheckout from devscripts and gbp-clone from git-buildpackage
 d-clone() {
     local package=$1
-    local giturl
-    if debcheckout --print $package >/dev/null
+    if debcheckout --auth --print $package >/dev/null
     then
-        set -- $(debcheckout --print $package)
+        set -- $(debcheckout --auth --print $package)
         if [ "$1" != "git" ]
         then
             echo "$package does not use git, but $1 instead."
             return
         fi
 
-        # The check out URL is different from the push URL.
-        # These transformations try to get to the push URL.
-        giturl=$(echo $2 | sed 's/^git/git+ssh/' | sed 's/anonscm\.debian\.org/git.debian.org/' | sed 's,debian\.org,debian.org/git,')
-
-        echo "cloning $giturl"
-        gbp clone --pristine-tar $giturl || return
+        echo "cloning $2"
+        gbp clone --pristine-tar $2 || return
 
         # Change to the newest git repository
         cd $(dirname $(ls -1td */.git | head -1)) || return
