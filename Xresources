@@ -16,6 +16,7 @@ URxvt.keysym.Mod1-u: perl:mark-yank-urls:activate_mark_mode
 URxvt.keysym.Mod4-p: perl:fonts:plus
 URxvt.keysym.Mod4-m: perl:fonts:minus
 URxvt.keysym.Mod4-o: perl:cwd-spawn
+URxvt.keysym.Mod4-s: perl:searchable-scrollback:start
 URxvt.underlineURLs: false
 URxvt.perl-ext: selection,mark-yank-urls,cwd-spawn
 URxvt.urlLauncher: google-chrome
