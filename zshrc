@@ -234,8 +234,8 @@ alias -g H="| head"
 
 # Use ~sl in any command, for example less ~sl
 hash -d pb=/var/cache/pbuilder/result
-hash -d dcs=~/gocode/src/github.com/Debian/dcs
-hash -d rirc=~/gocode/src/github.com/robustirc/robustirc
+hash -d dcs=~/go/src/github.com/Debian/dcs
+hash -d rirc=~/go/src/github.com/robustirc/robustirc
 
 set_termtitle() {
     # escape '%' chars in $1, make nonprintables visible
@@ -381,10 +381,11 @@ else
     fi
 fi
 
-export GOPATH=~/gocode
+# TODO: remove once Go ≥ 1.8 is widespread enough (which defaults to ~/go)
+export GOPATH=~/go
 # Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
 # Add $GOPATH/bin
-export PATH=/home/michael/go/bin:/home/michael/.cargo/bin:$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
+export PATH=/home/michael/go-latest/bin:/home/michael/.cargo/bin:$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
 
 # For debian utilities
 export DEBEMAIL="stapelberg@debian.org"
