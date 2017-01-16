@@ -107,6 +107,9 @@
 ;; Automatically scroll to the end of the compilation buffer.
 (setq compilation-scroll-output t)
 
+;; Don’t ask to save files before compilation, just save them.
+(setq compilation-ask-about-save nil)
+
 ;; Save minibuffer history (for compile command etc.)
 (savehist-mode 1)
 
