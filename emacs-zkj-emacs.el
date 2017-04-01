@@ -69,6 +69,10 @@
 ;; ido-mode has a *much* better buffer selection (and file opening) :).
 (ido-mode)
 
+;; Disable searching in other directories when there are no matches
+;; (more annoying than helpful).
+(setq ido-auto-merge-work-directories-length -1)
+
 ;; Store backups in a single directory (/tmp/emacs-backups) so that
 ;; they don’t clutter up my filesystem.
 (let ((backupdir "/tmp/emacs-backups/"))
