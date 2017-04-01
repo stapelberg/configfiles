@@ -117,6 +117,16 @@
 ;; Don’t ask to save files before compilation, just save them.
 (setq compilation-ask-about-save nil)
 
+;; Don’t ask to create parent directories when saving files, just
+;; create them.
+(add-hook 'before-save-hook
+          (lambda ()
+            (when buffer-file-name
+              (let ((dir (file-name-directory buffer-file-name)))
+                (when (not (file-exists-p dir))
+                  (make-directory dir t))))))
+
+
 ;; Save minibuffer history (for compile command etc.)
 (savehist-mode 1)
 
