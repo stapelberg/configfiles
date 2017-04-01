@@ -1,0 +1,9 @@
+#!/bin/bash
+# from https://superuser.com/a/862809/108037
+
+emacsclient -n -e "(if (> (length (frame-list)) 1) 't)" | grep t
+if [ "$?" = "1" ]; then
+    emacsclient -c -n -a "" "$@"
+else
+    emacsclient -n -a "" "$@"
+fi

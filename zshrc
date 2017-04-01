@@ -25,8 +25,8 @@ setopt short_loops
 # `~' or `=')  performed on expression as if it were a parameter assignment.
 setopt MAGIC_EQUAL_SUBST
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='~/configfiles/emacsclient'
+export VISUAL=$EDITOR
 export PAGER='less -R'
 export GTK_IM_MODULE=xim
 export VTYSH_PAGER='cat'
@@ -160,6 +160,7 @@ alias rt='ls -hltr'
 alias L='dpkg -L'
 alias v='vim'
 alias V='sudo vim'
+alias e='~/configfiles/emacsclient'
 alias m='make'
 alias mp='mplayer -really-quiet'
 # disable gdb welcome message
@@ -188,12 +189,6 @@ alias pd="perldoc"
 alias ripcd='cdparanoia -Bs 1-'
 
 x() {  xclip -i <<< $($*) }
-
-# Prepend a command with e to close the starting shell
-e() {
-    eval "$* &|"
-    exit
-}
 
 alias asdf='/home/michael/toggle_layout.sh'
 alias uiae='/home/michael/toggle_layout.sh'
