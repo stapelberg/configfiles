@@ -25,7 +25,7 @@ setopt short_loops
 # `~' or `=')  performed on expression as if it were a parameter assignment.
 setopt MAGIC_EQUAL_SUBST
 
-export EDITOR='~/configfiles/emacsclient'
+export EDITOR=$HOME/configfiles/emacsclient
 export VISUAL=$EDITOR
 export PAGER='less -R'
 export GTK_IM_MODULE=xim
