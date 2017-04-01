@@ -14,6 +14,13 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+;; C-w and C-y should use the PRIMARY selection (mouse-selected) *and*
+;; the CLIPBOARD selection (copy function selected). When yanking,
+;; both will be set. When inserting, the more recently changed one
+;; will be used.
+(setq x-select-enable-primary t)
+(setq x-select-enable-clipboard t)
+
 ;; For presentations
 ;;(set-default-font "Monospace 16")
 
