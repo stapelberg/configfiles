@@ -24,8 +24,7 @@
 ;; For presentations
 ;;(set-default-font "Monospace 16")
 
-;; On hidpi displays, use an Xft font that scales well.
-(set-default-font "Source Code Pro 8" nil t)
+(setq default-frame-alist '((font . "Source Code Pro 8")))
 
 ;;;; add marmalade package repository, it contains many more packages.
 (require 'package)
