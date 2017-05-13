@@ -152,3 +152,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (defun compilation-finished-hook (buf status)
   (x-urgency-hint (window-frame (get-buffer-window buf)) 1))
 (add-hook 'compilation-finish-functions #'compilation-finished-hook)
+
+;; tell tramp that my ~/.ssh/config is already set up for master mode
+;; (tramp will not use master mode otherwise).
+(setq tramp-use-ssh-controlmaster-options nil)
