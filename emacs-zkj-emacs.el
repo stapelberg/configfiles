@@ -167,3 +167,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
 (winner-mode)
+
+;; use 80 characters for line wrapping with M-q
+(setq-default fill-column 80)
