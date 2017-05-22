@@ -170,3 +170,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; use 80 characters for line wrapping with M-q
 (setq-default fill-column 80)
+
+;; display line numbers and column numbers in all modes
+(setq line-number-mode t)
+(setq column-number-mode t)
