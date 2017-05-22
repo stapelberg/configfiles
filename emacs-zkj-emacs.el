@@ -159,3 +159,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; tell tramp that my ~/.ssh/config is already set up for master mode
 ;; (tramp will not use master mode otherwise).
 (setq tramp-use-ssh-controlmaster-options nil)
+
+;; org mode starts up in truncated mode (as opposed to line wrapping)
+;; by default; disable that behavior:
+(set 'org-startup-truncated nil)
