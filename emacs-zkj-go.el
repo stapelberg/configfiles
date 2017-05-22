@@ -4,14 +4,6 @@
 ;;;; configuration.
 (provide 'zkj-go)
 
-(global-set-key (kbd "C-c C-c") 'zkj-go-recompile)
-
-(defun zkj-go-recompile ()
-  "Interrupt current compilation and recompile"
-  (interactive)
-  (ignore-errors (kill-compilation))
-  (recompile))
-
 ;; Use goimports instead of gofmt so that we get automatic imports.
 (set 'gofmt-command "goimports")
 
