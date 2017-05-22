@@ -163,3 +163,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; org mode starts up in truncated mode (as opposed to line wrapping)
 ;; by default; disable that behavior:
 (set 'org-startup-truncated nil)
+
+;; winner-mode provides C-c left and C-c right to undo/redo window
+;; configuration changes.
+(winner-mode)
