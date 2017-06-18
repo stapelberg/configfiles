@@ -28,3 +28,7 @@
 ;; Settings stored by the customize interface.
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-livereload")
+(if (require 'livereload nil t)
+    (require 'zkj-live-reload))
