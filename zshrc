@@ -25,7 +25,7 @@ setopt short_loops
 # `~' or `=')  performed on expression as if it were a parameter assignment.
 setopt MAGIC_EQUAL_SUBST
 
-export EDITOR=$HOME/configfiles/emacsclient
+export EDITOR='emacsclient -c -a ""'
 export VISUAL=$EDITOR
 export PAGER='less -R'
 export GTK_IM_MODULE=xim
@@ -160,7 +160,7 @@ alias rt='ls -hltr'
 alias L='dpkg -L'
 alias v='vim'
 alias V='sudo vim'
-alias e='~/configfiles/emacsclient'
+alias e='emacsclient -c -a ""'
 alias m='make'
 alias mp='mplayer -really-quiet'
 # disable gdb welcome message
