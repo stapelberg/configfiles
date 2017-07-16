@@ -184,3 +184,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; display line numbers and column numbers in all modes
 (setq line-number-mode t)
 (setq column-number-mode t)
+
+;; automatically revert buffers when files change
+(global-auto-revert-mode 1)
