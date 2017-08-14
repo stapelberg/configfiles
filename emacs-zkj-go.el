@@ -16,8 +16,5 @@
   ;; One tab will be displayed as 4 spaces.
   (set 'tab-width 4)
   ;; Enable eldoc (displays function signatures in the minibuf).
-  (go-eldoc-setup)
-  ;; Initialize compile-command to “go run”.
-  (set (make-local-variable 'compile-command)
-       (format "go run %s" (file-name-nondirectory buffer-file-name))))
+  (go-eldoc-setup))
 (add-hook 'go-mode-hook 'zkj-go-mode-hook)
