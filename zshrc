@@ -217,7 +217,7 @@ agr() { sudo apt remove $* && rehash }
 
 alias smi='sudo make install'
 
-alias g='git'
+g() { git $* && git_branch_chdir }
 alias s='sudo'
 alias 6='s ip -6'
 alias 4='s ip -4'
