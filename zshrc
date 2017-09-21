@@ -225,6 +225,9 @@ alias -g T="| tail"
 alias -g G="| grep"
 alias -g H="| head"
 
+# Replaces prompt (hostname, pwd) by "% " in each line in the clipboard
+alias strip-xclip-prompt="xclip -out | sed 's,^$HOST [^\$]* \\\$ ,% ,g' | xclip"
+
 # Use ~sl in any command, for example less ~sl
 hash -d pb=/var/cache/pbuilder/result
 hash -d dcs=~/go/src/github.com/Debian/dcs
