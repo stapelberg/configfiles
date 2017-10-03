@@ -17,6 +17,7 @@ INPUT_DEVICES=$(xinput list --name-only)
 KINESIS="HumbleHacker.com HumbleHacked Kinesis Contoured"
 TRACKBALL="Logitech Unifying Device. Wireless PID:1028"
 TRACKPOINT="TPPS/2 IBM TrackPoint"
+TOUCHPAD="SynPS/2 Synaptics TouchPad"
 
 if [[ "$HOST" = "midna.zekjur.net" || "$HOSTNAME" = "midna.zekjur.net" || "$HOSTNAME" = "midna" ]]; then
 	HOST="midna"
@@ -42,16 +43,20 @@ fi
 
 if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
 	# Enable scrolling on thinkpad
-	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Button" 2
-	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation Axes" 6 7 4 5
-	xinput set-prop 'TPPS/2 IBM TrackPoint' "Evdev Wheel Emulation" 1
+	xinput set-prop "$TRACKPOINT" "Evdev Wheel Emulation Button" 2
+	xinput set-prop "$TRACKPOINT" "Evdev Wheel Emulation Axes" 6 7 4 5
+	xinput set-prop "$TRACKPOINT" "Evdev Wheel Emulation" 1
 fi
 
-if echo "$INPUT_DEVICES" | grep -qF "SynPS/2 Synaptics TouchPad"; then
+if echo "$INPUT_DEVICES" | grep -qF "$TOUCHPAD" then
+	# Older Xorg setups:
 	synclient VertScrollDelta=-150
 	synclient HorizScrollDelta=-150
 	synclient VertTwoFingerScroll=1
 	synclient HorizTwoFingerScroll=1
+
+	# libinput-based Xorg setups:
+	xinput set-prop "$TOUCHPAD" 'libinput Natural Scrolling Enabled' 1
 fi
 
 # Disable powersaving on nvidia cards, it causes really bad graphics
