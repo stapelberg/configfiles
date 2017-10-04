@@ -456,18 +456,20 @@ stty -ixon
 
 # Directory specific configuration
 chpwd_profiles() {
-    if [[ ${PWD} =~ "$HOME/i3($|/|/*)" ]]
+    if [[ "$PWD" =~ "$HOME/i3($|/|/*)" ]]
     then
         alias m='CC=clang make -j16'
     else
         alias m='make'
     fi
 
-    if [[ ${PWD} =~ "$HOME/DPKG($|/|/*)" ]]
+    if [[ "$PWD" =~ "$HOME/d/(pkg|out)/([^/]*)" ]]
     then
-        export GIT_AUTHOR_EMAIL="stapelberg@debian.org"
+        export pkg=$HOME/d/pkg/$match[2]
+        export out=$HOME/d/out/$match[2]
     else
-        unset GIT_AUTHOR_EMAIL
+        unset pkg
+        unset out
     fi
 }
 chpwd_functions=( ${chpwd_functions[@]} chpwd_profiles )
