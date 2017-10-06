@@ -48,7 +48,7 @@ if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
 	xinput set-prop "$TRACKPOINT" "Evdev Wheel Emulation" 1
 fi
 
-if echo "$INPUT_DEVICES" | grep -qF "$TOUCHPAD" then
+if echo "$INPUT_DEVICES" | grep -qF "$TOUCHPAD"; then
 	# Older Xorg setups:
 	synclient VertScrollDelta=-150
 	synclient HorizScrollDelta=-150
