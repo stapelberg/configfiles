@@ -190,3 +190,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; magit: bind magit-status to C-x g
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; See editorconfig.org
+(if (require 'editorconfig nil t)
+    (editorconfig-mode 1))
