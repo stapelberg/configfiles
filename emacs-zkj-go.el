@@ -7,6 +7,10 @@
 ;; Use goimports instead of gofmt so that we get automatic imports.
 (set 'gofmt-command "goimports")
 
+(let ((path "~/go/src/github.com/stapelberg/expanderr/expanderr.el"))
+  (if (file-exists-p path)
+      (load path)))
+
 (defun zkj-go-mode-hook ()
   ;; Run gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
