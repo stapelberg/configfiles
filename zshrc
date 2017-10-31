@@ -231,7 +231,11 @@ alias strip-xclip-prompt="xclip -out | sed 's,^$HOST [^\$]* \\\$ ,% ,g' | xclip"
 # Use ~sl in any command, for example less ~sl
 hash -d pb=/var/cache/pbuilder/result
 hash -d dcs=~/go/src/github.com/Debian/dcs
+hash -d pk4=~/go/src/github.com/Debian/pk4
+hash -d ratt=~/go/src/github.com/Debian/ratt
 hash -d rirc=~/go/src/github.com/robustirc/robustirc
+hash -d gokrazy=~/go/src/github.com/gokrazy/gokrazy
+hash -d scan2drive=~/go/src/github.com/stapelberg/scan2drive
 
 set_termtitle() {
     # escape '%' chars in $1, make nonprintables visible
@@ -381,7 +385,7 @@ fi
 export GOPATH=~/go
 # Expand path to /usr/sbin and /sbin (because i know which binaries i can call)
 # Add $GOPATH/bin
-export PATH=/home/michael/go-latest/bin:/home/michael/.cargo/bin:$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
+export PATH=/home/michael/.config/avail:/home/michael/.cargo/bin:$GOPATH/bin:~/.local/bin:~/.bin:$PATH:/usr/sbin:/sbin
 
 # For debian utilities
 export DEBEMAIL="stapelberg@debian.org"
