@@ -187,3 +187,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; automatically revert buffers when files change
 (global-auto-revert-mode 1)
+
+;; magit: bind magit-status to C-x g
+(global-set-key (kbd "C-x g") 'magit-status)
