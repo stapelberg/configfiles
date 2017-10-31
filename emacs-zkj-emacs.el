@@ -194,3 +194,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; See editorconfig.org
 (if (require 'editorconfig nil t)
     (editorconfig-mode 1))
+
+;; Always ask for y/n, never yes/no.
+(defalias 'yes-or-no-p 'y-or-n-p)
