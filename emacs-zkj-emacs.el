@@ -24,7 +24,7 @@
 ;; For presentations
 ;;(set-default-font "Monospace 16")
 
-(setq default-frame-alist '((font . "Source Code Pro 8")))
+(setq default-frame-alist '((font . "Go Mono 9")))
 
 ;;;; add marmalade package repository, it contains many more packages.
 (require 'package)
