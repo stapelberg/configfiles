@@ -23,6 +23,12 @@ if [[ "$HOST" = "midna.zekjur.net" || "$HOSTNAME" = "midna.zekjur.net" || "$HOST
 	HOST="midna"
 fi
 
+if [[ "$HOSTNAME" == pacna.* ]]
+then
+	xrandr --output DP-5.8 --auto --right-of DP-5.9
+	xrandr --setmonitor up2414q auto DP-5.8,DP-5.9
+fi
+
 setxkbmap de -variant neo
 
 if echo "$INPUT_DEVICES" | grep -qF "$KINESIS"
