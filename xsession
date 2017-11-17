@@ -15,7 +15,7 @@ xrandr --dpi 192̂
 
 INPUT_DEVICES=$(xinput list --name-only)
 KINESIS="HumbleHacker.com HumbleHacked Kinesis Contoured"
-TRACKBALL="Logitech Unifying Device. Wireless PID:1028"
+TRACKBALL="Logitech M570"
 TRACKPOINT="TPPS/2 IBM TrackPoint"
 TOUCHPAD="SynPS/2 Synaptics TouchPad"
 
