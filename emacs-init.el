@@ -25,6 +25,9 @@
 ;; Go-related settings.
 (require 'zkj-go)
 
+(if (string-prefix-p "pacna" system-name)
+    (require 'pacna-early))
+
 ;; Settings stored by the customize interface.
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
