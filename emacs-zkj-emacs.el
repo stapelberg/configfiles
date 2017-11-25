@@ -197,3 +197,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; Always ask for y/n, never yes/no.
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Always show the buffer name in the frame title (Emacs default is to show the
+;; hostname when there is only one frame).
+(setq frame-title-format "%b")
