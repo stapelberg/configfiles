@@ -202,3 +202,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; Always show the buffer name in the frame title (Emacs default is to show the
 ;; hostname when there is only one frame).
 (setq frame-title-format "%b")
+
+;; Disable the menu bar by default. Use M-x menu-bar-mode to make it re-appear.
+(menu-bar-mode -1)
