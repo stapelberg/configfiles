@@ -29,6 +29,11 @@ then
 	xrandr --setmonitor up2414q auto DP-5.8,DP-5.9
 fi
 
+if [[ "$HOST" = "midna" ]]
+then
+	xrandr --setmonitor up3218k auto DP-4,DP-2
+fi
+
 setxkbmap de -variant neo
 
 if echo "$INPUT_DEVICES" | grep -qF "$KINESIS"
