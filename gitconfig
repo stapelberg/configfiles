@@ -33,3 +33,5 @@
 
 [http]
 	cookiefile = ~/.gitcookies
+[url "git@gitlab.com:ipng.ch"]
+	insteadOf = https://gitlab.com/ipng.ch
