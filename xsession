@@ -14,7 +14,6 @@ fi
 xrandr --dpi 192̂
 
 INPUT_DEVICES=$(xinput list --name-only)
-KINESIS="HumbleHacker.com HumbleHacked Kinesis Contoured"
 TRACKBALL="Logitech M570"
 TRACKPOINT="TPPS/2 IBM TrackPoint"
 TOUCHPAD="SynPS/2 Synaptics TouchPad"
@@ -35,14 +34,6 @@ then
 fi
 
 setxkbmap de -variant neo
-
-if echo "$INPUT_DEVICES" | grep -qF "$KINESIS"
-then
-	# Enable mousekeys to make “End” an additional paste button
-	xmodmap -e 'keycode 115 = Pointer_Button2'
-	xkbset m
-	xkbset exp '=m'
-fi
 
 if echo "$INPUT_DEVICES" | grep -qF "$TRACKBALL"; then
 	xinput set-ptr-feedback "$TRACKBALL" 10 16 15
