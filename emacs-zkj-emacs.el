@@ -205,3 +205,11 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; Disable the menu bar by default. Use M-x menu-bar-mode to make it re-appear.
 (menu-bar-mode -1)
+
+;; Colorize compilation output (why is this not the default?!):
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
