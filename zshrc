@@ -165,6 +165,11 @@ f() {
 }
 alias h='cat ~/.zsh_history | grep --text --color '
 
+# write $1 to the inserted sdcard
+sdcard() {
+    sudo dd of=/dev/disk/by-id/usb-Generic-_USB3.0_CRW_-SD_201006010301-0:0 bs=64k oflag=dsync status=progress if="$1"
+}
+
 # Edit a temporary file with my template for a C proof-of-concept
 alias cpoc='cd /tmp && FN=$(mktemp --suffix=.c) && cp ~/configfiles/poc-template.c $FN && vi $FN && echo "Proof-of-concept stored in $FN"'
 
