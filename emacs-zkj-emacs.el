@@ -213,3 +213,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   (ansi-color-apply-on-region compilation-filter-start (point))
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+;; Add final newlines to all files by default, not just in modes which think
+;; this is useful.
+(setq require-final-newline t)
