@@ -77,6 +77,9 @@ xhost +local:
 # X settings: disable DPMS, disable audible bell
 xset -dpms s off -b
 
+# increase key repeat rate
+xset r rate 250 30
+
 # Set correct locales
 unset LC_ALL
 export LANG=de_DE.UTF-8
