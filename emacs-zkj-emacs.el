@@ -11,6 +11,10 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+;; Contrary to global-set-key, whose effects can be shadowed by modes (e.g. the
+;; GNUmakefile mode shadows C-c C-f), bind-key overwrites keys in all modes.
+(require 'bind-key)
+
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
@@ -37,11 +41,11 @@
 	       "https://melpa.org/packages/"))
 
 (if (require 'smex nil t)
-    (global-set-key [(meta x)] (lambda ()
+    (bind-key* "M-x" (lambda ()
 				 (interactive)
 				 (or (boundp 'smex-cache)
 				     (smex-initialize))
-				 (global-set-key [(meta x)] 'smex)
+				 (bind-key* "M-x" 'smex)
 				 (smex))))
 
 ;;;; general appearance
@@ -82,7 +86,7 @@
 ;;;; keybindings
 
 ;; C-z by default suspends the session, which is… incredibly useless.
-(global-set-key (kbd "C-z") 'undo)
+(bind-key* "C-z" 'undo)
 
 ;; M-n is unbound by default, so bind it to scroll the window without
 ;; moving the cursor, like ^E in vim. Likewise for M-p, but in the
@@ -95,11 +99,12 @@
   (interactive)
   (scroll-down 3))
 
-(global-set-key (kbd "M-n") 'ctrl-e-in-vim)
-(global-set-key (kbd "M-p") 'ctrl-y-in-vim)
+(bind-key* "M-n" 'ctrl-e-in-vim)
+(bind-key* "M-p" 'ctrl-y-in-vim)
 
 ;; Make C-c C-f expand filenames (like vim’s omni-complete)
-(global-set-key (kbd "C-c C-f") 'my-expand-file-name-at-point)
+
+(bind-key* "C-c C-f" 'my-expand-file-name-at-point)
 (defun my-expand-file-name-at-point ()
   "Use hippie-expand to expand the filename"
   (interactive)
@@ -109,10 +114,10 @@
 ;; Easy window switching with M-<direction>
 (require 'windmove)
 
-(global-set-key [(meta left)]  'windmove-left)
-(global-set-key [(meta up)]    'windmove-up)
-(global-set-key [(meta right)] 'windmove-right)
-(global-set-key [(meta down)]  'windmove-down)
+(bind-key* "<M-left>" 'windmove-left)
+(bind-key* "<M-up>" 'windmove-up)
+(bind-key* "<M-right>" 'windmove-right)
+(bind-key* "<M-down>" 'windmove-down)
 
 ;; Automatically scroll to the end of the compilation buffer.
 (setq compilation-scroll-output t)
@@ -159,7 +164,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; C-4 is a good choice as per “Good Key Choices” in
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
-(global-set-key (kbd "C-4") 'zkj-recompile)
+(bind-key* "<C-4>" 'zkj-recompile)
 
 (defun zkj-recompile ()
   "Interrupt current compilation and recompile"
@@ -190,7 +195,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (global-auto-revert-mode 1)
 
 ;; magit: bind magit-status to C-x g
-(global-set-key (kbd "C-x g") 'magit-status)
+(bind-key* "C-x g" 'magit-status)
 
 ;; See editorconfig.org
 (if (require 'editorconfig nil t)
