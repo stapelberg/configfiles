@@ -164,7 +164,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; C-4 is a good choice as per “Good Key Choices” in
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
-(bind-key* "<C-4>" 'zkj-recompile)
+(bind-key* "C-4" 'zkj-recompile)
 
 (defun zkj-recompile ()
   "Interrupt current compilation and recompile"
