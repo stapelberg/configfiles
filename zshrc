@@ -222,6 +222,15 @@ alias -g T="| tail"
 alias -g G="| grep"
 alias -g H="| head"
 
+ping() {
+    if [ $# -eq 0 ]
+    then
+        =ping google.ch
+    else
+        =ping "$@"
+    fi
+}
+
 # Replaces prompt (hostname, pwd) by "% " in each line in the clipboard
 alias strip-xclip-prompt="xclip -out | sed 's,^$HOST [^\$]* \\\$ ,% ,g' | xclip"
 
