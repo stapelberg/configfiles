@@ -17,6 +17,7 @@ INPUT_DEVICES=$(xinput list --name-only)
 TRACKBALL="Logitech M570"
 TRACKPOINT="TPPS/2 IBM TrackPoint"
 TOUCHPAD="SynPS/2 Synaptics TouchPad"
+DELLTOUCHPAD="DLL082A:01 06CB:76AF Touchpad"
 
 if [[ "$HOST" = "midna.zekjur.net" || "$HOSTNAME" = "midna.zekjur.net" || "$HOSTNAME" = "midna" ]]; then
 	HOST="midna"
@@ -50,15 +51,21 @@ if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
 	xinput set-prop "$TRACKPOINT" "Evdev Wheel Emulation" 1
 fi
 
-if echo "$INPUT_DEVICES" | grep -qF "$TOUCHPAD"; then
-	# Older Xorg setups:
-	synclient VertScrollDelta=-150
-	synclient HorizScrollDelta=-150
-	synclient VertTwoFingerScroll=1
-	synclient HorizTwoFingerScroll=1
+if echo "$INPUT_DEVICES" | grep -qF "$DELLTOUCHPAD"; then
+      synclient TapButton3=2
+      synclient VertScrollDelta=-27
+      synclient HorizScrollDelta=-27
+else
+	if echo "$INPUT_DEVICES" | grep -qF "$TOUCHPAD"; then
+		# Older Xorg setups:
+		synclient VertScrollDelta=-150
+		synclient HorizScrollDelta=-150
+		synclient VertTwoFingerScroll=1
+		synclient HorizTwoFingerScroll=1
 
-	# libinput-based Xorg setups:
-	xinput set-prop "$TOUCHPAD" 'libinput Natural Scrolling Enabled' 1
+		# libinput-based Xorg setups:
+		xinput set-prop "$TOUCHPAD" 'libinput Natural Scrolling Enabled' 1
+	fi
 fi
 
 # Disable powersaving on nvidia cards, it causes really bad graphics
