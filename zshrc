@@ -25,7 +25,7 @@ setopt short_loops
 # `~' or `=')  performed on expression as if it were a parameter assignment.
 setopt MAGIC_EQUAL_SUBST
 
-export EDITOR=~/configfiles/emacsclient
+export EDITOR=~/configfiles/zmacsclient
 export VISUAL=$EDITOR
 export PAGER='less -R'
 export GTK_IM_MODULE=xim
@@ -42,15 +42,10 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[00;32m'
 
-# Explicitly select vim line editing mode. This is necessary for SSH sessions
-# where EDITOR/VISUAL are not forwarded and thus zsh assumes emacs line editing
-# mode by default.
-bindkey -v
+# Explicitly select Emacs line editing mode (independent of zsh’s best guess
+# based on EDITOR/VISUAL).
+bindkey -e
 
-# C-r is easier to type than Esc-k /
-bindkey "^R" history-incremental-search-backward
-bindkey "^[[A" up-line-or-history
-bindkey "^[[B" down-line-or-history
 bindkey "^F" push-line
 
 # C-t deletes to the left of the cursor until the next /. Useful to delete a
@@ -80,10 +75,10 @@ backward-delete-to-slash() {
 zle -N backward-delete-to-slash
 bindkey "^T" backward-delete-to-slash
 
-# Press 'v' to edit the command line in vim.
-autoload -U edit-command-line
+# Press C-x C-e to edit the command line in emacs.
+autoload -z edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+bindkey "^X^E" edit-command-line
 
 # NO BEEPING!
 setopt no_BEEP
@@ -151,7 +146,7 @@ alias rt='ls -hltr'
 alias L='dpkg -L'
 alias v='vim'
 alias V='sudo vim'
-alias e=~/configfiles/emacsclient
+alias e=~/configfiles/zmacsclient
 alias m='make'
 alias mp='mplayer -really-quiet'
 # disable gdb welcome message
