@@ -46,7 +46,7 @@ export LESS_TERMCAP_us=$'\E[00;32m'
 # based on EDITOR/VISUAL).
 bindkey -e
 
-bindkey "^F" push-line
+bindkey "^X^F" push-line
 
 # C-t deletes to the left of the cursor until the next /. Useful to delete a
 # path component.
