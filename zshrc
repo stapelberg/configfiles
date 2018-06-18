@@ -46,34 +46,13 @@ export LESS_TERMCAP_us=$'\E[00;32m'
 # based on EDITOR/VISUAL).
 bindkey -e
 
-bindkey "^X^F" push-line
+# Make M-<backspace> delete to (e.g.) the previous slash, just like Emacs.
+autoload -U select-word-style
+select-word-style bash
+# For compatibility with my previous config:
+bindkey "^T" backward-kill-word
 
-# C-t deletes to the left of the cursor until the next /. Useful to delete a
-# path component.
-backward-delete-to-slash() {
-  integer pos=$CURSOR
-  # When right next to a /, delete the / followed by the next path component.
-  # There are two conditionals because for an as-of-yet undiscovered reason,
-  # only the first one works on my work computer and only the second one works
-  # on my private computer. Both use the same version and user-config of zsh.
-  # Likely a system-level config difference.
-  if [[ pos > 2 && ${LBUFFER[pos-1]} = / ]]; then
-    pos=$((pos-2))
-  fi
-  if [[ pos > 1 && ${LBUFFER[pos]} = / ]]; then
-    pos=$((pos-1))
-  fi
-  while (( pos > 1 )); do
-    if [[ ${LBUFFER[pos]} = / ]]; then
-      LBUFFER=${LBUFFER[0,pos]}
-      return 0
-    fi
-    pos=$((pos-1))
-  done
-  return 1
-}
-zle -N backward-delete-to-slash
-bindkey "^T" backward-delete-to-slash
+bindkey "^X^F" push-line
 
 # Press C-x C-e to edit the command line in emacs.
 autoload -z edit-command-line
