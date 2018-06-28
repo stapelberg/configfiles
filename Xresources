@@ -67,3 +67,83 @@ Xft.rgba: rgb
 !*foreground: lightgrey
 
 Xcursor.theme: Adwaita
+
+XTerm.vt100.termName: xterm-256color
+
+XTerm.vt100.bellIsUrgent: true
+
+XTerm.vt100.foreground: lightgrey
+XTerm.vt100.background: black
+
+XTerm.vt100.faceName: Bitstream Vera Sans Mono:size=8:antialias=true
+
+XTerm.vt100.color0: #2E3436
+XTerm.vt100.color8: #555753
+! red
+XTerm.vt100.color1: #CC0000
+XTerm.vt100.color9: #EF2929
+! green
+XTerm.vt100.color2  : #4E9A06
+XTerm.vt100.color10 : #8AE234
+! yellow
+XTerm.vt100.color3  : #C4A000
+XTerm.vt100.color11 : #FCE94F
+! blue
+XTerm.vt100.color4  : #3465A4
+XTerm.vt100.color12 : #729FCF
+! magenta
+XTerm.vt100.color5  : #EF33C0
+XTerm.vt100.color13 : #EE38DA
+! cyan
+XTerm.vt100.color6  : #04B5B8
+XTerm.vt100.color14 : #34E2E2
+! white
+XTerm.vt100.color7  : #D3D7CF
+XTerm.vt100.color15 : #EEEEEC
+
+! These were taken from xterm(1), then prepended with a colon as per
+! https://lists.neo-layout.org/pipermail/diskussion/2009-May/000265.html
+XTerm*VT100.translations: #replace \n\
+                     :Shift <KeyPress> Prior:scroll-back(1,halfpage) \n\
+                      :Shift <KeyPress> Next:scroll-forw(1,halfpage) \n\
+                    :Shift <KeyPress> Select:select-cursor-start() \
+                                            select-cursor-end(SELECT, CUT_BUFFER0) \n\
+                    :Shift <KeyPress> Insert:insert-selection(SELECT, CUT_BUFFER0) \n\
+                            :Alt <Key>Return:fullscreen() \n\
+                   <KeyRelease> Scroll_Lock:scroll-lock() \n\
+               :Shift~Ctrl <KeyPress> KP_Add:larger-vt-font() \n\
+               :Shift Ctrl <KeyPress> KP_Add:smaller-vt-font() \n\
+               :Shift <KeyPress> KP_Subtract:smaller-vt-font() \n\
+                           ~Meta <KeyPress>:insert-seven-bit() \n\
+                            Meta <KeyPress>:insert-eight-bit() \n\
+                           !Ctrl <Btn1Down>:popup-menu(mainMenu) \n\
+                      !Lock Ctrl <Btn1Down>:popup-menu(mainMenu) \n\
+            !Lock Ctrl @Num_Lock <Btn1Down>:popup-menu(mainMenu) \n\
+                ! @Num_Lock Ctrl <Btn1Down>:popup-menu(mainMenu) \n\
+                           ~Meta <Btn1Down>:select-start() \n\
+                         ~Meta <Btn1Motion>:select-extend() \n\
+                           !Ctrl <Btn2Down>:popup-menu(vtMenu) \n\
+                      !Lock Ctrl <Btn2Down>:popup-menu(vtMenu) \n\
+            !Lock Ctrl @Num_Lock <Btn2Down>:popup-menu(vtMenu) \n\
+                ! @Num_Lock Ctrl <Btn2Down>:popup-menu(vtMenu) \n\
+                     ~Ctrl ~Meta <Btn2Down>:ignore() \n\
+                            Meta <Btn2Down>:clear-saved-lines() \n\
+                       ~Ctrl ~Meta <Btn2Up>:insert-selection(SELECT, CUT_BUFFER0) \n\
+                           !Ctrl <Btn3Down>:popup-menu(fontMenu) \n\
+                      !Lock Ctrl <Btn3Down>:popup-menu(fontMenu) \n\
+            !Lock Ctrl @Num_Lock <Btn3Down>:popup-menu(fontMenu) \n\
+                ! @Num_Lock Ctrl <Btn3Down>:popup-menu(fontMenu) \n\
+                     ~Ctrl ~Meta <Btn3Down>:start-extend() \n\
+                         ~Meta <Btn3Motion>:select-extend() \n\
+                            Ctrl <Btn4Down>:scroll-back(1,halfpage,m) \n\
+                       Lock Ctrl <Btn4Down>:scroll-back(1,halfpage,m) \n\
+             Lock @Num_Lock Ctrl <Btn4Down>:scroll-back(1,halfpage,m) \n\
+                  @Num_Lock Ctrl <Btn4Down>:scroll-back(1,halfpage,m) \n\
+                                 <Btn4Down>:scroll-back(5,line,m)     \n\
+                            Ctrl <Btn5Down>:scroll-forw(1,halfpage,m) \n\
+                       Lock Ctrl <Btn5Down>:scroll-forw(1,halfpage,m) \n\
+             Lock @Num_Lock Ctrl <Btn5Down>:scroll-forw(1,halfpage,m) \n\
+                  @Num_Lock Ctrl <Btn5Down>:scroll-forw(1,halfpage,m) \n\
+                                 <Btn5Down>:scroll-forw(5,line,m)     \n\
+                                    <BtnUp>:select-end(SELECT, CUT_BUFFER0) \n\
+                                  <BtnDown>:ignore()
