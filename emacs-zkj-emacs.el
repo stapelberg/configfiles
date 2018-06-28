@@ -183,6 +183,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; magit: bind magit-status to C-x g
 (bind-key* "C-x g" 'magit-status)
 
+;; magit: don’t restore old window configurations
+(setq magit-bury-buffer-function 'magit-mode-quit-window)
+
 ;; See editorconfig.org
 (if (require 'editorconfig nil t)
     (editorconfig-mode 1))
