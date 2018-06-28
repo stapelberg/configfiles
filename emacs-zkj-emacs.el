@@ -148,6 +148,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
       (x-urgency-hint (window-frame (get-buffer-window buf)) 1)))
 (add-hook 'compilation-finish-functions #'compilation-finished-hook)
 
+(bind-key* "C-3" 'compile)
 ;; C-4 is a good choice as per “Good Key Choices” in
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
 (bind-key* "C-4" 'zkj-recompile)
