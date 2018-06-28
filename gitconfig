@@ -35,3 +35,9 @@
 	cookiefile = ~/.gitcookies
 [url "git@gitlab.com:ipng.ch"]
 	insteadOf = https://gitlab.com/ipng.ch
+[url "git.debian.org:/git/"]
+	insteadOf = https://anonscm.debian.org/git/
+[url "git@salsa.debian.org:"]
+	insteadOf = https://salsa.debian.org/
+[github]
+	user = stapelberg
