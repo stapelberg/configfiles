@@ -307,9 +307,9 @@ setup_prompt() {
     fi
 
     if [ $lvl -ge 2 ] ; then
-        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$lvl $_cfg_nag$ "
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$lvl $_cfg_nag%% "
     else
-        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$_cfg_nag$ "
+        PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$_cfg_nag%% "
     fi
 
     # For tramp (emacs).
