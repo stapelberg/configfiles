@@ -76,7 +76,7 @@ fignore=(.o)
 local _ack_location="$(\unalias -a; command -v ag ack ack-grep 2>/dev/null | head -1)"
 [ $? = 0 ] && alias ack="$_ack_location"
 
-export LS_COLORS='di=01;34:ln=01;36:pi=33:so=01;35:bd=01;33:cd=01;33:ex=01;32:do=01;35:su=37;41:sg=30;43:st=37;44:ow=34;42:tw=30;42:ca=30;41'
+export LS_COLORS='di=01;94:ln=01;96:pi=33:so=01;95:bd=01;93:cd=01;93:ex=01;92:do=01;95:su=37;41:sg=30;43:st=37;44:ow=34;42:tw=30;42:ca=30;41'
 alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 
 # Requires liburi-perl and xclip.
