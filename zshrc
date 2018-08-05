@@ -148,6 +148,7 @@ sdcard() {
 alias cpoc='cd /tmp && FN=$(mktemp --suffix=.c) && cp ~/configfiles/poc-template.c $FN && vi $FN && echo "Proof-of-concept stored in $FN"'
 
 alias bc='bc -ql'
+alias diff='diff --color'
 
 alias cal='cal -y'
 
