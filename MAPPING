@@ -16,6 +16,7 @@ emacs-zkj-lisp.el ~/.emacs.d/lisp/zkj-lisp.el
 emacs-zkj-perl.el ~/.emacs.d/lisp/zkj-perl.el
 emacs-zkj-go.el ~/.emacs.d/lisp/zkj-go.el
 emacs-zkj-live-reload.el ~/.emacs.d/lisp/zkj-live-reload.el
+emacs-zkj-gbp.el ~/.emacs.d/lisp/zkj-gbp.el
 emacs-custom.el ~/.emacs.d/custom.el
 dunstrc ~/.config/dunst/dunstrc
 SourceCodePro-Regular.ttf ~/.fonts/SourceCodePro-Regular.ttf

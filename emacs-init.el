@@ -25,6 +25,10 @@
 ;; Go-related settings.
 (require 'zkj-go)
 
+;; Magit gbp mode.
+(if (require 'magit nil t)
+    (require 'zkj-gbp))
+
 (if (string-prefix-p "pacna" system-name)
     (require 'pacna-early))
 
