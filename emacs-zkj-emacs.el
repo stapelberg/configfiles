@@ -77,6 +77,9 @@
 ;; (more annoying than helpful).
 (setq ido-auto-merge-work-directories-length -1)
 
+(if (require 'ido-sort-mtime nil t)
+    (ido-sort-mtime-mode))
+
 ;; Store backups in a single directory (/tmp/emacs-backups) so that
 ;; they don’t clutter up my filesystem.
 (let ((backupdir "/tmp/emacs-backups/"))
