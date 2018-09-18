@@ -29,6 +29,9 @@
 (if (require 'magit nil t)
     (require 'zkj-gbp))
 
+;; Hugo-related settings.
+(require 'zkj-hugo)
+
 (if (string-prefix-p "pacna" system-name)
     (require 'pacna-early))
 
