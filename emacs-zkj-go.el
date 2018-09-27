@@ -19,7 +19,7 @@
   (local-set-key (kbd "M-.") 'go-guru-definition)
   (local-set-key (kbd "C-c d") 'godoc-at-point)
   ;; One tab will be displayed as 4 spaces.
-  (set 'tab-width 4)
+  (set 'tab-width 4))
   ;; Enable eldoc (displays function signatures in the minibuf).
-  (go-eldoc-setup))
+;;  (go-eldoc-setup))
 (add-hook 'go-mode-hook 'zkj-go-mode-hook)
