@@ -40,6 +40,10 @@
 	     '("melpa" .
 	       "https://melpa.org/packages/"))
 
+;; for https://github.com/CyberShadow/term-keys
+(add-to-list 'package-archives
+             '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
+
 (if (require 'smex nil t)
     (bind-key* "M-x" (lambda ()
 				 (interactive)
@@ -223,3 +227,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; Add final newlines to all files by default, not just in modes which think
 ;; this is useful.
 (setq require-final-newline t)
+
+;; Initialize https://github.com/CyberShadow/term-keys, which makes e.g. <M-up>
+;; or <M-down> work in terminal emacs (emacs -nw) on urxvt. Start urxvt like so:
+;; https://github.com/stapelberg/configfiles/commit/69c58a32600aaf0f5232f5b3415efac55007b029
+(if (require 'term-keys nil t)
+    (term-keys/init))
