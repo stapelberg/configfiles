@@ -155,7 +155,19 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
       (x-urgency-hint (window-frame (get-buffer-window buf)) 1)))
 (add-hook 'compilation-finish-functions #'compilation-finished-hook)
 
-(bind-key* "C-3" 'compile)
+;; compile-parent defaults to a make command line using the closest Makefile,
+;; i.e. working in any project subdirectory:
+(defun compile-parent (command)
+  (interactive
+   (let* ((make-directory (locate-dominating-file (buffer-file-name)
+                                                  "Makefile"))
+          (command (concat "make -k -C "
+                           (shell-quote-argument make-directory)
+			   " ")))
+     (list (compilation-read-command command))))
+  (compile command))
+
+(bind-key* "C-3" 'compile-parent)
 ;; C-4 is a good choice as per “Good Key Choices” in
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
 (bind-key* "C-4" 'zkj-recompile)
