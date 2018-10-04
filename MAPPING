@@ -21,3 +21,4 @@ emacs-zkj-hugo.el ~/.emacs.d/lisp/zkj-hugo.el
 emacs-custom.el ~/.emacs.d/custom.el
 dunstrc ~/.config/dunst/dunstrc
 SourceCodePro-Regular.ttf ~/.fonts/SourceCodePro-Regular.ttf
+urxvt ~/.local/bin/urxvt
