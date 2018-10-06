@@ -215,8 +215,10 @@ hash -d dcs=~/go/src/github.com/Debian/dcs
 hash -d pk4=~/go/src/github.com/Debian/pk4
 hash -d ratt=~/go/src/github.com/Debian/ratt
 hash -d rirc=~/go/src/github.com/robustirc/robustirc
+hash -d router7=~/go/src/github.com/rtr7/router7
 hash -d gokrazy=~/go/src/github.com/gokrazy/gokrazy
 hash -d scan2drive=~/go/src/github.com/stapelberg/scan2drive
+hash -d debiman=~/go/src/github.com/Debian/debiman
 
 set_termtitle() {
     # escape '%' chars in $1, make nonprintables visible
