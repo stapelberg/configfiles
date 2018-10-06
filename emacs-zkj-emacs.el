@@ -56,7 +56,7 @@
 
 ;; Don’t ask when following a symlink into a version-controlled folder
 ;; (my ~/configfiles).
-(setq vc-follow-symlinks t)
+(setq vc-follow-symlinks t) ;; required so that (ma)git finds ~/configfiles as GIT_DIR
 
 ;; No blinking cursor.
 (blink-cursor-mode 0)
