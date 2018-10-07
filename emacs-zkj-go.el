@@ -16,7 +16,7 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Jump to the definition of the symbol under the cursor.
   ;; (Jump back with M-*)
-  (local-set-key (kbd "M-.") 'go-guru-definition)
+  (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "C-c d") 'godoc-at-point)
   ;; One tab will be displayed as 4 spaces.
   (set 'tab-width 4))
