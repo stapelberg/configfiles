@@ -18,7 +18,7 @@ URxvt.keysym.Mod4-m: perl:fonts:minus
 URxvt.keysym.Mod4-o: perl:cwd-spawn
 URxvt.keysym.Mod4-s: perl:searchable-scrollback:start
 URxvt.underlineURLs: false
-URxvt.perl-ext: selection,mark-yank-urls,cwd-spawn
+URxvt.perl-ext: selection,mark-yank-urls,cwd-spawn,selection-to-clipboard
 URxvt.urlLauncher: google-chrome
 URxvt.urgentOnBell: true
 URxvt.scrollstyle: next
