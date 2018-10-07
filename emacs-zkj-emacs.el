@@ -248,4 +248,4 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; Persistent desktops (which buffers are open)
 (setq desktop-save t) ;; always save
-(desktop-save-mode)
+;;(desktop-save-mode)
