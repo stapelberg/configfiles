@@ -112,8 +112,8 @@
 (bind-key* "<M-right>" 'windmove-right)
 (bind-key* "<M-down>" 'windmove-down)
 
-;; Automatically scroll to the end of the compilation buffer.
-(setq compilation-scroll-output t)
+;; Automatically scroll to the first end of the compilation buffer.
+(setq compilation-scroll-output 'first-error)
 
 ;; Don’t ask to save files before compilation, just save them.
 (setq compilation-ask-about-save nil)
