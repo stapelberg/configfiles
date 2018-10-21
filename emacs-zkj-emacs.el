@@ -30,11 +30,8 @@
 
 (setq default-frame-alist '((font . "Go Mono 8")))
 
-;;;; add marmalade package repository, it contains many more packages.
+;;;; add additional package repositories
 (require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" .
-	       "http://marmalade-repo.org/packages/"))
 
 (add-to-list 'package-archives
 	     '("melpa" .
