@@ -183,6 +183,12 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; by default; disable that behavior:
 (set 'org-startup-truncated nil)
 
+;; follow links (e.g. file:foo.org) when pressing RET
+(setq org-return-follows-link t)
+
+;; follow links in the same Emacs window:
+(setcdr (assq 'file org-link-frame-setup) 'find-file)
+
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
 (winner-mode)
