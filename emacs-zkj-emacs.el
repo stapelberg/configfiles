@@ -179,21 +179,18 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; (tramp will not use master mode otherwise).
 (setq tramp-use-ssh-controlmaster-options nil)
 
-;; org mode starts up in truncated mode (as opposed to line wrapping)
-;; by default; disable that behavior:
-(set 'org-startup-truncated nil)
+(require 'use-package)
 
-;; follow links (e.g. file:foo.org) when pressing RET
-(setq org-return-follows-link t)
-
-;; follow links in the same Emacs window:
-(setcdr (assq 'file org-link-frame-setup) 'find-file)
-
-;; default to #+STARTUP: showall
-(setq org-startup-folded nil)
-
-;; open agenda in the same Emacs window:
-(setq org-agenda-window-setup 'current-window)
+(use-package org
+  :config
+  (progn
+    (setq org-startup-truncated nil ; wrap lines instead of truncating
+	  org-return-follows-link t ; follow hyperlinks when pressing RET
+	  org-agenda-window-setup 'current-window ; open agenda in same Emacs window
+	  org-startup-folded nil)   ; default to #+STARTUP: showall
+    (setq org-src-window-setup 'current-window)
+    ;; follow links in the same Emacs window
+    (setcdr (assoc 'file org-link-frame-setup) 'find-file)))
 
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
