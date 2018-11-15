@@ -192,6 +192,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; default to #+STARTUP: showall
 (setq org-startup-folded nil)
 
+;; open agenda in the same Emacs window:
+(setq org-agenda-window-setup 'current-window)
+
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
 (winner-mode)
