@@ -192,6 +192,12 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
     ;; follow links in the same Emacs window
     (setcdr (assoc 'file org-link-frame-setup) 'find-file)))
 
+;; prefer opening new buffers in the same Emacs window
+(setq pop-up-windows nil)
+
+;; make M-x man open manpages in the same Emacs window
+(setq Man-notify-method 'pushy)
+
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
 (winner-mode)
