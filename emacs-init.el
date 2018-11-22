@@ -10,30 +10,30 @@
 (package-initialize)
 
 ;; General emacs settings.
-(require 'zkj-emacs)
+(load "zkj-emacs")
 
 ;; LISP/SCHEME-related settings.
-(require 'zkj-lisp)
+(load "zkj-lisp")
 
 ;; notmuch-specific configuration, if it is installed.
 (if (require 'notmuch nil t)
-    (require 'zkj-notmuch))
+    (load "zkj-notmuch"))
 
 ;; Perl-related settings.
-(require 'zkj-perl)
+(load "zkj-perl")
 
 ;; Go-related settings.
-(require 'zkj-go)
+(load "zkj-go")
 
 ;; Magit gbp mode.
 (if (require 'magit nil t)
-    (require 'zkj-gbp))
+    (load "zkj-gbp"))
 
 ;; Hugo-related settings.
-(require 'zkj-hugo)
+(load "zkj-hugo")
 
 (if (string-prefix-p "pacna" system-name)
-    (require 'pacna-early))
+    (load "pacna-early"))
 
 ;; Settings stored by the customize interface.
 (setq custom-file "~/.emacs.d/custom.el")
@@ -41,4 +41,4 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp/emacs-livereload")
 (if (require 'livereload nil t)
-    (require 'zkj-live-reload))
+    (load "zkj-live-reload"))
