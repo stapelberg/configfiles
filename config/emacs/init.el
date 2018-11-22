@@ -6,7 +6,7 @@
 ;;;;
 ;;;; See also http://emacswiki.org/emacs/DotEmacsDotD
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
 (package-initialize)
 
 ;; General emacs settings.
@@ -36,9 +36,9 @@
     (load "pacna-early"))
 
 ;; Settings stored by the customize interface.
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/configfiles/config/emacs/custom.el")
 (load custom-file)
 
-(add-to-list 'load-path "~/.emacs.d/lisp/emacs-livereload")
+(add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
 (if (require 'livereload nil t)
     (load "zkj-live-reload"))
