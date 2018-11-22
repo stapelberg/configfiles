@@ -180,6 +180,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (setq tramp-use-ssh-controlmaster-options nil)
 
 (use-package org
+  :defer t
   :config
   (progn
     (setq org-startup-truncated nil ; wrap lines instead of truncating
