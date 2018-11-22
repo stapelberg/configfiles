@@ -179,8 +179,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; (tramp will not use master mode otherwise).
 (setq tramp-use-ssh-controlmaster-options nil)
 
-(require 'use-package)
-
 (use-package org
   :config
   (progn

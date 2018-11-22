@@ -14,6 +14,8 @@
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
 (package-initialize)
 
+(require 'use-package)
+
 ;; General emacs settings.
 (load "zkj-emacs")
 
@@ -31,8 +33,11 @@
 (load "zkj-go")
 
 ;; Magit gbp mode.
-(if (require 'magit nil t)
-    (load "zkj-gbp"))
+(use-package magit
+  :bind (("C-c g" . magit-status))
+  :config
+  (progn
+    (load "zkj-gbp")))
 
 ;; Hugo-related settings.
 (load "zkj-hugo")
