@@ -1,2 +1,4 @@
 #!/bin/bash
-exec emacsclient -c -a "" "$@"
+
+ws=$(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].name' | sed 's,^[^:]*:\s*,,g')
+exec emacsclient --socket-name=$ws --create-frame --alternate-editor="" "$@"
