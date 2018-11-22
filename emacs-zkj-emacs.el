@@ -261,3 +261,18 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; Persistent desktops (which buffers are open)
 (setq desktop-save t) ;; always save
 ;;(desktop-save-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Daemon mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'seq) ;; Emacs 25.1
+(defun zkj-reload-all ()
+  "reloads all running Emacs daemons"
+  (interactive)
+  ;; socket location when using emacsclient --socket-name:
+  (let* ((socket-dir (format "%s/emacs%d" (or (getenv "TMPDIR") "/tmp") (user-uid)))
+	 (not-dot (lambda (x) (not (or (string= x ".")
+				       (string= x "..")))))
+	 (daemons (seq-filter not-dot (directory-files socket-dir))))
+    (mapcar (lambda (daemon) (server-eval-at daemon '(load-file user-init-file))) daemons)))
