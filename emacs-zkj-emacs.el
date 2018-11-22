@@ -72,14 +72,14 @@
       browse-url-generic-program "google-chrome")
 
 ;; ido-mode has a *much* better buffer selection (and file opening) :).
-(ido-mode)
+(ido-mode t)
 
 ;; Disable searching in other directories when there are no matches
 ;; (more annoying than helpful).
 (setq ido-auto-merge-work-directories-length -1)
 
 (if (require 'ido-sort-mtime nil t)
-    (ido-sort-mtime-mode))
+    (ido-sort-mtime-mode t))
 
 ;; Store backups in a single directory (/tmp/emacs-backups) so that
 ;; they don’t clutter up my filesystem.
@@ -200,7 +200,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
-(winner-mode)
+(winner-mode t)
 
 ;; use 80 characters for line wrapping with M-q
 (setq-default fill-column 80)
