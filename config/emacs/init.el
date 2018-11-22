@@ -6,6 +6,11 @@
 ;;;;
 ;;;; See also http://emacswiki.org/emacs/DotEmacsDotD
 
+(setq gc-cons-threshold 64000000)
+(add-hook 'after-init-hook #'(lambda ()
+                               ;; restore after startup
+                               (setq gc-cons-threshold 800000)))
+
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
 (package-initialize)
 
