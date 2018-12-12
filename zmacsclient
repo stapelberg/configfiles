@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "$DISPLAY" ]
+then
+  exec emacs "$@"
+fi
+
 if [ -n "$EMACS_SERVER_FILE" ]
 then
   exec emacsclient --create-frame --alternate-editor="" "$@"
