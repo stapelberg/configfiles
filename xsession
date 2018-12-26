@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Vanilla xdm does not do this by default:
+xrdb $HOME/.Xresources
+
 # Enable zapping (C-A-<Bksp> kills X)
 # Using setxkbmap -option terminate:ctrl_alt_bksp binds NoSymbol to Backspace
 # on the higher levels so that CapsLock+Backspace (Backspace on Level3) doesn’t
