@@ -197,6 +197,26 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; make M-x man open manpages in the same Emacs window
 (setq Man-notify-method 'pushy)
 
+;; https://github.com/bmag/emacs-purpose (“window-purpose” on MELPA) allows
+;; dedicating a window to a certain purpose (e.g. compilation, magit, edit,
+;; …) using C-c , d.
+;;
+;; When happy with a layout, save using:
+;; M-x purpose-save-window-layout NAME RET TAB RET
+;; …and load using:
+;; M-x purpose-load-window-layout NAME
+(if (require 'window-purpose nil t)
+    (progn
+      (purpose-mode)
+
+      (add-to-list 'purpose-user-mode-purposes '(compilation-mode . compile))
+      (add-to-list 'purpose-user-name-purposes '("*Go Test*" . compile))
+      (add-to-list 'purpose-user-regexp-purposes '("^magit: " . magit))
+      (purpose-compile-user-configuration) ;; activate changes
+
+      (if (string= system-name "midna")
+	  (purpose-load-window-layout "zkj"))))
+
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
 (winner-mode t)
