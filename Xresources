@@ -10,7 +10,6 @@ URxvt.background: black
 URxvt.foreground: lightgrey
 URxvt.internalBorder: 1
 URxvt.cursorBlink: 0
-URxvt.termName: xterm-256color
 URxvt.visualBell: off
 URxvt.keysym.Mod1-u: perl:mark-yank-urls:activate_mark_mode
 URxvt.keysym.Mod4-p: perl:fonts:plus
