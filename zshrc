@@ -240,7 +240,7 @@ set_termtitle() {
         # screen location
         print -rn -- $'\e'"_${(%)${:-%m}}: $a"$'\e'$'\\'
     ;;
-    xterm*|rxvt)
+    xterm*|rxvt*)
         # plain xterm title
         print -rn -- $'\e'"]2;${(%)${:-%m}}: $a"$'\a'
     ;;
