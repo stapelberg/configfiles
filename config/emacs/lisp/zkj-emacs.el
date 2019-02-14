@@ -299,3 +299,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 				       (string= x "..")))))
 	 (daemons (seq-filter not-dot (directory-files socket-dir))))
     (mapcar (lambda (daemon) (server-eval-at daemon '(load-file user-init-file))) daemons)))
+
+;; M-x website menu partial
+(defun website ()
+  "invokes counsel-fzf on ~/hugo"
+  (interactive)
+  (counsel-fzf nil "~/hugo"))
