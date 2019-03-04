@@ -300,6 +300,11 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	 (daemons (seq-filter not-dot (directory-files socket-dir))))
     (mapcar (lambda (daemon) (server-eval-at daemon '(load-file user-init-file))) daemons)))
 
+(defun fzf ()
+  "fuzzy find on the closest git repository"
+  (interactive)
+  (counsel-fzf nil (magit-toplevel)))
+
 ;; M-x website menu partial
 (defun website ()
   "invokes counsel-fzf on ~/hugo"
