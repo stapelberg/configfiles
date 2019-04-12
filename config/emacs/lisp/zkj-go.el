@@ -20,6 +20,8 @@
 (defun zkj-go-mode-hook ()
   ;; Run gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
+  ;; Jump to first error. Go has no warnings.
+  (setq compilation-scroll-output 'first-error)
   ;; Jump to the definition of the symbol under the cursor.
   ;; (Jump back with M-*)
   (local-set-key (kbd "M-.") 'godef-jump)
