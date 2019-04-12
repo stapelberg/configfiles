@@ -310,3 +310,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   "invokes counsel-fzf on ~/hugo"
   (interactive)
   (counsel-fzf nil "~/hugo"))
+
+;; Emacs doesn’t know about XC
+;; (https://en.wikipedia.org/wiki/XC_(programming_language)) and defaults to
+;; opening .xc files as image files.
+(add-to-list 'auto-mode-alist '("\\.xc\\'" . c-mode))
