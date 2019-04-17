@@ -313,3 +313,12 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; (https://en.wikipedia.org/wiki/XC_(programming_language)) and defaults to
 ;; opening .xc files as image files.
 (add-to-list 'auto-mode-alist '("\\.xc\\'" . c-mode))
+
+;; From https://github.com/golang/go/wiki/gopls:
+(use-package lsp-mode
+  :commands lsp
+  :config
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "gopls")
+                    :major-modes '(go-mode)
+                    :server-id 'gopls)))

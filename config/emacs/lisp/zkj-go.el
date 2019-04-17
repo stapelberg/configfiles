@@ -17,14 +17,20 @@
 	(go-test-verbose t))
     (go-test-current-test)))
 
+(defun zkj-find-definition ()
+  (interactive)
+  (lsp-find-definition)
+  (recenter-top-bottom 0))
+
 (defun zkj-go-mode-hook ()
+  (lsp)
   ;; Run gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Jump to first error. Go has no warnings.
   (setq compilation-scroll-output 'first-error)
   ;; Jump to the definition of the symbol under the cursor.
   ;; (Jump back with M-*)
-  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-.") 'zkj-find-definition)
   (local-set-key (kbd "C-c d") 'godoc-at-point)
   (local-set-key (kbd "M-g t") 'zkj-go-test-at-point)
   ;; One tab will be displayed as 4 spaces.
