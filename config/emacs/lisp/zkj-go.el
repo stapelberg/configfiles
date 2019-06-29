@@ -22,6 +22,8 @@
   (lsp-find-definition)
   (recenter-top-bottom 0))
 
+(setq lsp-prefer-flymake :none)
+
 (defun zkj-go-mode-hook ()
   (lsp)
   ;; Run gofmt before saving
