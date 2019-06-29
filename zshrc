@@ -126,6 +126,9 @@ alias L='dpkg -L'
 alias v='vim'
 alias V='sudo vim'
 alias e=~/configfiles/zmacsclient
+E() {
+    e /sudo::${1}
+}
 alias m='make'
 alias mp='mplayer -really-quiet'
 # disable gdb welcome message
