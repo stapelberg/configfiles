@@ -180,9 +180,29 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   (ignore-errors (kill-compilation))
   (recompile))
 
-;; tell tramp that my ~/.ssh/config is already set up for master mode
-;; (tramp will not use master mode otherwise).
-(setq tramp-use-ssh-controlmaster-options nil)
+(use-package tramp
+  :defer t
+  :config
+  ;; does not work in https://github.com/gokrazy/breakglass
+  (setq tramp-histfile-override "/dev/null")
+
+  ;; Open e.g. /breakglass:router7:/perm/dhcp4d/leases.json
+  ;;
+  ;; Requires /perm/sh to be present (use e.g. static busybox) and ls to be in
+  ;; $PATH (`ln -s busybox ls` will work).
+  (add-to-list 'tramp-methods
+	       '("breakglass"
+		 (tramp-login-program        "ssh")
+		 (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
+					      ("-e" "none") ("%h")))
+		 (tramp-async-args           (("-q")))
+		 (tramp-remote-shell         "/perm/sh")
+		 (tramp-remote-shell-login   ("-l"))
+		 (tramp-remote-shell-args    ("-c"))))
+
+  ;; tell tramp that my ~/.ssh/config is already set up for master mode
+  ;; (tramp will not use master mode otherwise).
+  (setq tramp-use-ssh-controlmaster-options nil))
 
 (use-package org
   :defer t
