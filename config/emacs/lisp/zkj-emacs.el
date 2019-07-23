@@ -217,11 +217,37 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
     ;; follow links in the same Emacs window
     (setcdr (assoc 'file org-link-frame-setup) 'find-file)))
 
-;; prefer opening new buffers in the same Emacs window
-(setq pop-up-windows nil)
+;; https://github.com/bmag/emacs-purpose (“window-purpose” on MELPA) allows
+;; dedicating a window to a certain purpose (e.g. compilation, magit, edit,
+;; …) using C-c , d.
+;;
+;; When happy with a layout, save using:
+;; M-x purpose-save-window-layout NAME RET TAB RET
+;; …and load using:
+;; M-x purpose-load-window-layout NAME
+(use-package window-purpose
+  :defer t
+  :config
+  (progn
+    ;; Prefer opening new buffers in the same Emacs window.
+    ;;
+    ;; I don’t want this to happen when not working with
+    ;; purpose mode in my layout, as it results in magit
+    ;; windows not popping up anymore. Instead, they just
+    ;; replace the current window. To make matters worse,
+    ;; the COMMITMSG buffer ends up being buried under
+    ;; the diff buffer, which is really confusing.
+    (setq pop-up-windows nil)
 
-;; make M-x man open manpages in the same Emacs window
-(setq Man-notify-method 'pushy)
+    ;; make M-x man open manpages in the same Emacs window
+    (setq Man-notify-method 'pushy)
+
+    (add-to-list 'purpose-user-mode-purposes '(compilation-mode . compile))
+    (add-to-list 'purpose-user-mode-purposes '(dired-mode . edit))
+    (add-to-list 'purpose-user-name-purposes '("*Go Test*" . compile))
+    (add-to-list 'purpose-user-regexp-purposes '("^magit: " . magit))
+    (purpose-compile-user-configuration) ;; activate changes
+    ))
 
 ;; https://github.com/bmag/emacs-purpose (“window-purpose” on MELPA) allows
 ;; dedicating a window to a certain purpose (e.g. compilation, magit, edit,
@@ -231,18 +257,19 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; M-x purpose-save-window-layout NAME RET TAB RET
 ;; …and load using:
 ;; M-x purpose-load-window-layout NAME
-(if (require 'window-purpose nil t)
+(defun zkj-purpose ()
+  "loads purpose and restores my typical window layout"
+  (interactive)
     (progn
       (purpose-mode)
+      (message "loading window layout")
+      (purpose-load-window-layout "zkj")))
 
-      (add-to-list 'purpose-user-mode-purposes '(compilation-mode . compile))
-      (add-to-list 'purpose-user-mode-purposes '(dired-mode . edit))
-      (add-to-list 'purpose-user-name-purposes '("*Go Test*" . compile))
-      (add-to-list 'purpose-user-regexp-purposes '("^magit: " . magit))
-      (purpose-compile-user-configuration) ;; activate changes
-
-      (if (string= system-name "midna")
-	  (purpose-load-window-layout "zkj"))))
+(if (string= system-name "midna")
+    (progn
+      (purpose-mode)
+      (message "loading window layout")
+      (purpose-load-window-layout "zkj")))
 
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
