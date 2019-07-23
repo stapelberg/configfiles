@@ -265,12 +265,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
       (message "loading window layout")
       (purpose-load-window-layout "zkj")))
 
-(if (string= system-name "midna")
-    (progn
-      (purpose-mode)
-      (message "loading window layout")
-      (purpose-load-window-layout "zkj")))
-
 ;; winner-mode provides C-c left and C-c right to undo/redo window
 ;; configuration changes.
 (winner-mode t)
