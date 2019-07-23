@@ -351,3 +351,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
    (make-lsp-client :new-connection (lsp-stdio-connection "gopls")
                     :major-modes '(go-mode)
                     :server-id 'gopls)))
+
+;; Do not create lockfiles, they trip up e.g. hugo (because they are an
+;; unreadable symlink:
+;;   File: /home/michael/hugo/content/posts/.#2019-07-11-introducing-distri.markdown -> michael@xps.25964:1563787245
+(setq create-lockfiles nil)
