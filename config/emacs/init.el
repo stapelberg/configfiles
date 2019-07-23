@@ -32,6 +32,9 @@
 ;; Go-related settings.
 (load "zkj-go")
 
+;; protobuf-related settings.
+(load "zkj-protobuf")
+
 ;; Magit gbp mode.
 (use-package magit
   :bind (("C-c g" . magit-status))
