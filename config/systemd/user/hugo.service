@@ -1,0 +1,9 @@
+[Unit]
+Description=hugo
+
+[Service]
+WorkingDirectory=/home/michael/hugo
+ExecStart=/home/michael/go/bin/hugo serve -D
+
+[Install]
+WantedBy=default.target
