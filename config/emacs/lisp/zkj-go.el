@@ -26,6 +26,10 @@
 
 (defun zkj-go-mode-hook ()
   (lsp)
+  ;; Prevent prompts about which project a file is in when opening standard
+  ;; library files and files in the module cache.
+  (add-to-list 'lsp-clients-go-library-directories "/home/michael/sdk")
+  (add-to-list 'lsp-clients-go-library-directories "/home/michael/go/pkg/mod")
   ;; Run gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Jump to first error. Go has no warnings.
