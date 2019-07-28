@@ -5,6 +5,27 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# https://michael.stapelberg.ch/c128_kasse/
+for_window [class="X128"] floating enable
+for_window [class="VICE"] floating enable
+
+workspace_layout stacked
+
+# https://github.com/i3/i3/pull/3748
+set $i3lock ~/i3lock/build/i3lock --image ~/graffiti.rgb --raw 3840x2160:rgb
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $i3lock --nofork
+
+# Try starting nm-applet, the most popular way to manage wireless networks.
+exec --no-startup-id nm-applet
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# https://github.com/Merovius/brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/go/bin/brightness -10%
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo ~/go/bin/brightness +10%
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -30,7 +51,8 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec exec urxvtc
+bindsym $mod+Shift+Return exec exec urxvt -fn 'xft:Bitstream Vera Sans Mono:size=16'
 
 # kill focused window
 bindsym $mod+Shift+x kill
@@ -78,7 +100,7 @@ bindsym $mod+e fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+i layout stacking
 bindsym $mod+v layout tabbed
-bindsym $mod+l layout toggle split
+bindsym $mod+l exec --no-startup-id $i3lock
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
