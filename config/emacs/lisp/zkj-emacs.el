@@ -368,10 +368,12 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (use-package lsp-mode
   :commands lsp
   :config
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection "gopls")
-                    :major-modes '(go-mode)
-                    :server-id 'gopls)))
+  (progn
+    (setq lsp-enable-snippet nil)
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection "gopls")
+                      :major-modes '(go-mode)
+                      :server-id 'gopls))))
 
 ;; Do not create lockfiles, they trip up e.g. hugo (because they are an
 ;; unreadable symlink:
