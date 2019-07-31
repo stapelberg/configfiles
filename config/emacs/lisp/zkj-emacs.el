@@ -214,6 +214,10 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	  org-agenda-window-setup 'current-window ; open agenda in same Emacs window
 	  org-startup-folded nil)   ; default to #+STARTUP: showall
     (setq org-src-window-setup 'current-window)
+    ;; Make shell source blocks work in Org Mode:
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((shell . t)))
     ;; follow links in the same Emacs window
     (setcdr (assoc 'file org-link-frame-setup) 'find-file)))
 
