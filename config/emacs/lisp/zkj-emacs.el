@@ -385,3 +385,34 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; unreadable symlink:
 ;;   File: /home/michael/hugo/content/posts/.#2019-07-11-introducing-distri.markdown -> michael@xps.25964:1563787245
 (setq create-lockfiles nil)
+
+;; Make M-next and M-prior (M-PageDown and M-PageUp, respectively) preferably
+;; operate on the window displaying the compilation buffer, if precisely 1.
+(defun zkj-with-compilation-window (FUNC)
+  (let ((compilation-mode-windows
+	 (mapcan
+	  (lambda (window)
+	    (with-current-buffer
+		(window-buffer window)
+	      (if (equal major-mode 'compilation-mode)
+		  (list window)
+		'())))
+	  (window-list))))
+    (if (= (length compilation-mode-windows) 1)
+	(save-selected-window
+	  (select-window (car compilation-mode-windows))
+	  (funcall FUNC))
+      (scroll-other-window))))
+
+(defun zkj-scroll-compilation-window-down ()
+  "Scroll the compilation window down"
+  (interactive)
+  (zkj-with-compilation-window #'scroll-down))
+
+(defun zkj-scroll-compilation-window-up ()
+  "Scroll the compilation window up"
+  (interactive)
+  (zkj-with-compilation-window #'scroll-up))
+
+(bind-key* "<M-next>" #'zkj-scroll-compilation-window-up)
+(bind-key* "<M-prior>" #'zkj-scroll-compilation-window-down)
