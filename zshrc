@@ -148,7 +148,7 @@ sdcard() {
 }
 
 function godoc() {
-  if [ ! -f "$(pwd)/go.mod" ]
+  if [ ! -f go.mod ]
   then
     echo "error: go.mod not found" >&2
     return
@@ -159,9 +159,9 @@ function godoc() {
     --rm \
     -e "GOPATH=/tmp/go" \
     -p 127.0.0.1:7070:6060 \
-    -v $(pwd):/tmp/go/src/$module \
+    -v $PWD:/tmp/go/src/$module \
     golang \
-    bash -c "echo http://localhost:6060/pkg/$module && godoc -http=:6060"
+    bash -c "echo http://localhost:7070/pkg/$module && godoc -http=:6060"
 }
 
 # Edit a temporary file with my template for a C proof-of-concept
