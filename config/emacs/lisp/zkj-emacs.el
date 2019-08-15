@@ -352,6 +352,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	 (daemons (seq-filter not-dot (directory-files socket-dir))))
     (mapcar (lambda (daemon) (server-eval-at daemon '(load-file user-init-file))) daemons)))
 
+(setq counsel-fzf-cmd "fdfind --type f | fzf -f \"%s\"")
+
 (defun fzf ()
   "fuzzy find on the closest git repository"
   (interactive)
