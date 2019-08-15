@@ -107,7 +107,7 @@ bindsym $mod+s split h
 bindsym $mod+e fullscreen toggle
 
 # lock screen
-bindsym $mod+l exec --no-startup-id $i3lock
+bindsym $mod+l exec --no-startup-id loginctl lock-session
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
