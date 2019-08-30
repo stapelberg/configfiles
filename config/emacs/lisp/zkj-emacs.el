@@ -123,12 +123,11 @@
     (call-interactively 'hippie-expand)))
 
 ;; Easy window switching with M-<direction>
-(require 'windmove)
-
-(bind-key* "<M-left>" 'windmove-left)
-(bind-key* "<M-up>" 'windmove-up)
-(bind-key* "<M-right>" 'windmove-right)
-(bind-key* "<M-down>" 'windmove-down)
+(use-package windmove
+  :bind (("<M-left>" . windmove-left)
+	 ("<M-up>" . windmove-up)
+	 ("<M-right>" . windmove-right)
+	 ("<M-down>" . windmove-down)))
 
 ;; Don’t ask to save files before compilation, just save them.
 (setq compilation-ask-about-save nil)
