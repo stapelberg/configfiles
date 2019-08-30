@@ -305,9 +305,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	      " - Emacs")
 	    ))
 
-;; Disable the menu bar by default. Use M-x menu-bar-mode to make it re-appear.
-(menu-bar-mode -1)
-
 ;; Disable the scroll bar by default, they flicker. Use M-x scroll-bar-mode to
 ;; make it re-appear.
 (scroll-bar-mode -1)

@@ -1,4 +1,5 @@
 Emacs*toolBar: 0
+Emacs*menuBar: 0
 
 !*font: -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 URxvt.font: xft:Bitstream Vera Sans Mono:size=8
