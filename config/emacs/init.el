@@ -16,6 +16,7 @@
 (package-initialize)
 
 (require 'use-package)
+(setq use-package-verbose t)
 
 ;; General emacs settings.
 (load "zkj-emacs")
