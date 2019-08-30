@@ -12,6 +12,7 @@
                                (setq gc-cons-threshold 800000)))
 
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
+(add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
 (package-initialize)
 
 (require 'use-package)
@@ -52,6 +53,10 @@
 (setq custom-file "~/configfiles/config/emacs/custom.el")
 (load custom-file)
 
-(add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
-(if (require 'livereload nil t)
-    (load "zkj-live-reload"))
+(add-hook
+ 'find-file-hook
+ (lambda ()
+   (when (and (stringp buffer-file-name)
+	      (string-match "\\.asciidoc\\'" buffer-file-name))
+     (if (require 'livereload nil t)
+	 (load "zkj-live-reload")))))
