@@ -76,14 +76,31 @@
       browse-url-generic-program "google-chrome")
 
 ;; ido-mode has a *much* better buffer selection (and file opening) :).
-(ido-mode t)
+(defun zkj-lazy-ido-enable ()
+  "since ido is loaded with Emacs, use-package cannot defer"
+  (ido-mode t)
+  ;; Disable searching in other directories when there are no matches
+  ;; (more annoying than helpful).
+  (setq ido-auto-merge-work-directories-length -1)
 
-;; Disable searching in other directories when there are no matches
-;; (more annoying than helpful).
-(setq ido-auto-merge-work-directories-length -1)
+  (if (require 'ido-sort-mtime nil t)
+      (ido-sort-mtime-mode t)))
 
-(if (require 'ido-sort-mtime nil t)
-    (ido-sort-mtime-mode t))
+(defun zkj-lazy-ido-switch-buffer ()
+  "ibuffer wrapper"
+  (interactive)
+  (zkj-lazy-ido-enable)
+  (call-interactively 'ido-switch-buffer))
+
+(defun zkj-lazy-ido-find-file ()
+  "find-file wrapper"
+  (interactive)
+  (zkj-lazy-ido-enable)
+  (call-interactively 'ido-find-file))
+
+(use-package ido
+  :bind (("C-x b" . zkj-lazy-ido-switch-buffer)
+	 ("C-x C-f" . zkj-lazy-ido-find-file)))
 
 ;; Store backups in a single directory (/tmp/emacs-backups) so that
 ;; they don’t clutter up my filesystem.
