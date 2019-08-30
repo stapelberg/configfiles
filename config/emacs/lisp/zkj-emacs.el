@@ -317,9 +317,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	      " - Emacs")
 	    ))
 
-;; Disable the scroll bar by default, they flicker. Use M-x scroll-bar-mode to
-;; make it re-appear.
-(scroll-bar-mode -1)
+;; ;; Disable the scroll bar by default, they flicker. Use M-x scroll-bar-mode to
+;; ;; make it re-appear.
+;; (scroll-bar-mode -1)
 
 ;; Colorize compilation output (why is this not the default?!):
 (defun colorize-compilation-buffer ()
