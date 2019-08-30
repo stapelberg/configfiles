@@ -70,9 +70,6 @@
 ;; Open the *scratch* buffer by default, not the welcome message.
 (setq inhibit-startup-screen t)
 
-;; No toolbar.
-(tool-bar-mode -1)
-
 ;; Better than the default.
 (load-theme 'tango-dark t)
 
