@@ -40,8 +40,6 @@
 (setq default-frame-alist '((font . "Go Mono 8")))
 
 ;;;; add additional package repositories
-(require 'package)
-
 (add-to-list 'package-archives
 	     '("melpa" .
 	       "https://melpa.org/packages/"))
