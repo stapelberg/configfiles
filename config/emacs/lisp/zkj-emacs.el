@@ -5,18 +5,20 @@
 
 (provide 'zkj-emacs)
 
-;;;; Of course, everything is UTF-8.
+;; For presentations
+;;(set-default-font "Monospace 16")
+
+;; Of course, everything is UTF-8.
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 ;; Contrary to global-set-key, whose effects can be shadowed by modes (e.g. the
 ;; GNUmakefile mode shadows C-c C-f), bind-key overwrites keys in all modes.
 (require 'bind-key)
-
-;; Treat clipboard input as UTF-8 string first; compound text next, etc.
-(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 ;; C-w and C-y should use the PRIMARY selection (mouse-selected) *and*
 ;; the CLIPBOARD selection (copy function selected). When yanking,
@@ -34,8 +36,6 @@
 ;;        (if mark-active (list (region-beginning) (region-end))
 ;;          (list (save-excursion (backward-word 1) (point)) (point)))))
 
-;; For presentations
-;;(set-default-font "Monospace 16")
 
 (setq default-frame-alist '((font . "Go Mono 8")))
 
