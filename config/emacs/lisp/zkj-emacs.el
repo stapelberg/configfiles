@@ -340,8 +340,10 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; Initialize https://github.com/CyberShadow/term-keys, which makes e.g. <M-up>
 ;; or <M-down> work in terminal emacs (emacs -nw) on urxvt. Start urxvt like so:
 ;; https://github.com/stapelberg/configfiles/commit/69c58a32600aaf0f5232f5b3415efac55007b029
-(if (require 'term-keys nil t)
-    (term-keys/init))
+(use-package term-keys
+  :if (not window-system)
+  :init
+  (term-keys/init))
 
 ;; Persistent desktops (which buffers are open)
 (setq desktop-save t) ;; always save
