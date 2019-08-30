@@ -40,8 +40,9 @@
 (use-package magit
   :bind (("C-x g" . magit-status))
   :config
-  (progn
-    (load "zkj-gbp")))
+  (load "zkj-gbp")
+  ;; magit: don’t restore old window configurations
+  (setq magit-bury-buffer-function 'magit-mode-quit-window))
 
 ;; Hugo-related settings.
 (load "zkj-hugo")

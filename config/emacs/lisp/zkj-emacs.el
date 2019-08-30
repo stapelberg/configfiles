@@ -298,9 +298,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; automatically revert buffers when files change
 (global-auto-revert-mode 1)
 
-;; magit: don’t restore old window configurations
-(setq magit-bury-buffer-function 'magit-mode-quit-window)
-
 ;; See editorconfig.org
 (if (require 'editorconfig nil t)
     (editorconfig-mode 1))
