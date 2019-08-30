@@ -11,6 +11,9 @@
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
 
+;; byte compilation does not make a difference with my current config
+;; (byte-recompile-directory (expand-file-name "~/.emacs.d/lisp") 0)
+
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
 (package-initialize)
