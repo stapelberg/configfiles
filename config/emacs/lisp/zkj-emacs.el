@@ -50,13 +50,11 @@
 (add-to-list 'package-archives
              '("cselpa" . "https://elpa.thecybershadow.net/packages/"))
 
-(if (require 'smex nil t)
-    (bind-key* "M-x" (lambda ()
-				 (interactive)
-				 (or (boundp 'smex-cache)
-				     (smex-initialize))
-				 (bind-key* "M-x" 'smex)
-				 (smex))))
+(use-package smex
+  :defer t
+  :init (or (boundp 'smex-cache)
+	    (smex-initialize))
+  :bind ("M-x" . smex))
 
 ;;;; general appearance
 
