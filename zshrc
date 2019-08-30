@@ -135,6 +135,7 @@ alias mp='mplayer -really-quiet'
 alias gdb='gdb -q'
 alias sctl='s systemctl'
 alias j='journalctl --full -e -u'
+alias d='~/go/bin/distri'
 # Find files in current folder
 f() {
     q="*$1*"
