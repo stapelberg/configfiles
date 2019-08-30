@@ -280,9 +280,13 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
       (message "loading window layout")
       (purpose-load-window-layout "zkj")))
 
-;; winner-mode provides C-c left and C-c right to undo/redo window
-;; configuration changes.
-(winner-mode t)
+(use-package winner
+  :bind (("C-c <left>" . winner-undo)
+	 ("C-c <right>" . winner-redo))
+  ;; Initialize winner-mode immediately; it needs to record all window
+  ;; configurations before the first invokation to be useful.
+  :init
+  (winner-mode t))
 
 ;; use 80 characters for line wrapping with M-q
 (setq-default fill-column 80)
