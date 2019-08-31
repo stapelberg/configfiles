@@ -170,6 +170,9 @@ bindsym $mod+Shift+l exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "volume" {
 	bindsym Mod4+v exec --no-startup-id ~/.config/i3/toggle-output.sh; mode "default"
 
+	bindsym --release Left exec --no-startup-id xdotool key XF86AudioPrev; mode "default"
+	bindsym --release Right exec --no-startup-id xdotool key XF86AudioNext; mode "default"
+
 	bindsym 1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 10\% && killall -USR1 i3status; mode "default"
 	bindsym 2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 20\% && killall -USR1 i3status; mode "default"
 	bindsym 3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 30\% && killall -USR1 i3status; mode "default"
