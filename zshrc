@@ -162,7 +162,7 @@ function godoc() {
     -p 127.0.0.1:7070:6060 \
     -v $PWD:/tmp/go/src/$module \
     golang \
-    bash -c "echo http://localhost:7070/pkg/$module && godoc -http=:6060"
+    bash -c "go get golang.org/x/tools/cmd/godoc && echo http://localhost:7070/pkg/$module && /tmp/go/bin/godoc -http=:6060"
 }
 
 # Edit a temporary file with my template for a C proof-of-concept
