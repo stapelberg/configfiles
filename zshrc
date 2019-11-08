@@ -148,23 +148,6 @@ sdcard() {
     sudo dd of=/dev/disk/by-id/usb-Generic-_USB3.0_CRW_-SD_201006010301-0:0 bs=64k oflag=dsync status=progress if="$1"
 }
 
-function godoc() {
-  if [ ! -f go.mod ]
-  then
-    echo "error: go.mod not found" >&2
-    return
-  fi
-
-  module=$(sed -n 's/^module \(.*\)/\1/p' go.mod)
-  docker run \
-    --rm \
-    -e "GOPATH=/tmp/go" \
-    -p 127.0.0.1:7070:6060 \
-    -v $PWD:/tmp/go/src/$module \
-    golang \
-    bash -c "go get golang.org/x/tools/cmd/godoc && echo http://localhost:7070/pkg/$module && /tmp/go/bin/godoc -http=:6060"
-}
-
 # Edit a temporary file with my template for a C proof-of-concept
 alias cpoc='cd /tmp && FN=$(mktemp --suffix=.c) && cp ~/configfiles/poc-template.c $FN && vi $FN && echo "Proof-of-concept stored in $FN"'
 
