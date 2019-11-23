@@ -19,17 +19,10 @@
 
 (defun zkj-find-definition ()
   (interactive)
-  (lsp-find-definition)
+  (call-interactively 'xref-find-definitions)
   (recenter-top-bottom 0))
 
-(setq lsp-prefer-flymake :none)
-
 (defun zkj-go-mode-hook ()
-  (lsp)
-  ;; Prevent prompts about which project a file is in when opening standard
-  ;; library files and files in the module cache.
-  (add-to-list 'lsp-clients-go-library-directories "/home/michael/sdk")
-  (add-to-list 'lsp-clients-go-library-directories "/home/michael/go/pkg/mod")
   ;; Run gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Jump to first error. Go has no warnings.
@@ -44,3 +37,4 @@
   ;; Enable eldoc (displays function signatures in the minibuf).
 ;;  (go-eldoc-setup))
 (add-hook 'go-mode-hook 'zkj-go-mode-hook)
+(add-hook 'go-mode-hook 'eglot-ensure)
