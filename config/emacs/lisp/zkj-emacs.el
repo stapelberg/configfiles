@@ -259,6 +259,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
     (add-to-list 'purpose-user-mode-purposes '(dired-mode . edit))
     (add-to-list 'purpose-user-name-purposes '("*Go Test*" . compile))
     (add-to-list 'purpose-user-regexp-purposes '("^magit: " . magit))
+    (define-key purpose-mode-map (kbd "C-x b") nil)
+    (define-key purpose-mode-map (kbd "C-x C-f") nil)
     (purpose-compile-user-configuration) ;; activate changes
     ))
 
