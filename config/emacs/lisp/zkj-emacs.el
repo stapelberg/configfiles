@@ -122,7 +122,7 @@
 
 ;; Easy window switching with M-<direction>
 (use-package windmove
-  :bind (("<M-left>" . windmove-left)
+  :bind* (("<M-left>" . windmove-left)
 	 ("<M-up>" . windmove-up)
 	 ("<M-right>" . windmove-right)
 	 ("<M-down>" . windmove-down)))
