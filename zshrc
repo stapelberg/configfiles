@@ -195,6 +195,8 @@ alias smi='sudo make install'
 git() { =git $* && git_branch_chdir }
 alias g='git'
 alias s='sudo'
+# make filename absolute, i.e. prepend current working directory
+abs() { echo -n $PWD/$1 }
 alias 6='s ip -6'
 alias 4='s ip -4'
 alias -g T="| tail"
