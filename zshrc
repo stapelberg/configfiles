@@ -200,6 +200,8 @@ alias 4='s ip -4'
 alias -g T="| tail"
 alias -g G="| grep"
 alias -g H="| head"
+# copy to clipboard
+alias -g C="| xclip"
 
 ping() {
     if [ $# -eq 0 ]
