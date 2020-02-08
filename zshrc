@@ -125,10 +125,8 @@ alias rt='ls -hltr'
 alias L='dpkg -L'
 alias v='vim'
 alias V='sudo vim'
-alias e=~/configfiles/zmacsclient
-E() {
-    e /sudo::${1}
-}
+e() { ~/configfiles/zmacsclient "$@" }
+E() { e /sudo::${1} }
 alias m='make'
 alias mp='mplayer -really-quiet'
 # disable gdb welcome message
@@ -204,6 +202,9 @@ alias -g G="| grep"
 alias -g H="| head"
 # copy to clipboard
 alias -g C="| xclip"
+
+# run command in an i3 tabbed split container
+t() { i3-msg -q split vertical, layout tabbed && $@; i3-msg -q move up }
 
 ping() {
     if [ $# -eq 0 ]
