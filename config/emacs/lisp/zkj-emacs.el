@@ -384,6 +384,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; opening .xc files as image files.
 (add-to-list 'auto-mode-alist '("\\.xc\\'" . c-mode))
 
+(add-hook 'c-mode-hook 'eglot-ensure)
+
 ;; From https://github.com/golang/go/wiki/gopls:
 (use-package lsp-mode
   :commands lsp
