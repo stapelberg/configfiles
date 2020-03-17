@@ -139,7 +139,7 @@ f() {
     q="*$1*"
     find . -iname $q
 }
-alias h='cat ~/.zsh_history{,_*} | grep --text --color '
+alias h='cat ~/.zsh_history{_*,} | grep --text --color '
 
 # write $1 to the inserted sdcard
 sdcard() {
