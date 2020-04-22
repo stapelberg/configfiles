@@ -19,6 +19,7 @@ xrandr --dpi 192̂
 INPUT_DEVICES=$(xinput list --name-only)
 TRACKBALL="Logitech M570"
 TRACKPOINT="TPPS/2 IBM TrackPoint"
+TRACKPOINT_ELAN="TPPS/2 Elan TrackPoint"
 TOUCHPAD="SynPS/2 Synaptics TouchPad"
 DELLTOUCHPAD="DLL082A:01 06CB:76AF Touchpad"
 
@@ -54,6 +55,13 @@ if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
 	xinput set-prop "$TRACKPOINT" "Evdev Wheel Emulation" 1
 fi
 
+if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT_ELAN"; then
+    xinput set-prop "TPPS/2 Elan TrackPoint" "Evdev Wheel Emulation" 1
+    xinput set-prop "TPPS/2 Elan TrackPoint" "Evdev Wheel Emulation Button" 2
+    xinput set-prop "TPPS/2 Elan TrackPoint" "Evdev Wheel Emulation Timeout" 200
+    xinput set-prop "TPPS/2 Elan TrackPoint" "Evdev Wheel Emulation Axes" 6 7 5 4
+fi
+
 # xps 13 9360
 if echo "$INPUT_DEVICES" | grep -qF "SynPS/2 Synaptics TouchPad"; then
 	synclient TapButton1=1
@@ -62,6 +70,7 @@ if echo "$INPUT_DEVICES" | grep -qF "SynPS/2 Synaptics TouchPad"; then
 	synclient VertScrollDelta=-113
 	synclient HorizScrollDelta=-113
 fi
+
 if echo "$INPUT_DEVICES" | grep -qF "$DELLTOUCHPAD"; then
       synclient TapButton3=2
       synclient VertScrollDelta=-27
