@@ -134,6 +134,7 @@ alias gdb='gdb -q'
 alias sctl='s systemctl'
 alias j='journalctl --full -e -u'
 alias d='~/go/bin/distri'
+alias D='sudo distri'
 # Find files in current folder
 f() {
     q="*$1*"
