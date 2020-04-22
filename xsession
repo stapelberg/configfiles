@@ -54,6 +54,14 @@ if echo "$INPUT_DEVICES" | grep -qF "$TRACKPOINT"; then
 	xinput set-prop "$TRACKPOINT" "Evdev Wheel Emulation" 1
 fi
 
+# xps 13 9360
+if echo "$INPUT_DEVICES" | grep -qF "SynPS/2 Synaptics TouchPad"; then
+	synclient TapButton1=1
+	synclient TapButton2=3
+	synclient TapButton3=2
+	synclient VertScrollDelta=-113
+	synclient HorizScrollDelta=-113
+fi
 if echo "$INPUT_DEVICES" | grep -qF "$DELLTOUCHPAD"; then
       synclient TapButton3=2
       synclient VertScrollDelta=-27
