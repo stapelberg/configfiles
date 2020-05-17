@@ -386,6 +386,18 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 (add-hook 'c-mode-hook 'eglot-ensure)
 
+;; https://eklitzke.org/smarter-emacs-clang-format
+(defun clang-format-buffer-smart ()
+  "Reformat buffer if .clang-format exists in the projectile root."
+  (when (file-exists-p (expand-file-name ".clang-format" (magit-toplevel)))
+    (clang-format-buffer)))
+
+(defun clang-format-buffer-smart-on-save ()
+  "Add auto-save hook for clang-format-buffer-smart."
+  (add-hook 'before-save-hook 'clang-format-buffer-smart nil t))
+
+(add-hook 'c-mode-hook 'clang-format-buffer-smart-on-save)
+
 ;; From https://github.com/golang/go/wiki/gopls:
 (use-package lsp-mode
   :commands lsp
