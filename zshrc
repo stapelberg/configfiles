@@ -385,6 +385,12 @@ export DEBEMAIL="stapelberg@debian.org"
 export DEB_BUILD_OPTIONS="parallel=8"
 export QUILT_PATCHES=debian/patches
 
+# System-wide default settings for cmake, so that the default
+# “cd build && cmake .. && ninja” invocation works:
+# (Requires cmake ≥v3.17.0)
+export CMAKE_EXPORT_COMPILE_COMMANDS=ON
+export CMAKE_GENERATOR=Ninja
+
 # When tab-completing, show dots. For fast tab completes, they will be
 # overwritten instantly, for long tab-completions, you have feedback.
 expand-or-complete-with-dots() {
