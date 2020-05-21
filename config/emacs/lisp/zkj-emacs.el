@@ -171,8 +171,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; i.e. working in any project subdirectory:
 (defun compile-parent (command)
   (interactive
-   (let* ((make-directory (locate-dominating-file (buffer-file-name)
-                                                  "Makefile"))
+   (let* ((make-directory (locate-dominating-file
+			   default-directory
+			   "Makefile"))
           (command (concat "make -k -C "
                            (shell-quote-argument make-directory)
 			   " ")))
