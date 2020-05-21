@@ -386,6 +386,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (add-to-list 'auto-mode-alist '("\\.xc\\'" . c-mode))
 
 (add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
 
 ;; https://eklitzke.org/smarter-emacs-clang-format
 (defun clang-format-buffer-smart ()
@@ -398,6 +399,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   (add-hook 'before-save-hook 'clang-format-buffer-smart nil t))
 
 (add-hook 'c-mode-hook 'clang-format-buffer-smart-on-save)
+(add-hook 'c++-mode-hook 'clang-format-buffer-smart-on-save)
 
 ;; From https://github.com/golang/go/wiki/gopls:
 (use-package lsp-mode
