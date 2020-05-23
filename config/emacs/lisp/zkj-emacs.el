@@ -385,9 +385,6 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; opening .xc files as image files.
 (add-to-list 'auto-mode-alist '("\\.xc\\'" . c-mode))
 
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'c++-mode-hook 'eglot-ensure)
-
 ;; https://eklitzke.org/smarter-emacs-clang-format
 (defun clang-format-buffer-smart ()
   "Reformat buffer if .clang-format exists in the projectile root."
@@ -401,16 +398,13 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (add-hook 'c-mode-hook 'clang-format-buffer-smart-on-save)
 (add-hook 'c++-mode-hook 'clang-format-buffer-smart-on-save)
 
-;; From https://github.com/golang/go/wiki/gopls:
-(use-package lsp-mode
-  :commands lsp
-  :config
-  (progn
-    (setq lsp-enable-snippet nil)
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection "gopls")
-                      :major-modes '(go-mode)
-                      :server-id 'gopls))))
+;; eglot is a language server protocol (LSP) package for Emacs, which is more
+;; minimalist than lsp-mode: https://github.com/joaotavora/eglot
+(use-package eglot
+  :hook
+  (c-mode . eglot-ensure)
+  (c++-mode . eglot-ensure)
+  (go-mode . eglot-ensure))
 
 ;; Do not create lockfiles, they trip up e.g. hugo (because they are an
 ;; unreadable symlink:
