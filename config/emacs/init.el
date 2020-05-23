@@ -22,6 +22,34 @@
   (require 'use-package))
 (setq use-package-verbose t)
 
+;; Workaround for Emacs < 26.3 (e.g. Debian stable):
+;; https://www.reddit.com/r/emacs/comments/cdei4p/failed_to_download_gnu_archive_bad_request/
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+(package-initialize)
+
+(add-to-list 'package-archives
+	     '("melpa" .
+	       "https://melpa.org/packages/"))
+
+;; https://www.reddit.com/r/emacs/comments/4fqu0a/automatically_install_packages_on_startup/d2b7g30
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+;; Whenever use-package statements use ensure (directly or via
+;; use-package-always-ensure), we need to refresh the package contents first,
+;; as installation fails otherwise:
+;; https://github.com/jwiegley/use-package/issues/256#issuecomment-263313693
+(defun my-package-install-refresh-contents (&rest args)
+  (package-refresh-contents)
+  (advice-remove 'package-install 'my-package-install-refresh-contents))
+
+(advice-add 'package-install :before 'my-package-install-refresh-contents)
+
 ;; General emacs settings.
 (load "zkj-emacs")
 
