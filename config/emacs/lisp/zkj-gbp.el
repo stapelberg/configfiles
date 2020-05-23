@@ -38,15 +38,17 @@
   (let ((default-directory (outdir)))
     (compile "dput" t))) ;; run compile in COMINT mode to allow input
 
-(magit-define-popup gbp-popup "git buildpackage"
-  :actions '((?B "buildpackage" gbp-buildpackage)
-	     (?d "dch" gbp-dch)
-	     (?t "tag" gbp-tag)
-	     (?F "pull" gbp-pull)
-	     (?P "push" gbp-push)
-	     (?U "dput" dput))
-  :default-action 'gbp
-  )
+(use-package magit-popup
+  :config
+  (magit-define-popup gbp-popup "git buildpackage"
+    :actions '((?B "buildpackage" gbp-buildpackage)
+	       (?d "dch" gbp-dch)
+	       (?t "tag" gbp-tag)
+	       (?F "pull" gbp-pull)
+	       (?P "push" gbp-push)
+	       (?U "dput" dput))
+    :default-action 'gbp
+    ))
 
 (define-key magit-status-mode-map (kbd "H") 'gbp-popup)
 
