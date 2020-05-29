@@ -19,6 +19,9 @@ floating_minimum_size 2000 x 1500
 for_window [class="obs" title="Settings" window_type="dialog"] move position mouse
 
 ################################################################################
+
+for_window [window_type="dialog"] move position mouse
+
 workspace_layout stacked
 
 # prompt for new workspace name
