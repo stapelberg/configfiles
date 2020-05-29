@@ -9,6 +9,16 @@
 for_window [class="X128"] floating enable
 for_window [class="VICE"] floating enable
 
+################################################################################
+# OBS (Open Broadcaster Software, https://obsproject.com/)
+# related settings:
+################################################################################
+
+floating_minimum_size 2000 x 1500
+
+for_window [class="obs" title="Settings" window_type="dialog"] move position mouse
+
+################################################################################
 workspace_layout stacked
 
 # prompt for new workspace name
