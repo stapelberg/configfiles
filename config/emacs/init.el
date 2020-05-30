@@ -18,15 +18,9 @@
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
 (package-initialize)
 
-(eval-when-compile
-  (require 'use-package))
-(setq use-package-verbose t)
-
 ;; Workaround for Emacs < 26.3 (e.g. Debian stable):
 ;; https://www.reddit.com/r/emacs/comments/cdei4p/failed_to_download_gnu_archive_bad_request/
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
-(package-initialize)
 
 (add-to-list 'package-archives
 	     '("melpa" .
@@ -37,7 +31,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
 ;; Whenever use-package statements use ensure (directly or via
