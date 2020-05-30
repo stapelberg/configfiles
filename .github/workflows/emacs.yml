@@ -1,0 +1,26 @@
+name: Emacs
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  startup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build Docker container with Emacs
+      run: |
+        docker build --pull --no-cache --rm -t=emacs -f travis/Dockerfile .
+
+    - name: verify Emacs starts up without error
+      run: |
+        docker run \
+        --init \
+        --volume $PWD:/root/configfiles \
+        emacs \
+        travis/emacs-starts-up.bash
