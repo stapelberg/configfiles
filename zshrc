@@ -28,7 +28,6 @@ setopt MAGIC_EQUAL_SUBST
 export EDITOR=~/configfiles/zmacsclient
 export VISUAL=$EDITOR
 export PAGER='less -R'
-export GTK_IM_MODULE=xim
 export VTYSH_PAGER='cat'
 # long date format in ls(1)
 export TIME_STYLE=long-iso
