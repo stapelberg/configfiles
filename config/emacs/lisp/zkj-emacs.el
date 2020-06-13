@@ -374,6 +374,20 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
     (require 'magit)
     (counsel-fzf nil (magit-toplevel))))
 
+;; You can interactively overwrite this using e.g. M-:
+;;   (defun zkj-ag-default-directory () "~/kinx/chibi41")
+(defun zkj-ag-default-directory ()
+    (progn
+      (require 'magit)
+      (magit-toplevel)))
+
+(defun zkj-ag (string directory)
+  "ag defaulting to the project directory"
+  (interactive
+   (list (ag/read-from-minibuffer "Search string")
+	 (read-directory-name "Directory: " (zkj-ag-default-directory))))
+  (ag/search string directory))
+
 ;; M-x website menu partial
 (defun website ()
   "invokes counsel-fzf on ~/hugo"
