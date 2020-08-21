@@ -97,6 +97,7 @@
   (call-interactively 'ido-find-file))
 
 (use-package ido
+  :ensure nil ; built-in
   :bind (("C-x b" . zkj-lazy-ido-switch-buffer)
 	 ("C-x C-f" . zkj-lazy-ido-find-file)))
 
@@ -122,6 +123,7 @@
 
 ;; Easy window switching with M-<direction>
 (use-package windmove
+  :ensure nil ; built-in
   :bind* (("<M-left>" . windmove-left)
 	 ("<M-up>" . windmove-up)
 	 ("<M-right>" . windmove-right)
@@ -282,6 +284,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
       (purpose-load-window-layout "zkj")))
 
 (use-package winner
+  :ensure nil ; built-in
   :bind (("C-c <left>" . winner-undo)
 	 ("C-c <right>" . winner-redo))
   ;; Initialize winner-mode immediately; it needs to record all window

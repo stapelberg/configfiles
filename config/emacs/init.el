@@ -16,7 +16,9 @@
 
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
-(package-initialize)
+
+(when (< emacs-major-version 27)
+  (package-initialize))
 
 ;; Workaround for Emacs < 26.3 (e.g. Debian stable):
 ;; https://www.reddit.com/r/emacs/comments/cdei4p/failed_to_download_gnu_archive_bad_request/
