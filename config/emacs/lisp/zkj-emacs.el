@@ -458,3 +458,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 (bind-key* "<M-next>" #'zkj-scroll-compilation-window-up)
 (bind-key* "<M-prior>" #'zkj-scroll-compilation-window-down)
+
+;; Prevent creating ~/.emacs.d/auto-save-list,
+;; even when using XDG_CONFIG_DIR!
+(setq auto-save-list-file-prefix nil)
