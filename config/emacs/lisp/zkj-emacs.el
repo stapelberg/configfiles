@@ -103,7 +103,7 @@
 
 ;; Store backups in a single directory (/tmp/emacs-backups) so that
 ;; they don’t clutter up my filesystem.
-(let ((backupdir "/tmp/emacs-backups/"))
+(let ((backupdir (format "%s/emacs-backups%d" (or (getenv "XDG_RUNTIME_DIR") "/tmp") (user-uid))))
   (mkdir backupdir t)
   (setq backup-directory-alist `(("." . ,backupdir))))
 
