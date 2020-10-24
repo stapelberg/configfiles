@@ -101,11 +101,13 @@
   :bind (("C-x b" . zkj-lazy-ido-switch-buffer)
 	 ("C-x C-f" . zkj-lazy-ido-find-file)))
 
-;; Store backups in a single directory (/tmp/emacs-backups) so that
-;; they don’t clutter up my filesystem.
-(let ((backupdir (format "%s/emacs-backups%d" (or (getenv "XDG_RUNTIME_DIR") "/tmp") (user-uid))))
+;; Store backups and auto-save files in a single directory so that
+;; they don’t clutter up my filesystem (or fail to be written on curlftpfs):
+(let ((backupdir (format "%s/emacs-backups%d/" (or (getenv "XDG_RUNTIME_DIR") "/tmp") (user-uid))))
   (mkdir backupdir t)
-  (setq backup-directory-alist `(("." . ,backupdir))))
+  (setq backup-directory-alist `(("." . ,backupdir)))
+  (setq auto-save-file-name-transforms
+	`((".*" ,backupdir t))))
 
 ;;;; keybindings
 
