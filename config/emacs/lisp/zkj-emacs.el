@@ -419,11 +419,13 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 ;; eglot is a language server protocol (LSP) package for Emacs, which is more
 ;; minimalist than lsp-mode: https://github.com/joaotavora/eglot
-(use-package eglot
-  :hook
-  (c-mode . eglot-ensure)
-  (c++-mode . eglot-ensure)
-  (go-mode . eglot-ensure))
+(if (version< emacs-version "26.3")
+    (message "not installing eglot as emacs is too old")
+    (use-package eglot
+      :hook
+      (c-mode . eglot-ensure)
+      (c++-mode . eglot-ensure)
+      (go-mode . eglot-ensure)))
 
 ;; Do not create lockfiles, they trip up e.g. hugo (because they are an
 ;; unreadable symlink:
