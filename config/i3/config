@@ -8,6 +8,7 @@
 # https://michael.stapelberg.ch/c128_kasse/
 for_window [class="X128"] floating enable
 for_window [class="VICE"] floating enable
+for_window [class="Teensy"] floating enable
 
 ################################################################################
 # OBS (Open Broadcaster Software, https://obsproject.com/)
