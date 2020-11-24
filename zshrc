@@ -127,7 +127,7 @@ alias V='sudo vim'
 e() { ~/configfiles/zmacsclient "$@" }
 E() { e /sudo::${1} }
 alias m='make'
-alias mp='mplayer -really-quiet'
+alias mp='mpv'
 # disable gdb welcome message
 alias gdb='gdb -q'
 alias sctl='s systemctl'
