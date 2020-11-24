@@ -15,3 +15,6 @@ termcapinfo xterm-color hs:ts=\E]0;:fs=\007:ds=\E]0;\007
 defhstatus "screen "
 hardstatus off
 caption always "%{Yb}%-w%{} %{kr} %n %f %{-} %+w %=%H %{kg} %l %{-} %Y-%m-%d %c:%s"
+
+# Allowing scrolling back up to 4000 lines. The default is 100.
+scrollback 4000
