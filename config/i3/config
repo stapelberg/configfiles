@@ -10,6 +10,9 @@ for_window [class="X128"] floating enable
 for_window [class="VICE"] floating enable
 for_window [class="Teensy"] floating enable
 
+# Right mouse click release copies the window title to the clipboard
+bindsym --release button3 exec --no-startup-id ~/go/bin/copy-title-for-i3
+
 ################################################################################
 # OBS (Open Broadcaster Software, https://obsproject.com/)
 # related settings:
