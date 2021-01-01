@@ -31,7 +31,7 @@
 
 [shortcuts]
     # Close notification.
-    close = mod4+dead_circumflex
+    close = mod4+period
 
     # Re-display last message.
     history = mod4+shift+dead_circumflex
