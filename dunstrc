@@ -20,7 +20,7 @@
     startup_notification = false
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/x-www-browser
-    icon_position = off
+    icon_position = left
 
 [frame]
     width = 3
