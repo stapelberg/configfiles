@@ -22,6 +22,7 @@
     browser = /usr/bin/x-www-browser
     icon_position = left
     format = "%s\n%b"
+    mouse_right_click = do_action
 
 [frame]
     width = 3
