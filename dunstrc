@@ -1,5 +1,5 @@
 [global]
-    font = DejaVu Sans Mono 18
+    font = DejaVu Sans Mono 32
     sort = yes
     indicate_hidden = yes
     alignment = left
