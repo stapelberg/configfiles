@@ -21,6 +21,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/x-www-browser
     icon_position = left
+    format = "%s\n%b"
 
 [frame]
     width = 3
