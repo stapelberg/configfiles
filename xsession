@@ -117,6 +117,12 @@ export LC_TIME=en_DK.UTF-8
 export PAGER=less
 export EDITOR=vim
 
+# hi-dpi environment variables:
+# Make Java SWT use GTK3, which has better hidpi support:
+export SWT_GTK3=1
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
+
 # Background color
 xsetroot -solid "#333333" -cursor_name left_ptr
 
