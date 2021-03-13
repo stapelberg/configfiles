@@ -39,11 +39,6 @@
 
 (setq default-frame-alist '((font . "Go Mono 8")))
 
-;;;; add additional package repositories
-(add-to-list 'package-archives
-	     '("melpa" .
-	       "https://melpa.org/packages/"))
-
 (use-package smex
   :defer t
   :init (or (boundp 'smex-cache)
