@@ -346,21 +346,47 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	 (daemons (seq-filter not-dot (directory-files socket-dir))))
     (mapcar (lambda (daemon) (server-eval-at daemon '(load-file user-init-file))) daemons)))
 
-(setq counsel-fzf-cmd "fd --type f | fzf -f \"%s\"")
-
-(defun fzf ()
-  "fuzzy find on the closest git repository"
-  (interactive)
+(defun zkj--output-or-empty (command)
   (progn
-    (require 'magit)
-    (counsel-fzf nil (magit-toplevel))))
+    (require 'subr-x)
+    (with-temp-buffer
+      (let* ((exitcode (apply 'call-process "/bin/sh" nil (current-buffer) nil (list "-c" command)))
+	     (output (if (= exitcode 0)
+			 (string-trim-right (buffer-string))
+		       "")))
+	output))))
+
+;; Fix (project-current) for submodules when submodule paths are replaced with
+;; git repositories (project.el looks for a .git file, not directory).
+(defun zkj-project-find (dir)
+  (progn
+    (require 'subr-x)
+    (message "zkj-project-find %s" dir)
+    (let* ((superproject-command (format "cd %s && git rev-parse --show-superproject-working-tree" dir))
+	   (toplevel-command (format "cd %s && git rev-parse --show-toplevel" dir))
+	   (superproject (zkj--output-or-empty superproject-command))
+	   (output (if (string= "" superproject)
+		       (zkj--output-or-empty toplevel-command)
+		     superproject)))
+      (if (string= "" output)
+	  (progn
+	    (message "-> falling back to remaining project-find-functions hooks")
+	    nil)
+	(progn
+	  (message "-> %s" output)
+	  (cons 'vc output))))))
+
+(use-package project
+  ;; Cannot use :hook because 'project-find-functions does not end in -hook
+  ;; Cannot use :init (must use :config) because otherwise
+  ;; project-find-functions is not yet initialized.
+  :config
+  (add-hook 'project-find-functions #'zkj-project-find))
 
 ;; You can interactively overwrite this using e.g. M-:
 ;;   (defun zkj-ag-default-directory () "~/kinx/chibi41")
 (defun zkj-ag-default-directory ()
-    (progn
-      (require 'magit)
-      (magit-toplevel)))
+    (project-root (project-current)))
 
 (defun zkj-ag (string directory)
   "ag defaulting to the project directory"
@@ -368,6 +394,16 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
    (list (ag/read-from-minibuffer "Search string")
 	 (read-directory-name "Directory: " (zkj-ag-default-directory))))
   (ag/search string directory))
+
+(setq counsel-fzf-cmd "fd --type f | fzf -f \"%s\"")
+
+;; TODO: requires ivy, too
+(use-package counsel)
+
+(defun fzf ()
+  "fuzzy find on the closest git repository"
+  (interactive)
+  (counsel-fzf nil (project-root (project-current))))
 
 ;; M-x website menu partial
 (defun website ()
@@ -383,7 +419,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; https://eklitzke.org/smarter-emacs-clang-format
 (defun clang-format-buffer-smart ()
   "Reformat buffer if .clang-format exists in the projectile root."
-  (when (file-exists-p (expand-file-name ".clang-format" (magit-toplevel)))
+  (when (file-exists-p (expand-file-name ".clang-format" (project-root (project-current))))
     (clang-format-buffer)))
 
 (defun clang-format-buffer-smart-on-save ()
