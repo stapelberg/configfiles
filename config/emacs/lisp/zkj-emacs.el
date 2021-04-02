@@ -351,25 +351,13 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 		       "")))
 	output))))
 
-;; Fix (project-current) for submodules when submodule paths are replaced with
-;; git repositories (project.el looks for a .git file, not directory).
+;; Returns the parent directory containing a .project.el file, if any,
+;; to override the standard project.el detection logic when needed.
 (defun zkj-project-find (dir)
-  (progn
-    (require 'subr-x)
-    (message "zkj-project-find %s" dir)
-    (let* ((superproject-command (format "cd %s && git rev-parse --show-superproject-working-tree" dir))
-	   (toplevel-command (format "cd %s && git rev-parse --show-toplevel" dir))
-	   (superproject (zkj--output-or-empty superproject-command))
-	   (output (if (string= "" superproject)
-		       (zkj--output-or-empty toplevel-command)
-		     superproject)))
-      (if (string= "" output)
-	  (progn
-	    (message "-> falling back to remaining project-find-functions hooks")
-	    nil)
-	(progn
-	  (message "-> %s" output)
-	  (cons 'vc output))))))
+  (let ((override (locate-dominating-file dir ".project.el")))
+    (if override
+	(cons 'vc override)
+      nil)))
 
 (use-package project
   ;; Cannot use :hook because 'project-find-functions does not end in -hook
