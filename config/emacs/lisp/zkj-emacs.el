@@ -374,8 +374,10 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (defun zkj-ag (string directory)
   "ag defaulting to the project directory"
   (interactive
-   (list (ag/read-from-minibuffer "Search string")
-	 (read-directory-name "Directory: " (zkj-ag-default-directory))))
+   (progn
+     (require 'ag)
+     (list (ag/read-from-minibuffer "Search string")
+	   (read-directory-name "Directory: " (zkj-ag-default-directory)))))
   (ag/search string directory))
 
 (setq counsel-fzf-cmd "fd --type f | fzf -f \"%s\"")
