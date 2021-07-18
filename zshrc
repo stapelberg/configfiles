@@ -141,7 +141,7 @@ f() {
 }
 alias h='cat ~/.zsh_history{_*,} | grep --text --color '
 lsusb() {
-    (command -V lsusb.py >&- 2>&- && lsusb.py) || =lsusb
+    (command -V lsusb.py >&- 2>&- && lsusb.py "$@") || =lsusb "$@"
 }
 
 # write $1 to the inserted sdcard
