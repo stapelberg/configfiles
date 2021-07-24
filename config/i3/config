@@ -15,6 +15,8 @@ for_window [class=".*"] title_window_icon padding 3px
 # Right mouse click release copies the window title to the clipboard
 bindsym --release button3 exec --no-startup-id ~/go/bin/copy-title-for-i3
 
+bindsym $mod+m exec --no-startup-id rofimoji --skin-tone=neutral
+
 ################################################################################
 # OBS (Open Broadcaster Software, https://obsproject.com/)
 # related settings:
