@@ -39,6 +39,9 @@
 
 (setq default-frame-alist '((font . "Go Mono 8")))
 
+;; Use Noto font for emojis 💯
+(set-fontset-font t 'symbol "Noto Color Emoji" nil 'append)
+
 (use-package smex
   :defer t
   :init (or (boundp 'smex-cache)
