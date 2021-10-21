@@ -21,7 +21,7 @@ then
   exec emacsclient --create-frame $start_daemon_and_connect "$@"
 fi
 
-workspaces=$(i3-msg -t get_workspaces >&- 2>&-)
+workspaces=$(i3-msg -t get_workspaces 2>&-)
 if [[ $? -eq 0 ]]
 then
   namedws=$(echo "$workspaces" | jq -r 'map(select(.focused))[0].name' | sed 's,^[^:]*:\s*,,g')
