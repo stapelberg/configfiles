@@ -3,11 +3,13 @@
     sort = yes
     indicate_hidden = yes
     alignment = left
-    bounce_freq = 0
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
-    geometry = "x5+0+0"
+    origin = top-left
+    offset = 2840x1000
+    width = (500, 2000)
+    height = 500
     transparency = 0
     idle_threshold = 0
     follow = mouse
@@ -18,33 +20,26 @@
     padding = 8
     horizontal_padding = 8
     separator_color = frame
-    startup_notification = false
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/x-www-browser
     icon_position = left
     format = "%s\n%b"
     mouse_right_click = do_action
+    frame_width = 5
 
-[frame]
-    width = 3
-    color = "#aaaaaa"
-
-[shortcuts]
-    # Close notification.
-    close = mod4+period
-
-    # Re-display last message.
-    history = mod4+shift+dead_circumflex
+# before dunst v1.7:
+#[frame]
+#    color = "#222222"
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
+    background = "#000000"
     foreground = "#888888"
     timeout = 5
 
 [urgency_normal]
-    background = "#285577"
+    background = "#000000"
     foreground = "#ffffff"
     timeout = 5
 

@@ -41,6 +41,9 @@ bindsym Mod4+b exec --no-startup-id ~/go/bin/next-chrome-for-i3
 # https://github.com/Merovius/shellex
 bindsym Mod4+p exec --no-startup-id shellex
 
+# close current dunst notification
+bindsym Mod4+period exec --no-startup-id dunstctl close
+
 # jump to irssi from anywhere
 bindsym Mod4+i [title="irssi: "] focus
 
