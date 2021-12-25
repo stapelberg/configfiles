@@ -76,8 +76,7 @@ local _ack_location="$(\unalias -a; command -v ag ack ack-grep 2>/dev/null | hea
 [ $? = 0 ] && alias ack="$_ack_location"
 
 # On mac, use GNU coreutils ls if installed (e.g. from homebrew).
-local _gls_location="$(\unalias -a; command -v gls 2>/dev/null | head -1)"
-if [ $? = 0 ]
+if command -V gls >&- 2>&-
 then
     alias ls='gls --color=auto'
 else
