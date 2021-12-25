@@ -17,7 +17,8 @@
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
 (add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
 
-(when (< emacs-major-version 27)
+(progn
+  (message "initializing package")
   (package-initialize))
 
 ;; Workaround for Emacs < 26.3 (e.g. Debian stable):

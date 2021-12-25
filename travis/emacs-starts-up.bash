@@ -9,7 +9,6 @@ ln -sf $HOME/configfiles/config/emacs .emacs.d
 emacs \
     --debug-init \
     --batch \
-    --eval='(package-initialize)' \
     --eval='(load-file "$PWD/.emacs.d/init.el")' \
     --eval='(magit-status)' \
     --kill
