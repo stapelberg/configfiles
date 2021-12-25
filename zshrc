@@ -75,6 +75,15 @@ fignore=(.o)
 local _ack_location="$(\unalias -a; command -v ag ack ack-grep 2>/dev/null | head -1)"
 [ $? = 0 ] && alias ack="$_ack_location"
 
+# On mac, use GNU coreutils ls if installed (e.g. from homebrew).
+local _gls_location="$(\unalias -a; command -v gls 2>/dev/null | head -1)"
+if [ $? = 0 ]
+then
+    alias ls='gls --color=auto'
+else
+    alias ls='ls --color=auto'
+fi
+
 export LS_COLORS='di=01;94:ln=01;96:pi=33:so=01;95:bd=01;93:cd=01;93:ex=01;92:do=01;95:su=37;41:sg=30;43:st=37;44:ow=34;42:tw=30;42:ca=30;41'
 alias spr="curl -F 'sprunge=<-' http://sprunge.us"
 
@@ -117,7 +126,6 @@ d-clone() {
 }
 
 # Nicer output of ls
-alias ls='ls --color=auto'
 alias ll='ls -hl'
 alias l='ll'
 alias rt='ls -hltr'
