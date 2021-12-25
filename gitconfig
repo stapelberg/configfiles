@@ -44,3 +44,5 @@
 	insteadOf = https://salsa.debian.org/
 [github]
 	user = stapelberg
+[init]
+	defaultBranch = main
