@@ -195,6 +195,7 @@ yi() { sudo yum install $* && rehash }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt update'
 alias agdu='sudo apt full-upgrade'
+alias tmp-irssi='irssi -! --config=/tmp/irssi/config --home=/tmp/irssi'
 
 agr() { sudo apt remove $* && rehash }
 
