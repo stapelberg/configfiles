@@ -239,6 +239,14 @@ hash -d router7=~/go/src/github.com/rtr7/router7
 hash -d gokrazy=~/go/src/github.com/gokrazy/gokrazy
 hash -d scan2drive=~/go/src/github.com/stapelberg/scan2drive
 hash -d debiman=~/go/src/github.com/Debian/debiman
+hash -d rsync=~/go/src/github.com/gokrazy/rsync
+
+# This brings “make test” in ~rsync down from 20s to 10s!
+make() {
+    echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    =make $*
+    echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+}
 
 set_termtitle() {
     # escape '%' chars in $1, make nonprintables visible
