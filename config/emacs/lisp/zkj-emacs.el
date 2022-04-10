@@ -16,6 +16,9 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+;; show-paren-mode was enabled by default with Emacs 28.1, but I don’t like it.
+(setq show-paren-mode nil)
+
 ;; Contrary to global-set-key, whose effects can be shadowed by modes (e.g. the
 ;; GNUmakefile mode shadows C-c C-f), bind-key overwrites keys in all modes.
 (require 'bind-key)
