@@ -212,7 +212,7 @@ alias -g T="| tail"
 alias -g G="| grep"
 alias -g H="| head"
 # copy to clipboard
-alias -g C="| xclip"
+alias -g C="| xclip -selection clipboard"
 
 # run command in an i3 tabbed split container
 t() { i3-msg -q split vertical, layout tabbed && $@; i3-msg -q move up }
