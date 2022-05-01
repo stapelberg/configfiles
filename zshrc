@@ -240,6 +240,8 @@ hash -d gokrazy=~/go/src/github.com/gokrazy/gokrazy
 hash -d scan2drive=~/go/src/github.com/stapelberg/scan2drive
 hash -d debiman=~/go/src/github.com/Debian/debiman
 hash -d rsync=~/go/src/github.com/gokrazy/rsync
+hash -d sys=/etc/systemd/system
+hash -d net=/etc/systemd/network
 
 # This brings “make test” in ~rsync down from 20s to 10s!
 make() {
