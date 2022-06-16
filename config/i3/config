@@ -212,6 +212,16 @@ bindsym $mod+Shift+c restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+l exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+mode "liecht" {
+     bindsym 1 exec --no-startup-id ~/go/bin/liecht -dim 10; mode "default"
+     bindsym 5 exec --no-startup-id ~/go/bin/liecht -dim 100; mode "default"
+     bindsym 9 exec --no-startup-id ~/go/bin/liecht -dim 254; mode "default"
+     bindsym 0 exec --no-startup-id ~/go/bin/liecht -dim 0; mode "default"
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+}
+bindsym $mod+z mode "liecht"
+
 mode "volume" {
 	bindsym Mod4+v exec --no-startup-id ~/.config/i3/toggle-output.sh; mode "default"
 
