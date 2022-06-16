@@ -54,19 +54,19 @@ exec --no-startup-id exec ~/go/bin/scrape-forwarded
 exec --no-startup-id exec ~/go/bin/workspace-populate-for-i3
 
 # prompt for new workspace name
-bindsym Mod4+g exec i3-msg \"rename workspace to \\\"$(rofi -dmenu -p rename)\\\"\"
+bindsym $mod+g exec i3-msg \"rename workspace to \\\"$(rofi -dmenu -p rename)\\\"\"
 
 # https://github.com/stapelberg/next-chrome-for-i3
-bindsym Mod4+b exec --no-startup-id ~/go/bin/next-chrome-for-i3
+bindsym $mod+b exec --no-startup-id ~/go/bin/next-chrome-for-i3
 
 # https://github.com/Merovius/shellex
-bindsym Mod4+p exec --no-startup-id shellex
+bindsym $mod+p exec --no-startup-id shellex
 
 # close current dunst notification
-bindsym Mod4+period exec --no-startup-id dunstctl close
+bindsym $mod+period exec --no-startup-id dunstctl close
 
 # jump to irssi from anywhere
-bindsym Mod4+i [title="irssi: "] focus
+bindsym $mod+i [title="irssi: "] focus
 
 # https://github.com/i3/i3/pull/3748
 set $i3lock ~/i3lock/build/i3lock --image ~/graffiti.rgb --raw 3840x2160:rgb
@@ -207,7 +207,7 @@ mode "liecht" {
 bindsym $mod+z mode "liecht"
 
 mode "volume" {
-	bindsym Mod4+v exec --no-startup-id ~/.config/i3/toggle-output.sh; mode "default"
+	bindsym $mod+v exec --no-startup-id ~/.config/i3/toggle-output.sh; mode "default"
 
 	bindsym --release Left exec --no-startup-id xdotool key XF86AudioPrev; mode "default"
 	bindsym --release Right exec --no-startup-id xdotool key XF86AudioNext; mode "default"
