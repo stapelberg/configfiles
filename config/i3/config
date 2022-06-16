@@ -12,6 +12,9 @@ for_window [class=".*"] title_window_icon padding 3px
 # Right mouse click release copies the window title to the clipboard
 bindsym --release button3 exec --no-startup-id ~/go/bin/copy-title-for-i3
 
+# https://github.com/stapelberg/wsmgr-for-i3
+bindsym $mod+Tab exec GTK_IM_MODULE=ibus SWT_GTK3=1 GDK_SCALE=2 GDK_DPI_SCALE=0.5 GDK_SYNCHRONIZE=1 PATH=$HOME/go/bin:$PATH wsmgr
+
 bindsym $mod+m exec --no-startup-id rofimoji --skin-tone=neutral
 
 ################################################################################
@@ -90,7 +93,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec exec urxvtc
+bindsym $mod+Return exec exec ~/go/bin/wsmgr-cwd urxvtc -title 'midna: ~'
 bindsym $mod+Shift+Return exec exec urxvt -fn 'xft:Bitstream Vera Sans Mono:size=16'
 
 # kill focused window
