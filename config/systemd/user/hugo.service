@@ -1,7 +1,10 @@
 [Unit]
 Description=hugo
+StartLimitIntervalSec=0
 
 [Service]
+Restart=always
+RestartSec=1s
 WorkingDirectory=/home/michael/hugo
 ExecStart=/home/michael/go/bin/hugo serve -D
 
