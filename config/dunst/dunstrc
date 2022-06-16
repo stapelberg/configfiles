@@ -8,7 +8,7 @@
     ignore_newline = no
     origin = top-left
     offset = 2840x1000
-    width = (500, 2000)
+    width = (500, 750)
     height = 500
     transparency = 0
     idle_threshold = 0
