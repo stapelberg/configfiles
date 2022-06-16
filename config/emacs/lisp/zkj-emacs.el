@@ -420,8 +420,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   "Add auto-save hook for clang-format-buffer-smart."
   (add-hook 'before-save-hook 'clang-format-buffer-smart nil t))
 
-(add-hook 'c-mode-hook 'clang-format-buffer-smart-on-save)
-(add-hook 'c++-mode-hook 'clang-format-buffer-smart-on-save)
+;;(add-hook 'c-mode-hook 'clang-format-buffer-smart-on-save)
+;;(add-hook 'c++-mode-hook 'clang-format-buffer-smart-on-save)
 
 ;; eglot is a language server protocol (LSP) package for Emacs, which is more
 ;; minimalist than lsp-mode: https://github.com/joaotavora/eglot
