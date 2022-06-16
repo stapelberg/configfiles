@@ -185,6 +185,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; C-4 is a good choice as per “Good Key Choices” in
 ;; http://ergoemacs.org/emacs/keyboard_shortcuts.html
 (bind-key* "C-4" 'zkj-recompile)
+;; f8 is an alias for zkj-recompile, slightly less convenient compared to C-4,
+;; but works in the terminal (which C-4 does not).
+(bind-key* "<f8>" 'zkj-recompile)
 
 (defun zkj-recompile ()
   "Interrupt current compilation and recompile"
