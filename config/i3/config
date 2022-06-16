@@ -34,6 +34,15 @@ for_window [window_type="dialog"] move position mouse
 
 workspace_layout stacked
 
+# continuously pulls temperature from homematic into i3status
+exec --no-startup-id exec ~/go/bin/scrape-temperature
+
+# continuously pulls upstream traffic from router7 into i3status
+exec --no-startup-id exec ~/go/bin/scrape-forwarded
+
+# when opening new workspaces, populate them with a 50/50 layout with 2 urxvts
+exec --no-startup-id exec ~/go/bin/workspace-populate-for-i3
+
 # prompt for new workspace name
 bindsym Mod4+g exec i3-msg \"rename workspace to \\\"$(rofi -dmenu -p rename)\\\"\"
 
