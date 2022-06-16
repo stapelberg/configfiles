@@ -132,8 +132,8 @@ urxvt256c-mld -q -f -o || urxvtd -q -f -o
 #export DISPLAY=:9
 #cd /home/michael
 
-# Start i3, my compiled version if available, fallback to the system version
-# otherwise.
-[ -x ~/i3/build/i3 ] && exec ~/i3/build/i3
-[ -x ~/i3/i3 ] && exec ~/i3/i3
+# Remove comment to prefer the working directory’s compiled version:
+#[ -x ~/i3/build/i3 ] && exec ~/i3/build/i3
+
+# Restart i3 if killed so that the session might survive.
 exec i3
