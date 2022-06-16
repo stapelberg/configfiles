@@ -19,7 +19,9 @@ bindsym $mod+m exec --no-startup-id rofimoji --skin-tone=neutral
 # related settings:
 ################################################################################
 
-floating_minimum_size 2000 x 1500
+# TODO: this should be restricted to OBS. Maybe we can just resize new dialog
+# windows and hope for the best?
+#floating_minimum_size 2000 x 1500
 
 for_window [class="obs" title="Settings" window_type="dialog"] move position mouse
 
