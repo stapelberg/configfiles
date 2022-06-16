@@ -1,5 +1,0 @@
-# Local additions/overrides for x200
-
-# rotation aliases for the external HDMI2 monitor
-alias left='xrandr --output HDMI2 --rotate left --left-of LVDS1'
-alias normal='xrandr --output HDMI2 --rotate normal --left-of LVDS1'
