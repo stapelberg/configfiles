@@ -117,14 +117,9 @@ map <F6> :!xelatex % && xpdf -fullscreen %<.pdf<CR>
 " Just tex it (if you already have an open viewer)
 command! T write<BAR>!xelatex %
 
-map gqc :call FormatComment()<CR>
-
 " When opening .tex-files, don’t treat them as plaintext if there are no LaTeX
 " commands inside yet
 let g:tex_flavor='latex'
-
-" Load some LaTeX-specific commands (abbreviations)
-autocmd BufNewFile,BufRead *.tex source ~/.tex-vim
 
 " is_bash accepts $(..) which is POSIX compliant
 let is_bash=1
