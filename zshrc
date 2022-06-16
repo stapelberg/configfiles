@@ -91,7 +91,7 @@ up() {
     for file in $*; do
         # Ensure the file is world-readable before uploading
         chmod o+r $file
-        scp $file ex62:htdocs/
+        scp $file ex622:htdocs/
         # Echo and try to put this into the X11 clipboard, too
         perl -MURI::Escape -E 'print "https://t.zekjur.net/" . uri_escape(shift)' \
             "$(basename "$file")" | tee >(xclip) && echo
