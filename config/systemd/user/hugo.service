@@ -6,7 +6,9 @@ StartLimitIntervalSec=0
 Restart=always
 RestartSec=1s
 WorkingDirectory=/home/michael/hugo
-ExecStart=/home/michael/go/bin/hugo serve -D
+# Force native Go resolver
+Environment=GODEBUG=netdns=go
+ExecStart=/home/michael/go/bin/hugo serve -D --bind midna.monkey-turtle.ts.net --baseURL http://midna.monkey-turtle.ts.net:1313/
 
 [Install]
 WantedBy=default.target
