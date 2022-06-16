@@ -8,7 +8,6 @@ syntax-perl.vim ~/.vim/syntax/perl.vim
 syntax-go.vim ~/.vim/syntax/go.vim
 FormatBlock.vim ~/.vim/plugin/FormatBlock.vim
 FormatComment.vim ~/.vim/plugin/FormatComment.vim
-gtk-3.0-settings.ini ~/.config/gtk-3.0/settings.ini
 dunstrc ~/.config/dunst/dunstrc
 SourceCodePro-Regular.ttf ~/.fonts/SourceCodePro-Regular.ttf
 urxvt-for-emacs ~/.local/bin/urxvt-for-emacs
