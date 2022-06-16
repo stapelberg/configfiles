@@ -7,10 +7,6 @@
 ;; Use goimports instead of gofmt so that we get automatic imports.
 (set 'gofmt-command "goimports")
 
-(let ((path "~/go/src/github.com/stapelberg/expanderr/expanderr.el"))
-  (if (file-exists-p path)
-      (load path)))
-
 (defun zkj-go-test-at-point ()
   (interactive)
   (let ((go-test-args "-count=1")
