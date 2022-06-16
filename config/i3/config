@@ -108,12 +108,10 @@ bindsym $mod+Shift+Return exec exec urxvt -fn 'xft:Bitstream Vera Sans Mono:size
 # kill focused window
 bindsym $mod+Shift+x kill
 
-# start dmenu (a program launcher)
-bindsym $mod+a exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# start j4-dmenu-desktop, which is a faster version of i3-dmenu-desktop, which
+# is a wrapper around dmenu that only displays .desktop files (as opposed to
+# executable files in $PATH like dmenu_run).
+bindsym $mod+a exec j4-dmenu-desktop || i3-dmenu-desktop
 
 # change focus
 bindsym $mod+n focus left
