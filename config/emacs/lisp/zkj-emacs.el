@@ -373,7 +373,12 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   ;; Cannot use :init (must use :config) because otherwise
   ;; project-find-functions is not yet initialized.
   :config
-  (add-hook 'project-find-functions #'zkj-project-find))
+  (add-hook 'project-find-functions #'zkj-project-find)
+  ;; Workaround for:
+  ;; eval-after-load: Symbol’s value as variable is void: project-switch-commands [4 times]
+  ;; from https://libredd.it/r/emacs/comments/po9cfj/magit_commands_broken/?sort=new
+  :init (if (not (boundp 'project-switch-commands))
+	  (setq project-switch-commands nil)))
 
 ;; You can interactively overwrite this using e.g. M-:
 ;;   (defun zkj-ag-default-directory () "~/kinx/chibi41")
