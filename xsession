@@ -71,6 +71,11 @@ if echo "$INPUT_DEVICES" | grep -qF "SynPS/2 Synaptics TouchPad"; then
 	synclient HorizScrollDelta=-113
 fi
 
+# ThinkPad X1 Extreme
+if echo "$INPUT_DEVICES" | grep -qF "Synaptics TM3512-010"; then
+    xinput set-prop "Synaptics TM3512-010" "libinput Natural Scrolling Enabled" 1
+fi
+
 if echo "$INPUT_DEVICES" | grep -qF "$DELLTOUCHPAD"; then
       synclient TapButton3=2
       synclient VertScrollDelta=-27
