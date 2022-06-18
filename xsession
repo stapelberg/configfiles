@@ -132,6 +132,9 @@ urxvt256c-mld -q -f -o || urxvtd -q -f -o
 #export DISPLAY=:9
 #cd /home/michael
 
+# Fedora’s Xsession ends up in /, not in $HOME
+cd $HOME
+
 # Remove comment to prefer the working directory’s compiled version:
 #[ -x ~/i3/build/i3 ] && exec ~/i3/build/i3
 
