@@ -25,7 +25,9 @@ bindsym --release button3 exec --no-startup-id ~/go/bin/copy-title-for-i3
 # https://github.com/stapelberg/wsmgr-for-i3
 bindsym $mod+Tab exec GTK_IM_MODULE=ibus SWT_GTK3=1 GDK_SCALE=2 GDK_DPI_SCALE=0.5 GDK_SYNCHRONIZE=1 PATH=$HOME/go/bin:$PATH wsmgr
 
-bindsym $mod+m exec --no-startup-id rofimoji --skin-tone=neutral
+set_from_resource $dpi Xft.dpi 96
+
+bindsym $mod+m exec --no-startup-id rofimoji --skin-tone=neutral --selector-args="-dpi $dpi"
 
 ################################################################################
 # OBS (Open Broadcaster Software, https://obsproject.com/)
