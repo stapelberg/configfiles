@@ -196,6 +196,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   (recompile))
 
 (use-package tramp
+  ;; https://github.com/jwiegley/use-package/issues/977
+  :ensure nil
   :defer t
   :config
   ;; does not work in https://github.com/gokrazy/breakglass
@@ -369,6 +371,8 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
       nil)))
 
 (use-package project
+  ;; https://github.com/jwiegley/use-package/issues/977
+  :ensure nil
   ;; Cannot use :hook because 'project-find-functions does not end in -hook
   ;; Cannot use :init (must use :config) because otherwise
   ;; project-find-functions is not yet initialized.
