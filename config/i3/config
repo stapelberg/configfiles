@@ -44,6 +44,13 @@ for_window [class="obs" title="Settings" window_type="dialog"] move position mou
 
 for_window [window_type="dialog"] move position mouse
 
+# Wireshark’s (Qt’s?) file chooser dialog windows are always too small,
+# and will not remember the size you give them. These resize commands
+# will set them to a more reasonable size (in my 7680 x 4320 resolution).
+for_window [class="Wireshark" window_type="dialog" title="Open"] resize set 2500 3000
+for_window [class="Wireshark" window_type="dialog" title="Save"] resize set 2500 3000
+for_window [class="Wireshark" window_type="dialog" title="Export"] resize set 2500 3000
+
 workspace_layout stacked
 
 # continuously pulls temperature from homematic into i3status
