@@ -122,6 +122,12 @@ export EDITOR=vim
 # Needed for GTK programs like Evince, Geeqie, GIMP, … to scale correctly:
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
+# Needed for some Qt programs like Wireshark to scale correctly:
+# I need to set QT_AUTO_SCREEN_SCALE_FACTOR=0 explicitly for OBS anyway.
+# The default depends on whether the program was updated apparently.
+# Most programs I tried behaved as if QT_AUTO_SCREEN_SCALE_FACTOR=1,
+# but not Wireshark.
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 # Background color
 xsetroot -solid "#333333" -cursor_name left_ptr
