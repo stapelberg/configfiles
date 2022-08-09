@@ -465,18 +465,21 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
     (if (= (length compilation-mode-windows) 1)
 	(save-selected-window
 	  (select-window (car compilation-mode-windows))
-	  (funcall FUNC))
-      (scroll-other-window))))
+	  (funcall FUNC)
+	  t)
+      nil)))
 
 (defun zkj-scroll-compilation-window-down ()
   "Scroll the compilation window down"
   (interactive)
-  (zkj-with-compilation-window #'scroll-down))
+  (if (not (zkj-with-compilation-window #'scroll-down))
+      (scroll-other-window-down)))
 
 (defun zkj-scroll-compilation-window-up ()
   "Scroll the compilation window up"
   (interactive)
-  (zkj-with-compilation-window #'scroll-up))
+  (if (not (zkj-with-compilation-window #'scroll-up))
+      (scroll-other-window)))
 
 (bind-key* "<M-next>" #'zkj-scroll-compilation-window-up)
 (bind-key* "<M-prior>" #'zkj-scroll-compilation-window-down)
