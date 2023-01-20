@@ -482,3 +482,12 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 (bind-key* "<M-next>" #'zkj-scroll-compilation-window-up)
 (bind-key* "<M-prior>" #'zkj-scroll-compilation-window-down)
+
+;; By default, when e.g. M-x magit-status opens a new buffer, the frame is
+;; raised, which focuses the X11 window in i3, thereby stealing focus.
+;;
+;; By setting inhibit-switch-frame to t, Emacs will not call raise-frame.
+(add-to-list
+ 'display-buffer-alist
+ '(".*" . (display-buffer-reuse-window
+           . ((inhibit-switch-frame . t)))))
