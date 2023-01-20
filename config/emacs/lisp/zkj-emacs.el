@@ -5,9 +5,6 @@
 
 (provide 'zkj-emacs)
 
-;; For presentations
-;;(set-default-font "Monospace 16")
-
 ;; Of course, everything is UTF-8.
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -41,6 +38,8 @@
 
 
 (setq default-frame-alist '((font . "Go Mono 8")))
+;; For presentations
+;; (setq default-frame-alist '((font . "Go Mono 16")))
 
 ;; Use Noto font for emojis 💯
 (set-fontset-font t 'symbol "Noto Color Emoji" nil 'append)
