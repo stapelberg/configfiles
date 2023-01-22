@@ -498,5 +498,5 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 ;; Open M-x compile buffers to the right instead of at the bottom (default).
 (add-to-list
  'display-buffer-alist
- '("*compilation*" display-buffer-in-direction
+ '("*compilation*" (display-buffer-reuse-window display-buffer-in-direction)
    (direction . right)))
