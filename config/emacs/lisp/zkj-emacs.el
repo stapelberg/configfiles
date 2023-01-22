@@ -483,6 +483,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 (bind-key* "<M-next>" #'zkj-scroll-compilation-window-up)
 (bind-key* "<M-prior>" #'zkj-scroll-compilation-window-down)
 
+;; for more details on display-buffer-alist, see:
+;; https://www.masteringemacs.org/article/demystifying-emacs-window-manager
+
 ;; By default, when e.g. M-x magit-status opens a new buffer, the frame is
 ;; raised, which focuses the X11 window in i3, thereby stealing focus.
 ;;
@@ -491,3 +494,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
  'display-buffer-alist
  '(".*" . (display-buffer-reuse-window
            . ((inhibit-switch-frame . t)))))
+
+;; Open M-x compile buffers to the right instead of at the bottom (default).
+(add-to-list
+ 'display-buffer-alist
+ '("*compilation*" display-buffer-in-direction
+   (direction . right)))
