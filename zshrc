@@ -420,6 +420,7 @@ expand-or-complete-with-dots() {
 }
 
 load-completion() {
+    fpath=($HOME/.local/share/zsh/functions/Completion $fpath)
     autoload compinit
     compinit -C
     compdef _da agi
