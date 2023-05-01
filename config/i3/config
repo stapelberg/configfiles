@@ -94,9 +94,10 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym $mod+F9 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# https://github.com/Merovius/brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/go/bin/brightness -10%
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo ~/go/bin/brightness +10%
+# https://manpages.debian.org/brightnessctl
+# see also https://chaos.social/@vidister/109794861242265589
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -- set '-10%'
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -- set '+10%'
 
 # start a terminal
 bindsym $mod+Return exec exec ~/go/bin/wsmgr-cwd urxvtc -title 'midna: ~'
