@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -158,6 +159,9 @@ func copyFile(src, dest string) error {
 
 func copyAll(src, dest string) error {
 	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
 		if info.IsDir() {
 			return os.MkdirAll(strings.Replace(path, src, dest, 1), info.Mode())
 		}
@@ -168,13 +172,13 @@ func copyAll(src, dest string) error {
 	})
 }
 
-func moveGitFiles(src, dest string, errLog io.Writer) error {
+func gitTrackedFiles(dir string, stderr io.Writer) (map[string]bool, error) {
 	cmd := exec.Command("git", "ls-files")
-	cmd.Dir = dest
-	cmd.Stderr = errLog
+	cmd.Dir = dir
+	cmd.Stderr = stderr
 	out, err := cmd.Output()
 	if err != nil {
-		return err
+		return nil, err
 	}
 	tracked := make(map[string]bool)
 	for _, filename := range strings.Split(string(out), "\n") {
@@ -182,6 +186,43 @@ func moveGitFiles(src, dest string, errLog io.Writer) error {
 			continue
 		}
 		tracked[filename] = true
+	}
+	return tracked, nil
+}
+
+func copyGitTracked(src, dest string) error {
+	tracked, err := gitTrackedFiles(src, ioutil.Discard)
+	if err != nil {
+		return err
+	}
+	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		relative := strings.Replace(path, src+"/", "", 1)
+		if !tracked[relative] {
+			return nil
+		}
+		if info.IsDir() {
+			return os.MkdirAll(strings.Replace(path, src, dest, 1), info.Mode())
+		}
+		if !info.Mode().IsRegular() {
+			return nil
+		}
+
+		destfn := strings.Replace(path, src, dest, 1)
+		if err := os.MkdirAll(filepath.Dir(destfn), 0755); err != nil {
+			return err
+		}
+
+		return copyFile(path, destfn)
+	})
+}
+
+func moveGitFiles(src, dest string, errLog io.Writer) error {
+	tracked, err := gitTrackedFiles(dest, errLog)
+	if err != nil {
+		return err
 	}
 	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
 		if info.IsDir() {
@@ -342,7 +383,10 @@ func pull() error {
 		return err
 	}
 
-	if err := copyAll(abs, twd); err != nil {
+	if err := copyGitTracked(abs, twd); err != nil {
+		return err
+	}
+	if err := copyAll(filepath.Join(abs, ".git"), filepath.Join(twd, ".git")); err != nil {
 		return err
 	}
 

@@ -1,3 +1,4 @@
 .logs
 gocode/pkg
 gocode/bin/configfiles
+config/google-chrome*
