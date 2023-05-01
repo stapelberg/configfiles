@@ -35,7 +35,7 @@ fi
 
 if [[ "$HOST" = "midna" ]]
 then
-	xrandr --setmonitor up3218k auto DP-4,DP-0
+	xrandr --setmonitor up3218k auto DP-4,DP-2
 fi
 
 setxkbmap de -variant neo
