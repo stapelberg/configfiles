@@ -8,7 +8,14 @@ RestartSec=1s
 WorkingDirectory=/home/michael/hugo
 # Force native Go resolver
 Environment=GODEBUG=netdns=go
-ExecStart=/home/michael/go/bin/hugo serve -D --bind midna.monkey-turtle.ts.net --baseURL http://midna.monkey-turtle.ts.net:1313/
+ExecStartPre=/bin/sh -c 'cd /tmp && sudo tailscale cert midna.monkey-turtle.ts.net && sudo chown michael *.crt *.key'
+ExecStart=/home/michael/go/bin/hugo \
+  serve \
+  -D \
+  --bind midna.monkey-turtle.ts.net \
+  --baseURL https://midna.monkey-turtle.ts.net:1313/ \
+  --tlsCertFile /tmp/midna.monkey-turtle.ts.net.crt \
+  --tlsKeyFile /tmp/midna.monkey-turtle.ts.net.key
 
 [Install]
 WantedBy=default.target
