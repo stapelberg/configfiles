@@ -76,7 +76,7 @@ local _ack_location="$(\unalias -a; command -v ag ack ack-grep 2>/dev/null | hea
 [ $? = 0 ] && alias ack="$_ack_location"
 
 # On mac, use GNU coreutils ls if installed (e.g. from homebrew).
-if command -V gls >&- 2>&-
+if command -V gls >/dev/null 2>&1
 then
     alias ls='gls --color=auto'
 else
@@ -148,7 +148,7 @@ f() {
 }
 alias h='cat ~/.zsh_history{_*,} | grep --text --color '
 lsusb() {
-    (command -V lsusb.py >&- 2>&- && lsusb.py "$@") || =lsusb "$@"
+    (command -V lsusb.py >/dev/null 2>&1 && lsusb.py "$@") || =lsusb "$@"
 }
 
 # write $1 to the inserted sdcard
