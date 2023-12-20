@@ -189,15 +189,11 @@ alias acsn='apt-cache search --names-only'
 alias acp='apt-cache policy'
 alias acsh='apt-cache show'
 alias ac='apt-cache'
-alias ys='yum search'
-agi() { sudo apt install $* && rehash }
-yi() { sudo yum install $* && rehash }
+agi() { sudo apt install $* }
 _da() { _deb_packages uninstalled; }
 alias agu='sudo apt update'
 alias agdu='sudo apt full-upgrade'
 alias tmp-irssi='irssi -! --config=/tmp/irssi/config --home=/tmp/irssi'
-
-agr() { sudo apt remove $* && rehash }
 
 alias smi='sudo make install'
 
@@ -425,6 +421,11 @@ load-completion() {
     autoload compinit
     compinit -C
     compdef _da agi
+
+    # Eliminate the need for explicit rehash commands after installing software,
+    # and instead rehash on every completion. Thanks to operating system caches,
+    # this doesn’t incur a noticeable slow-down.
+    zstyle ':completion:*' rehash true
 
     # 'ctrl-x r' will complete the 12 last modified (mtime) files/directories
     zle -C newest-files menu-complete _generic
