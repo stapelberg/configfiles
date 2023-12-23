@@ -13,6 +13,11 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+;; Display C-h C-a help message:
+;; https://emacs.stackexchange.com/questions/432/how-to-change-default-minibuffer-message
+(defun display-startup-echo-area-message ()
+  (message ""))
+
 ;; show-paren-mode was enabled by default with Emacs 28.1, but I don’t like it.
 (setq show-paren-mode nil)
 
