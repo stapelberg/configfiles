@@ -4,9 +4,6 @@
 ;;;; configuration.
 (provide 'zkj-go)
 
-;; Use goimports instead of gofmt so that we get automatic imports.
-(set 'gofmt-command "goimports")
-
 (defun zkj-go-test-at-point ()
   (interactive)
   (let ((go-test-args "-count=1")
@@ -18,9 +15,14 @@
   (call-interactively 'xref-find-definitions)
   (recenter-top-bottom 0))
 
+(defun zkj-eglot-organize-imports ()
+  (call-interactively 'eglot-code-action-organize-imports))
+
 (defun zkj-go-mode-hook ()
-  ;; Run gofmt before saving
-  (add-hook 'before-save-hook 'gofmt-before-save)
+  ;; Format (previously: gofmt) and organize imports (previously: goimports).
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
+  (add-hook 'before-save-hook #'zkj-eglot-organize-imports nil t)
+
   ;; Jump to first error. Go has no warnings.
   (setq compilation-scroll-output 'first-error)
   ;; Jump to the definition of the symbol under the cursor.
