@@ -427,6 +427,11 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   (interactive)
   (counsel-projectile))
 
+(defun config ()
+  "invokes counsel-fzf on ~/configfiles/config/emacs/lisp"
+  (interactive)
+  (counsel-fzf nil "~/configfiles/config/emacs/lisp"))
+
 ;; M-x website menu partial
 (defun website ()
   "invokes counsel-fzf on ~/hugo"
