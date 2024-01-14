@@ -404,13 +404,28 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 
 (setq counsel-fzf-cmd "fd --type f | fzf -f \"%s\"")
 
-;; TODO: requires ivy, too
-(use-package counsel)
+(use-package counsel
+  :ensure t
+  :config
+  ;; Explicitly use counsel without ivy:
+  ;; ivy changes the behavior of code completion in Go,
+  ;; e.g. typing mux.Hand<TAB><TAB>
+;;  (ivy-mode 1)
+  (counsel-mode 1))
+
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1)
+  (setq projectile-enable-caching t))
+
+(use-package counsel-projectile
+  :ensure t)
 
 (defun fzf ()
   "fuzzy find on the closest git repository"
   (interactive)
-  (counsel-fzf nil (project-root (project-current))))
+  (counsel-projectile))
 
 ;; M-x website menu partial
 (defun website ()
