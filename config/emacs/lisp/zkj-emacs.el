@@ -467,6 +467,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
       (go-mode . eglot-ensure)
       (python-mode . eglot-ensure)
       :config
+      (setq eglot-sync-connect 0)
       (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))))
 
 ;; Do not create lockfiles, they trip up e.g. hugo (because they are an
