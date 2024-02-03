@@ -6,10 +6,13 @@
 ;;;;
 ;;;; See also http://emacswiki.org/emacs/DotEmacsDotD
 
-(setq gc-cons-threshold 64000000)
-(add-hook 'after-init-hook #'(lambda ()
-                               ;; restore after startup
-                               (setq gc-cons-threshold 800000)))
+;; Set Garbage Collection threshold extremely high (1 GB),
+;; but run Garbage Collection when Emacs loses focuses:
+;; https://news.ycombinator.com/item?id=39190110
+(setq gc-cons-threshold 1073741824)
+(add-function :after
+              after-focus-change-function
+              (lambda () (unless (frame-focus-state) (garbage-collect))))
 
 ;; byte compilation does not make a difference with my current config
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d/lisp") 0)
