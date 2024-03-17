@@ -1,5 +1,5 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:bookworm",
   "features": {
     "ghcr.io/devcontainers/features/go:1": {}
   }
