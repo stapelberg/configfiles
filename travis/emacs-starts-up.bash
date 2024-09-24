@@ -4,6 +4,7 @@ set -eux
 
 wd=$PWD
 ln -sf $HOME/configfiles/config/emacs .emacs.d
+git config --global --add safe.directory /root/configfiles/.git
 git clone /root/configfiles configfiles.clone
 cd configfiles.clone
 # Explicitly load init.el because --batch implies -q.
