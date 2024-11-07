@@ -7,7 +7,9 @@
     word_wrap = yes
     ignore_newline = no
     origin = top-left
-    offset = 2840x1000
+    # dunst 1.9 gained hidpi support, so the offset is scaled
+    offset = 946x333
+    #offset = 2840x1000
     width = (500, 750)
     height = 500
     transparency = 0
