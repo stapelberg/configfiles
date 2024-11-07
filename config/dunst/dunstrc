@@ -3,7 +3,7 @@
     sort = yes
     indicate_hidden = yes
     alignment = left
-    show_age_threshold = 60
+    show_age_threshold = 99999
     word_wrap = yes
     ignore_newline = no
     origin = top-left
