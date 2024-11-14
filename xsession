@@ -119,9 +119,13 @@ export EDITOR=vim
 # # Make Java SWT use GTK3, which has better hidpi support:
 # export SWT_GTK3=1
 
-# Needed for GTK programs like Evince, Geeqie, GIMP, … to scale correctly:
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
+# These two variables used to be needed for GTK programs like Evince, Geeqie,
+# GIMP, … to scale correctly, but modern programs should pick up Xft.dpi.
+# Worse, Chrome 131+ scales incorrectly when GDK_SCALE is set:
+# https://mas.to/@zekjur/113475631028231867
+# export GDK_SCALE=2
+# export GDK_DPI_SCALE=0.5
+
 # Needed for some Qt programs like Wireshark to scale correctly:
 # The default depends on whether the program was updated apparently.
 # Most programs I tried behaved as if QT_AUTO_SCREEN_SCALE_FACTOR=1,
