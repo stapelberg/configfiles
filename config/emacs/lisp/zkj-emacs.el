@@ -169,7 +169,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	      (logand flags (lognot #x100))))
     (x-change-window-property "WM_HINTS" wm-hints frame "WM_HINTS" 32 t)))
 (defun compilation-finished-hook (buf status)
-  (if (window-system)
+  (if (eq (window-system) 'x)
       (x-urgency-hint (window-frame (get-buffer-window buf)) 1)))
 (add-hook 'compilation-finish-functions #'compilation-finished-hook)
 
