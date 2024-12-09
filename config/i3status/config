@@ -3,6 +3,7 @@ general {
     interval = 1
 }
 
+order += "read_file door"
 order += "read_file wohnzimmer"
 order += "ipv6"
 order += "disk /"
@@ -21,6 +22,12 @@ read_file upstream {
     format = "upstream: %content"
     format_bad = ""
     path = "/run/user/1000/i3status/upstream.traffic"
+}
+
+read_file door {
+    format = "nuki: %content"
+    format_bad = ""
+    path = "/run/user/1000/i3status/nuki.temp"
 }
 
 read_file wohnzimmer {
