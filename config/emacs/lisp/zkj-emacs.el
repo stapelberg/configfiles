@@ -101,7 +101,7 @@
   :ensure nil ; built-in
   :bind (("C-x b" . zkj-lazy-ido-switch-buffer)
 	 ("C-x C-f" . zkj-lazy-ido-find-file)
-	 ("C-c C-x C-f" . counsel-projectile)))
+	 ("C-x C-p" . counsel-projectile)))
 
 ;; Store backups and auto-save files in a single directory so that
 ;; they don’t clutter up my filesystem (or fail to be written on curlftpfs):
