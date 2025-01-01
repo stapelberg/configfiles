@@ -239,6 +239,7 @@ hash -d rsync=~/go/src/github.com/gokrazy/rsync
 hash -d gus=~/go/src/github.com/gokrazy/gus
 hash -d sys=/etc/systemd/system
 hash -d net=/etc/systemd/network
+hash -d bull=~/go/src/github.com/gokrazy/bull
 
 # This brings “make test” in ~rsync down from 20s to 10s!
 make() {
