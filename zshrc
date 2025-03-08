@@ -209,6 +209,8 @@ alias -g G="| grep"
 alias -g H="| head"
 # copy to clipboard
 alias -g C="| xclip -selection clipboard"
+alias user='systemctl --user'
+alias ju='journalctl --user'
 
 # run command in an i3 tabbed split container
 t() { i3-msg -q split vertical, layout tabbed && $@; i3-msg -q move up }
