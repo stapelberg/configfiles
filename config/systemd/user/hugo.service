@@ -9,10 +9,14 @@ WorkingDirectory=/home/michael/hugo
 # Force native Go resolver
 Environment=GODEBUG=netdns=go
 ExecStartPre=/bin/sh -c 'cd /tmp && sudo tailscale cert midna.monkey-turtle.ts.net && sudo chown michael *.crt *.key'
+# Specifying --port explicitly makes hugo not fall back
+# to a different port when listening fails, but retry
+# due to the systemd Restart=always setting.
 ExecStart=/home/michael/go/bin/hugo \
   serve \
   -D \
   --bind midna.monkey-turtle.ts.net \
+  --port 1313 \
   --baseURL https://midna.monkey-turtle.ts.net:1313/ \
   --tlsCertFile /tmp/midna.monkey-turtle.ts.net.crt \
   --tlsKeyFile /tmp/midna.monkey-turtle.ts.net.key
