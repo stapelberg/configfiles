@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # readahead: read files while Emacs is starting up
 cat -- "$@" >/dev/null 2>/dev/null &
