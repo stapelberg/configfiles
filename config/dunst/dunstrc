@@ -43,11 +43,13 @@
 [urgency_normal]
     background = "#000000"
     foreground = "#ffffff"
+    frame_color = "#888888"
     timeout = 5
 
 [urgency_critical]
-    background = "#900000"
+    background = "#000000"
     foreground = "#ffffff"
+    frame_color = "#888888"
     timeout = 5
 
 # vim: ft=cfg
