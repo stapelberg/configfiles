@@ -527,3 +527,10 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
  'display-buffer-alist
  '("*compilation*" (display-buffer-reuse-window display-buffer-in-direction)
    (direction . right)))
+
+(use-package magit
+  :ensure t
+  :init
+  ;; Expand the list of untracked directories by default,
+  ;; otherwise they are easy to miss.
+  (setq magit-section-initial-visibility-alist '((untracked . show))))
