@@ -11,6 +11,10 @@ termcapinfo xterm-color OP
 termcapinfo xterm-color ti@:te@
 termcapinfo xterm-color hs:ts=\E]0;:fs=\007:ds=\E]0;\007
 
+termcapinfo rxvt-unicode-256color OP
+termcapinfo rxvt-unicode-256color ti@:te@
+termcapinfo rxvt-unicode-256color hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+
 # Anstelle von hardstatus caption benutzen, damit das mit dem Titel klappt
 defhstatus "screen "
 hardstatus off
