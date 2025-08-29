@@ -465,6 +465,7 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   (c++-mode . eglot-ensure)
   (go-mode . eglot-ensure)
   (python-mode . eglot-ensure)
+  (nix-mode . eglot-ensure)
   :config
   (setq eglot-sync-connect 0)
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
