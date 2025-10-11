@@ -508,6 +508,14 @@ chpwd_profiles
 
 [ -e "$HOME/.zshrc_host" ] && source ~/.zshrc_host
 
-# If the configfiles are in a git repository, update if it’s older than one hour.
-# On x1/x200, I am running cfgupdater instead which triggers on a network connection.
-[ "$HOST" != "x1" -a "$HOST" != "x200" ] && ( sleep 1; exec $cfgfiles/gocode/bin/configfiles.$(go env GOARCH 2>&- || echo 'amd64') -configfiles_dir=$cfgfiles -quiet ) &!
+update_configfiles() {
+    # If the configfiles are in a git repository, update if it’s older than one hour.
+    # On x1/x200, I am running cfgupdater instead which triggers on a network connection.
+    if [ -e /nix/store ];
+    then
+      # Assume all Nix-enabled systems have this configuration managed via Nix.
+      return
+    fi
+    ( sleep 1; exec $cfgfiles/gocode/bin/configfiles.$(go env GOARCH 2>&- || echo 'amd64') -configfiles_dir=$cfgfiles -quiet ) &!
+}
+update_configfiles
