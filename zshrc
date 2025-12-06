@@ -260,7 +260,7 @@ set_termtitle() {
     [ "$a" = "zsh" ] && { a=${(%)${:-%~}} }
 
     case $TERM in
-    screen*)
+    screen*|tmux*)
         # plain xterm title
         print -rn -- $'\e'"]2;${(%)${:-%m}}: $a"$'\a'
 
