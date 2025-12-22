@@ -369,6 +369,7 @@ parse_git_branch() {
 }
 
 git_branch_chdir() {
+    setopt local_options extendedglob
     __CURRENT_GIT_DIR=((../)#.git)
     parse_git_branch
     setup_prompt
