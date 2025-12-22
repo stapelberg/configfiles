@@ -339,7 +339,7 @@ setup_prompt() {
         _cfg_nag=""
     fi
 
-    if [ $lvl -ge 2 ] ; then
+    if [[ $lvl -ge 2 ]] ; then
         PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$lvl $_cfg_nag%% "
     else
         PROMPT="%K{cyan}%F{black}$_main_fmt%k%f ${fg_green}%~${fg_no_colour} ${__CURRENT_GIT_PROMPT}$_cfg_nag%% "
