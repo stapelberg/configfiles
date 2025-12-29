@@ -292,15 +292,22 @@ typeset -ga preexec_functions
 preexec_functions+=my_prompt_preexec
 
 cwd_to_urxvt() {
-    local update="\0033]777;cwd-spawn;path;$PWD\0007"
-
     case $TERM in
+    foot*)
+        # OSC 7 (standard)
+        # https://codeberg.org/dnkl/foot/wiki#user-content-spawning-new-terminal-instances-in-the-current-working-directory
+        local LC_ALL=C
+        printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+        ;;
     screen*)
-    # pass through to parent terminal emulator
-        update="\0033P$update\0033\\";;
+        # OSC 777 (URxvt-specific), pass through to parent terminal emulator
+        printf '\033P\033]777;cwd-spawn;path;%s\007\033\\' $PWD
+        ;;
+    *)
+        # OSC 777 (URxvt-specific)
+        printf '\033]777;cwd-spawn;path;%s\007' $PWD
+        ;;
     esac
-
-    echo -ne "$update"
 }
 
 cwd_to_urxvt # execute upon startup to set initial directory
