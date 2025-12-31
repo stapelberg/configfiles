@@ -13,6 +13,10 @@
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+;; Hide menu bar and tool bar
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
 ;; Display C-h C-a help message:
 ;; https://emacs.stackexchange.com/questions/432/how-to-change-default-minibuffer-message
 (defun display-startup-echo-area-message ()
