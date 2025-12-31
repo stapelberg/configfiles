@@ -334,9 +334,10 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
 	      " - Emacs")
 	    ))
 
-;; ;; Disable the scroll bar by default, they flicker. Use M-x scroll-bar-mode to
-;; ;; make it re-appear.
-;; (scroll-bar-mode -1)
+;; Disable the scroll bar by default. On X11 this was set via Xresources
+;; (Emacs*verticalScrollBars: off), but that doesn't apply on Wayland.
+;; Use M-x scroll-bar-mode to enable it on-the-fly.
+(scroll-bar-mode -1)
 
 ;; Add final newlines to all files by default, not just in modes which think
 ;; this is useful.
