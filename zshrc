@@ -245,9 +245,11 @@ hash -d bull=~/go/src/github.com/gokrazy/bull
 
 # This brings “make test” in ~rsync down from 20s to 10s!
 make() {
-    echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ] && \
+        echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
     =make $*
-    echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ] && \
+        echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 }
 
 set_termtitle() {
