@@ -17,8 +17,12 @@
 ;; byte compilation does not make a difference with my current config
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d/lisp") 0)
 
-(add-to-list 'load-path "~/configfiles/config/emacs/lisp/")
-(add-to-list 'load-path "~/configfiles/config/emacs/lisp/emacs-livereload")
+;; Determine config directory from this file's location (works with load-file too)
+(defvar zkj-emacs-dir (file-name-directory (or load-file-name buffer-file-name))
+  "Directory containing this emacs configuration.")
+
+(add-to-list 'load-path (expand-file-name "lisp" zkj-emacs-dir))
+(add-to-list 'load-path (expand-file-name "lisp/emacs-livereload" zkj-emacs-dir))
 
 (progn
   (message "initializing package")
@@ -86,7 +90,7 @@
     (load "pacna-early"))
 
 ;; Settings stored by the customize interface.
-(setq custom-file "~/configfiles/config/emacs/custom.el")
+(setq custom-file (expand-file-name "custom.el" zkj-emacs-dir))
 (load custom-file)
 
 (add-hook
