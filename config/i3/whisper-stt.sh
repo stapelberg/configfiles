@@ -5,6 +5,7 @@
 
 set -e
 
+LOCKFILE="/tmp/whisper-stt.lock"
 PIDFILE="/tmp/whisper-stt.pid"
 WAVFILE="/tmp/whisper-stt.wav"
 LOGFILE="/tmp/whisper-stt.log"
@@ -47,14 +48,14 @@ start() {
 
     notify low "Whisper" "Recording..."
 
-    arecord -f S16_LE -r 16000 -c 1 -t wav "$WAVFILE" &
-    ARECORD_PID=$!
-    echo "$ARECORD_PID" > "$PIDFILE"
-    log "start: arecord running pid=$ARECORD_PID"
-
-    # Keep the script alive so arecord isn't orphaned
-    wait "$ARECORD_PID" 2>/dev/null || true
-    log "start: arecord exited"
+    # exec replaces the shell with arecord, which keeps arecord as a
+    # direct child of i3 (no orphan issues). Close fd 9 first to release
+    # the flock so the next toggle press isn't blocked while recording.
+    # The PID stays the same ($$), so we write it before exec.
+    echo "$$" > "$PIDFILE"
+    log "start: exec arecord pid=$$"
+    exec 9>&-
+    exec arecord -f S16_LE -r 16000 -c 1 -t wav "$WAVFILE"
 }
 
 stop() {
@@ -138,6 +139,16 @@ toggle() {
 case "${1}" in
     start) start ;;
     stop) stop ;;
-    toggle) toggle ;;
+    toggle)
+        # Serialize concurrent invocations (i3 can fire multiple on one keypress).
+        # The lock is released when start does exec (close-on-exec), so
+        # subsequent toggle presses aren't blocked while recording.
+        exec 9>"$LOCKFILE"
+        if ! flock -n 9; then
+            log "toggle: already running, ignoring"
+            exit 0
+        fi
+        toggle
+        ;;
     *) echo "Usage: $0 {start|stop|toggle}" >&2; exit 1 ;;
 esac
