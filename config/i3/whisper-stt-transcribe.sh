@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 # Called by whisper-stt.service ExecStopPost to transcribe and paste.
+#
+# Uses whisper.cpp (whisper-cli) for inference. We benchmarked faster-whisper
+# (CTranslate2) on 2026-04-05 and it was ~1.5x SLOWER than whisper.cpp on our
+# hardware (Ryzen 9 9950X3D) because whisper.cpp uses the AVX-512 zen4 backend
+# while CTranslate2 uses OpenBLAS. The "5x faster" claims are vs the original
+# Python whisper, not vs whisper.cpp. Accuracy was identical.
+#
+# Parakeet V3 (NVIDIA NeMo, via sherpa-onnx) is a potential future upgrade for
+# better accuracy, but sherpa-onnx is not in nixpkgs yet.
 
 WAVFILE="/tmp/whisper-stt.wav"
 WAVARCHIVE="$HOME/stt/$(date '+%Y-%m-%d')"
