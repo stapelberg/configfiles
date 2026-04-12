@@ -94,8 +94,9 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym $mod+F9 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Press to start recording, press again to transcribe and type
-bindsym $mod+comma exec --no-startup-id ~/.config/i3/whisper-stt.sh toggle
+# Press to start recording, press again to transcribe and type.
+# Press a third time during transcription to cancel.
+bindsym $mod+comma exec --no-startup-id stt-for-i3 toggle
 
 # https://manpages.debian.org/brightnessctl
 # see also https://chaos.social/@vidister/109794861242265589
