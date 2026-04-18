@@ -18,6 +18,12 @@ unset MAILCHECK
 # Do not share history (enabled by default in NixOS’s /etc/zshrc).
 unsetopt SHARE_HISTORY
 
+# NixOS unconditionally bakes `HOST=${config.networking.fqdnOrHostName}`
+# into /etc/zshrc, see nixpkgs/nixos/modules/programs/zsh/zsh.nix.
+# On machines where the kernel hostname is set at runtime,
+# that baked value is stale, and zsh's %m reads $HOST.
+HOST=$(hostname)
+
 setopt short_loops
 
 # All unquoted arguments of the form `anything=expression' appearing after the
