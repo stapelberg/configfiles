@@ -1,4 +1,3 @@
-mplayer.config ~/.mplayer/config
 gpg.conf ~/.gnupg/gpg.conf
 urxvt-mark-yank-urls ~/.urxvt/ext/mark-yank-urls
 urxvt-fonts ~/.urxvt/ext/fonts
