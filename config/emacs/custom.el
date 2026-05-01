@@ -9,13 +9,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ag-arguments (quote ("--case-sensitive" "--stats" "--follow")))
- '(clang-format-executable "clang-format-3.8")
- '(godoc-at-point-function (quote godoc-gogetdoc))
- '(magit-status-sections-hook
-   (quote
-    (magit-insert-status-headers magit-insert-merge-log magit-insert-rebase-sequence magit-insert-am-sequence magit-insert-sequencer-sequence magit-insert-bisect-output magit-insert-bisect-rest magit-insert-bisect-log magit-insert-unstaged-changes magit-insert-staged-changes magit-insert-stashes magit-insert-untracked-files magit-insert-unpulled-from-upstream magit-insert-unpulled-from-pushremote magit-insert-unpushed-to-upstream magit-insert-unpushed-to-pushremote)))
- '(org-agenda-files (quote ("~/NoName/rgb2r-orga/2019-rgb2r-orga-tasks.org")))
- '(package-selected-packages
-   (quote
-    (dash lsp-mode window-purpose esup use-package google-this term-keys bind-key go-mode eieio xelb diff-hl better-shell ssh go-rename editorconfig clang-format smex livereload websocket protobuf-mode magit gotest go-guru go-eldoc crontab-mode ag))))
+ '(ag-arguments '("--case-sensitive" "--stats" "--follow"))
+ '(clang-format-executable "clang-format")
+ '(gdb-many-windows t)
+ '(godoc-at-point-function 'godoc-gogetdoc)
+ '(ledger-reports
+   '(("accounts" "ledger ") ("equity" "ledger equity")
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)")))
+
+ '(notmuch-search-oldest-first nil)
+ '(org-agenda-files '("~/NoName/rgb2r-orga/2019-rgb2r-orga-tasks.org"))
+ '(send-mail-function 'sendmail-send-it)
+ '(treesit-auto-install t))
