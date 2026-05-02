@@ -28,7 +28,7 @@ bindsym $mod+Tab exec GTK_IM_MODULE=ibus SWT_GTK3=1 GDK_SCALE=2 GDK_DPI_SCALE=0.
 
 set_from_resource $dpi Xft.dpi 96
 
-bindsym $mod+m exec --no-startup-id rofimoji --skin-tone=neutral --selector-args="-dpi $dpi"
+bindsym $mod+m exec --no-startup-id emoji-picker-for-i3
 
 ################################################################################
 # OBS (Open Broadcaster Software, https://obsproject.com/)
