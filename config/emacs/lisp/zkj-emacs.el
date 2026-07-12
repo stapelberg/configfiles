@@ -473,6 +473,9 @@ If you unset the urgency, you still have to visit the frame to make the urgency 
   (nix-mode . eglot-ensure)
   :config
   (setq eglot-sync-connect 0)
+  ;; No code-action lightbulb in the margin (terminal font lacks the glyph);
+  ;; the eldoc hint is enough.
+  (setq eglot-code-action-indications '(eldoc-hint))
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
   (add-to-list 'eglot-server-programs '((nix-mode) "nixd")))
 
