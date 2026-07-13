@@ -218,6 +218,9 @@ alias -g C="| xclip -selection clipboard"
 alias user='systemctl --user'
 alias ju='journalctl --user'
 
+# Make Claude Code's Bash tool use bash instead of inheriting zsh via $SHELL.
+alias claude='SHELL=$(which bash) claude'
+
 # run command in an i3 tabbed split container
 t() { i3-msg -q split vertical, layout tabbed && $@; i3-msg -q move up }
 
