@@ -2,6 +2,10 @@
 # Load 4000 lines of history, but save O(∞)
 HISTSIZE=4000
 HISTFILE=~/.zsh_history
+# Remove the "export" flag from $HISTFILE so that even when zsh is started
+# with $HISTFILE in the environment variables, $HISTFILE=~/.zsh_history
+# will never end up in env (otherwise, a nested bash might clobber our history).
+typeset +x HISTFILE
 SAVEHIST=10000000
 # Print timing statistics for everything which takes longer than 5 seconds of
 # user + system time ('sleep 6' does not work because of 0% user/system time!).
