@@ -12,9 +12,6 @@
 [color]
 	ui = auto
 
-[push]
-	default = tracking
-
 [diff]
 	renames = copies
 	mnemonicprefix = true
