@@ -381,9 +381,9 @@ parse_git_branch() {
     local fg_dark_blue=$'%{\e[0;36m%}'
     local fg_no_colour=$'%{\e[0m%}'
 
-    if [ -f ${__CURRENT_GIT_DIR[1]}/HEAD ]
+    if [ -f ${__CURRENT_GIT_DIR[-1]}/HEAD ]
     then
-        local branch=$(sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[1]}/HEAD)
+        local branch=$(sed 's/ref: refs\/heads\///g' ${__CURRENT_GIT_DIR[-1]}/HEAD)
         __CURRENT_GIT_PROMPT="${fg_dark_blue}${branch}${fg_no_colour} "
     else
         __CURRENT_GIT_PROMPT=""
